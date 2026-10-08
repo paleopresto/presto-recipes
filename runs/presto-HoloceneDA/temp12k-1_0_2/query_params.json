@@ -1,0 +1,11 @@
+{
+  "mode": "bundle",
+  "pool": "temp12k-1_0_2",
+  "snapshot": "Temp12k v1.0.2",
+  "criteria": "Temperature 12k v1.0.2 as released (Erb et al. 2022 input); the DA's own selection applies",
+  "bundle": {
+    "url": "https://github.com/paleopresto/presto-recipes/releases/download/baseline-temp12k-1_0_2/presto-baseline-temp12k-1_0_2.zip",
+    "sha256": "0cfb3836a6088ec67de8b373f9ac5f200d0d49324bb1648a2f9ba99bc206cb3c"
+  },
+  "uniqueID": "presto-HoloceneDA-baseline-temp12k-1_0_2"
+}
