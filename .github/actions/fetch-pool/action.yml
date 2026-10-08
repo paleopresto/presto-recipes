@@ -1,0 +1,86 @@
+name: Fetch a PReSto pool bundle
+description: >
+  Download a pinned PReSto data pool (a trimmed LiPD bundle from presto-recipes),
+  verify its sha256, and hand it to a reconstruction template in the shape its
+  data step already produces: lipd_legacy.pkl, or lipd_output/lipd_files.zip.
+
+# Used from a template's prepare-data job when query_params.json has
+# "mode": "bundle":
+#
+#   - uses: paleopresto/presto-recipes/.github/actions/fetch-pool@<ref>
+#     with:
+#       format: pickle        # or lpdzip (LMR)
+#
+# query_params.json for this mode:
+#   {"mode": "bundle", "pool": "temp12k", "snapshot": "2026-10-08",
+#    "bundle": {"url": "https://.../presto-pool-temp12k-2026-10-08.zip",
+#               "sha256": "<64 hex>"}}
+# A subset of a pool is its own pool (presto-recipes pools/config), so the
+# bundle is always used whole.
+
+inputs:
+  query-params:
+    description: Path to query_params.json
+    default: query_params.json
+  format:
+    description: "pickle (writes lipd_legacy.pkl) or lpdzip (writes lipd_output/lipd_files.zip)"
+    default: pickle
+  image:
+    description: Container that supplies the LiPD python library for pickling
+    default: davidedge/lipd_webapps:lipdGenerator
+
+outputs:
+  n-datasets:
+    description: Number of .lpd files in the bundle
+    value: ${{ steps.fetch.outputs.n_datasets }}
+
+runs:
+  using: composite
+  steps:
+    - id: fetch
+      shell: bash
+      run: |
+        set -euo pipefail
+        QP="${{ inputs.query-params }}"
+        URL=$(jq -r '.bundle.url // empty' "$QP")
+        SHA=$(jq -r '.bundle.sha256 // empty' "$QP")
+        if [ -z "$URL" ] || [ -z "$SHA" ]; then
+          echo "ERROR: query_params.json needs bundle.url and bundle.sha256 for mode=bundle"; exit 1
+        fi
+        echo "Pool $(jq -r '.pool // "?"' "$QP"), snapshot $(jq -r '.snapshot // "?"' "$QP")"
+        curl -L -f -sS "$URL" -o pool_bundle.zip
+        echo "$SHA  pool_bundle.zip" | sha256sum -c -
+
+        rm -rf lipd_output && mkdir -p lipd_output
+        unzip -q -j pool_bundle.zip '*.lpd' -d lipd_output
+        N=$(ls lipd_output/*.lpd | wc -l | tr -d ' ')
+        echo "n_datasets=$N" >> "$GITHUB_OUTPUT"
+        echo "Bundle verified: $N datasets"
+
+    - if: inputs.format == 'lpdzip'
+      shell: bash
+      run: |
+        set -euo pipefail
+        ( cd lipd_output && zip -q -j lipd_files.zip *.lpd )
+        ls -lh lipd_output/lipd_files.zip
+
+    - if: inputs.format == 'pickle'
+      shell: bash
+      run: |
+        set -euo pipefail
+        # The lipdverse compilation pickles carry both D (datasets) and TS
+        # (the flattened timeseries); the Holocene DA and BayGMST read D, the
+        # Temp12k composites read TS, so the bundle pickle carries both.
+        docker run --rm --entrypoint conda \
+          -v "$(pwd)/lipd_output:/output" \
+          "${{ inputs.image }}" \
+          run --no-capture-output -n lipd_gen python -c "
+        import pickle, lipd
+        D = lipd.readLipd('/output/')
+        TS = lipd.extractTs(D)
+        with open('/output/lipd_legacy.pkl', 'wb') as f:
+            pickle.dump({'D': D, 'TS': TS}, f, protocol=2)
+        print(f'lipd_legacy.pkl: {len(D)} datasets, {len(TS)} timeseries')
+        "
+        mv lipd_output/lipd_legacy.pkl lipd_legacy.pkl
+        ls -lh lipd_legacy.pkl
