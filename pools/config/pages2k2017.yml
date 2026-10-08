@@ -25,6 +25,19 @@ exclude_variable_pattern: "^uncertainty|uncertainty$|error|^notes$|needsToBeChan
 # data points in the window.
 collapse_prefer_units: []
 
+# Records past curators of this compilation decided against (make_exclusions.R).
+curator_exclusions: curator_exclusions.csv
+
+# Large uniform syntheses that reconstruct many variants per site. Matched by
+# the title of a dataset's publication. Each contributes one record per site:
+# the preferred season, and none where another record of the same proxy from
+# the same place (within defer_within_km) is already in the pool, so a core is
+# not counted twice under two transfer functions.
+one_record_per_site:
+  - publication_title: "^LegacyClimate"
+    prefer_season: annual
+    defer_within_km: 8
+
 interpretation:
   scope: climate
   variable: temperature

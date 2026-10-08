@@ -161,6 +161,10 @@ build_pool <- function(con, cfg) {
   x$span_win[is.na(x$span_win)] <- 0
   x$longest_win[is.na(x$longest_win)] <- 0
   ctrl <- pool_age_controls(con, x$datasetId)
+  if (!is.null(cfg$curator_exclusions)) {
+    ex <- utils::read.csv(file.path(cfg$.dir, "baselines", cfg$curator_exclusions), stringsAsFactors = FALSE)
+    x$pass_curator <- !x$TSid %in% ex$TSid[ex$pool == cfg$name]
+  }
   ev <- switch(cfg$name, pages2k2017 = eval_pages2k2017, temp12k = eval_temp12k)
   x <- ev(x, ctrl, cfg)
   attr(x, "snapshot") <- attr(con, "snapshot")

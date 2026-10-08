@@ -147,11 +147,37 @@ collapse_within_dataset <- function(pool, prefer_units = character()) {
   p$TSid[duplicated(key[o])]
 }
 
+# Stage 0b: one record per site for large uniform syntheses (see the config's
+# one_record_per_site). Returns the TSids dropped.
+collapse_syntheses <- function(con, pool, rules) {
+  if (!length(rules)) return(character())
+  pubs <- DBI::dbGetQuery(con, "SELECT DISTINCT datasetId, title FROM publications WHERE title IS NOT NULL")
+  drop <- character()
+  for (r in rules) {
+    ds <- unique(pubs$datasetId[grepl(r$publication_title, pubs$title)])
+    hit <- pool$datasetId %in% ds & !pool$TSid %in% drop
+    if (!any(hit)) next
+    s <- pool[hit, ]
+    o <- order(s$datasetId, -as.integer(norm_season(s$seasonality) %in% r$prefer_season), -s$n_win, s$TSid)
+    s <- s[o, ]
+    drop <- c(drop, s$TSid[duplicated(s$datasetId)])
+    s <- s[!duplicated(s$datasetId), ]
+    others <- pool[!pool$datasetId %in% ds & !pool$TSid %in% drop, ]
+    for (k in seq_len(nrow(s))) {
+      o2 <- others[norm_proxy(others) == norm_proxy(s[k, ]) & others$archiveType %in% s$archiveType[k], ]
+      if (nrow(o2) && any(haversine_km(s$lat[k], s$lon[k], o2$lat, o2$lon) <= r$defer_within_km, na.rm = TRUE))
+        drop <- c(drop, s$TSid[k])
+    }
+  }
+  drop
+}
+
 # Resolve duplicates in a selected pool. Returns list(pairs, pool) where pool
 # has a `dedup_keep` column and pairs records every decision and its rule.
 dedup_pool <- function(con, pool, points, prior = NULL, prefer_units = character(),
-                       opt = dedup_defaults) {
+                       syntheses = list(), opt = dedup_defaults) {
   within <- collapse_within_dataset(pool, prefer_units)
+  within <- c(within, collapse_syntheses(con, pool[!pool$TSid %in% within, ], syntheses))
   all_pool <- pool
   pool <- pool[!pool$TSid %in% within, ]
   cand <- dedup_candidates(pool, opt)

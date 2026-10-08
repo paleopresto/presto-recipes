@@ -36,3 +36,21 @@ selection does not recover, and why.
 (`paleoData_useInGlobalTemperatureAnalysis`), Temperature 12k v1.0.0
 (`paleoData_inCompilation` = Temp12k), and the 711 records Erb et al. (2022)
 assimilated (`../holocene_DA_used_TSids.json`).
+
+## Human decisions the pools reuse
+
+Automation covers what the metadata can show. What it cannot show, people have
+already decided, and the pools keep those decisions rather than re-making them:
+
+- `baselines/curator_exclusions.csv` (`make_exclusions.R`): records a
+  compilation's curators rejected. Temperature 12k v1.0.0 "Tverse" records,
+  current Tverse membership, PAGES 2k v2.0.0 records not used in the global
+  analysis, and current QC-sheet rejections. A later admission overrides.
+- `baselines/dedup_prior.csv` (`make_dod2k_prior.R`): DoD2k's duplicate
+  decisions (Evans et al., 2026), matched to LiPDverse TSids by their values.
+
+Checked against DoD2k's 325 mappable decisions: 196 pairs are already a single
+record in LiPDverse; of the remaining 128 expert-confirmed duplicates the
+automated detector finds 117 (91%). Which copy to keep is mostly a tie (equal
+length, same publication year) and is otherwise not predicted by any simple
+rule, which is why prior decisions are reused rather than re-derived.

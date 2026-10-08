@@ -28,6 +28,7 @@ pools <- if (length(args) > 1) args[-1] else sub("\\.yml$", "", list.files(file.
 
 for (p in pools) {
   cfg <- read_yaml(file.path(here, "config", paste0(p, ".yml")))
+  cfg$.dir <- here
   message(sprintf("== %s (snapshot %s)", p, snap))
   x <- build_pool(con, cfg)
   out <- file.path(here, "output", p, snap)
@@ -41,7 +42,8 @@ for (p in pools) {
 
   prior_file <- file.path(here, "baselines", "dedup_prior.csv")
   prior <- if (file.exists(prior_file)) read.csv(prior_file, stringsAsFactors = FALSE) else NULL
-  dd <- dedup_pool(con, sel, attr(x, "points"), prior, unlist(cfg$collapse_prefer_units))
+  dd <- dedup_pool(con, sel, attr(x, "points"), prior, unlist(cfg$collapse_prefer_units),
+                   cfg$one_record_per_site)
   write.csv(dd$pairs, file.path(out, "dedup_pairs.csv"), row.names = FALSE)
   sel <- dd$pool
   write.csv(sel, file.path(out, "pool.csv"), row.names = FALSE)
