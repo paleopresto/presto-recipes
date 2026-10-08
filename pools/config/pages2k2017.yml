@@ -1,0 +1,80 @@
+# Common Era temperature pool, following the PAGES 2k Consortium (2017)
+# inclusion criteria (Sci. Data 4:170088, Methods, "Record selection").
+#
+# Every threshold below is either quoted from that paper or marked as an
+# operational choice: something the paper describes in words ("near the most
+# recent end") that has to become a number to be automated.
+
+name: pages2k2017
+description: Common Era temperature-sensitive records meeting PAGES 2k (2017) criteria
+reference: "PAGES 2k Consortium (2017) Sci. Data 4:170088, doi:10.1038/sdata.2017.88"
+baseline: pages2k_2_0_0.csv
+
+# "1 CE to present". Present is open ended so recent records keep their tops.
+window: {min_year: 1, max_year: 2100}
+
+# Columns that carry a temperature interpretation but are not records of it:
+# uncertainty and error columns (19,851 in the 2026-10-08 export), notes,
+# placeholders. Matched against variableName, case-insensitively.
+exclude_variable_pattern: "^uncertainty|uncertainty$|error|^notes$|needsToBeChanged|^correction$|count$"
+
+# Within one dataset, several columns can record the same proxy and season:
+# alternative transfer functions, age models or cores (LegacyClimate holds
+# four methods x two seasons x up to two tables). Keep one per dataset, proxy
+# and season, preferring primaryTimeseries, then these units, then the most
+# data points in the window.
+collapse_prefer_units: []
+
+interpretation:
+  scope: climate
+  variable: temperature
+  # Operational: the paper requires that the original study described the
+  # relation to temperature. We take that to mean temperature is the first-
+  # ranked climate interpretation, which excludes records where temperature is
+  # a secondary control (most Iso2k precipitation-isotope records).
+  max_rank: 1
+  # The relation must be described, so its sign must be known.
+  require_direction: true
+  # "Ring-width series ... correlate positively"; "inversely responding series
+  # were excluded". Applied to tree-ring proxies only.
+  positive_only:
+    archives: [Wood]
+    proxy_pattern: "ring width|TRW|MXD|density|BI|blue intensity"
+
+# A record is annually resolved if its median spacing in the window is at most
+# this many years. Operational: 1 year plus room for the odd missing ring.
+annual_max_resolution: 1.5
+
+marine_archives: [Coral, Sclerosponge, MolluskShell, MarineSediment]
+
+length:
+  annual_terrestrial: 300   # "annually resolved terrestrial records ... over 300 years"
+  annual_marine: 50         # "annually resolved marine records ... exceeded 50 years"
+  non_annual: 500           # "a minimum length of 500 years ... coarse initial screen"
+
+resolution:
+  terrestrial: 50           # "terrestrial and lacustrine ... 50 years or finer"
+  marine: 200               # "marine records: a minimum average resolution of 200 years"
+  exempt_archives: [Borehole]
+
+chronology:
+  # "Layer-counted records" need no age control beyond their counting.
+  layer_counted_archives: [Wood, Coral, Sclerosponge, MolluskShell, Documents, GlacierIce]
+  layer_counted_proxy_pattern: "varve"
+  # "at least one chronological control point near the most recent end of the
+  # record ... another near the oldest part (or 1 CE, whichever is younger)";
+  # records longer than 1000 years need one "approximately midway, typically
+  # within two centuries of the midpoint". Operational: "near" is also 200 yr.
+  tolerance: 200
+  # Operational: "near" also scales with the record's own spacing, since a
+  # control cannot be closer to an end than the samples are to each other.
+  tolerance_resolution_multiple: 2
+  midpoint_if_longer_than: 1000
+  # Operational: a record that reaches the 20th century is taken to have a
+  # dated (core-top, collection-year) young end, which chron tables rarely list.
+  core_top_if_younger_than: 1900
+  # Uncalibrated marine 14C ages are moved younger by a nominal reservoir age.
+  marine_reservoir_years: 400
+  # What to do with a non-layer-counted record that carries no chron table.
+  # pass = keep it and flag it; fail = drop it.
+  missing_chron: pass

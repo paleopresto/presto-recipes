@@ -1,0 +1,64 @@
+# Holocene temperature pool, following the Temperature 12k inclusion criteria
+# (Kaufman et al., 2020, Sci. Data 7:115, "Data selection").
+#
+# Thresholds are quoted from that paper or marked as operational choices.
+
+name: temp12k
+description: Holocene temperature-sensitive records meeting Temperature 12k (2020) criteria
+reference: "Kaufman et al. (2020) Sci. Data 7:115, doi:10.1038/s41597-020-0445-3"
+baseline: temp12k_1_0_0.csv
+
+# "anytime within the past 12,000 years", as calendar years CE.
+# Age 12000 BP = -10050 CE; the top is open so core tops stay in.
+window: {min_year: -10050, max_year: 2100}
+
+# Columns that carry a temperature interpretation but are not records of it:
+# uncertainty and error columns (19,851 in the 2026-10-08 export), notes,
+# placeholders. Matched against variableName, case-insensitively.
+exclude_variable_pattern: "^uncertainty|uncertainty$|error|^notes$|needsToBeChanged|^correction$|count$"
+
+# Within one dataset, several columns can record the same proxy and season:
+# alternative transfer functions, age models or cores (LegacyClimate holds
+# four methods x two seasons x up to two tables). Keep one per dataset, proxy
+# and season, preferring primaryTimeseries, then these units, then the most
+# data points in the window.
+collapse_prefer_units: [degC]
+
+interpretation:
+  scope: climate
+  variable: temperature
+  # Records with several interpretations are excluded "unless the authors of
+  # the original studies identified temperature as the primary control".
+  max_rank: 1
+  require_direction: false
+  positive_only: null
+
+# "a minimum continuous duration of 4000 years anytime within the past 12,000
+# years". Operational: a gap between consecutive samples longer than
+# max_gap years breaks continuity.
+duration:
+  min_continuous: 4000
+  max_gap: 1000
+
+# "median spacing between consecutive samples is less than 400 years over the
+# past 12,000 years".
+resolution:
+  max_median_spacing: 400
+
+chronology:
+  # "at least one age control point every 3000 years". rule: density reads
+  # this as an average (>= 1/3 ages per kyr over the record, as the QC sheet's
+  # agesPerKyr field records it); max_gap reads it as the longest gap allowed.
+  rule: density
+  max_gap: 3000
+  marine_reservoir_years: 400
+  # Gaps were also accepted for "relatively high age frequency, typically five
+  # or more over the Holocene".
+  min_ages_exception: 5
+  layer_counted_archives: [GlacierIce, Wood, Coral, Documents]
+  layer_counted_proxy_pattern: "varve"
+  missing_chron: pass
+
+# Downstream algorithms decide whether they need calibrated (degC) records.
+# The pool keeps both and records which is which.
+calibrated_units: [degC]

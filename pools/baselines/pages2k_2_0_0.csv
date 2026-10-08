@@ -1,0 +1,693 @@
+"TSid","dataSetName","archiveType","proxy","variableName","units","lat","lon"
+"Africa_001","Africa-ColdAirCave.Sundqvist.2013","speleothem","d18O","d18O","permil",-24,29.18
+"Africa_004","Africa-LakeTanganyi.Tierney.2010","lake sediment","TEX86","temperature","degC",-6.03,28.53
+"Malawi05","Africa-Malawi.Powers.2011","lake sediment","TEX86","temperature","degC",-10.0033,34.2883
+"LPD81e53153","Africa-P178-15.Tierney.2015","marine sediment","TEX86","temperature","degC",11.955,44.3
+"LPD53e179ad","Africa-P178-15.Tierney.2015","marine sediment","TEX86","temperature","degC",11.955,44.3
+"Ant_005","Ant-BerknerIslan.Mulvaney.2002","glacier ice","d18O","d18O","permil",-79.57,-45.72
+"Ant_017","Ant-CoastalDML.Thamban.2006","glacier ice","d18O","d18O","permil",-70.86,11.54
+"Ant_013","Ant-DomeC.Jouzel.2001","glacier ice","dD","dD","permil",-75.1,123.39
+"Ant_012","Ant-DomeC.Stenni.2001","glacier ice","d18O","d18O","permil",-75.1,123.39
+"Ant_010","Ant-DomeF.Horiuchi.2008","glacier ice","d18O","d18O","permil",-77.32,39.7
+"Ant_009","Ant-DomeF.Motizuki.2014","glacier ice","d18O","d18O","permil",-77.32,39.7
+"Ant_011","Ant-DSS.Moy.2012","glacier ice","d18O","d18O","permil",-66.77,112.807
+"Ant_014","Ant-Ferrigno.Thomas.2013","glacier ice","dD","dD","permil",-74.57,-86.9
+"Ant_022","Ant-JamesRossIsl.Mulvaney.2012","glacier ice","dD","dD","permil",-64.2017,-57.685
+"LPD7abab671","Ant-LawDomeBoreholeReconstruction","borehole","borehole","temperature","degC",-66.77,112.807
+"Ant_033","Ant-MES.Bertler.2012","glacier ice","dD","dD","permil",-77.515,167.6765
+"Ant_023","Ant-PlateauRemot.Cole-Dai.1996","glacier ice","d18O","d18O","permil",-84,43
+"Ant_024","Ant-SipleStation.Mosley-Thompson.1990","glacier ice","d18O","d18O","permil",-75.92,-84.25
+"Ant_007","Ant-SiteDML05.Graf.2000","glacier ice","d18O","d18O","permil",-75,-0.01
+"Ant_006","Ant-SiteDML07.Graf.2000","glacier ice","d18O","d18O","permil",-75.58,-3.43
+"Ant_008","Ant-SiteDML17.Graf.2000","glacier ice","d18O","d18O","permil",-75.17,6.5
+"Ant_025","Ant-TALDICE.Stenni.2011","glacier ice","d18O","d18O","permil",-72.82,159.18
+"Ant_026","Ant-TalosDome.Stenni.2002","glacier ice","dD","dD","permil",-72.8,159.06
+"Ant_035","Ant-TaylorDome.Steig.2000","glacier ice","d18O","d18O","permil",-77.78,158.72
+"Ant_037","Ant-USITASE20001.Steig.2013","glacier ice","d18O","d18O","permil",-79.3838,-111.24
+"Ant_050","Ant-USITASE20024.Steig.2013","glacier ice","d18O","d18O","permil",-86.5,-107.99
+"Ant_027","Ant-VLG.Bertler.2011","glacier ice","dD","dD","permil",-77.3302,162.5332
+"Ant_028","Ant-Vostok.Ekaykin.2014","glacier ice","dD","dD","permil",-78.2785,104.8005
+"Ant_030","Ant-WDC05A.Steig.2013","glacier ice","d18O","d18O","permil",-79.46,-112.09
+"LPDb9285123","Ant-WDC05ABoreholeTreconstruction","borehole","borehole","temperature","degC",-79.463,-112.125
+"Ant_031","Ant-WDC06A.Steig.2013","glacier ice","d18O","d18O","permil",-79.46,-112.09
+"Ant_031dD","Ant-WDC06A.Steig.2013","glacier ice","dD","dD","permil",-79.46,-112.09
+"Arc_032","Arc-Agassiz.Vinther.2008","glacier ice","d18O","d18O","permil",80.7,-73.1
+"Arc_089","Arc-AkademiiNauk.Opel.2013","glacier ice","d18O","d18O","permil",80.52,94.82
+"Arc_060","Arc-Arjeplog.Bjorklund.2014","tree","delta Density","density","NA",66.3,18.2
+"Arc_058","Arc-Armarnaes.Bjorkelund.2013","tree","delta Density","density","NA",65.9,16.1
+"Arc_018","Arc-Austfonna.Isaksson.2005","glacier ice","d18O","d18O","permil",79.83,24.02
+"Arc_002","Arc-Avam-Taimyr.Briffa.2008","tree","TRW","trsgi","NA",72,101
+"Arc_001","Arc-Bird2009","lake sediment","varve thickness","thickness","cm",68.09,-150.47
+"Arc_042","Arc-BrayaSo.DAndrea.2011","lake sediment","alkenone","temperature","degC",67,-50.7
+"Arc_039","Arc-Clegg2010","lake sediment","midge","temperature","degC",61.35,-143.6
+"Arc_004","Arc-Cook2009","lake sediment","sed accumulation","massacum","g.cm-2.a-1",81.35,-69.53
+"Arc_033","Arc-Crete.Vinther.2010","glacier ice","d18O","d18O","permil",71.12,-37.32
+"Arc_005","Arc-Dansgaard1969","glacier ice","d18O","d18O","permil",77.17,-61.13
+"Arc_008","Arc-DArrigo2006Yuk","tree","TRW","trsgi","NA",67.9,-140.7
+"Arc_034","Arc-Dye.Vinther.2010","glacier ice","d18O","d18O","permil",65.18,-43.83
+"Arc_043","Arc-Fisher1983","glacier ice","d18O","d18O","permil",75.33,-82.5
+"Arc_011","Arc-GISP2.Grootes.1997","glacier ice","d18O","d18O","permil",72.1,-38.08
+"Arc_035","Arc-GRIP.Vinther.2010","glacier ice","d18O","d18O","permil",72.58,-37.64
+"Arc_007","Arc-GulfofAlaska.Wiles.2014","tree","TRW","temperature","degC",61.03,-146.59
+"Arc_073","Arc-HalletLake.McKay.2008","lake sediment","BSi","temperature","degC",61.5,-146.2
+"Arc_014","Arc-HaltiaHovi2007","lake sediment","varve thickness","thickness","mm",63.62,29.1
+"Arc_040","Arc-HudsonLake.Clegg.2011","lake sediment","midge","temperature","degC",61.9,-145.66
+"Arc_036","Arc-Iceland.Bergthorsson.1969","documents","historic","temperature","degC",64.77,-18.37
+"Arc_016","Arc-Indigurka.Hughes.1999","tree","TRW","trsgi","NA",69.5,147
+"Arc_057","Arc-Kittelfjall.Bjorkelund.2013","tree","delta Density","density","NA",65.2,15.5
+"Arc_078","Arc-Kongressvatn.DAndrea.2012","lake sediment","alkenone","temperature","degC",78.0217,13.9311
+"Arc_052","Arc-Lake4.Rolland.2009","lake sediment","chironomid","temperature","degC",65.1,-83.79
+"Arc_024","Arc-LakeDonardBa.Moore.2001","lake sediment","varve thickness","thickness","mm",66.73,-61.35
+"Arc_079","Arc-LakeE.DAndrea.2011","lake sediment","alkenone","temperature","degC",67,-50.7
+"Arc_049","Arc-LakePieni-Ka.Luoto.2010","lake sediment","chironomid","temperature","degC",64.28,30.12
+"Arc_020","Arc-Lamoureux1996","lake sediment","varve thickness","thickness","mm",82.83,-77.9
+"Arc_021","Arc-Larsen2011","lake sediment","varve thickness","thickness","cm",64.6,-19.8
+"Arc_023","Arc-LenaRiver.MacDonald.1998","tree","TRW","trsgi","NA",70.67,125.87
+"Arc_066","Arc-Lomonosovfon.Divine.2013","glacier ice","d18O","d18O1","permil",78.8647,17.425
+"Arc_048","Arc-Luoto2009","lake sediment","midge","temperature","degC",60.28,25.42
+"Arc_093","Arc-MackenzieDelta.Porter.2013","tree","TRW","trsgi","NA",68.625,-133.87
+"Arc_150","Arc-McCarrol.Forfjordalen.2013","tree","MXD","MXD","NA",68.73,15.73
+"NPMlaanila2","Arc-McCarroll.Laanila.2013","tree","MXD","MXD","NaN",68.49166667,27.33333333
+"Arc_045","Arc-MD992275.Jiang.2005","marine sediment","diatom","temperature","degC",66.55,-17.7
+"Arc_031","Arc-NGRIP1.Vinther.2006","glacier ice","d18O","d18O","permil",75.1,-42.32
+"Arc_026","Arc-NGTB16.Fischer.1998","glacier ice","d18O","d18O","permil",73.94,-37.63
+"Arc_027","Arc-NGTB18.Fischer.1998","glacier ice","d18O","d18O","permil",76.62,-36.4
+"Arc_028","Arc-NGTB21.Fischer.1998","glacier ice","d18O","d18O","permil",80,-41.14
+"Arc_025","Arc-Ojala2005","lake sediment","varve property","X_radiograph_dark_layer","dark_sum",61.81,24.68
+"Arc_044","Arc-PennyIceCapP.Fisher.1998","glacier ice","d18O","d18O","permil",67.25,-66.75
+"Arc_051","Arc-PennyIceCapP.Okuyama.2003","glacier ice","melt","melt","percent",67.25,-65.75
+"Arc_151","Arc-PrinceOfWales.Kinnard.2011","glacier ice","d18O","d18O","permil",78.4,-80.4
+"Arc_056","Arc-Renland.Vinther.2008","glacier ice","d18O","d18O","permil",71.27,-26.73
+"Arc_162","Arc-Schneider.2015.PolarUrals","tree","TRW","density","NA",66.9,65.6
+"Arc_041","Arc-ScreamingLynx.Clegg.2011","lake sediment","midge","temperature","degC",66.07,-145.4
+"Arc_076","Arc-SoperLakeBaf.Hughen.2000","lake sediment","varve thickness","temperature","degC",62.917,-69.883
+"Arc_053","Arc-StoreggaSlid.Sejrup.2011","marine sediment","foram d18O","temperature","permil",63.76,5.26
+"Arc_029","Arc-Thomas2008","lake sediment","varve thickness","temperature","degC",69.87,-68.83
+"Arc_059","Arc-Tjeggelvas.Bjorkelund.2013","tree","delta Density","density","NA",66.6,17.6
+"Arc_012mxd","Arc-Tornetrask.Melvin.2013","tree","MXD","temperature1","degC",68.26,19.6
+"Arc_037","Arc-VoringPlateau.Berner.2011","marine sediment","diatom","temperature","degC",66.97,7.64
+"Arc_099","Arc-WindyDome.2010.Kinnard","glacier ice","melt","melt","percent",80.783,65.63
+"Arc_099d18O","Arc-WindyDome.2010.Kinnard","glacier ice","d18O","d18O","permil",80.783,65.63
+"Arc_100","Arc-Yamalia.Briffa.2013","tree","TRW","temperature","degC",66.8,68
+"Arc_152","Arc-Zhang.Jamtland.2016","tree","MXD","MXD","NA",63.2475,13.3375
+"Asia_079","Asia-10GKP","tree","TRW","trsgi","NA",27.58,99.35
+"Asia_080","Asia-11YCT","tree","TRW","trsgi","NA",27.58,99.28
+"Asia_081","Asia-12YMA","tree","TRW","trsgi","NA",28.03,99.02
+"Asia_082","Asia-13YET","tree","TRW","trsgi","NA",28.03,98.98
+"Asia_083","Asia-22DLT","tree","TRW","trsgi","NA",27.88,98.4
+"Asia_167","Asia-AGHERI","tree","TRW","trsgi","NA",29.48,82.08
+"Asia_126","Asia-AJTMJT","tree","TRW","trsgi","NA",40.2,72.58
+"Asia_001","Asia-Aktru2.Panyushkina.2005","tree","TRW","trsgi","NA",50.08,87.77
+"Asia_139","Asia-ANKHLS","tree","TRW","trsgi","NA",48.6,88.37
+"Asia_184","Asia-ASTABP","tree","TRW","trsgi","NA",35.33,74.8
+"Asia_185","Asia-ASTPIW","tree","TRW","trsgi","NA",35.33,74.8
+"Asia_186","Asia-BAG1JU","tree","TRW","trsgi","NA",36.03,74.58
+"Asia_187","Asia-BAG2JU","tree","TRW","trsgi","NA",36.03,74.58
+"Asia_188","Asia-BAG4JU","tree","TRW","trsgi","NA",36.03,74.58
+"Asia_189","Asia-BAG5JU","tree","TRW","trsgi","NA",36.03,74.58
+"Asia_061","Asia-BARELC","tree","TRW","trsgi","NA",33.75,107.8
+"Asia_071","Asia-BAWSIC","tree","TRW","trsgi","NA",31.78,101.92
+"Asia_140","Asia-BAYHLS","tree","TRW","trsgi","NA",46.32,101.32
+"Asia_229","Asia-BDFLON","tree","TRW","trsgi","NA",12.22,108.73
+"Asia_168","Asia-BHULJR","tree","TRW","trsgi","NA",27.7,86.45
+"Asia_034","Asia-BHUTSP","tree","TRW","trsgi","NA",27.45,90
+"Asia_029","Asia-BHUTTD","tree","TRW","trsgi","NA",27.67,90.72
+"Asia_142","Asia-BIARLS","tree","TRW","trsgi","NA",49.97,90.98
+"Asia_141","Asia-BIGELS","tree","TRW","trsgi","NA",49.97,91
+"Asia_064","Asia-BLKALS","tree","TRW","trsgi","NA",43.85,93.3
+"Asia_121","Asia-BONKJT","tree","TRW","trsgi","NA",40.17,72.58
+"Asia_190","Asia-BUKCDD","tree","TRW","trsgi","NA",35.68,71.63
+"Asia_191","Asia-BUKPIG","tree","TRW","trsgi","NA",35.68,71.63
+"Asia_143","Asia-BULGLS","tree","TRW","trsgi","NA",47.1,90.97
+"Asia_178","Asia-BURGPW","tree","TRW","trsgi","NA",28.77,83.73
+"Asia_030","Asia-CAMGSP","tree","TRW","trsgi","NA",27.63,90.13
+"Asia_225","Asia-CENTIB","tree","TRW","trsgi","NA",29.35,92
+"Asia_320","Asia-CentralChina.Wang.1998","documents","historic","temperature","index",29,113
+"Asia_192","Asia-CGPCDD","tree","TRW","trsgi","NA",35.9,71.73
+"Asia_193","Asia-CGPPIG","tree","TRW","trsgi","NA",35.9,71.73
+"Asia_169","Asia-CHDAND","tree","TRW","trsgi","NA",27.7,86.28
+"Asia_194","Asia-CHEPCS","tree","TRW","trsgi","NA",35.03,74.58
+"Asia_217","Asia-CHOLPB","tree","TRW","trsgi","NA",31.95,98.87
+"Asia_195","Asia-CHP2JU","tree","TRW","trsgi","NA",36.33,74.03
+"Asia_196","Asia-CHP3JU","tree","TRW","trsgi","NA",36.33,74.03
+"LPDdc74a376","Asia-Chu.2012.Sihailongwanlake","lake sediment","alkenone","temperature","degC",42.17,126.36
+"Asia_227","Asia-CILAUP","tree","TRW","trsgi","NA",24.53,121.38
+"Asia_040","Asia-DAOSIC","tree","TRW","trsgi","NA",29.28,100.08
+"Asia_236","Asia-Dasuopu.Thompson.2000","glacier ice","d18O","d18O","permil",28.38,85.72
+"Asia_144","Asia-DAYNLS","tree","TRW","trsgi","NA",48.27,88.87
+"Asia_171","Asia-DDANJR","tree","TRW","trsgi","NA",27.73,86.33
+"Asia_220","Asia-DENSJT","tree","TRW","trsgi","NA",29.3,91.97
+"Asia_170","Asia-DEORLA","tree","TRW","trsgi","NA",28.38,83.7
+"Asia_043","Asia-DEZQIN","tree","TRW","trsgi","NA",34.75,100.82
+"Asia_031","Asia-DHURPS","tree","TRW","trsgi","NA",27.58,90.65
+"Asia_002","Asia-Djaz.Magda.2011","tree","TRW","trsgi","NA",49.62,88.1
+"Asia_084","Asia-DLH1","tree","TRW","trsgi","NA",37.47,97.23
+"Asia_085","Asia-DLH2","tree","TRW","trsgi","NA",37.47,97.22
+"Asia_086","Asia-DLH3","tree","TRW","trsgi","NA",37.45,97.53
+"Asia_087","Asia-DLH4","tree","TRW","trsgi","NA",37.43,98.05
+"Asia_088","Asia-DLH5","tree","TRW","trsgi","NA",37.45,97.78
+"Asia_089","Asia-DLH6","tree","TRW","trsgi","NA",37.52,97.05
+"Asia_075","Asia-DQHZHO","tree","TRW","trsgi","NA",35,100.07
+"Asia_197","Asia-DskJUE","tree","TRW","trsgi","NA",35.45,74.78
+"Asia_048","Asia-DULAJP","tree","TRW","trsgi","NA",36.3,98.08
+"Asia_050","Asia-DUSHJP","tree","TRW","trsgi","NA",36.65,98.08
+"Asia_317","Asia-EastChina.Wang.1990","documents","historic","temperature","index",30,117.5
+"Asia_318","Asia-EastChinareg.Wang.1998","documents","historic","temperature","index",34,120
+"Asia_182","Asia-ENEPAB","tree","TRW","trsgi","NA",27.73,87.2
+"Asia_136","Asia-ENGILC","tree","TRW","trsgi","NA",42.15,79.47
+"Asia_131","Asia-ESPERG","tree","TRW","trsgi","NA",40.17,72.58
+"Asia_183","Asia-ESPPAK","tree","TRW","trsgi","NA",35.17,75.5
+"Asia_321","Asia-FujianandTai.Wang.1998","documents","historic","temperature","index",24,121
+"Asia_102","Asia-GANGCD","tree","TRW","trsgi","NA",30.98,78.93
+"Asia_025","Asia-GAYTTD","tree","TRW","trsgi","NA",27.58,90.65
+"Asia_122","Asia-GEFKJT","tree","TRW","trsgi","NA",40.17,72.58
+"Asia_032","Asia-GEYZSP","tree","TRW","trsgi","NA",27.42,90.97
+"Asia_047","Asia-GHEGAN","tree","TRW","trsgi","NA",37.93,101.53
+"Asia_179","Asia-GHUNAB","tree","TRW","trsgi","NA",27.5,88.02
+"Asia_172","Asia-GHURCH","tree","TRW","trsgi","NA",29.47,82.12
+"Asia_044","Asia-GOUQIN","tree","TRW","trsgi","NA",34.73,100.8
+"Asia_123","Asia-GRAKJT","tree","TRW","trsgi","NA",40.17,72.58
+"Asia_329","Asia-Guangdong.Zheng.1982","documents","historic","temperature","index",23.16,113.23
+"Asia_326","Asia-Guangdongand.Zhang.1980","documents","historic","temperature","index",23.5,112.5
+"Asia_247","Asia-Guliya.Thompson.1997","glacier ice","d18O","d18O","permil",35.28,81.48
+"Asia_060","Asia-HBHXJP","tree","TRW","trsgi","NA",34.78,100.82
+"Asia_058","Asia-HBLXJP","tree","TRW","trsgi","NA",34.78,100.82
+"Asia_059","Asia-HBMXJP","tree","TRW","trsgi","NA",34.78,100.82
+"Asia_045","Asia-HEBQIN","tree","TRW","trsgi","NA",34.73,100.78
+"Asia_145","Asia-HENTLS","tree","TRW","trsgi","NA",48.35,107.47
+"Asia_124","Asia-HOCKJT","tree","TRW","trsgi","NA",40.17,72.58
+"Asia_146","Asia-HORBLS","tree","TRW","trsgi","NA",49.37,94.88
+"Asia_215","Asia-HRPCSM","tree","TRW","trsgi","NA",35.88,74.88
+"Asia_090","Asia-HSE","tree","TRW","trsgi","NA",34.47,110.08
+"Asia_091","Asia-HSS","tree","TRW","trsgi","NA",34.47,110.08
+"Asia_092","Asia-HSW","tree","TRW","trsgi","NA",34.47,110.08
+"Asia_062","Asia-HUASPI","tree","TRW","trsgi","NA",34.48,110.08
+"Asia_328","Asia-HunanJiangsu.Zhang.1980","documents","historic","temperature","index",28,116.5
+"Asia_165","Asia-Hushre","tree","TRW","trsgi","NA",46.78,101.95
+"Asia_074","Asia-HXBURU","tree","TRW","trsgi","NA",43.18,87.18
+"Asia_077","Asia-HYGJUP","tree","TRW","trsgi","NA",38.7,99.68
+"Asia_198","Asia-ISBCDD","tree","TRW","trsgi","NA",35.35,71.93
+"Asia_003","Asia-Jabe.Ovchinnikov.2000","tree","TRW","trsgi","NA",50.87,85.23
+"Asia_107","Asia-JANCD","tree","TRW","trsgi","NA",31.37,78.17
+"Asia_199","Asia-JOTPIG","tree","TRW","trsgi","NA",35.4,74.12
+"Asia_200","Asia-JUTPCS","tree","TRW","trsgi","NA",35.83,74.33
+"Asia_201","Asia-KARPCS","tree","TRW","trsgi","NA",35.88,74.18
+"Asia_173","Asia-KATKUW","tree","TRW","trsgi","NA",29.52,82.03
+"Asia_106","Asia-KERALA","tree","TRW","trsgi","NA",10,76.67
+"Asia_147","Asia-KHELLS","tree","TRW","trsgi","NA",49.92,91.57
+"Asia_148","Asia-KHOGLS","tree","TRW","trsgi","NA",48.17,99.87
+"Asia_149","Asia-KHOTLS","tree","TRW","trsgi","NA",48.5,88.5
+"Asia_150","Asia-KHOVLS","tree","TRW","trsgi","NA",48.7,88.8
+"Asia_127","Asia-KJTRJT","tree","TRW","trsgi","NA",39.92,71.47
+"Asia_120","Asia-KMD","tree","TRW","trsgi","NA",33.73,133.12
+"Asia_135","Asia-KOELIU","tree","TRW","trsgi","NA",42.2,79.05
+"Asia_137","Asia-KOKKIY","tree","TRW","trsgi","NA",42.42,78.97
+"Asia_007","Asia-Korumdu.Panyushkina.2005","tree","TRW","trsgi","NA",50.14,87.72
+"Asia_133","Asia-KRNKAM","tree","TRW","trsgi","NA",55,160.5
+"Asia_110","Asia-KUNASH","tree","TRW","trsgi","NA",43.88,145.6
+"Asia_235","Asia-KunashirIsla.Demezhko.2009","hybrid","hybrid","temperature","degC",43.955,145.725
+"Asia_004","Asia-Kur2.Magda.2011","tree","TRW","trsgi","NA",50.3,87.83
+"Asia_005","Asia-Kur3.Magda.2011","tree","TRW","trsgi","NA",50.27,87.83
+"Asia_046","Asia-LAJQIN","tree","TRW","trsgi","NA",34.72,100.72
+"Asia_180","Asia-LAMIAB","tree","TRW","trsgi","NA",27.5,87.98
+"Asia_174","Asia-LANGTD","tree","TRW","trsgi","NA",28.18,85.43
+"Asia_035","Asia-LAYAJR","tree","TRW","trsgi","NA",27.95,89.75
+"Asia_324","Asia-Lowerreaches.Zhang.1980","documents","historic","temperature","index",32.1,118.8
+"Asia_175","Asia-LUKUTD","tree","TRW","trsgi","NA",27.78,87.27
+"Asia_222","Asia-MAINJT","tree","TRW","trsgi","NA",29.07,93.95
+"Asia_151","Asia-MANDLS","tree","TRW","trsgi","NA",46.82,100.12
+"Asia_152","Asia-MANHPS","tree","TRW","trsgi","NA",47.77,107
+"Asia_041","Asia-MAXSIC","tree","TRW","trsgi","NA",29.15,99.93
+"Asia_228","Asia-MCCHFH","tree","TRW","trsgi","NA",21.67,104.1
+"Asia_226","Asia-MHGSTG","tree","TRW","trsgi","NA",19.28,98.93
+"Asia_325","Asia-Middlereache.Zhang.1980","documents","historic","temperature","index",30.5,114.5
+"Asia_128","Asia-MJTQJT","tree","TRW","trsgi","NA",40.17,72.62
+"Asia_202","Asia-MOR1JU","tree","TRW","trsgi","NA",36.58,75.08
+"Asia_203","Asia-MOR2JU","tree","TRW","trsgi","NA",36.58,75.08
+"Asia_204","Asia-MOR3JU","tree","TRW","trsgi","NA",36.58,75.08
+"Asia_205","Asia-MOR4JU","tree","TRW","trsgi","NA",36.58,75.08
+"Asia_078","Asia-MQACJP","tree","TRW","trsgi","NA",35.07,100.35
+"Asia_051","Asia-MQAXJP","tree","TRW","trsgi","NA",35.07,100.35
+"Asia_052","Asia-MQBXJP","tree","TRW","trsgi","NA",34.78,99.78
+"Asia_053","Asia-MQDXJP","tree","TRW","trsgi","NA",34.72,99.67
+"Asia_054","Asia-MQFXJP","tree","TRW","trsgi","NA",34.75,99.68
+"Asia_055","Asia-MQRXJP","tree","TRW","trsgi","NA",34.75,99.68
+"Asia_006","Asia-MS.Magda.2011","tree","TRW","trsgi","NA",49.72,87.28
+"Asia_206","Asia-MSFCDD","tree","TRW","trsgi","NA",35.5,74.08
+"Asia_112","Asia-MSR","tree","TRW","trsgi","NA",44.35,142.18
+"Asia_109","Asia-MTASMD","tree","TRW","trsgi","NA",43.77,142.55
+"Asia_108","Asia-MTASSP","tree","TRW","trsgi","NA",43.77,142.55
+"Asia_176","Asia-MUMBAS","tree","TRW","trsgi","NA",27.67,87.2
+"Asia_101","Asia-MUNATG","tree","TRW","trsgi","NA",-5.5,122.8
+"Asia_125","Asia-MURKJT","tree","TRW","trsgi","NA",40.17,72.58
+"Asia_207","Asia-MUSPIG","tree","TRW","trsgi","NA",35.5,74.75
+"Asia_138","Asia-NANENG","tree","TRW","trsgi","NA",42.15,79.45
+"Asia_105","Asia-NARANG","tree","TRW","trsgi","NA",10.18,76.87
+"Asia_104","Asia-NARKAB","tree","TRW","trsgi","NA",31.2,77.23
+"Asia_026","Asia-NASPTD","tree","TRW","trsgi","NA",27.67,90.73
+"Asia_208","Asia-NLTJUE","tree","TRW","trsgi","NA",36.15,74.18
+"Asia_209","Asia-NLTPCS","tree","TRW","trsgi","NA",36.15,74.18
+"Asia_216","Asia-NOGSAK","tree","TRW","trsgi","NA",51.83,143.13
+"Asia_223","Asia-NYINJT","tree","TRW","trsgi","NA",29.62,94.67
+"Asia_113","Asia-ONB","tree","TRW","trsgi","NA",43.22,145.47
+"Asia_153","Asia-ONONLS","tree","TRW","trsgi","NA",48.83,111.68
+"Asia_154","Asia-OVOOLS","tree","TRW","trsgi","NA",49.87,91.43
+"Asia_033","Asia-PEMBSP","tree","TRW","trsgi","NA",27.25,89.38
+"Asia_027","Asia-PHUMTD","tree","TRW","trsgi","NA",27.7,90.77
+"Asia_072","Asia-PTCYUN","tree","TRW","trsgi","NA",27.37,99.37
+"Asia_305","Asia-Puruogangri.Thompson.2006","glacier ice","d18O","d18O","permil",33.9167,89.0833
+"Asia_221","Asia-QAMDJT","tree","TRW","trsgi","NA",31.12,97.03
+"Asia_218","Asia-QAMDPB","tree","TRW","trsgi","NA",31.12,97.03
+"Asia_093","Asia-QML","tree","TRW","trsgi","NA",33.8,96.13
+"Asia_067","Asia-QUMAJP","tree","TRW","trsgi","NA",33.8,96.13
+"Asia_177","Asia-RACHAS","tree","TRW","trsgi","NA",27.73,87.2
+"Asia_103","Asia-RANGCD","tree","TRW","trsgi","NA",33.08,76.43
+"Asia_224","Asia-RETIJT","tree","TRW","trsgi","NA",30.3,91.52
+"Asia_219","Asia-RIWOPB","tree","TRW","trsgi","NA",31.23,96.48
+"Asia_063","Asia-SANGTS","tree","TRW","trsgi","NA",33.65,107.8
+"Asia_210","Asia-SAT1JU","tree","TRW","trsgi","NA",35.17,75.5
+"Asia_211","Asia-SAT2JU","tree","TRW","trsgi","NA",35.17,75.5
+"Asia_212","Asia-SAT3JU","tree","TRW","trsgi","NA",35.17,75.5
+"Asia_049","Asia-SHENJP","tree","TRW","trsgi","NA",37,98.08
+"Asia_132","Asia-SHIESP","tree","TRW","trsgi","NA",39.83,71.5
+"Asia_130","Asia-SHIYAT","tree","TRW","trsgi","NA",39.83,71.5
+"Asia_114","Asia-SJT","tree","TRW","trsgi","NA",35.73,138.22
+"Asia_076","Asia-SMASLY","tree","TRW","trsgi","NA",27.62,99.8
+"Asia_335","Asia-SO9039KGSO1.Munz.2015","marine sediment","foraminifera","temperature","degC",24.8333,65.9167
+"Asia_155","Asia-SODAPS","tree","TRW","trsgi","NA",48.3,98.93
+"Asia_230","Asia-SourthandMid.Demezhko.2007","borehole","borehole","temperature","degC",55,59.5
+"Asia_319","Asia-SouthChina.Wang.1998","documents","historic","temperature","index",23,114
+"Asia_156","Asia-SPKRLS","tree","TRW","trsgi","NA",49.38,94.88
+"Asia_157","Asia-SUBALS","tree","TRW","trsgi","NA",47.27,100.03
+"Asia_158","Asia-SUMELS","tree","TRW","trsgi","NA",47.43,100.42
+"Asia_038","Asia-TANSIC","tree","TRW","trsgi","NA",30.23,100.27
+"Asia_056","Asia-TDAXJP","tree","TRW","trsgi","NA",34.78,100.8
+"Asia_057","Asia-TDBXJP","tree","TRW","trsgi","NA",34.78,100.82
+"Asia_166","Asia-TERELJ","tree","TRW","trsgi","NA",47.95,107.45
+"Asia_065","Asia-TIANMU","tree","TRW","trsgi","NA",30.33,119.43
+"Asia_094","Asia-TJ1","tree","TRW","trsgi","NA",37.32,98.4
+"Asia_213","Asia-TKACDD","tree","TRW","trsgi","NA",35,70.78
+"Asia_115","Asia-TKC","tree","TRW","trsgi","NA",43.5,143.2
+"Asia_036","Asia-TSHEPS","tree","TRW","trsgi","NA",27.45,90.15
+"Asia_037","Asia-TSHETD","tree","TRW","trsgi","NA",27.45,90.15
+"Asia_116","Asia-TSO","tree","TRW","trsgi","NA",44.95,142.12
+"Asia_159","Asia-TUCHLS","tree","TRW","trsgi","NA",49.7,91.55
+"Asia_008","Asia-Tut2.Magda.2011","tree","TRW","trsgi","NA",50.12,87.92
+"Asia_009","Asia-Ugla.Panyushkina.2005","tree","TRW","trsgi","NA",50.48,87.67
+"Asia_021","Asia-UKHEWD","tree","TRW","trsgi","NA",50.15,85.37
+"Asia_019","Asia-UKHEWW","tree","TRW","trsgi","NA",50.15,85.37
+"Asia_022","Asia-UKHLWD","tree","TRW","trsgi","NA",50.15,85.37
+"Asia_020","Asia-UKHLWW","tree","TRW","trsgi","NA",50.15,85.37
+"Asia_023","Asia-UKHMND","tree","TRW","trsgi","NA",50.15,85.37
+"Asia_024","Asia-UKHMXD","tree","TRW","trsgi","NA",50.15,85.37
+"Asia_018","Asia-UKHTRW","tree","TRW","trsgi","NA",50.15,85.37
+"Asia_010","Asia-Ulagan.Magda.2011","tree","TRW","trsgi","NA",50.68,87.97
+"Asia_134","Asia-ULKEPS","tree","TRW","trsgi","NA",43.35,77.35
+"Asia_160","Asia-UNDULS","tree","TRW","trsgi","NA",48.98,103.22
+"Asia_014","Asia-UULEWD","tree","TRW","trsgi","NA",50.48,87.65
+"Asia_012","Asia-UULEWW","tree","TRW","trsgi","NA",50.48,87.65
+"Asia_015","Asia-UULLWD","tree","TRW","trsgi","NA",50.48,87.65
+"Asia_013","Asia-UULLWW","tree","TRW","trsgi","NA",50.48,87.65
+"Asia_016","Asia-UULMND","tree","TRW","trsgi","NA",50.48,87.65
+"Asia_017","Asia-UULMXD","tree","TRW","trsgi","NA",50.48,87.65
+"Asia_011","Asia-UULTRW","tree","TRW","trsgi","NA",50.48,87.65
+"Asia_073","Asia-WEXYUN","tree","TRW","trsgi","NA",27.33,99.3
+"Asia_095","Asia-WL1","tree","TRW","trsgi","NA",37.03,98.63
+"Asia_096","Asia-WL2","tree","TRW","trsgi","NA",37.03,98.67
+"Asia_097","Asia-WL3","tree","TRW","trsgi","NA",36.75,98.22
+"Asia_098","Asia-WL4","tree","TRW","trsgi","NA",36.68,98.42
+"Asia_066","Asia-WULANJ","tree","TRW","trsgi","NA",37.03,98.68
+"Asia_042","Asia-WXIYUN","tree","TRW","trsgi","NA",27.33,99.3
+"Asia_039","Asia-XCHSIC","tree","TRW","trsgi","NA",28.98,99.93
+"Asia_070","Asia-XIANGC","tree","TRW","trsgi","NA",28.9,99.75
+"Asia_129","Asia-XJTCJT","tree","TRW","trsgi","NA",39.83,71.5
+"Asia_181","Asia-YAKHTD","tree","TRW","trsgi","NA",27.83,88.02
+"Asia_118","Asia-YKA","tree","TRW","trsgi","NA",30.37,130.53
+"Asia_119","Asia-YKC","tree","TRW","trsgi","NA",30.33,130.45
+"Asia_117","Asia-YKCOM","tree","TRW","trsgi","NA",30.37,130.53
+"Asia_111","Asia-YKS","tree","TRW","trsgi","NA",30.33,130.5
+"Asia_214","Asia-ZACCDD","tree","TRW","trsgi","NA",35.35,71.8
+"Asia_028","Asia-ZACHTD","tree","TRW","trsgi","NA",27.7,90.68
+"Asia_099","Asia-ZD31","tree","TRW","trsgi","NA",32.67,95.72
+"Asia_069","Asia-ZHANGX","tree","TRW","trsgi","NA",34.63,104.47
+"Asia_100","Asia-ZHD","tree","TRW","trsgi","NA",33.72,96.28
+"Asia_327","Asia-ZhejiangandF.Zhang.1980","documents","historic","temperature","index",25,118
+"Asia_068","Asia-ZHIDJP","tree","TRW","trsgi","NA",33.72,96.28
+"Asia_161","Asia-ZMGLPS","tree","TRW","trsgi","NA",48.25,97.4
+"Asia_162","Asia-ZNMDLS","tree","TRW","trsgi","NA",47.78,107.5
+"Asia_163","Asia-ZSMDLS","tree","TRW","trsgi","NA",48.13,100.27
+"Asia_164","Asia-ZURTLS","tree","TRW","trsgi","NA",46.52,100.95
+"Aus_010","Aus-BuckleysChan.Buckley.1997","tree","TRW","trsgi","NA",-42.27,145.87
+"Aus_015","Aus-CTPEastTasma.Allen.2001","tree","TRW","trsgi","NA",-41.31,147.75
+"Aus_020","Aus-CTPWestTasma.Allen.2001","tree","TRW","trsgi","NA",-41.67,145.65
+"LPD335d863f","Aus-Duckhole.Saunders.2013","lake sediment","reflectance","RABD660_670","NA",-43.3646,146.8749
+"Aus_041","Aus-MtRead.Cook.2006","tree","TRW","temperature","degC",-41.83,145.53
+"Aus_057","Aus-Oroko.Cook.2002","tree","TRW","temperature","degC",-43.23,170.28
+"Aus_062","Aus-PinkPineNZ.Duncan.2010","tree","TRW","trsgi","NA",-43,171
+"Aus_067","Aus-StewartIslan.DArrigo.1995","tree","TRW","trsgi","NA",-47,167.8
+"Aus_071","Aus-Takapari.Xiong.2000","tree","TRW","trsgi","NA",-40.07,175.98
+"Eur_024","Eur-CentralandEa.Pla.2005","lake sediment","chrysophyte","temperature","degC",42.5,0.75
+"Eur_017","Eur-CentralEu.Buntgen.2011","tree","TRW","trsgi","NA",47,10.7
+"Eur_022","Eur-CentralEu.Dobrovolny.2010","documents","Documentary","temperature","degC",49,13
+"Eur_010","Eur-CoastofPortu.Abrantes.2011","marine sediment","alkenone","temperature","degC",41.1,-8.9
+"Eur_016","Eur-ECarpathians.Popa.2009","tree","TRW","trsgi","NA",47,25.3
+"Eur_005","Eur-FinnishLakes.Helama.2014","tree","MXD","temperature","degC",62,28.325
+"Eur_019","Eur-FrenchAlps.Buentgen.2012","tree","TRW","trsgi","NA",44,7.5
+"Eur_003","Eur-LakeSilvapla.Larocque-Tobler.2010","lake sediment","chironomid","temperature","degC",46.5,9.8
+"Eur_002","Eur-LakeSilvapla.Trachsel.2010","lake sediment","reflectance","temperature","degC",46.5,9.8
+"Eur_018","Eur-Lotschental.Buentgen.2006","tree","MXD","MXD","NA",46.4,7.8
+"Eur_014","Eur-NScan.Esper.2012","tree","MXD","MXD","NA",68,25
+"Eur_007","Eur-Seebergsee.Larocque-Tobler.2012","lake sediment","midge","temperature","degC",46.15,7.5
+"Eur_009","Eur-SouthIceland.Moffa-Sanchez2014","marine sediment","d18O","d18O","permil",61.48,-19.53
+"Eur_008","Eur-Spain.Martin-Chivelet.2011","speleothem","d18O","d18O","permil",42.9,-3.5
+"Eur_001","Eur-SpannagelCave.Mangini.2005","speleothem","d18O","d18O","permil",47.1,11.6
+"Eur_020","Eur-SPyrenees.Linan.2012","tree","TRW","trsgi","NA",42.5,1
+"Eur_006","Eur-Stockholm.Leijonhufvud.2010","documents","historic","temperature","degC",59.32,18.06
+"Eur_026","Eur-Tallinn.Tarand.2001","documents","historic","temperature","degC",59.4,24.75
+"Eur_015","Eur-Tat12","tree","TRW","trsgi","NA",49,20
+"NAm_064","NAm-ak001","tree","TRW","trsgi","NA",60.4,-147.8
+"NAm_088","NAm-ak006","tree","MXD","MXD","NA",63.7,-149.6
+"NAm_148","NAm-ak010","tree","TRW","trsgi","NA",61.8,-147.3
+"NAm_160","NAm-ak010","tree","MXD","MXD","NA",61.8,-147.3
+"NAm_172","NAm-ak014","tree","TRW","trsgi","NA",58.1,-152.7
+"NAm_184","NAm-ak021","tree","TRW","trsgi","NA",60,-141.7
+"NAm_196","NAm-ak035","tree","TRW","trsgi","NA",63.3,-147.8
+"NAm_220","NAm-ak046","tree","TRW","trsgi","NA",67.1,-159.6
+"NAm_232","NAm-ak057","tree","TRW","trsgi","NA",65.2,-162.2
+"NAm_244","NAm-ak058","tree","TRW","trsgi","NA",65.2,-162.2
+"NAm_256","NAm-ak060","tree","TRW","trsgi","NA",65.2,-162.3
+"NAm_280","NAm-ak070","tree","TRW","trsgi","NA",65.2,-162.2
+"NAm_292","NAm-ak074","tree","TRW","trsgi","NA",62.4,-143.1
+"NAm_304","NAm-ak074","tree","MXD","MXD","NA",62.4,-143.1
+"NAm_364","NAm-ak078","tree","TRW","trsgi","NA",61.3,-142.7
+"NAm_388","NAm-ak094","tree","TRW","trsgi","NA",60.5,-148.3
+"NAm_412","NAm-ak098","tree","TRW","trsgi","NA",55.3,-131.6
+"NAm_424","NAm-ak102","tree","TRW","trsgi","NA",58.4,-134.6
+"NAm_436","NAm-ak114","tree","TRW","trsgi","NA",56,-132
+"NAm_448","NAm-ak115","tree","TRW","trsgi","NA",65.2,-162.3
+"NAm_460","NAm-ak115","tree","MXD","MXD","NA",65.2,-162.3
+"NAm_3748","NAm-ak116","tree","MXD","MXD","NA",62,-142
+"NAm_3760","NAm-ak117","tree","MXD","MXD","NA",67,-152
+"NAm_3772","NAm-ak132","tree","MXD","MXD","NA",68.7,-141.6
+"NAm_484","NAm-ak6","tree","TRW","trsgi","NA",57.1,-135.4
+"NAm_520","NAm-az553","tree","MXD","MXD","NA",35.4,-110.2
+"NAm_568","NAm-az555","tree","MXD","MXD","NA",32.5,-110.8
+"NAm_3801","NAm-Basin_P","lake sediment","pollen","temperature","degC",44.5,-70.1
+"NAm_616","NAm-ca528","tree","TRW","trsgi","NA",36.5,-118.2
+"NAm_628","NAm-ca529","tree","TRW","trsgi","NA",36.3,-118.4
+"NAm_640","NAm-ca530","tree","TRW","trsgi","NA",36.3,-118.2
+"NAm_664","NAm-ca534","tree","TRW","trsgi","NA",37.2,-118.1
+"NAm_760","NAm-ca560","tree","MXD","MXD","NA",37.8,-119.3
+"NAm_772","NAm-ca603","tree","TRW","trsgi","NA",37.9,-119.2
+"NAm_796","NAm-ca606","tree","TRW","trsgi","NA",37.8,-119.2
+"NAm_808","NAm-ca609","tree","TRW","trsgi","NA",34.1,-116.8
+"NAm_868","NAm-ca636","tree","TRW","trsgi","NA",36.3,-118.3
+"NAm_880","NAm-ca637","tree","TRW","trsgi","NA",36.4,-118.2
+"NAm_916","NAm-cana002","tree","TRW","trsgi","NA",58.4,-68.4
+"NAm_940","NAm-cana029","tree","TRW","trsgi","NA",68.6,-138.6
+"NAm_976","NAm-cana053","tree","MXD","MXD","NA",62.7,-111
+"NAm_1012","NAm-cana062","tree","TRW","trsgi","NA",56.2,-67.7
+"NAm_1024","NAm-cana062","tree","MXD","MXD","NA",56.2,-67.7
+"NAm_1072","NAm-cana082","tree","MXD","MXD","NA",61.7,-139.7
+"NAm_1108","NAm-cana091","tree","TRW","trsgi","NA",54.9,-127.3
+"NAm_1120","NAm-cana091","tree","MXD","MXD","NA",54.9,-127.3
+"NAm_1168","NAm-cana094","tree","MXD","MXD","NA",53.3,-120.7
+"NAm_1204","NAm-cana096","tree","TRW","trsgi","NA",52.3,-117
+"NAm_1216","NAm-cana096","tree","MXD","MXD","NA",52.3,-117
+"NAm_1240","NAm-cana097","tree","MXD","MXD","NA",51.8,-116.2
+"NAm_1312","NAm-cana111","tree","MXD","MXD","NA",49.4,-123.1
+"NAm_1360","NAm-cana113","tree","MXD","MXD","NA",49.2,-125.2
+"NAm_1384","NAm-cana151","tree","TRW","trsgi","NA",49.9,-118.9
+"NAm_1396","NAm-cana153","tree","TRW","trsgi","NA",67.2,-115.9
+"NAm_1408","NAm-cana155","tree","TRW","trsgi","NA",64,-103.9
+"NAm_1420","NAm-cana157","tree","TRW","trsgi","NA",65,-138.3
+"NAm_1432","NAm-cana169","tree","TRW","trsgi","NA",55.3,-77.8
+"NAm_1444","NAm-cana169","tree","MXD","MXD","NA",55.3,-77.8
+"NAm_1468","NAm-cana170","tree","MXD","MXD","NA",51.4,-117.3
+"NAm_1492","NAm-cana171","tree","MXD","MXD","NA",52.3,-117.3
+"NAm_1564","NAm-cana210","tree","TRW","trsgi","NA",56.9,-61.5
+"NAm_1576","NAm-cana225","tree","TRW","trsgi","NA",50.2,-117.1
+"NAm_1588","NAm-cana225","tree","MXD","MXD","NA",50.2,-117.1
+"NAm_1600","NAm-cana228","tree","TRW","trsgi","NA",49.4,-117.2
+"NAm_1636","NAm-cana231","tree","TRW","trsgi","NA",50.6,-118.6
+"NAm_1648","NAm-cana231","tree","MXD","MXD","NA",50.6,-118.6
+"NAm_1660","NAm-cana234","tree","TRW","trsgi","NA",49.7,-118.9
+"NAm_1672","NAm-cana234","tree","MXD","MXD","NA",49.7,-118.9
+"NAm_1708","NAm-cana238","tree","TRW","trsgi","NA",50.7,-121.5
+"NAm_1720","NAm-cana238","tree","MXD","MXD","NA",50.7,-121.5
+"NAm_1744","NAm-cana313","tree","TRW","trsgi","NA",56,-61
+"NAm_1816","NAm-cana321","tree","MXD","MXD","NA",69.5,-127.8
+"NAm_1828","NAm-cana324","tree","TRW","trsgi","NA",58,-94
+"NAm_1840","NAm-cana351","tree","TRW","trsgi","NA",52.7,-118.3
+"NAm_1852","NAm-cana352","tree","TRW","trsgi","NA",50.8,-115.3
+"NAm_1876","NAm-cana354","tree","TRW","trsgi","NA",60.2,-138.5
+"NAm_1924","NAm-cana358","tree","TRW","trsgi","NA",59.9,-136.8
+"NAm_1936","NAm-cana359","tree","TRW","trsgi","NA",59.8,-136.6
+"NAm_1972","NAm-cana378","tree","TRW","trsgi","NA",61.4,-128.4
+"NAm_1996","NAm-cana382","tree","TRW","trsgi","NA",59.6,-133.4
+"NAm_2008","NAm-cana384","tree","TRW","trsgi","NA",60.1,-134.4
+"NAm_2056","NAm-cana421","tree","MXD","MXD","NA",51.1,-115.8
+"NAm_2068","NAm-cana430","tree","TRW","trsgi","NA",52.2,-117.2
+"NAm_2080","NAm-cana430","tree","MXD","MXD","NA",52.2,-117.2
+"NAm_2092","NAm-cana432","tree","TRW","trsgi","NA",52.7,-118.3
+"NAm_2116","NAm-cana434","tree","TRW","trsgi","NA",51.7,-116.5
+"NAm_2128","NAm-cana435","tree","TRW","trsgi","NA",52.9,-117.3
+"NAm_2152","NAm-cana437","tree","TRW","trsgi","NA",52.6,-117.9
+"NAm_2164","NAm-cana438","tree","TRW","trsgi","NA",50.6,-115
+"NAm_2176","NAm-cana439","tree","TRW","trsgi","NA",52.2,-117.2
+"NAm_2212","NAm-cana443","tree","TRW","trsgi","NA",50.9,-115.2
+"NAm_2236","NAm-cana446","tree","TRW","trsgi","NA",53,-118.2
+"NAm_2260","NAm-cana449","tree","TRW","trsgi","NA",52.9,-118
+"NAm_2272","NAm-cana450","tree","TRW","trsgi","NA",53.2,-119.5
+"NAm_2308","NAm-cana453","tree","TRW","trsgi","NA",52.8,-117.7
+"NAm_3804","NAm-Clear_P","lake sediment","pollen","temperature","degC",33.8,-79
+"NAm_2392","NAm-co517","tree","MXD","MXD","NA",40.1,-105.6
+"NAm_2464","NAm-co552","tree","MXD","MXD","NA",37.9,-107.7
+"NAm_2476","NAm-co553","tree","TRW","trsgi","NA",39.3,-105
+"NAm_2488","NAm-co553","tree","MXD","MXD","NA",39.3,-105
+"NAm_2500","NAm-co554","tree","TRW","trsgi","NA",38.7,-107.6
+"NAm_2512","NAm-co554","tree","MXD","MXD","NA",38.7,-107.6
+"NAm_2560","NAm-co586","tree","TRW","trsgi","NA",39.9,-105.9
+"NAm_2572","NAm-co586","tree","MXD","MXD","NA",39.9,-105.9
+"NAm_2596","NAm-co633","tree","TRW","trsgi","NA",40.6,-105.8
+"NAm_3807","NAm-Conroy_L","lake sediment","pollen","temperature","degC",46.3,-67.9
+"NAm_004","NAm-CTR","tree","TRW","trsgi","NA",46.7,-114.2
+"NAm_3810","NAm-Dark_L","lake sediment","pollen","temperature","degC",45.3,-91.5
+"NAm_016","NAm-FRE","tree","TRW","trsgi","NA",43,-109.6
+"NAm_028","NAm-GB","tree","TRW","trsgi","NA",37,-116.5
+"NAm_3865","NAm-GreenLake","lake sediment","varve thickness","thickness","NA",50.2,-122.9
+"NAm_3798","NAm-Hell_Kt","lake sediment","pollen","temperature","degC",46.2,-89.7
+"NAm_2632","NAm-id008","tree","MXD","MXD","NA",43.9,-114.7
+"NAm_2656","NAm-id013","tree","TRW","trsgi","NA",44.6,-114.5
+"NAm_2668","NAm-id013","tree","MXD","MXD","NA",44.6,-114.5
+"NAm_3868","NAm-LakeMina","lake sediment","pollen","temperature","degC",45.89,-95.478
+"NAm_3867","NAm-LakeMina","lake sediment","pollen","temperature1","degC",45.89,-95.478
+"NAm_3851","NAm-LClouds","lake sediment","pollen","temperature","degC",48,-91
+"NAm_3819","NAm-Little_Pine_L","lake sediment","pollen","temperature","degC",45.3,-91.5
+"NAm_3853","NAm-L_Noir","lake sediment","pollen","temperature","degC",45.8,-75.1
+"NAm_2704","NAm-me010","tree","MXD","MXD","NA",44.8,-70.8
+"NAm_2716","NAm-mexi020","tree","TRW","trsgi","NA",31,-115.5
+"NAm_2728","NAm-mexi043","tree","TRW","trsgi","NA",25.1,-106.3
+"NAm_2740","NAm-mt108","tree","TRW","trsgi","NA",45.8,-112.5
+"NAm_2752","NAm-mt108","tree","MXD","MXD","NA",45.8,-112.5
+"NAm_2776","NAm-mt112","tree","TRW","trsgi","NA",45.3,-111.3
+"NAm_2788","NAm-mt115","tree","TRW","trsgi","NA",45.9,-114.3
+"NAm_2800","NAm-mt115","tree","MXD","MXD","NA",45.9,-114.3
+"NAm_2812","NAm-mt116","tree","TRW","trsgi","NA",46.3,-113.2
+"NAm_2824","NAm-mt119","tree","TRW","trsgi","NA",46,-113.4
+"NAm_2836","NAm-mt120","tree","TRW","trsgi","NA",46,-113.4
+"NAm_2848","NAm-mt126","tree","TRW","trsgi","NA",49,-114
+"NAm_3004","NAm-nv512","tree","TRW","trsgi","NA",40.2,-115.5
+"NAm_3016","NAm-nv513","tree","TRW","trsgi","NA",38.5,-114.2
+"NAm_3870","NAm-OCNM","speleothem","d18O","d18O","permil",42.083,-123.416
+"NAm_3100","NAm-or042","tree","MXD","MXD","NA",43,-122.2
+"NAm_3124","NAm-or043","tree","MXD","MXD","NA",45.3,-121.7
+"NAm_3816","NAm-Ruby_L","lake sediment","pollen","temperature","degC",45.3,-91.5
+"NAm_040","NAm-SFP","tree","TRW","trsgi","NA",35.3,-111.4
+"NAm_052","NAm-SOV","tree","TRW","trsgi","NA",36.5,-118.3
+"NAm_3796","NAm-STREC","tree","TRW","temperature","degC",54.21,-71.35
+"NAm_3184","NAm-tab","tree","TRW","trsgi","NA",49.3,-114.4
+"NAm_3244","NAm-ut511","tree","MXD","MXD","NA",37.6,-113.9
+"NAm_3280","NAm-vic","tree","TRW","trsgi","NA",49.8,-114.5
+"NAm_3352","NAm-wa056","tree","TRW","trsgi","NA",47.3,-121.3
+"NAm_3376","NAm-wa061","tree","TRW","trsgi","NA",48.3,-120.3
+"NAm_3388","NAm-wa069","tree","TRW","trsgi","NA",48.7,-120.7
+"NAm_3400","NAm-wa071","tree","TRW","trsgi","NA",48.7,-120.7
+"NAm_3412","NAm-wa072","tree","TRW","trsgi","NA",48.7,-120.7
+"NAm_3436","NAm-wa081","tree","MXD","MXD","NA",46.2,-122.2
+"NAm_3472","NAm-wa083","tree","TRW","trsgi","NA",48.7,-118.3
+"NAm_3484","NAm-wa083","tree","MXD","MXD","NA",48.7,-118.3
+"NAm_3520","NAm-wa097","tree","TRW","trsgi","NA",47.9,-123.8
+"NAm_3556","NAm-wa104","tree","TRW","trsgi","NA",46.2,-121.5
+"NAm_3604","NAm-wy021","tree","MXD","MXD","NA",44.2,-107.1
+"NAm_3616","NAm-wy022","tree","TRW","trsgi","NA",41.3,-107.7
+"NAm_3628","NAm-wy022","tree","MXD","MXD","NA",41.3,-107.7
+"NAm_3652","NAm-wy023","tree","MXD","MXD","NA",44.4,-110.1
+"NAm_3676","NAm-wy024","tree","MXD","MXD","NA",44.8,-107.9
+"NAm_3688","NAm-wy025","tree","TRW","trsgi","NA",43.7,-110.1
+"NAm_3700","NAm-wy025","tree","MXD","MXD","NA",43.7,-110.1
+"NAm_3712","NAm-wy030","tree","TRW","trsgi","NA",41.4,-106.2
+"NAm_3724","NAm-wy030","tree","MXD","MXD","NA",41.4,-106.2
+"LPDasan2012","O2kLR-AlboranSea-TTR17-1_384B.Nieto-Moreno.2012","marine sediment","alkenone","temperature","degC",35.986,-4.7496
+"LPD0e0867fe","O2kLR-AlboranSea-TTR17-1_436B.Nieto-Moreno.2012","marine sediment","alkenone","temperature","degC",36.2053,-4.3133
+"O2kLR_114","O2kLR-ArabianSea.Doose-Rolinski.2001","marine sediment","alkenone","temperature","degC",24.83,65.92
+"O2kLR_112","O2kLR-CapeGhir.Kim.2007","marine sediment","alkenone","temperature","degC",30.85,-10.2685
+"LPD84ab67b9","O2kLR-CapeGhir.McGregor.2007","marine sediment","alkenone","temperature","degC",30.845,-10.0983
+"O2kLR_101","O2kLR-CapeHatteras.Cléroux.2012","marine sediment","foram Mg/Ca","temperature","degC",34.973,-75.201
+"LPDe51d17e8","O2kLR-CariacoBasin.Black.2007","marine sediment","foram Mg/Ca","temperature","degC",10.77,-64.77
+"LPDcda1c277","O2kLR-CariacoBasin.Lea.2003","marine sediment","foram Mg/Ca","temperature","degC",10.7,-64.94
+"LPDa03ec713","O2kLR-CH07-98-MC-2.Saenger.2011","marine sediment","foram Mg/Ca","temperature","degC",32.784,-76.276
+"O2kLR_187","O2kLR-ChileanMargin.Lamy.2002","marine sediment","alkenone","temperature","degC",-41,-74.45
+"LPDf7bace53","O2kLR-DryTortugas.Lund.2006","marine sediment","foram Mg/Ca","temperature","degC",24.59,-83.58
+"O2kLR_066","O2kLR-DryTortugasA.Lund.2006","marine sediment","foram Mg/Ca","temperature","degC",24.33,-83.26
+"LPD13a78f9b","O2kLR-EasternTropicalNorthAtlantic.Kuhnert.2011","marine sediment","foram Mg/Ca","temperature","degC",16.8402,-16.7327
+"O2kLR_074","O2kLR-EmeraldBasin.Keigwin.2003","marine sediment","alkenone","temperature","degC",45.89,-62.8
+"LPD68872399","O2kLR-EmeraldBasin.Sachs.2007","marine sediment","alkenone","temperature","degC",43.53,-62.48
+"LPD47182517","O2kLR-FeniDriftRichter.2009","marine sediment","foram Mg/Ca","temperature","degC",55.5,-13.9
+"LPD57d40973","O2kLR-FiskBasin.Richey.2009","marine sediment","foram Mg/Ca","temperature","degC",27.55,-93.93
+"O2kLR_017","O2kLR-GarrisonBasin.Richey.2009","marine sediment","foram Mg/Ca","temperature","degC",26.68,-93.93
+"LPDefb3d2b0","O2kLR-GreatBahamaBank.Lund.2006","marine sediment","foram Mg/Ca","temperature","degC",24.58,-79.26
+"LPD7c7e19c5","O2kLR-GreatBahamabAtlantic0326aLund2006125MC","marine sediment","foram Mg/Ca","temperature","degC",24.765,-79.29
+"O2kLR_150","O2kLR-GreatBarrier.Hendy.2002","coral","Coral Sr/Ca","temperature","degC",-18.315,146.595
+"LPD9cc3baf6","O2kLR-GulfofGuinea.Weldeab.2007","marine sediment","foram Mg/Ca","temperature","degC",2.5,9.38
+"LPD6315f935","O2kLR-JacafFjord.Sepulveda.2009","marine sediment","alkenone","temperature","degC",-44.33,-72.97
+"LPDa2107e77","O2kLR-KNR140.Saenger.2011","marine sediment","foram Mg/Ca","temperature","degC",32.977,-76.316
+"O2kLR_175","O2kLR-KuroshioCurrent.Isono.2009","marine sediment","alkenone","temperature","degC",36.03,141.78
+"O2kLR_030","O2kLR-LaurentianFan.Keigwin.2005","marine sediment","alkenone","temperature","degC",43.48,-54.87
+"LPD30c5b95c","O2kLR-MakassarStrait-MD98-2177.Newton.2011","marine sediment","foram Mg/Ca","temperature","degC",1.4033,119.078
+"O2kLR_135","O2kLR-MakassarStrait.Linsley.2010","marine sediment","foram Mg/Ca","temperature","degC",-7.4,115.2
+"O2kLR_148","O2kLR-MakassarStrait.Oppo.2009","marine sediment","foram Mg/Ca","temperature","degC",-3.53,119.2
+"O2kLR_105","O2kLR-MD952011.Calvo.2002","marine sediment","alkenone","temperature","degC",66.97,7.63
+"LPD10e9f8f7","O2kLR-Minorca.Moreno.2012","marine sediment","alkenone","temperature","degC",40.5,4.03
+"O2kLR_045","O2kLR-NorthIceland.Sicre.2011","marine sediment","alkenone","temperature","degC",66.55,-17.42
+"O2kLR_146","O2kLR-NWPacific.Harada.2004","marine sediment","alkenone","temperature","degC",46.32,152.53
+"LPDbd07f717","O2kLR-ODP984.Came.2007","marine sediment","foram Mg/Ca","temperature","degC",61.43,-24.085
+"O2kLR_165","O2kLR-OkinawaTrough.Wu.2012","marine sediment","TEX86","temperature","degC",24.8,122.5
+"LPD1a0245b7","O2kLR-Philippines-MD98-2181.Stott.2007","marine sediment","foram Mg/Ca","temperature","degC",6.3,125.82
+"LPD572f7cc3","O2kLR-PigmyBasin.Richey.2009","marine sediment","foram Mg/Ca","temperature","degC",27.2,-91.42
+"LPDb17a5e9e","O2kLR-RAPiD-12-1K.Thornalley.2009","marine sediment","foram Mg/Ca","temperature","degC",62.08,-17.82
+"O2kLR_183","O2kLR-SantaBarbara.Zhao.2000","marine sediment","alkenone","temperature","degC",34.23,-120.02
+"LPDa77273bb","O2kLR-SouthAtlantic.Leduc.2010","marine sediment","alkenone","temperature","degC",-29.14,16.72
+"LPD44b374e7","O2kLR-SouthChinaSea.Zhao.2006","marine sediment","alkenone","temperature","degC",8.73,109.869
+"O2kLR_195","O2kLR-SouthernChile.Mohtadi.2007","marine sediment","alkenone","temperature","degC",-44.15,-75.16
+"O2kLR_047","O2kLR-SouthIceland.Sicre.2011","marine sediment","alkenone","temperature","degC",57.45,-27.91
+"O2kLR_082","O2kLR-SubTropicalEasternAtlantic.deMenocal.2000","marine sediment","planktonic foraminifera","temperature","degC",20.75,-18.5833
+"O2kLR_118","O2kLR-SWCoastOfIndia.Saraswat.2013","marine sediment","foram Mg/Ca","temperature","degC",10.98,74.9993
+"LPDb7ba9166","O2kLR-Tagus.Abrantes.2005","marine sediment","alkenone","temperature","degC",38.556,-9.3498
+"O2kLR_131","O2kLR-WEqPacific-MD98-2176.Stott.2007","marine sediment","foram Mg/Ca","temperature","degC",-5,133.44
+"LPD2a3997a7","O2kLR-WesternAntarcticPeninsula.Shevenell.2011","marine sediment","TEX86","temperature","degC",-64.87,-64.2
+"O2kLR_007","O2kLR-WesternSvalbard.Spielhagen.2011","marine sediment","planktonic foraminifera","temperature","degC",78.91,6.77
+"LPD995c6f3c","O2kLR-WestSpitzbergen.Bonnet.2010","marine sediment","dynocist MAT","temperature","degC",78.96,5.885
+"LPD7e8e8eaa","O2kLRMakassarStrait-MD98-2160.Newton.2011","marine sediment","foram Mg/Ca","temperature","degC",-5.2012,117.4867
+"Ocean2kHR_112","Ocean2kHR-AtlanticBahamasExumaRosenheim2005","sclerosponge","d18O","d18O","permil",23.766,-76.053
+"Ocean2kHR_113","Ocean2kHR-AtlanticBahamasExumaRosenheim2005","sclerosponge","Sr/Ca","Sr_Ca","mmol/mol",23.766,-76.053
+"Ocean2kHR_130","Ocean2kHR-AtlanticBahamasSaenger2009","coral","calcification","calcification","cm/yr",25.84,-78.62
+"Ocean2kHR_114","Ocean2kHR-AtlanticBahamasTOTORosenheim2005","sclerosponge","d18O","d18O","permil",23.504,-76.577
+"Ocean2kHR_115","Ocean2kHR-AtlanticBahamasTOTORosenheim2005","sclerosponge","Sr/Ca","Sr_Ca","mmol/mol",23.504,-76.577
+"Ocean2kHR_124","Ocean2kHR-AtlanticBermudaDraschba2000a","coral","d18O","d18O","permil",30.0867,-64.5417
+"Ocean2kHR_125","Ocean2kHR-AtlanticBermudaDraschba2000b","coral","d18O","d18O","permil",30.0867,-64.5417
+"Ocean2kHR_094","Ocean2kHR-AtlanticBermudaGoodkin2006","coral","d18O","d18O","permil",30.6486,-64.9888
+"Ocean2kHR_095","Ocean2kHR-AtlanticBermudaGoodkin2006","coral","Sr/Ca","Sr_Ca","mmol/mol",30.6486,-64.9888
+"Ocean2kHR_102","Ocean2kHR-AtlanticBermudaKuhnert2002","coral","d18O","d18O","permil",32.47,-64.7
+"Ocean2kHR_105","Ocean2kHR-AtlanticBermudaKuhnert2005","coral","d18O","d18O","permil",32.467,-64.7
+"Ocean2kHR_106","Ocean2kHR-AtlanticBermudaKuhnert2005","coral","Sr/Ca","Sr_Ca","mmol/mol",32.467,-64.7
+"Ocean2kHR_118","Ocean2kHR-AtlanticBiscayneBaySwart1996","coral","d18O","d18O","permil",25.38,-80.17
+"Ocean2kHR_107","Ocean2kHR-AtlanticCapeVerdeMoses2006","coral","d18O","d18O","permil",16.76,-22.8883
+"Ocean2kHR_123","Ocean2kHR-AtlanticDryTortugasDeLong2014","coral","Sr/Ca","Sr_Ca","mmol/mol",24.6,-82.3
+"Ocean2kHR_116","Ocean2kHR-AtlanticFloridaBaySwart1996","coral","d18O","d18O","permil",24.93,-80.75
+"Ocean2kHR_097","Ocean2kHR-AtlanticGuadeloupeHetzinger2010","coral","d18O","d18O","permil",16.2,-61.49
+"Ocean2kHR_098","Ocean2kHR-AtlanticGuadeloupeHetzinger2010","coral","Sr/Ca","Sr_Ca","mmol/mol",16.2,-61.49
+"Ocean2kHR_096","Ocean2kHR-AtlanticLosRoquesHetzinger2008","coral","d18O","d18O","permil",11.77,-66.75
+"Ocean2kHR_122","Ocean2kHR-AtlanticMaineWanamaker2008","bivalve","d18O","d18O","permil",43.6561,-69.8017
+"Ocean2kHR_131","Ocean2kHR-AtlanticMexicoVasquez2012","coral","calcification","calcification","mm/yr",20.83,-86.74
+"Ocean2kHR_126","Ocean2kHR-AtlanticMontegoBayHaaseSchramm2003","sclerosponge","d18O","d18O","permil",18.4667,-77.95
+"Ocean2kHR_127","Ocean2kHR-AtlanticMontegoBayHaaseSchramm2003","sclerosponge","Sr/Ca","Sr_Ca","mmol/mol",18.4667,-77.95
+"Ocean2kHR_128","Ocean2kHR-AtlanticPedroBankHaaseSchramm2003","sclerosponge","d18O","d18O","permil",17.5333,-78.95
+"Ocean2kHR_129","Ocean2kHR-AtlanticPedroBankHaaseSchramm2003","sclerosponge","Sr/Ca","Sr_Ca","mmol/mol",17.5333,-78.95
+"Ocean2kHR_099","Ocean2kHR-AtlanticPuertoRicoKilbourne2008","coral","d18O","d18O","permil",17.93,-67
+"Ocean2kHR_100","Ocean2kHR-AtlanticPuertoRicoKilbourne2008","coral","Sr/Ca","Sr_Ca","mmol/mol",17.93,-67
+"Ocean2kHR_108","Ocean2kHR-AtlanticTobagoMoses2006Montastrea","coral","d18O","d18O","permil",11.17,-60.85
+"Ocean2kHR_110","Ocean2kHR-AtlanticTobagoMoses2006Sidereastrea","coral","d18O","d18O","permil",11.17,-60.85
+"Ocean2kHR_023","Ocean2kHR-IndianAbrolhosKuhnert1999","coral","d18O","d18O","permil",-28.47,113.77
+"Ocean2kHR_025","Ocean2kHR-IndianAbrolhosZinke2014HAB05B","coral","Sr/Ca","Sr_Ca","mmol/mol",-28.4609,113.772
+"Ocean2kHR_026","Ocean2kHR-IndianAbrolhosZinke2014HAB10A","coral","d18O","d18O","permil",-28.4589,113.749
+"Ocean2kHR_027","Ocean2kHR-IndianAbrolhosZinke2014HAB10A","coral","Sr/Ca","Sr_Ca","mmol/mol",-28.4589,113.749
+"Ocean2kHR_014","Ocean2kHR-IndianAqabaHeiss1994AQ18","coral","d18O","d18O","permil",29.42,34.97
+"Ocean2kHR_016","Ocean2kHR-IndianAqabaHeiss1994AQ19","coral","d18O","d18O","permil",29.42,34.97
+"Ocean2kHR_006","Ocean2kHR-IndianBaliCharles2003","coral","d18O","d18O","permil",-8.2473,115.5757
+"Ocean2kHR_021","Ocean2kHR-IndianIfatyTulearZinke2014if1","coral","d18O","d18O","permil",-23.15,43.58
+"Ocean2kHR_020","Ocean2kHR-IndianIfatyTulearZinke2014if4","coral","d18O","d18O","permil",-23.15,43.58
+"Ocean2kHR_022","Ocean2kHR-IndianIfatyTulearZinke2014tul3","coral","d18O","d18O","permil",-23.3572,43.6195
+"Ocean2kHR_012","Ocean2kHR-IndianKenyaNakamura2009","coral","d18O","d18O","permil",-3.2,40.1
+"Ocean2kHR_007","Ocean2kHR-IndianMafiaDamassa2006","coral","d18O","d18O","permil",-8.0167,39.5
+"Ocean2kHR_001","Ocean2kHR-IndianMalindiCole2000","coral","d18O","d18O","permil",-3.2,40.1
+"Ocean2kHR_002","Ocean2kHR-IndianMayotteZinke20082009","coral","d18O","d18O","permil",-12.65,45.1
+"Ocean2kHR_003","Ocean2kHR-IndianMayotteZinke20082009","coral","Sr/Ca","Sr_Ca","mmol/mol",-12.65,45.1
+"Ocean2kHR_005","Ocean2kHR-IndianMayotteZinke20082009","coral","d18O","d18O","permil",-12.65,45.1
+"Ocean2kHR_010","Ocean2kHR-IndianMentawaiAbram2008","coral","d18O","d18O","permil",-0.13,98.52
+"Ocean2kHR_008","Ocean2kHR-IndianNingalooKuhnert2000","coral","d18O","d18O","permil",-21.905,113.965
+"Ocean2kHR_019","Ocean2kHR-IndianRedSeaFelis2000","coral","d18O","d18O","permil",27.85,34.32
+"Ocean2kHR_013","Ocean2kHR-IndianReunionPfeiffer2004","coral","d18O","d18O","permil",-21.0333,55.25
+"Ocean2kHR_018","Ocean2kHR-IndianRusUmSiddMoustafa2000Rus93a","coral","d18O","d18O","permil",27.8483,34.31
+"Ocean2kHR_011","Ocean2kHR-IndianSeychellesCharles1997","coral","d18O","d18O","permil",-4.62,55
+"LPD378db911","Ocean2kHR-IndianWAGrowthAbrolhosCooper2012","coral","calcification rate","composite","percent",-28.4667,113.7667
+"LPDaa786707","Ocean2kHR-IndianWAGrowthBundegiCooper2012","coral","calcification rate","composite","percent",-21.8333,114.1833
+"LPDe1fb72db","Ocean2kHR-IndianWAGrowthClerkeCooper2012","coral","calcification rate","composite","percent",-17.2667,119.3667
+"LPD3100fe0a","Ocean2kHR-IndianWAGrowthCoralBayCooper2012","coral","calcification rate","composite","percent",-23.0333,113.8167
+"LPD24dd89b2","Ocean2kHR-IndianWAGrowthImperieuseCooper2012","coral","calcification rate","composite","percent",-17.5167,118.9667
+"LPD8bd4e07e","Ocean2kHR-IndianWAGrowthTantabiddiCooper2012","coral","calcification rate","composite","percent",-21.9,113.9667
+"Ocean2kHR_143","Ocean2kHR-PacificAlibert2008Papua","coral","Sr/Ca","Sr_Ca","mmol/mol",-2.5,150.5
+"Ocean2kHR_171","Ocean2kHR-PacificBunakenCharles2003","coral","d18O","d18O","permil",-1.5,124.833
+"Ocean2kHR_185","Ocean2kHR-PacificClippertonClipp2bWu2014","coral","Sr/Ca","Sr_Ca","mmol/mol",10.2773,-109.2131
+"Ocean2kHR_187","Ocean2kHR-PacificClippertonClipp4bWu2014","coral","Sr/Ca","Sr_Ca","mmol/mol",10.2773,-109.2131
+"Ocean2kHR_186","Ocean2kHR-PacificClippertonClipp6aWu2014","coral","Sr/Ca","Sr_Ca","mmol/mol",10.2773,-109.2131
+"Ocean2kHR_188","Ocean2kHR-PacificClippertonClippf1bWu2014","coral","d18O","d18O","permil",10.2773,-109.2131
+"Ocean2kHR_189","Ocean2kHR-PacificClippertonClippf1bWu2014","coral","Sr/Ca","Sr_Ca","mmol/mol",10.2773,-109.2131
+"Ocean2kHR_169","Ocean2kHR-PacificClippertonLinsley2000","coral","d18O","d18O","permil",10.2773,-109.2131
+"Ocean2kHR_193","Ocean2kHR-PacificCoralSeaCalvo2007","coral","d18O","d18O","permil",-17.73,148.43
+"Ocean2kHR_194","Ocean2kHR-PacificCoralSeaCalvo2007","coral","Sr/Ca","Sr_Ca","mmol/mol",-17.73,148.43
+"Ocean2kHR_163","Ocean2kHR-PacificFelis2009OgasawaraJapan","coral","d18O","d18O","permil",27.1059,142.1941
+"Ocean2kHR_164","Ocean2kHR-PacificFelis2009OgasawaraJapan","coral","Sr/Ca","Sr_Ca","mmol/mol",27.1059,142.1941
+"Ocean2kHR_173","Ocean2kHR-PacificGalapagosDunbar1994","coral","d18O","d18O","permil",-0.4,-91.23
+"Ocean2kHR_167","Ocean2kHR-PacificGBRDruffel1999","coral","d18O","d18O","permil",-22.1,153
+"Ocean2kHR_190","Ocean2kHR-PacificGBRWei2009","coral","d18O","d18O","permil",-16.7167,146.0333
+"Ocean2kHR_191","Ocean2kHR-PacificGBRWei2009","coral","Sr/Ca","Sr_Ca","mmol/mol",-16.7167,146.0333
+"Ocean2kHR_154","Ocean2kHR-PacificGorman2012Vanuatu","coral","d18O","d18O","permil",-15.94,166.04
+"Ocean2kHR_166","Ocean2kHR-PacificGuamAsami2005","coral","d18O","d18O","permil",13.5982,144.8359
+"Ocean2kHR_135","Ocean2kHR-PacificKiritimatiEvans1998","coral","d18O","d18O","permil",1.6792,-157.2473
+"Ocean2kHR_141","Ocean2kHR-PacificLiangTudhope2001","coral","d18O","d18O","permil",-4.15,144.8833
+"Ocean2kHR_157","Ocean2kHR-PacificLinsley2006Fiji1F","coral","d18O","d18O","permil",-16.8167,179.2333
+"Ocean2kHR_158","Ocean2kHR-PacificLinsley2006Fiji1F","coral","Sr/Ca","Sr_Ca","mmol/mol",-16.8167,179.2333
+"Ocean2kHR_156","Ocean2kHR-PacificLinsley2006FijiAB","coral","d18O","d18O","permil",-16.8167,179.2333
+"Ocean2kHR_147","Ocean2kHR-PacificLinsley2006Rarotongad18O2R","coral","d18O","d18O","permil",-21.2378,-159.8278
+"Ocean2kHR_150","Ocean2kHR-PacificLinsley2006Rarotongad18O3R","coral","d18O","d18O","permil",-21.2378,-159.8278
+"Ocean2kHR_152","Ocean2kHR-PacificLinsley2006Rarotongad18O99","coral","d18O","d18O","permil",-21.2378,-159.8278
+"Ocean2kHR_149","Ocean2kHR-PacificLinsley2006RarotongaSrCa2R","coral","Sr/Ca","Sr_Ca","mmol/mol",-21.2378,-159.8278
+"Ocean2kHR_140","Ocean2kHR-PacificMadangTudhope2001","coral","d18O","d18O","permil",-5.2167,145.8167
+"Ocean2kHR_177","Ocean2kHR-PacificMaianaUrban2000","coral","d18O","d18O","permil",1,173
+"Ocean2kHR_132","Ocean2kHR-PacificMooreaBoiseau2003","coral","d18O","d18O","permil",-17.5,-149.8333
+"Ocean2kHR_179","Ocean2kHR-PacificNauruGuilderson1999","coral","d18O","d18O","permil",-0.53296,166.9283
+"Ocean2kHR_134","Ocean2kHR-PacificNewCaledoniaDelong2012","coral","Sr/Ca","Sr_Ca","mmol/mol",-22.475,166.4667
+"Ocean2kHR_161","Ocean2kHR-PacificNurhati2011","coral","Sr/Ca","Sr_Ca","mmol/mol",5.87,-162.13
+"Ocean2kHR_181","Ocean2kHR-PacificPalaurockislandsOsborne2014","coral","d18O","d18O","permil",7.2708,134.3837
+"Ocean2kHR_183","Ocean2kHR-PacificPalauulongchannelOsborne2014","coral","d18O","d18O","permil",7.2859,134.2503
+"Ocean2kHR_139","Ocean2kHR-PacificPalmyracombinedCobb2003","coral","d18O","d18O","permil",5.87,-162.13
+"Ocean2kHR_138","Ocean2kHR-PacificPanamaLinsley1994","coral","d18O","d18O","permil",7.95,-82
+"Ocean2kHR_172","Ocean2kHR-PacificPNGTudhope1995","coral","d18O","d18O","permil",-5.22,145.82
+"Ocean2kHR_144","Ocean2kHR-PacificQuinn2008Rabaul","coral","d18O","d18O","permil",-4.1916,151.9772
+"Ocean2kHR_145","Ocean2kHR-PacificQuinn2008Rabaul","coral","Sr/Ca","Sr_Ca","mmol/mol",-4.1916,151.9772
+"Ocean2kHR_137","Ocean2kHR-PacificSCSSun2004","coral","Sr/Ca","Sr_Ca","mmol/mol",16.85,112.33
+"Ocean2kHR_142","Ocean2kHR-PacificSuvaBagnato2005","coral","d18O","d18O","permil",-16.82,179.23
+"Ocean2kHR_178","Ocean2kHR-PacificTarawaCole1990","coral","d18O","d18O","permil",1,172
+"Ocean2kHR_174","Ocean2kHR-PacificVanuatuKilbourne2004","coral","d18O","d18O","permil",-15.7,167.2
+"Ocean2kHR_175","Ocean2kHR-PacificVanuatuKilbourne2004","coral","Sr/Ca","Sr_Ca","mmol/mol",-15.7,167.2
+"Ocean2kHR_133","Ocean2kHR-PacificVanuatuQuinn1996","coral","d18O","d18O","permil",-15,166.99
+"Ocean2kHR_159","Ocean2kHR-PacificWu2013Tonga","coral","Sr/Ca","Sr_Ca","mmol/mol",-19.9333,-174.7167
+"can1101","SAm-CAN11.Neukom.2011","tree","TRW","trsgi","NA",-40.1,-72.05
+"SAm_010","SAm-CAN15.Neukom2014","tree","TRW","trsgi","NA",-41.17,-71.92
+"SAm_015","SAm-CAN6.Neukom.2014","tree","TRW","trsgi","NA",-38.5,-71.5
+"SAm_020","SAm-CAN9.Neukom.2014","tree","TRW","trsgi","NA",-39.33,-71.25
+"SAm_0243","SAm-LagunaAculeo.vonGunten.2009","lake sediment","reflectance","temperature3","degC",-33.85,-70.92
+"SAm_025","SAm-LagunaChepical.deJong.2013","lake sediment","reflectance","temperature","degC",-32.2667,-70.5
+"SAm_032","SAm-LagunaEscondida.Elbert.2013","lake sediment","BSi","temperature","degC",-45.5167,-71.8167
+"SAm_035","SAm-QuelccayaIce.Thompson.2013","glacier ice","d18O","d18O","permil",-13.9333,-70.8333
