@@ -1,0 +1,71 @@
+# Annual Common Era pool for presto-LMR: every annually resolved record the
+# LMR container can assimilate, not only temperature-interpreted ones.
+#
+# Generalizes PReSto2k's assembly (Gondhalekar et al., paleopresto/presto2k
+# paleobook/C01_c), which took PAGES 2k temperature records, Iso2k records
+# interpreted as temperature, and every CoralHydro2k Sr/Ca and d18O record
+# whatever its interpretation, then let cfr keep the records whose proxy
+# system model calibrates against instrumental data. Here the same logic runs
+# over all of LiPDverse: a record qualifies on what cfr needs (an annual time
+# step, a proxy class it can model, overlap with the calibration period), and
+# whether it carries temperature information is left to that calibration, as
+# LMRv2.1 and PReSto2k did.
+
+name: cfr_annual
+description: Annually resolved Common Era records the LMR (cfr) container can calibrate and assimilate
+reference: "Tardif et al. (2019) Clim. Past 15:1251 (LMRv2.1); PReSto2k assembly, paleopresto/presto2k C01_c"
+baseline: presto2k_2025.csv
+evaluator: cfr_annual
+
+window: {min_year: 1, max_year: 2100}
+
+exclude_variable_pattern: "^uncertainty|uncertainty$|error|^notes$|needsToBeChanged|^correction$|count$|^sampleCount$|^segmentLength$|^EPS$|^RBAR$|^core$|^correlationCoefficient$|^residualChronology$|^ARSTAN$"
+
+# Which records carry climate information. Either a climate interpretation of
+# any variable (temperature, precipitation, moisture, isotopes...), or, as
+# Tanaya did for CoralHydro2k, a water-isotope or trace-element measurement in
+# an archive where it records surface climate whatever the metadata says.
+interpretation:
+  scope: climate
+  variable: "*"
+  max_rank: 99
+  require_direction: false
+  positive_only: null
+climate_proxies:
+  archives: [Coral, Sclerosponge, MolluskShell, GlacierIce, Speleothem]
+  pattern: "^d18O$|^dD$|^d2H$|^Sr/Ca$|^SrCa$|^Mg/Ca$"
+
+# cfr's filter on resolution (dt in years) and its PSM calibration window and
+# minimum overlap (nobs_lb), as in the presto-LMR run config.
+max_resolution: 1.2
+calibration_period: [1850, 2015]
+min_calibration_years: 25
+
+# PAGES 2k (2017)'s length rules for annually resolved records.
+length:
+  annual_terrestrial: 300
+  annual_marine: 50
+marine_archives: [Coral, Sclerosponge, MolluskShell, MarineSediment]
+
+# Archives lipd_to_pdb.py maps to a cfr proxy class (ptype) the LMR filter
+# keeps (coral, tree, ice, lake, bivalve, marine, sclerosponge, speleothem,
+# borehole, documents, hybrid).
+assimilable_archives: [Coral, Wood, GlacierIce, LakeSediment, MolluskShell, MarineSediment,
+                       Sclerosponge, Speleothem, Borehole, Documents, Hybrid]
+
+data_poor_exception:
+  isolation_km: 500
+  relax:
+    length.annual_terrestrial: 150
+    length.annual_marine: 30
+
+# PReSto2k's records are admitted; its 60 duplicate removals stand
+# (make_ledgers.R).
+curator_admissions: curator_admissions.csv
+curator_exclusions: curator_exclusions.csv
+
+collapse_prefer_units: []
+one_record_per_site:
+  - publication_title: "^LegacyClimate"
+    prefer_season: annual
+    defer_within_km: 8

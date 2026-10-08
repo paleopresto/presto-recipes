@@ -145,6 +145,19 @@ eval_temp12k <- function(x, ctrl, cfg) {
   finalize(x)
 }
 
+# Annual records for LMR (cfr): annual time step, a proxy class cfr can model,
+# enough overlap with the calibration period, PAGES 2k (2017) length rules.
+eval_cfr_annual <- function(x, ctrl, cfg) {
+  x$annual <- !is.na(x$res_win) & x$res_win <= cfg$max_resolution
+  x$pass_resolution <- x$annual
+  marine <- is_in(x$archiveType, cfg$marine_archives)
+  x$pass_length <- x$span_win >= ifelse(marine, cfg$length$annual_marine, cfg$length$annual_terrestrial)
+  x$pass_calibration <- !is.na(x$n_calib) & x$n_calib >= cfg$min_calibration_years
+  x$pass_ptype <- is_in(x$archiveType, cfg$assimilable_archives)
+  x$pass_climate <- x$has_climate
+  finalize(x)
+}
+
 finalize <- function(x) {
   checks <- grep("^pass_", names(x), value = TRUE)
   m <- as.matrix(x[checks])
@@ -179,20 +192,37 @@ build_pool <- function(con, cfg) {
   extra <- setdiff(admitted, cand$TSid)
   if (length(extra)) {
     more <- pool_candidates(con, utils::modifyList(cfg$interpretation, list(max_rank = 99)), extra)
+    if (!is.null(cand$has_climate)) more$has_climate <- TRUE
     cand <- rbind(cand, more)
   }
   if (!is.null(cfg$exclude_variable_pattern))
     cand <- cand[!grepl(cfg$exclude_variable_pattern, cand$variableName, ignore.case = TRUE) |
                    cand$TSid %in% admitted, ]
+  if (identical(cfg$interpretation$variable, "*")) {
+    # Climate information: an interpretation, or a climate proxy in an archive
+    # where it records surface climate regardless of metadata.
+    cp <- cfg$climate_proxies
+    iso <- is_in(cand$archiveType, cp$archives) &
+      (matches(cand$variableName, cp$pattern) | matches(cand$proxy, cp$pattern))
+    cand$has_climate <- !is.na(cand$interpRank) | iso
+    cand <- cand[cand$has_climate | cand$TSid %in% admitted, ]
+  }
   pts <- pool_points(con, cand)
   gap <- if (!is.null(cfg$duration$max_gap)) cfg$duration$max_gap else Inf
   met <- metrics_table(pts, cfg$window, gap)
   x <- merge(cand, met, by = "TSid", all.x = TRUE)
+  if (!is.null(cfg$calibration_period)) {
+    cp <- cfg$calibration_period
+    inside <- pts[pts$year >= cp[1] & pts$year <= cp[2], ]
+    nc <- tapply(floor(inside$year), inside$TSid, function(y) length(unique(y)))
+    x$n_calib <- as.integer(nc[x$TSid]); x$n_calib[is.na(x$n_calib)] <- 0L
+  }
   x$span_win[is.na(x$span_win)] <- 0
   x$longest_win[is.na(x$longest_win)] <- 0
   ctrl <- pool_age_controls(con, x$datasetId)
   if (!is.null(cfg$curator_exclusions)) x$pass_curator <- !x$TSid %in% read_ledger(cfg, "curator_exclusions")
-  ev <- switch(cfg$name, pages2k2017 = eval_pages2k2017, temp12k = eval_temp12k)
+  ev <- switch(cfg$evaluator %||% cfg$name, pages2k2017 = eval_pages2k2017, temp12k = eval_temp12k,
+               cfr_annual = eval_cfr_annual)
   base <- x
   x <- ev(base, ctrl, cfg)
   x$selected_by <- ifelse(x$selected, "criteria", NA)

@@ -16,7 +16,7 @@ snap <- args[1]; tag <- args[2]
 base <- sprintf("https://github.com/paleopresto/presto-recipes/releases/download/%s", tag)
 
 runs <- list(
-  "presto-LMR"        = "pages2k2017",
+  "presto-LMR"        = "cfr_annual",
   "presto-BayGMST"    = "pages2k2017",
   "presto-HoloceneDA" = "temp12k",
   "presto-Temp12k"    = "temp12k")

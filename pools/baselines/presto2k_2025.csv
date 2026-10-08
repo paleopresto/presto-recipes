@@ -1,0 +1,684 @@
+"TSid","pid","dataSetName","archiveType","proxy","variableName","units","lat","lon"
+"Ant_030","Ant-WDC05A.Steig.2013_Ant_030","Ant-WDC05A.Steig.2013","GlacierIce","d18O","d18O","permil",-79.46,-112.09
+"NAm_568","NAm-MtLemon.Briffa.2002_NAm_568","NAm-MtLemon.Briffa.2002","Wood","maximum latewood density","MXD",NA,32.5,-110.8
+"Arc_060","Arc-Arjeplog.Bjorklund.2014_Arc_060","Arc-Arjeplog.Bjorklund.2014","Wood","maximum latewood density","density",NA,66.3,18.2
+"Asia_041","Asi-CHIN019.Li.2010_Asia_041","Asi-CHIN019.Li.2010","Wood","ring width","trsgi","unitless",29.15,99.93
+"NAm_1876","NAm-Landslide.Luckman.2006_NAm_1876","NAm-Landslide.Luckman.2006","Wood","ring width","trsgi","unitless",60.2,-138.5
+"NAm_1108","NAm-SmithersSkiArea.Schweingruber.1996_NAm_1108","NAm-SmithersSkiArea.Schweingruber.1996","Wood","ring width","trsgi","unitless",54.9,-127.3
+"NAm_1120","NAm-SmithersSkiArea.Schweingruber.1996_NAm_1120","NAm-SmithersSkiArea.Schweingruber.1996","Wood","maximum latewood density","MXD",NA,54.9,-127.3
+"Asia_102","Asi-GANGCD.PAGES2k.2013_Asia_102","Asi-GANGCD.PAGES2k.2013","Wood","ring width","trsgi","unitless",30.98,78.93
+"Arc_032","Arc-Agassiz.Vinther.2008_Arc_032","Arc-Agassiz.Vinther.2008","GlacierIce","d18O","d18O","permil",80.7,-73.1
+"SAm_025","SAm-LagunaChepical.deJong.2013_SAm_025","SAm-LagunaChepical.deJong.2013","LakeSediment","reflectance","temperature","degC",-32.2667,-70.5
+"NAm_1396","NAm-CoppermineRiver.Jacoby.1989_NAm_1396","NAm-CoppermineRiver.Jacoby.1989","Wood","ring width","trsgi","unitless",67.2,-115.9
+"NAm_220","NAm-KobukNoatak.King.2003_NAm_220","NAm-KobukNoatak.King.2003","Wood","ring width","trsgi","unitless",67.1,-159.6
+"Asia_037","Asi-BT005.Cook.2010_Asia_037","Asi-BT005.Cook.2010","Wood","ring width","trsgi","unitless",27.45,90.15
+"SAm_020","SAm-CentralAndes9.Mundo.2014_SAm_020","SAm-CentralAndes9.Mundo.2014","Wood","ring width","trsgi","unitless",-39.33,-71.25
+"Asia_114","Asi-JAPA016.Yasue.2013_Asia_114","Asi-JAPA016.Yasue.2013","Wood","ring width","trsgi","unitless",35.73,138.22
+"Asia_219","Asi-CHIN049.Brauning.2013_Asia_219","Asi-CHIN049.Brauning.2013","Wood","ring width","trsgi","unitless",31.23,96.48
+"NAm_1588","NAm-MeadowMountain.Wilson.2005_NAm_1588","NAm-MeadowMountain.Wilson.2005","Wood","maximum latewood density","MXD",NA,50.2,-117.1
+"NAm_1576","NAm-MeadowMountain.Wilson.2005_NAm_1576","NAm-MeadowMountain.Wilson.2005","Wood","ring width","trsgi","unitless",50.2,-117.1
+"NAm_3388","NAm-wa069.Peterson.1994_NAm_3388","NAm-wa069.Peterson.1994","Wood","ring width","trsgi","unitless",48.7,-120.7
+"NAm_3604","NAm-PowderRiverPass.Briffa.1996_NAm_3604","NAm-PowderRiverPass.Briffa.1996","Wood","maximum latewood density","MXD",NA,44.2,-107.1
+"Asia_117","Asi-YKCOM.Yasue.2013_Asia_117","Asi-YKCOM.Yasue.2013","Wood","ring width","trsgi","unitless",30.37,130.53
+"Arc_093","Arc-MackenzieDelta.Porter.2013_Arc_093","Arc-MackenzieDelta.Porter.2013","Wood","ring width","trsgi","unitless",68.625,-133.87
+"O2kLR_066","Ocn-DryTortugasA.Lund.2006_O2kLR_066","Ocn-DryTortugasA.Lund.2006","MarineSediment","Mg/Ca","temperature","degC",24.33,-83.26
+"Asia_324","Asi-LowerYangtzeRiver.Zhang.1980_Asia_324","Asi-LowerYangtzeRiver.Zhang.1980","Documents","historical","temperature","unitless",32.1,118.8
+"Asia_173","Asi-NEPA025.Krusic.2013_Asia_173","Asi-NEPA025.Krusic.2013","Wood","ring width","trsgi","unitless",29.52,82.03
+"Asia_061","Asi-BARELC.PAGES2k.2013_Asia_061","Asi-BARELC.PAGES2k.2013","Wood","ring width","trsgi","unitless",33.75,107.8
+"Asia_200","Asi-PAKI029.Cook.2013_Asia_200","Asi-PAKI029.Cook.2013","Wood","ring width","trsgi","unitless",35.83,74.33
+"Asia_171","Asi-NEPA018.Krusic.2013_Asia_171","Asi-NEPA018.Krusic.2013","Wood","ring width","trsgi","unitless",27.73,86.33
+"Arc_025","Arc-LakeNataujaervi.Ojala.2005_Arc_025","Arc-LakeNataujaervi.Ojala.2005","LakeSediment","varve thickness","reflectance","count",61.81,24.68
+"NAm_3004","NAm-PearlPeak.Graybill.1994_NAm_3004","NAm-PearlPeak.Graybill.1994","Wood","ring width","trsgi","unitless",40.2,-115.5
+"Ocean2kHR_143","Ocn-NewIrelandPapua.Alibert.2008_Ocean2kHR_143","Ocn-NewIrelandPapua.Alibert.2008","Coral","Sr/Ca","Sr/Ca","mmol/mol",-2.5,150.5
+"Asia_016","Asi-UULMND.Schweingruber.2002_Asia_016","Asi-UULMND.Schweingruber.2002","Wood","ring width","trsgi","unitless",50.48,87.65
+"Ant_023","Ant-PlateauRemote.Mosley-Thompson.2013_Ant_023","Ant-PlateauRemote.Mosley-Thompson.2013","GlacierIce","d18O","d18O","permil",-84,43
+"Asia_025","Asi-BT001.Cook.2010_Asia_025","Asi-BT001.Cook.2010","Wood","ring width","trsgi","unitless",27.58,90.65
+"Ocean2kHR_156","Ocn-SavusavuBayAB.Linsley.2006_Ocean2kHR_156","Ocn-SavusavuBayAB.Linsley.2006","Coral","d18O","d18O","permil",-16.8167,179.2333
+"Aus_057","Aus-Oroko.Cook.2002_Aus_057","Aus-Oroko.Cook.2002","Wood","ring width","temperature","degC",-43.23,170.28
+"Ant_010","Ant-DomeF2001.Uemura.2008_Ant_010","Ant-DomeF2001.Uemura.2008","GlacierIce","d18O","d18O","permil",-77.32,39.7
+"Asia_227","Asi-TW001.Wright.2010_Asia_227","Asi-TW001.Wright.2010","Wood","ring width","trsgi","unitless",24.53,121.38
+"Arc_051","Arc-PennyIceCapP96.Okuyama.2003_Arc_051","Arc-PennyIceCapP96.Okuyama.2003","GlacierIce","ice melt","iceMelt","percent",67.25,-65.75
+"O2kLR_045","Ocn-NorthIceland.Sicre.2011_O2kLR_045","Ocn-NorthIceland.Sicre.2011","MarineSediment","alkenone","temperature","degC",66.55,-17.42
+"Ocean2kHR_147","Ocn-Rarotonga_d18O2R.Linsley.2006_Ocean2kHR_147","Ocn-Rarotonga_d18O2R.Linsley.2006","Coral","d18O","d18O","permil",-21.2378,-159.8278
+"Asia_137","Asi-KYRG014.Solomina.2013_Asia_137","Asi-KYRG014.Solomina.2013","Wood","ring width","trsgi","unitless",42.42,78.97
+"Ocean2kHR_006","Ocn-Lombok.Charles.2003_Ocean2kHR_006","Ocn-Lombok.Charles.2003","Coral","d18O","d18O","permil",-8.2473,115.5757
+"Arc_040","Arc-HudsonLake.Clegg.2011_Arc_040","Arc-HudsonLake.Clegg.2011","LakeSediment","chironomid","temperature","degC",61.9,-145.66
+"Ocean2kHR_142","Ocn-SavusavuBayFiji.Bagnato.2005_Ocean2kHR_142","Ocn-SavusavuBayFiji.Bagnato.2005","Coral","d18O","d18O","permil",-16.82,179.23
+"Asia_145","Asi-MONG021.Jacoby.2010_Asia_145","Asi-MONG021.Jacoby.2010","Wood","ring width","trsgi","unitless",48.35,107.47
+"Ocean2kHR_019","Ocn-RedSea.Felis.2000_Ocean2kHR_019","Ocn-RedSea.Felis.2000","Coral","d18O","d18O","permil",27.85,34.32
+"Asia_003","Asi-AltaiJablonsky.Cook.2000_Asia_003","Asi-AltaiJablonsky.Cook.2000","Wood","ring width","trsgi","unitless",50.87,85.23
+"Asia_131","Asi-ESPERG.PAGES2k.2013_Asia_131","Asi-ESPERG.PAGES2k.2013","Wood","ring width","trsgi","unitless",40.17,72.58
+"NAm_1408","NAm-HornbyCabin.Jacoby.1989_NAm_1408","NAm-HornbyCabin.Jacoby.1989","Wood","ring width","trsgi","unitless",64,-103.9
+"NAm_184","NAm-MinersWell.Wiles.2000_NAm_184","NAm-MinersWell.Wiles.2000","Wood","ring width","trsgi","unitless",60,-141.7
+"Asia_097","Asi-CHIN063.Shao.2013_Asia_097","Asi-CHIN063.Shao.2013","Wood","ring width","trsgi","unitless",36.75,98.22
+"LPD68872399","Ocn-EmeraldBasin.Keigwin.2007_LPD68872399","Ocn-EmeraldBasin.Keigwin.2007","MarineSediment","alkenone","temperature","degC",43.53,-62.48
+"Asia_048","Asi-CHIN006.Sheppard.2013_Asia_048","Asi-CHIN006.Sheppard.2013","Wood","ring width","trsgi","unitless",36.3,98.08
+"Arc_018","Arc-Austfonna.Isaksson.2005_Arc_018","Arc-Austfonna.Isaksson.2005","GlacierIce","d18O","d18O","permil",79.83,24.02
+"NAm_1564","NAm-MedusaBay.Buckley.2003_NAm_1564","NAm-MedusaBay.Buckley.2003","Wood","ring width","trsgi","unitless",56.9,-61.5
+"LPDb9285123","Ant-WAIS-Divide.Severinghaus.2012_LPDb9285123","Ant-WAIS-Divide.Severinghaus.2012","Borehole","borehole","temperature","degC",-79.463,-112.125
+"LPD7abab671","Ant-DSS.DahlJensen.1999_LPD7abab671","Ant-DSS.DahlJensen.1999","Borehole","borehole","temperature","degC",-66.77,112.807
+"Arc_002","Arc-Avam-Taimyr.Briffa.2008_Arc_002","Arc-Avam-Taimyr.Briffa.2008","Wood","ring width","trsgi","unitless",72,101
+"Arc_008","Arc-Yukon.D'Arrigo.2006_Arc_008","Arc-Yukon.D'Arrigo.2006","Wood","ring width","trsgi","unitless",67.9,-140.7
+"NAm_088","NAm-DenaliNationalPark.Schweingruber.1996_NAm_088","NAm-DenaliNationalPark.Schweingruber.1996","Wood","maximum latewood density","MXD",NA,63.7,-149.6
+"NAm_3810","NAm-DarkLake.Gajewski.1988_NAm_3810","NAm-DarkLake.Gajewski.1988","LakeSediment","pollen","temperature","degC",45.3,-91.5
+"NAm_1852","NAm-FrenchGlacier.Colenutt.1995_NAm_1852","NAm-FrenchGlacier.Colenutt.1995","Wood","ring width","trsgi","unitless",50.8,-115.3
+"Arc_150","Arc-Forfjorddalen.McCarroll.2013_Arc_150","Arc-Forfjorddalen.McCarroll.2013","Wood","maximum latewood density","MXD",NA,68.73,15.73
+"Asia_105","Asi-INDI025.Borgaonkar.2013_Asia_105","Asi-INDI025.Borgaonkar.2013","Wood","ring width","trsgi","unitless",10.18,76.87
+"Asia_158","Asi-MONG014.Jacoby.2013_Asia_158","Asi-MONG014.Jacoby.2013","Wood","ring width","trsgi","unitless",47.43,100.42
+"Asia_125","Asi-KYRG007.Esper.2007_Asia_125","Asi-KYRG007.Esper.2007","Wood","ring width","trsgi","unitless",40.17,72.58
+"Ocean2kHR_194","Ocn-CoralSea.Calvo.2007_Ocean2kHR_194","Ocn-CoralSea.Calvo.2007","Coral","Sr/Ca","Sr/Ca","mmol/mol",-17.73,148.43
+"Ocean2kHR_193","Ocn-CoralSea.Calvo.2007_Ocean2kHR_193","Ocn-CoralSea.Calvo.2007","Coral","d18O","d18O","permil",-17.73,148.43
+"Eur_026","Eur-Tallinn.Tarand.2001_Eur_026","Eur-Tallinn.Tarand.2001","Documents","historical","temperature","degC",59.4,24.75
+"LPD7e8e8eaa","Ocn-MD98-2160.Newton.2010_LPD7e8e8eaa","Ocn-MD98-2160.Newton.2010","MarineSediment","Mg/Ca","temperature","degC",-5.2012,117.4867
+"Asia_098","Asi-CHIN064.Shao.2013_Asia_098","Asi-CHIN064.Shao.2013","Wood","ring width","trsgi","unitless",36.68,98.42
+"Ocean2kHR_023","Ocn-HoutmanAbrolhos.Kuhnert.1999_Ocean2kHR_023","Ocn-HoutmanAbrolhos.Kuhnert.1999","Coral","d18O","d18O","permil",-28.47,113.77
+"Ocean2kHR_133","Ocn-Vanuatu.Quinn.1996_Ocean2kHR_133","Ocn-Vanuatu.Quinn.1996","Coral","d18O","d18O","permil",-15,166.99
+"LPD995c6f3c","Ocn-WestSpitzberg.Bonnet.2010_LPD995c6f3c","Ocn-WestSpitzberg.Bonnet.2010","MarineSediment","dinocyst","temperature","degC",78.96,5.885
+"Asia_015","Asi-UULLWD.Schweingruber.2002_Asia_015","Asi-UULLWD.Schweingruber.2002","Wood","ring width","trsgi","unitless",50.48,87.65
+"O2kLR_074","Ocn-EmeraldBasin.Keigwin.2003_O2kLR_074","Ocn-EmeraldBasin.Keigwin.2003","MarineSediment","alkenone","temperature","degC",45.89,-62.8
+"SAm_0243","SAm-LagunaAculeo.vonGunten.2009_SAm_0243","SAm-LagunaAculeo.vonGunten.2009","LakeSediment","reflectance","temperature","degC",-33.85,-70.92
+"Asia_224","Asi-CHIN048.Brauning.2013_Asia_224","Asi-CHIN048.Brauning.2013","Wood","ring width","trsgi","unitless",30.3,91.52
+"NAm_868","NAm-BorealPlateau.Graumlich.2005_NAm_868","NAm-BorealPlateau.Graumlich.2005","Wood","ring width","trsgi","unitless",36.3,-118.3
+"Ocean2kHR_183","Ocn-PalauUlongChannel.Osborne.2014_Ocean2kHR_183","Ocn-PalauUlongChannel.Osborne.2014","Coral","d18O","d18O","permil",7.2859,134.2503
+"NAm_3804","NAm-ClearPond.Gajewski.1988_NAm_3804","NAm-ClearPond.Gajewski.1988","LakeSediment","pollen","temperature","degC",33.8,-79
+"Asia_011","Asi-UULTRW.Schweingruber.2002_Asia_011","Asi-UULTRW.Schweingruber.2002","Wood","ring width","trsgi","unitless",50.48,87.65
+"Arc_027","Arc-NGTB18.Schwager.1998_Arc_027","Arc-NGTB18.Schwager.1998","GlacierIce","d18O","d18O","permil",76.62,-36.4
+"LPD57d40973","Ocn-FiskBasin.Richey.2009_LPD57d40973","Ocn-FiskBasin.Richey.2009","MarineSediment","Mg/Ca","temperature","degC",27.55,-93.93
+"Arc_034","Arc-Dye.Vinther.2010_Arc_034","Arc-Dye.Vinther.2010","GlacierIce","d18O","d18O","permil",65.18,-43.83
+"Asia_094","Asi-CHIN060.Shao.2013_Asia_094","Asi-CHIN060.Shao.2013","Wood","ring width","trsgi","unitless",37.32,98.4
+"NAm_808","NAm-FishCreekTrail.Biondi.2001_NAm_808","NAm-FishCreekTrail.Biondi.2001","Wood","ring width","trsgi","unitless",34.1,-116.8
+"Asia_151","Asi-MONG026.Jacoby.2010_Asia_151","Asi-MONG026.Jacoby.2010","Wood","ring width","trsgi","unitless",46.82,100.12
+"Ocean2kHR_166","Ocn-DoubleReef.Asami.2005_Ocean2kHR_166","Ocn-DoubleReef.Asami.2005","Coral","d18O","d18O","permil",13.5982,144.8359
+"Asia_107","Asi-INDI024.Borgaonkar.2013_Asia_107","Asi-INDI024.Borgaonkar.2013","Wood","ring width","trsgi","unitless",31.37,78.17
+"Asia_044","Asi-GOUQIN.PAGES2k.2013_Asia_044","Asi-GOUQIN.PAGES2k.2013","Wood","ring width","trsgi","unitless",34.73,100.8
+"Asia_093","Asi-CHIN059.Shao.2013_Asia_093","Asi-CHIN059.Shao.2013","Wood","ring width","trsgi","unitless",33.8,96.13
+"Asia_134","Asi-KAZ001.Solomina.2010_Asia_134","Asi-KAZ001.Solomina.2010","Wood","ring width","trsgi","unitless",43.35,77.35
+"Eur_024","Eur-CentralandEasternPyrenees.Pla.2004_Eur_024","Eur-CentralandEasternPyrenees.Pla.2004","LakeSediment","chrysophyte assemblage","temperature","degC",42.5,0.75
+"NAm_2056","NAm-SunshineMeadows.Colenutt.1995_NAm_2056","NAm-SunshineMeadows.Colenutt.1995","Wood","maximum latewood density","MXD",NA,51.1,-115.8
+"Ant_033","Ant-MES.Rhodes.2012_Ant_033","Ant-MES.Rhodes.2012","GlacierIce","dD","d2H","permil",-77.515,167.6765
+"Asia_024","Asi-UKHMXD.Schweingruber.2002_Asia_024","Asi-UKHMXD.Schweingruber.2002","Wood","ring width","trsgi","unitless",50.15,85.37
+"Ocean2kHR_026","Ocn-HoutmanAbrolhosHAB10A.Zinke.2014_Ocean2kHR_026","Ocn-HoutmanAbrolhosHAB10A.Zinke.2014","Coral","d18O","d18O","permil",-28.4589,113.749
+"Ocean2kHR_027","Ocn-HoutmanAbrolhosHAB10A.Zinke.2014_Ocean2kHR_027","Ocn-HoutmanAbrolhosHAB10A.Zinke.2014","Coral","Sr/Ca","Sr/Ca","mmol/mol",-28.4589,113.749
+"NAm_3376","NAm-ScatterLake.Graumlich.2003_NAm_3376","NAm-ScatterLake.Graumlich.2003","Wood","ring width","trsgi","unitless",48.3,-120.3
+"Asia_168","Asi-NEPA010.Krusic.2013_Asia_168","Asi-NEPA010.Krusic.2013","Wood","ring width","trsgi","unitless",27.7,86.45
+"Asia_230","Asi-SourthAndMiddleUrals.Demezhko.2007_Asia_230","Asi-SourthAndMiddleUrals.Demezhko.2007","Borehole","borehole","temperature","degC",55,59.5
+"Arc_044","Arc-PennyIceCapP96.Fisher.1998_Arc_044","Arc-PennyIceCapP96.Fisher.1998","GlacierIce","d18O","d18O","permil",67.25,-66.75
+"Asia_029","Asi-BHUTTD.PAGES2k.2013_Asia_029","Asi-BHUTTD.PAGES2k.2013","Wood","ring width","trsgi","unitless",27.67,90.72
+"Asia_213","Asi-PAKI039.Cook.2013_Asia_213","Asi-PAKI039.Cook.2013","Wood","ring width","trsgi","unitless",35,70.78
+"Asia_154","Asi-MONG029.Jacoby.2010_Asia_154","Asi-MONG029.Jacoby.2010","Wood","ring width","trsgi","unitless",49.87,91.43
+"NAm_2812","NAm-FlintCreekRange.Hughes.2005_NAm_2812","NAm-FlintCreekRange.Hughes.2005","Wood","ring width","trsgi","unitless",46.3,-113.2
+"Asia_138","Asi-KYRG015.Solomina.2013_Asia_138","Asi-KYRG015.Solomina.2013","Wood","ring width","trsgi","unitless",42.15,79.45
+"NAm_2260","NAm-SignalMountain.Luckman.2001_NAm_2260","NAm-SignalMountain.Luckman.2001","Wood","ring width","trsgi","unitless",52.9,-118
+"Ant_014","Ant-Ferrigno.Thomas.2013_Ant_014","Ant-Ferrigno.Thomas.2013","GlacierIce","dD","d2H","permil",-74.57,-86.9
+"Arc_059","Arc-Tjeggelvas.Bjorklund.2012_Arc_059","Arc-Tjeggelvas.Bjorklund.2012","Wood","maximum latewood density","density",NA,66.6,17.6
+"Asia_021","Asi-UKHEWD.Schweingruber.2002_Asia_021","Asi-UKHEWD.Schweingruber.2002","Wood","ring width","trsgi","unitless",50.15,85.37
+"Eur_022","Eur-CentralEurope.Dobrovolny.2009_Eur_022","Eur-CentralEurope.Dobrovolny.2009","Documents","historical","temperature","degC",49,13
+"Arc_016","Arc-Indigirka.Hughes.1999_Arc_016","Arc-Indigirka.Hughes.1999","Wood","ring width","trsgi","unitless",69.5,147
+"Asia_042","Asi-WXIYUN.Wright.2010_Asia_042","Asi-WXIYUN.Wright.2010","Wood","ring width","trsgi","unitless",27.33,99.3
+"NAm_3400","NAm-wa071.Peterson.1994_NAm_3400","NAm-wa071.Peterson.1994","Wood","ring width","trsgi","unitless",48.7,-120.7
+"LPD0e0867fe","Ocn-AlboranSea436B.Nieto-Moreno.2013_LPD0e0867fe","Ocn-AlboranSea436B.Nieto-Moreno.2013","MarineSediment","alkenone","temperature","degC",36.2053,-4.3133
+"O2kLR_187","Ocn-ChileanMargin.Lamy.2002_O2kLR_187","Ocn-ChileanMargin.Lamy.2002","MarineSediment","alkenone","temperature","degC",-41,-74.45
+"Ant_037","Ant-US-ITASE-2000-1.Steig.2013_Ant_037","Ant-US-ITASE-2000-1.Steig.2013","GlacierIce","d18O","d18O","permil",-79.3838,-111.24
+"Asia_152","Asi-MONG002.Jacoby.2013_Asia_152","Asi-MONG002.Jacoby.2013","Wood","ring width","trsgi","unitless",47.77,107
+"Asia_036","Asi-BT011.Cook.2010_Asia_036","Asi-BT011.Cook.2010","Wood","ring width","trsgi","unitless",27.45,90.15
+"NAm_3280","NAm-VicaryMine.Sauchyn.2016_NAm_3280","NAm-VicaryMine.Sauchyn.2016","Wood","ring width","trsgi","unitless",49.8,-114.5
+"Asia_030","Asi-BT006.Cook.2010_Asia_030","Asi-BT006.Cook.2010","Wood","ring width","trsgi","unitless",27.63,90.13
+"NAm_3772","NAm-FirthRiver.Anchukaitis.2013_NAm_3772","NAm-FirthRiver.Anchukaitis.2013","Wood","maximum latewood density","MXD",NA,68.7,-141.6
+"Ocean2kHR_099","Ocn-TurrumoteReefPuertoRico.Kilbourne.2008_Ocean2kHR_099","Ocn-TurrumoteReefPuertoRico.Kilbourne.2008","Coral","d18O","d18O","permil",17.93,-67
+"Ocean2kHR_100","Ocn-TurrumoteReefPuertoRico.Kilbourne.2008_Ocean2kHR_100","Ocn-TurrumoteReefPuertoRico.Kilbourne.2008","Coral","Sr/Ca","Sr/Ca","mmol/mol",17.93,-67
+"Asia_184","Asi-PAKI017.Cook.2013_Asia_184","Asi-PAKI017.Cook.2013","Wood","ring width","trsgi","unitless",35.33,74.8
+"Eur_015","Eur-TatraMountains.Buentgen.2013_Eur_015","Eur-TatraMountains.Buentgen.2013","Wood","ring width","trsgi","unitless",49,20
+"NAm_1012","NAm-LacRomanel.Schweingruber.1996_NAm_1012","NAm-LacRomanel.Schweingruber.1996","Wood","ring width","trsgi","unitless",56.2,-67.7
+"NAm_1024","NAm-LacRomanel.Schweingruber.1996_NAm_1024","NAm-LacRomanel.Schweingruber.1996","Wood","maximum latewood density","MXD",NA,56.2,-67.7
+"NAm_2152","NAm-GeraldineLakes.Luckman.2001_NAm_2152","NAm-GeraldineLakes.Luckman.2001","Wood","ring width","trsgi","unitless",52.6,-117.9
+"Asia_317","Asi-EastChina.Wang.1990_Asia_317","Asi-EastChina.Wang.1990","Documents","historical","temperature","unitless",30,117.5
+"Asia_073","Asi-WEXYUN.Wright.2010_Asia_073","Asi-WEXYUN.Wright.2010","Wood","ring width","trsgi","unitless",27.33,99.3
+"Eur_001","Eur-SpannagelCave.Mangini.2005_Eur_001","Eur-SpannagelCave.Mangini.2005","Speleothem","d18O","d18O","permil",47.1,11.6
+"NAm_3676","NAm-GranitePassHuntMountain.Briffa.1996_NAm_3676","NAm-GranitePassHuntMountain.Briffa.1996","Wood","maximum latewood density","MXD",NA,44.8,-107.9
+"Asia_026","Asi-BT002.Cook.2010_Asia_026","Asi-BT002.Cook.2010","Wood","ring width","trsgi","unitless",27.67,90.73
+"Asia_118","Asi-JAPA017.Yasue.2013_Asia_118","Asi-JAPA017.Yasue.2013","Wood","ring width","trsgi","unitless",30.37,130.53
+"NAm_1972","NAm-RockGlacierYukon.Kenigsberg.2013_NAm_1972","NAm-RockGlacierYukon.Kenigsberg.2013","Wood","ring width","trsgi","unitless",61.4,-128.4
+"NAm_2164","NAm-HighwoodPass.Luckman.2001_NAm_2164","NAm-HighwoodPass.Luckman.2001","Wood","ring width","trsgi","unitless",50.6,-115
+"NAm_1660","NAm-BigWhite2.Wilson.2005_NAm_1660","NAm-BigWhite2.Wilson.2005","Wood","ring width","trsgi","unitless",49.7,-118.9
+"NAm_1672","NAm-BigWhite2.Wilson.2005_NAm_1672","NAm-BigWhite2.Wilson.2005","Wood","maximum latewood density","MXD",NA,49.7,-118.9
+"Asia_305","Asi-Puruogangri.Thompson.2006_Asia_305","Asi-Puruogangri.Thompson.2006","GlacierIce","d18O","d18O","permil",33.9167,89.0833
+"Asia_156","Asi-MONG030.Jacoby.2010_Asia_156","Asi-MONG030.Jacoby.2010","Wood","ring width","trsgi","unitless",49.38,94.88
+"Eur_019","Eur-MaritimeFrenchAlps.Buentgen.2012_Eur_019","Eur-MaritimeFrenchAlps.Buentgen.2012","Wood","ring width","trsgi","unitless",44,7.5
+"Asia_136","Asi-KYRG013.Solomina.2013_Asia_136","Asi-KYRG013.Solomina.2013","Wood","ring width","trsgi","unitless",42.15,79.47
+"LPDa03ec713","Ocn-CH07-98-MC-22.Saenger.2011_LPDa03ec713","Ocn-CH07-98-MC-22.Saenger.2011","MarineSediment","Mg/Ca","temperature","degC",32.784,-76.276
+"Asia_018","Asi-UKHTRW.Schweingruber.2002_Asia_018","Asi-UKHTRW.Schweingruber.2002","Wood","ring width","trsgi","unitless",50.15,85.37
+"Aus_015","Aus-CTPEastTasmania.Allen.2001_Aus_015","Aus-CTPEastTasmania.Allen.2001","Wood","ring width","trsgi","unitless",-41.31,147.75
+"Ocean2kHR_173","Ocn-UrvinaBay.Dunbar.1994_Ocean2kHR_173","Ocn-UrvinaBay.Dunbar.1994","Coral","d18O","d18O","permil",-0.4,-91.23
+"Asia_190","Asi-PAKI020.Cook.2013_Asia_190","Asi-PAKI020.Cook.2013","Wood","ring width","trsgi","unitless",35.68,71.63
+"Asia_017","Asi-UULMXD.Schweingruber.2002_Asia_017","Asi-UULMXD.Schweingruber.2002","Wood","ring width","trsgi","unitless",50.48,87.65
+"NAm_3816","NAm-RubyLake.Gajewski.1988_NAm_3816","NAm-RubyLake.Gajewski.1988","LakeSediment","pollen","temperature","degC",45.3,-91.5
+"Asia_121","Asi-KYRG002.Esper.2007_Asia_121","Asi-KYRG002.Esper.2007","Wood","ring width","trsgi","unitless",40.17,72.58
+"Asia_148","Asi-MONG015.Jacoby.2013_Asia_148","Asi-MONG015.Jacoby.2013","Wood","ring width","trsgi","unitless",48.17,99.87
+"Asia_031","Asi-BT008.Cook.2010_Asia_031","Asi-BT008.Cook.2010","Wood","ring width","trsgi","unitless",27.58,90.65
+"NAm_3244","NAm-CeaderBreaks.Briffa.1996_NAm_3244","NAm-CeaderBreaks.Briffa.1996","Wood","maximum latewood density","MXD",NA,37.6,-113.9
+"Asia_083","Asi-CHIN041.Fan.2013_Asia_083","Asi-CHIN041.Fan.2013","Wood","ring width","trsgi","unitless",27.88,98.4
+"Ocean2kHR_001","Ocn-Malindi.Cole.2000_Ocean2kHR_001","Ocn-Malindi.Cole.2000","Coral","d18O","d18O","permil",-3.2,40.1
+"Asia_129","Asi-KYRG011.Shiyatov.2013_Asia_129","Asi-KYRG011.Shiyatov.2013","Wood","ring width","trsgi","unitless",39.83,71.5
+"Asia_064","Asi-CHIN029.Krusic.2010_Asia_064","Asi-CHIN029.Krusic.2010","Wood","ring width","trsgi","unitless",43.85,93.3
+"LPD47182517","Ocn-FeniDrift.Richter.2009_LPD47182517","Ocn-FeniDrift.Richter.2009","MarineSediment","Mg/Ca","temperature","degC",55.5,-13.9
+"Asia_194","Asi-PAKI024.Cook.2013_Asia_194","Asi-PAKI024.Cook.2013","Wood","ring width","trsgi","unitless",35.03,74.58
+"O2kLR_007","Ocn-WesternSvalbard.Spielhagen.2011_O2kLR_007","Ocn-WesternSvalbard.Spielhagen.2011","MarineSediment","foraminifera","temperature","degC",78.91,6.77
+"Asia_113","Asi-JAPA015.Yasue.2013_Asia_113","Asi-JAPA015.Yasue.2013","Wood","ring width","trsgi","unitless",43.22,145.47
+"NAm_052","NAm-SiberianOutpostView.Bunn.2010_NAm_052","NAm-SiberianOutpostView.Bunn.2010","Wood","ring width","trsgi","unitless",36.5,-118.3
+"Asia_207","Asi-PAKI033.Cook.2013_Asia_207","Asi-PAKI033.Cook.2013","Wood","ring width","trsgi","unitless",35.5,74.75
+"NAm_1384","NAm-BigWhite.Parish.2000_NAm_1384","NAm-BigWhite.Parish.2000","Wood","ring width","trsgi","unitless",49.9,-118.9
+"Ocean2kHR_167","Ocn-AbrahamReef.Druffel.1999_Ocean2kHR_167","Ocn-AbrahamReef.Druffel.1999","Coral","d18O","d18O","permil",-22.1,153
+"Aus_062","Aus-PinkPine.Duncan.2010_Aus_062","Aus-PinkPine.Duncan.2010","Wood","ring width","trsgi","unitless",-43,171
+"Ant_017","Ant-CoastalDML.Thamban.2012_Ant_017","Ant-CoastalDML.Thamban.2012","GlacierIce","d18O","d18O","permil",-70.86,11.54
+"NAm_004","NAm-CarltonRidge.Kipfmuller.2008_NAm_004","NAm-CarltonRidge.Kipfmuller.2008","Wood","ring width","trsgi","unitless",46.7,-114.2
+"Ocean2kHR_116","Ocn-FloridaBay.Swart.1996_Ocean2kHR_116","Ocn-FloridaBay.Swart.1996","Coral","d18O","d18O","permil",24.93,-80.75
+"NAm_3851","NAm-LakeoftheClouds.Gajewski.1988_NAm_3851","NAm-LakeoftheClouds.Gajewski.1988","LakeSediment","pollen","temperature","degC",48,-91
+"Asia_140","Asi-MONG027.Jacoby.2010_Asia_140","Asi-MONG027.Jacoby.2010","Wood","ring width","trsgi","unitless",46.32,101.32
+"Asia_022","Asi-UKHLWD.Schweingruber.2002_Asia_022","Asi-UKHLWD.Schweingruber.2002","Wood","ring width","trsgi","unitless",50.15,85.37
+"NAm_3100","NAm-CraterLakeNE.Briffa.2002_NAm_3100","NAm-CraterLakeNE.Briffa.2002","Wood","maximum latewood density","MXD",NA,43,-122.2
+"Ant_009","Ant-DomeF1993.Uemura.2014_Ant_009","Ant-DomeF1993.Uemura.2014","GlacierIce","d18O","d18O","permil",-77.32,39.7
+"NAm_2212","NAm-Nakiska.Luckman.2001_NAm_2212","NAm-Nakiska.Luckman.2001","Wood","ring width","trsgi","unitless",50.9,-115.2
+"LPD30c5b95c","Ocn-MD98-2177.Newton.2010_LPD30c5b95c","Ocn-MD98-2177.Newton.2010","MarineSediment","Mg/Ca","temperature","degC",1.4033,119.078
+"NAm_520","NAm-SnowBowlSanFranciscoPeak.Briffa.2002_NAm_520","NAm-SnowBowlSanFranciscoPeak.Briffa.2002","Wood","maximum latewood density","MXD",NA,35.4,-110.2
+"Ant_027","Ant-VLG.Bertler.2011_Ant_027","Ant-VLG.Bertler.2011","GlacierIce","dD","d2H","permil",-77.3302,162.5332
+"Aus_010","Aus-BuckleysChance.Buckley.1997_Aus_010","Aus-BuckleysChance.Buckley.1997","Wood","ring width","trsgi","unitless",-42.27,145.87
+"NAm_1816","NAm-EagleFecal_PtarmiganMerge.Jacoby.2011_NAm_1816","NAm-EagleFecal_PtarmiganMerge.Jacoby.2011","Wood","maximum latewood density","MXD",NA,69.5,-127.8
+"SAm_032","SAm-LagunaEscondida.Elbert.2013_SAm_032","SAm-LagunaEscondida.Elbert.2013","LakeSediment","BSi","temperature","degC",-45.5167,-71.8167
+"NAm_2776","NAm-YellowMountainRidge.King.2002_NAm_2776","NAm-YellowMountainRidge.King.2002","Wood","ring width","trsgi","unitless",45.3,-111.3
+"Asia_067","Asi-QUMAJP.PAGES2k.2013_Asia_067","Asi-QUMAJP.PAGES2k.2013","Wood","ring width","trsgi","unitless",33.8,96.13
+"Aus_041","Aus-MtRead.Cook.2006_Aus_041","Aus-MtRead.Cook.2006","Wood","ring width","temperature","degC",-41.83,145.53
+"Arc_152","Arc-Jamtland.Wilson.2016_Arc_152","Arc-Jamtland.Wilson.2016","Wood","maximum latewood density","MXD",NA,63.2475,13.3375
+"Asia_072","Asi-PTCYUN.PAGES2k.2013_Asia_072","Asi-PTCYUN.PAGES2k.2013","Wood","ring width","trsgi","unitless",27.37,99.37
+"Asia_126","Asi-KYRG008.Shiyatov.2013_Asia_126","Asi-KYRG008.Shiyatov.2013","Wood","ring width","trsgi","unitless",40.2,72.58
+"Ocean2kHR_094","Ocn-BermudaSouthShore.Goodkin.2008_Ocean2kHR_094","Ocn-BermudaSouthShore.Goodkin.2008","Coral","d18O","d18O","permil",30.6486,-64.9888
+"Ocean2kHR_095","Ocn-BermudaSouthShore.Goodkin.2008_Ocean2kHR_095","Ocn-BermudaSouthShore.Goodkin.2008","Coral","Sr/Ca","Sr/Ca","mmol/mol",30.6486,-64.9888
+"NAm_1468","NAm-Athabasca.Schweingruber.1996_NAm_1468","NAm-Athabasca.Schweingruber.1996","Wood","maximum latewood density","MXD",NA,51.4,-117.3
+"Asia_153","Asi-MONG028.Jacoby.2010_Asia_153","Asi-MONG028.Jacoby.2010","Wood","ring width","trsgi","unitless",48.83,111.68
+"Asia_087","Asi-CHIN053.Shao.2013_Asia_087","Asi-CHIN053.Shao.2013","Wood","ring width","trsgi","unitless",37.43,98.05
+"NAm_3796","NAm-STREC.Gennaretti.2014_NAm_3796","NAm-STREC.Gennaretti.2014","Wood","ring width","temperature","degC",54.21,-71.35
+"Ocean2kHR_007","Ocn-Mafia.Damassa.2006_Ocean2kHR_007","Ocn-Mafia.Damassa.2006","Coral","d18O","d18O","permil",-8.0167,39.5
+"Asia_079","Asi-CHIN037.Fan.2013_Asia_079","Asi-CHIN037.Fan.2013","Wood","ring width","trsgi","unitless",27.58,99.35
+"Asia_124","Asi-KYRG005.Esper.2007_Asia_124","Asi-KYRG005.Esper.2007","Wood","ring width","trsgi","unitless",40.17,72.58
+"LPDbd07f717","Ocn-ODP984.Came.2007_LPDbd07f717","Ocn-ODP984.Came.2007","MarineSediment","Mg/Ca","temperature","degC",61.43,-24.085
+"Asia_014","Asi-UULEWD.Schweingruber.2002_Asia_014","Asi-UULEWD.Schweingruber.2002","Wood","ring width","trsgi","unitless",50.48,87.65
+"NAm_292","NAm-NabesnaMine.Jacoby.2003_NAm_292","NAm-NabesnaMine.Jacoby.2003","Wood","ring width","trsgi","unitless",62.4,-143.1
+"NAm_304","NAm-NabesnaMine.Jacoby.2003_NAm_304","NAm-NabesnaMine.Jacoby.2003","Wood","maximum latewood density","MXD",NA,62.4,-143.1
+"Asia_247","Asi-Guliya.Thompson.1997_Asia_247","Asi-Guliya.Thompson.1997","GlacierIce","d18O","d18O","permil",35.28,81.48
+"Asia_103","Asi-RANGCD.PAGES2k.2013_Asia_103","Asi-RANGCD.PAGES2k.2013","Wood","ring width","trsgi","unitless",33.08,76.43
+"Asia_071","Asi-CHIN016.Li.2010_Asia_071","Asi-CHIN016.Li.2010","Wood","ring width","trsgi","unitless",31.78,101.92
+"Eur_009","Eur-RAPiD-17-5P.Moffa-Sanchez.2014_Eur_009","Eur-RAPiD-17-5P.Moffa-Sanchez.2014","MarineSediment","d18O","d18O","permil",61.48,-19.53
+"NAm_2488","NAm-PikePeaks.Harlan.1996_NAm_2488","NAm-PikePeaks.Harlan.1996","Wood","maximum latewood density","MXD",NA,39.3,-105
+"NAm_2476","NAm-PikePeaks.Harlan.1996_NAm_2476","NAm-PikePeaks.Harlan.1996","Wood","ring width","trsgi","unitless",39.3,-105
+"Asia_161","Asi-MONG031.Jacoby.2010_Asia_161","Asi-MONG031.Jacoby.2010","Wood","ring width","trsgi","unitless",48.25,97.4
+"NAm_1936","NAm-Nadahini.Luckman.2013_NAm_1936","NAm-Nadahini.Luckman.2013","Wood","ring width","trsgi","unitless",59.8,-136.6
+"Asia_321","Asi-Fujian.Wang.1998_Asia_321","Asi-Fujian.Wang.1998","Documents","historical","temperature","unitless",24,121
+"NAm_1204","NAm-SunwaptaPass.Schweingruber.1996_NAm_1204","NAm-SunwaptaPass.Schweingruber.1996","Wood","ring width","trsgi","unitless",52.3,-117
+"NAm_1216","NAm-SunwaptaPass.Schweingruber.1996_NAm_1216","NAm-SunwaptaPass.Schweingruber.1996","Wood","maximum latewood density","MXD",NA,52.3,-117
+"Arc_035","Arc-GRIP.Vinther.2010_Arc_035","Arc-GRIP.Vinther.2010","GlacierIce","d18O","d18O","permil",72.58,-37.64
+"NAm_424","NAm-McGinnisTrail.Wiles.2013_NAm_424","NAm-McGinnisTrail.Wiles.2013","Wood","ring width","trsgi","unitless",58.4,-134.6
+"Eur_002","Eur-LakeSilvaplana.Trachsel.2010_Eur_002","Eur-LakeSilvaplana.Trachsel.2010","LakeSediment","reflectance","temperature","degC",46.5,9.8
+"Asia_091","Asi-CHIN057.Shao.2013_Asia_091","Asi-CHIN057.Shao.2013","Wood","ring width","trsgi","unitless",34.47,110.08
+"Ant_025","Ant-TALDICE.Stenni.2010_Ant_025","Ant-TALDICE.Stenni.2010","GlacierIce","d18O","d18O","permil",-72.82,159.18
+"NAm_2068","NAm-AthabascaGlacier2.Luckman.2005_NAm_2068","NAm-AthabascaGlacier2.Luckman.2005","Wood","ring width","trsgi","unitless",52.2,-117.2
+"NAm_2080","NAm-AthabascaGlacier2.Luckman.2005_NAm_2080","NAm-AthabascaGlacier2.Luckman.2005","Wood","maximum latewood density","MXD",NA,52.2,-117.2
+"NAm_3712","NAm-SheepTrail.Brown.2005_NAm_3712","NAm-SheepTrail.Brown.2005","Wood","ring width","trsgi","unitless",41.4,-106.2
+"NAm_3724","NAm-SheepTrail.Brown.2005_NAm_3724","NAm-SheepTrail.Brown.2005","Wood","maximum latewood density","MXD",NA,41.4,-106.2
+"NAm_2272","NAm-SmallRiver.Luckman.2001_NAm_2272","NAm-SmallRiver.Luckman.2001","Wood","ring width","trsgi","unitless",53.2,-119.5
+"Ocean2kHR_177","Ocn-Maiana.Urban.2000_Ocean2kHR_177","Ocn-Maiana.Urban.2000","Coral","d18O","d18O","permil",1,173
+"LPD9cc3baf6-dup","Ocn-GulfofGuinea.Weldeab.2007_LPD9cc3baf6-dup","Ocn-GulfofGuinea.Weldeab.2007","MarineSediment","Mg/Ca","temperature","degC",2.5,9.38
+"Arc_031","Arc-NGRIP1.Vinther.2006_Arc_031","Arc-NGRIP1.Vinther.2006","GlacierIce","d18O","d18O","permil",75.1,-42.32
+"Ant_008","Ant-SiteDML17.Graf.2002_Ant_008","Ant-SiteDML17.Graf.2002","GlacierIce","d18O","d18O","permil",-75.17,6.5
+"NAm_1924","NAm-BlanchardRiver.Luckman.2013_NAm_1924","NAm-BlanchardRiver.Luckman.2013","Wood","ring width","trsgi","unitless",59.9,-136.8
+"Asia_135","Asi-KYRG012.Solomina.2013_Asia_135","Asi-KYRG012.Solomina.2013","Wood","ring width","trsgi","unitless",42.2,79.05
+"NAm_2800","NAm-BakerLake.Hughes.2005_NAm_2800","NAm-BakerLake.Hughes.2005","Wood","maximum latewood density","MXD",NA,45.9,-114.3
+"NAm_2788","NAm-BakerLake.Hughes.2005_NAm_2788","NAm-BakerLake.Hughes.2005","Wood","ring width","trsgi","unitless",45.9,-114.3
+"NAm_1312","NAm-VancouverCyprusProvincialPark.Briffa.1996_NAm_1312","NAm-VancouverCyprusProvincialPark.Briffa.1996","Wood","maximum latewood density","MXD",NA,49.4,-123.1
+"O2kLR_030","Ocn-LaurentianFan.Keigwin.2005_O2kLR_030","Ocn-LaurentianFan.Keigwin.2005","MarineSediment","alkenone","temperature","degC",43.48,-54.87
+"NAm_1072","NAm-DonJekRiverBridge.Schweingruber.1996_NAm_1072","NAm-DonJekRiverBridge.Schweingruber.1996","Wood","maximum latewood density","MXD",NA,61.7,-139.7
+"Ant_006","Ant-SiteDML07.Graf.2002_Ant_006","Ant-SiteDML07.Graf.2002","GlacierIce","d18O","d18O","permil",-75.58,-3.43
+"Asia_039","Asi-CHIN021.Li.2010_Asia_039","Asi-CHIN021.Li.2010","Wood","ring width","trsgi","unitless",28.98,99.93
+"Arc_073","Arc-HalletLake.McKay.2008_Arc_073","Arc-HalletLake.McKay.2008","LakeSediment","BSi","temperature","degC",61.5,-146.2
+"Asia_084","Asi-CHIN050.Shao.2013_Asia_084","Asi-CHIN050.Shao.2013","Wood","ring width","trsgi","unitless",37.47,97.23
+"Asia_034","Asi-BHUTSP.PAGES2k.2013_Asia_034","Asi-BHUTSP.PAGES2k.2013","Wood","ring width","trsgi","unitless",27.45,90
+"SAm_035","SAm-QuelccayaIceCap.Thompson.2013_SAm_035","SAm-QuelccayaIceCap.Thompson.2013","GlacierIce","d18O","d18O","permil",-13.9333,-70.8333
+"Asia_023","Asi-UKHMND.Schweingruber.2002_Asia_023","Asi-UKHMND.Schweingruber.2002","Wood","ring width","trsgi","unitless",50.15,85.37
+"LPD44b374e7","Ocn-SouthChinaSea.Zhao.2006_LPD44b374e7","Ocn-SouthChinaSea.Zhao.2006","MarineSediment","alkenone","temperature","degC",8.73,109.869
+"O2kLR_082","Ocn-SubTropicalEasternNorthAtlantic.deMenocal.2000_O2kLR_082","Ocn-SubTropicalEasternNorthAtlantic.deMenocal.2000","MarineSediment","foraminifera","temperature","degC",20.75,-18.5833
+"Asia_128","Asi-KYRG010.Shiyatov.2013_Asia_128","Asi-KYRG010.Shiyatov.2013","Wood","ring width","trsgi","unitless",40.17,72.62
+"Asia_328","Asi-Hunan-Jiangsu.Zhang.1980_Asia_328","Asi-Hunan-Jiangsu.Zhang.1980","Documents","historical","temperature","unitless",28,116.5
+"NAm_3184","NAm-TamarackBowl.Sauchyn.2016_NAm_3184","NAm-TamarackBowl.Sauchyn.2016","Wood","ring width","trsgi","unitless",49.3,-114.4
+"Asia_123","Asi-KYRG004.Esper.2007_Asia_123","Asi-KYRG004.Esper.2007","Wood","ring width","trsgi","unitless",40.17,72.58
+"Asia_111","Asi-JAPA020.Kimura.2013_Asia_111","Asi-JAPA020.Kimura.2013","Wood","ring width","trsgi","unitless",30.33,130.5
+"Asia_082","Asi-CHIN040.Fan.2013_Asia_082","Asi-CHIN040.Fan.2013","Wood","ring width","trsgi","unitless",28.03,98.98
+"Asia_132","Asi-SHIESP.PAGES2k.2013_Asia_132","Asi-SHIESP.PAGES2k.2013","Wood","ring width","trsgi","unitless",39.83,71.5
+"Asia_088","Asi-CHIN054.Shao.2013_Asia_088","Asi-CHIN054.Shao.2013","Wood","ring width","trsgi","unitless",37.45,97.78
+"Asia_166","Asi-MONG004.Jacoby.2013_Asia_166","Asi-MONG004.Jacoby.2013","Wood","ring width","trsgi","unitless",47.95,107.45
+"NAm_1648","NAm-ParkMountain.Wilson.2005_NAm_1648","NAm-ParkMountain.Wilson.2005","Wood","maximum latewood density","MXD",NA,50.6,-118.6
+"NAm_1636","NAm-ParkMountain.Wilson.2005_NAm_1636","NAm-ParkMountain.Wilson.2005","Wood","ring width","trsgi","unitless",50.6,-118.6
+"NAm_028","NAm-GreatBasin.Salzer.2013_NAm_028","NAm-GreatBasin.Salzer.2013","Wood","ring width","trsgi","unitless",37,-116.5
+"NAm_796","NAm-SpillwayLakeYosemiteNationalPark.King.2000_NAm_796","NAm-SpillwayLakeYosemiteNationalPark.King.2000","Wood","ring width","trsgi","unitless",37.8,-119.2
+"Asia_172","Asi-NEPA019.Krusic.2013_Asia_172","Asi-NEPA019.Krusic.2013","Wood","ring width","trsgi","unitless",29.47,82.12
+"LPD6315f935","Ocn-JacafFjord.Sepulveda.2009_LPD6315f935","Ocn-JacafFjord.Sepulveda.2009","MarineSediment","alkenone","temperature","degC",-44.33,-72.97
+"Asia_193","Asi-PAKI023.Cook.2013_Asia_193","Asi-PAKI023.Cook.2013","Wood","ring width","trsgi","unitless",35.9,71.73
+"Asia_115","Asi-JAPA014.Yasue.2013_Asia_115","Asi-JAPA014.Yasue.2013","Wood","ring width","trsgi","unitless",43.5,143.2
+"NAm_3436","NAm-MtStHelens.Briffa.1996_NAm_3436","NAm-MtStHelens.Briffa.1996","Wood","maximum latewood density","MXD",NA,46.2,-122.2
+"NAm_2008","NAm-Sugarloaf.Kenigsberg.2013_NAm_2008","NAm-Sugarloaf.Kenigsberg.2013","Wood","ring width","trsgi","unitless",60.1,-134.4
+"Asia_078","Asi-MQACJP.PAGES2k.2013_Asia_078","Asi-MQACJP.PAGES2k.2013","Wood","ring width","trsgi","unitless",35.07,100.35
+"Asia_144","Asi-MONG020.Jacoby.2010_Asia_144","Asi-MONG020.Jacoby.2010","Wood","ring width","trsgi","unitless",48.27,88.87
+"Ant_005","Ant-BerknerIsland.Mulvaney.2002_Ant_005","Ant-BerknerIsland.Mulvaney.2002","GlacierIce","d18O","d18O","permil",-79.57,-45.72
+"Asia_127","Asi-KYRG009.Shiyatov.2013_Asia_127","Asi-KYRG009.Shiyatov.2013","Wood","ring width","trsgi","unitless",39.92,71.47
+"Asia_066","Asi-WULANJ.PAGES2k.2013_Asia_066","Asi-WULANJ.PAGES2k.2013","Wood","ring width","trsgi","unitless",37.03,98.68
+"Asia_214","Asi-PAKI040.Cook.2011_Asia_214","Asi-PAKI040.Cook.2011","Wood","ring width","trsgi","unitless",35.35,71.8
+"Asia_320","Asi-CentralChina.Wang.1998_Asia_320","Asi-CentralChina.Wang.1998","Documents","historical","temperature","unitless",29,113
+"O2kLR_114","Ocn-ArabianSea.Doose-Rolinski.2001_O2kLR_114","Ocn-ArabianSea.Doose-Rolinski.2001","MarineSediment","alkenone","temperature","degC",24.83,65.92
+"Eur_017","Eur-EuropeanAlps.Buentgen.2011_Eur_017","Eur-EuropeanAlps.Buentgen.2011","Wood","ring width","trsgi","unitless",47,10.7
+"Asia_160","Asi-MONG012.Jacoby.2006_Asia_160","Asi-MONG012.Jacoby.2006","Wood","ring width","trsgi","unitless",48.98,103.22
+"NAm_3801","NAm-BasinPond.Gajewski.1988_NAm_3801","NAm-BasinPond.Gajewski.1988","LakeSediment","pollen","temperature","degC",44.5,-70.1
+"LPDdc74a376","Asi-SihailongwaLake.Chu.2011_LPDdc74a376","Asi-SihailongwaLake.Chu.2011","LakeSediment","alkenone","temperature","degC",42.17,126.36
+"Asia_201","Asi-PAKI030.Cook.2013_Asia_201","Asi-PAKI030.Cook.2013","Wood","ring width","trsgi","unitless",35.88,74.18
+"Ocean2kHR_014","Ocn-AqabaJordanAQ18.Heiss.1999_Ocean2kHR_014","Ocn-AqabaJordanAQ18.Heiss.1999","Coral","d18O","d18O","permil",29.42,34.97
+"Arc_021","Arc-Hvitarvatn.Larsen.2011_Arc_021","Arc-Hvitarvatn.Larsen.2011","LakeSediment","varve thickness","thickness","cm",64.6,-19.8
+"Ocean2kHR_118","Ocn-BiscayneBay.Swart.1996_Ocean2kHR_118","Ocn-BiscayneBay.Swart.1996","Coral","d18O","d18O","permil",25.38,-80.17
+"Asia_049","Asi-CHIN005.Sheppard.2013_Asia_049","Asi-CHIN005.Sheppard.2013","Wood","ring width","trsgi","unitless",37,98.08
+"Asia_176","Asi-NEPA032.Krusic.2013_Asia_176","Asi-NEPA032.Krusic.2013","Wood","ring width","trsgi","unitless",27.67,87.2
+"Asia_198","Asi-PAKI027.Cook.2013_Asia_198","Asi-PAKI027.Cook.2013","Wood","ring width","trsgi","unitless",35.35,71.93
+"Arc_151","Arc-PrinceOfWales.Kinnard.2011_Arc_151","Arc-PrinceOfWales.Kinnard.2011","GlacierIce","d18O","d18O","permil",78.4,-80.4
+"Asia_228","Asi-MCCHFH.Sano.2008_Asia_228","Asi-MCCHFH.Sano.2008","Wood","ring width","trsgi","unitless",21.67,104.1
+"NAm_3016","NAm-MountWashington.Graybill.1994_NAm_3016","NAm-MountWashington.Graybill.1994","Wood","ring width","trsgi","unitless",38.5,-114.2
+"NAm_3556","NAm-MountAdamsLow.Peterson.1994_NAm_3556","NAm-MountAdamsLow.Peterson.1994","Wood","ring width","trsgi","unitless",46.2,-121.5
+"NAm_3870","NAm-OregonCaves.Ersek.2012_NAm_3870","NAm-OregonCaves.Ersek.2012","Speleothem","d18O","d18O","permil",42.083,-123.416
+"Asia_035","Asi-BT018.Cook.2010_Asia_035","Asi-BT018.Cook.2010","Wood","ring width","trsgi","unitless",27.95,89.75
+"Ant_013","Ant-DomeC.Jouzel.2001_Ant_013","Ant-DomeC.Jouzel.2001","GlacierIce","dD","d2H","permil",-75.1,123.39
+"LPD335d863f","Aus-DuckholeLake.Saunders.2013_LPD335d863f","Aus-DuckholeLake.Saunders.2013","LakeSediment","reflectance","RABD660670",NA,-43.3646,146.8749
+"Arc_014","Arc-LakeLehmilampi.Haltia-Hovi.2007_Arc_014","Arc-LakeLehmilampi.Haltia-Hovi.2007","LakeSediment","varve thickness","thickness","mm",63.62,29.1
+"Asia_122","Asi-KYRG003.Esper.2007_Asia_122","Asi-KYRG003.Esper.2007","Wood","ring width","trsgi","unitless",40.17,72.58
+"Arc_039","Arc-MooseLake.Clegg.2010_Arc_039","Arc-MooseLake.Clegg.2010","LakeSediment","chironomid","temperature","degC",61.35,-143.6
+"Arc_012mxd","Arc-Tornetrask.Melvin.2012_Arc_012mxd","Arc-Tornetrask.Melvin.2012","Wood","maximum latewood density","temperature","degC",68.26,19.6
+"Asia_052","Asi-MQBXJP.PAGES2k.2013_Asia_052","Asi-MQBXJP.PAGES2k.2013","Wood","ring width","trsgi","unitless",34.78,99.78
+"Asia_089","Asi-CHIN055.Shao.2013_Asia_089","Asi-CHIN055.Shao.2013","Wood","ring width","trsgi","unitless",37.52,97.05
+"Asia_060","Asi-HBHXJP.PAGES2k.2013_Asia_060","Asi-HBHXJP.PAGES2k.2013","Wood","ring width","trsgi","unitless",34.78,100.82
+"NAm_1996","NAm-SnakeCreek.Kenigsberg.2013_NAm_1996","NAm-SnakeCreek.Kenigsberg.2013","Wood","ring width","trsgi","unitless",59.6,-133.4
+"NAm_2704","NAm-ElephantMountain.Conkey.1994_NAm_2704","NAm-ElephantMountain.Conkey.1994","Wood","maximum latewood density","MXD",NA,44.8,-70.8
+"Asia_221","Asi-CHIN046.Brauning.2013_Asia_221","Asi-CHIN046.Brauning.2013","Wood","ring width","trsgi","unitless",31.12,97.03
+"O2kLR_150","Ocn-GreatBarrierReef.Hendy.2002_O2kLR_150","Ocn-GreatBarrierReef.Hendy.2002","Coral","Sr/Ca","temperature","degC",-18.315,146.595
+"NAm_616","NAm-FlowerLake.Graybill.1995_NAm_616","NAm-FlowerLake.Graybill.1995","Wood","ring width","trsgi","unitless",36.5,-118.2
+"NAm_2836","NAm-PintlersTwo.Littell.2011_NAm_2836","NAm-PintlersTwo.Littell.2011","Wood","ring width","trsgi","unitless",46,-113.4
+"NAm_1600","NAm-Ymir.Wilson.2005_NAm_1600","NAm-Ymir.Wilson.2005","Wood","ring width","trsgi","unitless",49.4,-117.2
+"NAm_256","NAm-BurntOver.D'Arrigo.2005_NAm_256","NAm-BurntOver.D'Arrigo.2005","Wood","ring width","trsgi","unitless",65.2,-162.3
+"Asia_181","Asi-NEPA042.Krusic.2010_Asia_181","Asi-NEPA042.Krusic.2010","Wood","ring width","trsgi","unitless",27.83,88.02
+"O2kLR_112","Ocn-CapeGhir.Doose-Rolinski.2007_O2kLR_112","Ocn-CapeGhir.Doose-Rolinski.2007","MarineSediment","alkenone","temperature","degC",30.85,-10.2685
+"Asia_065","Asi-TIANMU.PAGES2k.2013_Asia_065","Asi-TIANMU.PAGES2k.2013","Wood","ring width","trsgi","unitless",30.33,119.43
+"Asia_229","Asi-VIET001.Buckley.2010_Asia_229","Asi-VIET001.Buckley.2010","Wood","ring width","trsgi","unitless",12.22,108.73
+"Asia_133","Asi-RUSS236.Sano.2009_Asia_133","Asi-RUSS236.Sano.2009","Wood","ring width","trsgi","unitless",55,160.5
+"Arc_042","Arc-BrayaSoe.D'Andrea.2011_Arc_042","Arc-BrayaSoe.D'Andrea.2011","LakeSediment","alkenone","temperature","degC",67,-50.7
+"NAm_016","NAm-FremontGlacier.Hill.0_NAm_016","NAm-FremontGlacier.Hill.0","Wood","ring width","trsgi","unitless",43,-109.6
+"Ant_024","Ant-SipleStation.Mosley-Thompson.1990_Ant_024","Ant-SipleStation.Mosley-Thompson.1990","GlacierIce","d18O","d18O","permil",-75.92,-84.25
+"LPD572f7cc3","Ocn-PigmyBasin.Richey.2015_LPD572f7cc3","Ocn-PigmyBasin.Richey.2015","MarineSediment","Mg/Ca","temperature","degC",27.2,-91.42
+"Asia_142","Asi-MONG018.Jacoby.2010_Asia_142","Asi-MONG018.Jacoby.2010","Wood","ring width","trsgi","unitless",49.97,90.98
+"Ocean2kHR_149","Ocn-RarotongaSrCa2r.Linsley.2006_Ocean2kHR_149","Ocn-RarotongaSrCa2r.Linsley.2006","Coral","Sr/Ca","Sr/Ca","mmol/mol",-21.2378,-159.8278
+"O2kLR_105","Ocn-MD95-2011.Grimalt.2002_O2kLR_105","Ocn-MD95-2011.Grimalt.2002","MarineSediment","alkenone","temperature","degC",66.97,7.63
+"Asia_009","Asi-AltaiUstUlaganLake.Cook.2005_Asia_009","Asi-AltaiUstUlaganLake.Cook.2005","Wood","ring width","trsgi","unitless",50.48,87.67
+"Asia_055","Asi-MQRXJP.PAGES2k.2013_Asia_055","Asi-MQRXJP.PAGES2k.2013","Wood","ring width","trsgi","unitless",34.75,99.68
+"Asia_150","Asi-MONG025.Jacoby.2010_Asia_150","Asi-MONG025.Jacoby.2010","Wood","ring width","trsgi","unitless",48.7,88.8
+"Ocean2kHR_020","Ocn-Ifaty4.Zinke.2004_Ocean2kHR_020","Ocn-Ifaty4.Zinke.2004","Coral","d18O","d18O","permil",-23.15,43.58
+"Asia_001","Asi-AltaiAktru.Cook.2005_Asia_001","Asi-AltaiAktru.Cook.2005","Wood","ring width","trsgi","unitless",50.08,87.77
+"Asia_013","Asi-UULLWW.Schweingruber.2002_Asia_013","Asi-UULLWW.Schweingruber.2002","Wood","ring width","trsgi","unitless",50.48,87.65
+"Asia_188","Asi-PAKI003.Esper.2007_Asia_188","Asi-PAKI003.Esper.2007","Wood","ring width","trsgi","unitless",36.03,74.58
+"Asia_212","Asi-PAKI016.Esper.2007_Asia_212","Asi-PAKI016.Esper.2007","Wood","ring width","trsgi","unitless",35.17,75.5
+"Ocean2kHR_125","Ocn-Bermuda.DraschbaB.2000_Ocean2kHR_125","Ocn-Bermuda.DraschbaB.2000","Coral","d18O","d18O","permil",30.0867,-64.5417
+"NAm_880","NAm-UpperWrightLakes.Graumlich.2005_NAm_880","NAm-UpperWrightLakes.Graumlich.2005","Wood","ring width","trsgi","unitless",36.4,-118.2
+"Asia_085","Asi-CHIN051.Shao.2013_Asia_085","Asi-CHIN051.Shao.2013","Wood","ring width","trsgi","unitless",37.47,97.22
+"Malawi05","Afr-LakeMalawi.Powers.2011_Malawi05","Afr-LakeMalawi.Powers.2011","LakeSediment","TEX86","temperature","degC",-10.0033,34.2883
+"Ocean2kHR_122","Ocn-GulfofMaine.Wanamaker.2007_Ocean2kHR_122","Ocn-GulfofMaine.Wanamaker.2007","MarineSediment","d18O","d18O","permil",43.6561,-69.8017
+"LPD10e9f8f7","Ocn-MinorcaContourite.Moreno.2012_LPD10e9f8f7","Ocn-MinorcaContourite.Moreno.2012","MarineSediment","alkenone","temperature","degC",40.5,4.03
+"Arc_026","Arc-NGTB16.Schwager.1998_Arc_026","Arc-NGTB16.Schwager.1998","GlacierIce","d18O","d18O","permil",73.94,-37.63
+"Asia_069","Asi-ZHANGX.PAGES2k.2010_Asia_069","Asi-ZHANGX.PAGES2k.2010","Wood","ring width","trsgi","unitless",34.63,104.47
+"Africa_004","Afr-LakeTanganyika.Tierney.2010_Africa_004","Afr-LakeTanganyika.Tierney.2010","LakeSediment","TEX86","temperature","degC",-6.03,28.53
+"Ocean2kHR_134","Ocn-AmedeeIsland.DeLong.2012_Ocean2kHR_134","Ocn-AmedeeIsland.DeLong.2012","Coral","Sr/Ca","Sr/Ca","mmol/mol",-22.475,166.4667
+"NAm_436","NAm-SouthernAlaskacomposite.D'Arrigo.2006_NAm_436","NAm-SouthernAlaskacomposite.D'Arrigo.2006","Wood","ring width","trsgi","unitless",56,-132
+"NAm_1240","NAm-PeytoLake.Schweingruber.1996_NAm_1240","NAm-PeytoLake.Schweingruber.1996","Wood","maximum latewood density","MXD",NA,51.8,-116.2
+"Asia_215","Asi-HRPCSM.PAGES2k.2013_Asia_215","Asi-HRPCSM.PAGES2k.2013","Wood","ring width","trsgi","unitless",35.88,74.88
+"NAm_3853","NAm-LacNoir.Paquette.2013_NAm_3853","NAm-LacNoir.Paquette.2013","LakeSediment","pollen","temperature","degC",45.8,-75.1
+"Asia_146","Asi-MONG033.Jacoby.2010_Asia_146","Asi-MONG033.Jacoby.2010","Wood","ring width","trsgi","unitless",49.37,94.88
+"Asia_182","Asi-ENEPAB.PAGES2k.2013_Asia_182","Asi-ENEPAB.PAGES2k.2013","Wood","ring width","trsgi","unitless",27.73,87.2
+"Eur_016","Eur-EasternCarpathianMountains.Popa.2008_Eur_016","Eur-EasternCarpathianMountains.Popa.2008","Wood","ring width","trsgi","unitless",47,25.3
+"Asia_220","Asi-CHIN043.Brauning.2013_Asia_220","Asi-CHIN043.Brauning.2013","Wood","ring width","trsgi","unitless",29.3,91.97
+"Arc_099","Arc-WindyDome.Henderson.2011_Arc_099","Arc-WindyDome.Henderson.2011","GlacierIce","ice melt","iceMelt","percent",80.783,65.63
+"Arc_099d18O","Arc-WindyDome.Henderson.2011_Arc_099d18O","Arc-WindyDome.Henderson.2011","GlacierIce","d18O","d18O","permil",80.783,65.63
+"Asia_327","Asi-ZhejiangAndFujian.Zhang.1980_Asia_327","Asi-ZhejiangAndFujian.Zhang.1980","Documents","historical","temperature","unitless",25,118
+"NAm_244","NAm-AlmondButterUpper.D'Arrigo.2005_NAm_244","NAm-AlmondButterUpper.D'Arrigo.2005","Wood","ring width","trsgi","unitless",65.2,-162.2
+"NAm_3760","NAm-NorthernAlaskaComposite.D'Arrigo.2006_NAm_3760","NAm-NorthernAlaskaComposite.D'Arrigo.2006","Wood","maximum latewood density","MXD",NA,67,-152
+"NAm_916","NAm-FortChimo.Fritts.1981_NAm_916","NAm-FortChimo.Fritts.1981","Wood","ring width","trsgi","unitless",58.4,-68.4
+"Asia_206","Asi-PAKI031.Cook.2013_Asia_206","Asi-PAKI031.Cook.2013","Wood","ring width","trsgi","unitless",35.5,74.08
+"LPDcda1c277","Ocn-CariacoBasin.Lea.2003_LPDcda1c277","Ocn-CariacoBasin.Lea.2003","MarineSediment","Mg/Ca","temperature","degC",10.7,-64.94
+"Ocean2kHR_123","Ocn-DryTortugas.DeLong.2014_Ocean2kHR_123","Ocn-DryTortugas.DeLong.2014","Coral","Sr/Ca","Sr/Ca","mmol/mol",24.6,-82.3
+"NAm_2500","NAm-CottonwoodPass.Briffa.1996_NAm_2500","NAm-CottonwoodPass.Briffa.1996","Wood","ring width","trsgi","unitless",38.7,-107.6
+"NAm_2512","NAm-CottonwoodPass.Briffa.1996_NAm_2512","NAm-CottonwoodPass.Briffa.1996","Wood","maximum latewood density","MXD",NA,38.7,-107.6
+"Asia_179","Asi-NEPA021.Krusic.2013_Asia_179","Asi-NEPA021.Krusic.2013","Wood","ring width","trsgi","unitless",27.5,88.02
+"Arc_001","Arc-BlueLake.Bird.2008_Arc_001","Arc-BlueLake.Bird.2008","LakeSediment","varve thickness","thickness","cm",68.09,-150.47
+"Ocean2kHR_130","Ocn-GingerbreadsBahamas.Saenger.2009_Ocean2kHR_130","Ocn-GingerbreadsBahamas.Saenger.2009","Coral","calcification rate","calcificationRate","cm/yr",25.84,-78.62
+"Asia_204","Asi-PAKI011.Esper.2007_Asia_204","Asi-PAKI011.Esper.2007","Wood","ring width","trsgi","unitless",36.58,75.08
+"Asia_189","Asi-PAKI004.Esper.2007_Asia_189","Asi-PAKI004.Esper.2007","Wood","ring width","trsgi","unitless",36.03,74.58
+"O2kLR_047","Ocn-SouthIceland.Sicre.2011_O2kLR_047","Ocn-SouthIceland.Sicre.2011","MarineSediment","alkenone","temperature","degC",57.45,-27.91
+"SAm_015","SAm-CentralAndes6.Villalba.2014_SAm_015","SAm-CentralAndes6.Villalba.2014","Wood","ring width","trsgi","unitless",-38.5,-71.5
+"NAm_1432","NAm-Bonif.Schweingruber.1996_NAm_1432","NAm-Bonif.Schweingruber.1996","Wood","ring width","trsgi","unitless",55.3,-77.8
+"NAm_1444","NAm-Bonif.Schweingruber.1996_NAm_1444","NAm-Bonif.Schweingruber.1996","Wood","maximum latewood density","MXD",NA,55.3,-77.8
+"NAm_2392","NAm-Arapahoe.Kienast.1996_NAm_2392","NAm-Arapahoe.Kienast.1996","Wood","maximum latewood density","MXD",NA,40.1,-105.6
+"Asia_326","Asi-GuangdongAndGuangxi.Zhang.1980_Asia_326","Asi-GuangdongAndGuangxi.Zhang.1980","Documents","historical","temperature","unitless",23.5,112.5
+"Asia_225","Asi-CENTIB.PAGES2k.2013_Asia_225","Asi-CENTIB.PAGES2k.2013","Wood","ring width","trsgi","unitless",29.35,92
+"Asia_051","Asi-MQAXJP.PAGES2k.2013_Asia_051","Asi-MQAXJP.PAGES2k.2013","Wood","ring width","trsgi","unitless",35.07,100.35
+"Asia_208","Asi-PAKI035.Cook.2013_Asia_208","Asi-PAKI035.Cook.2013","Wood","ring width","trsgi","unitless",36.15,74.18
+"Asia_141","Asi-MONG017.Jacoby.2010_Asia_141","Asi-MONG017.Jacoby.2010","Wood","ring width","trsgi","unitless",49.97,91
+"Asia_236","Asi-Dasuopu.Thompson.2000_Asia_236","Asi-Dasuopu.Thompson.2000","GlacierIce","d18O","d18O","permil",28.38,85.72
+"Asia_019","Asi-UKHEWW.Schweingruber.2002_Asia_019","Asi-UKHEWW.Schweingruber.2002","Wood","ring width","trsgi","unitless",50.15,85.37
+"Asia_192","Asi-PAKI022.Cook.2013_Asia_192","Asi-PAKI022.Cook.2013","Wood","ring width","trsgi","unitless",35.9,71.73
+"Asia_159","Asi-MONG007.Schweingruber.2013_Asia_159","Asi-MONG007.Schweingruber.2013","Wood","ring width","trsgi","unitless",49.7,91.55
+"Asia_074","Asi-HXBURU.PAGES2k.2013_Asia_074","Asi-HXBURU.PAGES2k.2013","Wood","ring width","trsgi","unitless",43.18,87.18
+"Arc_076","Arc-SoperLake.Hughen.2000_Arc_076","Arc-SoperLake.Hughen.2000","LakeSediment","varve thickness","temperature","degC",62.917,-69.883
+"NAm_628","NAm-TimberGapUpper.Graybill.1995_NAm_628","NAm-TimberGapUpper.Graybill.1995","Wood","ring width","trsgi","unitless",36.3,-118.4
+"LPD53e179ad","Afr-P178-15P.Tierney.2015_LPD53e179ad","Afr-P178-15P.Tierney.2015","MarineSediment","TEX86","temperature","degC",11.955,44.3
+"LPD81e53153","Afr-P178-15P.Tierney.2015_LPD81e53153","Afr-P178-15P.Tierney.2015","MarineSediment","TEX86","temperature","degC",11.955,44.3
+"Asia_218","Asi-CHIN047.Brauning.2013_Asia_218","Asi-CHIN047.Brauning.2013","Wood","ring width","trsgi","unitless",31.12,97.03
+"Asia_203","Asi-PAKI010.Esper.2007_Asia_203","Asi-PAKI010.Esper.2007","Wood","ring width","trsgi","unitless",36.58,75.08
+"Ocean2kHR_011","Ocn-Mahe.Charles.1997_Ocean2kHR_011","Ocn-Mahe.Charles.1997","Coral","d18O","d18O","permil",-4.62,55
+"NAm_280","NAm-WindyRidgeAlaska.D'Arrigo.2005_NAm_280","NAm-WindyRidgeAlaska.D'Arrigo.2005","Wood","ring width","trsgi","unitless",65.2,-162.2
+"Asia_155","Asi-SODAPS.PAGES2k.2013_Asia_155","Asi-SODAPS.PAGES2k.2013","Wood","ring width","trsgi","unitless",48.3,98.93
+"Arc_100","Arc-Yamalia.Briffa.2013_Arc_100","Arc-Yamalia.Briffa.2013","Wood","ring width","temperature","degC",66.8,68
+"Asia_059","Asi-HBMXJP.PAGES2k.2013_Asia_059","Asi-HBMXJP.PAGES2k.2013","Wood","ring width","trsgi","unitless",34.78,100.82
+"Asia_197","Asi-PAKI025.Cook.2013_Asia_197","Asi-PAKI025.Cook.2013","Wood","ring width","trsgi","unitless",35.45,74.78
+"O2kLR_101","Ocn-CapeHatteras.Cleroux.2008_O2kLR_101","Ocn-CapeHatteras.Cleroux.2008","MarineSediment","Mg/Ca","temperature","degC",34.973,-75.201
+"Asia_046","Asi-LAJQIN.PAGES2k.2013_Asia_046","Asi-LAJQIN.PAGES2k.2013","Wood","ring width","trsgi","unitless",34.72,100.72
+"LPD2a3997a7","Ocn-WesternAntarcticPeninsula.Shevenell.2011_LPD2a3997a7","Ocn-WesternAntarcticPeninsula.Shevenell.2011","MarineSediment","TEX86","temperature","degC",-64.87,-64.2
+"Arc_058","Arc-Armarnaes.Bjorklund.2012_Arc_058","Arc-Armarnaes.Bjorklund.2012","Wood","maximum latewood density","density",NA,65.9,16.1
+"NAm_3798","NAm-HellsKitchenLake.Gajewski.1988_NAm_3798","NAm-HellsKitchenLake.Gajewski.1988","LakeSediment","pollen","temperature","degC",46.2,-89.7
+"Asia_162","Asi-MONG006.Jacoby.2006_Asia_162","Asi-MONG006.Jacoby.2006","Wood","ring width","trsgi","unitless",47.78,107.5
+"Asia_032","Asi-BT009.Cook.2010_Asia_032","Asi-BT009.Cook.2010","Wood","ring width","trsgi","unitless",27.42,90.97
+"Asia_185","Asi-PAKI018.Cook.2013_Asia_185","Asi-PAKI018.Cook.2013","Wood","ring width","trsgi","unitless",35.33,74.8
+"Ocean2kHR_190","Ocn-GBR.Wei.2009_Ocean2kHR_190","Ocn-GBR.Wei.2009","Coral","d18O","d18O","permil",-16.7167,146.0333
+"Ocean2kHR_191","Ocn-GBR.Wei.2009_Ocean2kHR_191","Ocn-GBR.Wei.2009","Coral","Sr/Ca","Sr/Ca","mmol/mol",-16.7167,146.0333
+"Asia_226","Asi-TH001.Buckley.2010_Asia_226","Asi-TH001.Buckley.2010","Wood","ring width","trsgi","unitless",19.28,98.93
+"NAm_484","NAm-StarrigawanOldSitka.Kaiser.1996_NAm_484","NAm-StarrigawanOldSitka.Kaiser.1996","Wood","ring width","trsgi","unitless",57.1,-135.4
+"Asia_329","Asi-Guangdong.Zheng.1982_Asia_329","Asi-Guangdong.Zheng.1982","Documents","historical","temperature","unitless",23.16,113.23
+"LPDb7ba9166","Ocn-TagusMudPatch.Abrantes.2005_LPDb7ba9166","Ocn-TagusMudPatch.Abrantes.2005","MarineSediment","alkenone","temperature","degC",38.556,-9.3498
+"Asia_058","Asi-HBLXJP.PAGES2k.2013_Asia_058","Asi-HBLXJP.PAGES2k.2013","Wood","ring width","trsgi","unitless",34.78,100.82
+"NAm_3520","NAm-HohLakeHigh.Peterson.1994_NAm_3520","NAm-HohLakeHigh.Peterson.1994","Wood","ring width","trsgi","unitless",47.9,-123.8
+"Asia_054","Asi-MQFXJP.PAGES2k.2013_Asia_054","Asi-MQFXJP.PAGES2k.2013","Wood","ring width","trsgi","unitless",34.75,99.68
+"Ant_031dD","Ant-WDC06A.Steig.2013_Ant_031dD","Ant-WDC06A.Steig.2013","GlacierIce","dD","d2H","permil",-79.46,-112.09
+"Ant_031","Ant-WDC06A.Steig.2013_Ant_031","Ant-WDC06A.Steig.2013","GlacierIce","d18O","d18O","permil",-79.46,-112.09
+"Asia_191","Asi-PAKI021.Cook.2013_Asia_191","Asi-PAKI021.Cook.2013","Wood","ring width","trsgi","unitless",35.68,71.63
+"Asia_209","Asi-PAKI036.Cook.2013_Asia_209","Asi-PAKI036.Cook.2013","Wood","ring width","trsgi","unitless",36.15,74.18
+"Aus_020","Aus-CTPWestTasmania.Allen.2001_Aus_020","Aus-CTPWestTasmania.Allen.2001","Wood","ring width","trsgi","unitless",-41.67,145.65
+"Asia_319","Asi-SouthChina.Wang.1998_Asia_319","Asi-SouthChina.Wang.1998","Documents","historical","temperature","unitless",23,114
+"NAm_412","NAm-DeerMountain.Wiles.2011_NAm_412","NAm-DeerMountain.Wiles.2011","Wood","ring width","trsgi","unitless",55.3,-131.6
+"NAm_2560","NAm-FoolCreek.Brown.2005_NAm_2560","NAm-FoolCreek.Brown.2005","Wood","ring width","trsgi","unitless",39.9,-105.9
+"NAm_2572","NAm-FoolCreek.Brown.2005_NAm_2572","NAm-FoolCreek.Brown.2005","Wood","maximum latewood density","MXD",NA,39.9,-105.9
+"Asia_005","Asi-AltaiKuraiskySteppe.Cook.2011_Asia_005","Asi-AltaiKuraiskySteppe.Cook.2011","Wood","ring width","trsgi","unitless",50.27,87.83
+"NAm_1360","NAm-ArrowsmithMountain.Briffa.1996_NAm_1360","NAm-ArrowsmithMountain.Briffa.1996","Wood","maximum latewood density","MXD",NA,49.2,-125.2
+"Asia_187","Asi-PAKI002.Esper.2007_Asia_187","Asi-PAKI002.Esper.2007","Wood","ring width","trsgi","unitless",36.03,74.58
+"Asia_175","Asi-NEPA030.Krusic.2013_Asia_175","Asi-NEPA030.Krusic.2013","Wood","ring width","trsgi","unitless",27.78,87.27
+"NAm_2848","NAm-RoweLakes.Colenutt.2011_NAm_2848","NAm-RoweLakes.Colenutt.2011","Wood","ring width","trsgi","unitless",49,-114
+"NAm_3616","NAm-MedicineBowPeak.Briffa.1996_NAm_3616","NAm-MedicineBowPeak.Briffa.1996","Wood","ring width","trsgi","unitless",41.3,-107.7
+"NAm_3628","NAm-MedicineBowPeak.Briffa.1996_NAm_3628","NAm-MedicineBowPeak.Briffa.1996","Wood","maximum latewood density","MXD",NA,41.3,-107.7
+"Asia_157","Asi-MONG010.Jacoby.2013_Asia_157","Asi-MONG010.Jacoby.2013","Wood","ring width","trsgi","unitless",47.27,100.03
+"NAm_3807","NAm-ConroyLake.Gajewski.1988_NAm_3807","NAm-ConroyLake.Gajewski.1988","LakeSediment","pollen","temperature","degC",46.3,-67.9
+"O2kLR_165","Ocn-OkinawaTrough.Wu.2012_O2kLR_165","Ocn-OkinawaTrough.Wu.2012","MarineSediment","TEX86","temperature","degC",24.8,122.5
+"Asia_047","Asi-GHEGAN.PAGES2k.2013_Asia_047","Asi-GHEGAN.PAGES2k.2013","Wood","ring width","trsgi","unitless",37.93,101.53
+"Asia_090","Asi-CHIN056.Shao.2013_Asia_090","Asi-CHIN056.Shao.2013","Wood","ring width","trsgi","unitless",34.47,110.08
+"Asia_217","Asi-CHIN042.Brauning.2013_Asia_217","Asi-CHIN042.Brauning.2013","Wood","ring width","trsgi","unitless",31.95,98.87
+"Arc_056","Arc-Renland.Vinther.2008_Arc_056","Arc-Renland.Vinther.2008","GlacierIce","d18O","d18O","permil",71.27,-26.73
+"Ocean2kHR_013","Ocn-Reunion.Pfeiffer.2004_Ocean2kHR_013","Ocn-Reunion.Pfeiffer.2004","Coral","d18O","d18O","permil",-21.0333,55.25
+"NAm_196","NAm-CanyonCreek.Lloyd.2002_NAm_196","NAm-CanyonCreek.Lloyd.2002","Wood","ring width","trsgi","unitless",63.3,-147.8
+"Asia_086","Asi-CHIN052.Shao.2013_Asia_086","Asi-CHIN052.Shao.2013","Wood","ring width","trsgi","unitless",37.45,97.53
+"Ant_011","Ant-DSS.Moy.2012_Ant_011","Ant-DSS.Moy.2012","GlacierIce","d18O","d18O","permil",-66.77,112.807
+"Asia_165","Asi-Hushre.PAGES2k.2013_Asia_165","Asi-Hushre.PAGES2k.2013","Wood","ring width","trsgi","unitless",46.78,101.95
+"Ant_007","Ant-SiteDML05.Graf.2002_Ant_007","Ant-SiteDML05.Graf.2002","GlacierIce","d18O","d18O","permil",-75,-0.01
+"NAm_664","NAm-SheepMountain.Graybill.1995_NAm_664","NAm-SheepMountain.Graybill.1995","Wood","ring width","trsgi","unitless",37.2,-118.1
+"Asia_109","Asi-MTASMD.Davi.2013_Asia_109","Asi-MTASMD.Davi.2013","Wood","ring width","trsgi","unitless",43.77,142.55
+"Eur_018","Eur-Loetschental.Buentgen.2006_Eur_018","Eur-Loetschental.Buentgen.2006","Wood","maximum latewood density","MXD",NA,46.4,7.8
+"NAm_1168","NAm-BellMountain.Schweingruber.1996_NAm_1168","NAm-BellMountain.Schweingruber.1996","Wood","maximum latewood density","MXD",NA,53.3,-120.7
+"Ocean2kHR_129","Ocn-PedroBankJamaica.Haase-Schramm.2003_Ocean2kHR_129","Ocn-PedroBankJamaica.Haase-Schramm.2003","Sclerosponge","Sr/Ca","Sr/Ca","mmol/mol",17.5333,-78.95
+"Ocean2kHR_128","Ocn-PedroBankJamaica.Haase-Schramm.2003_Ocean2kHR_128","Ocn-PedroBankJamaica.Haase-Schramm.2003","Sclerosponge","d18O","d18O","permil",17.5333,-78.95
+"O2kLR_183","Ocn-SantaBarbaraBasin.Zhao.2000_O2kLR_183","Ocn-SantaBarbaraBasin.Zhao.2000","MarineSediment","alkenone","temperature","degC",34.23,-120.02
+"LPDa77273bb","Ocn-SouthAtlanticWestAfrica.Leduc.2010_LPDa77273bb","Ocn-SouthAtlanticWestAfrica.Leduc.2010","MarineSediment","alkenone","temperature","degC",-29.14,16.72
+"Asia_053","Asi-MQDXJP.PAGES2k.2013_Asia_053","Asi-MQDXJP.PAGES2k.2013","Wood","ring width","trsgi","unitless",34.72,99.67
+"Asia_040","Asi-CHIN018.Li.2010_Asia_040","Asi-CHIN018.Li.2010","Wood","ring width","trsgi","unitless",29.28,100.08
+"Arc_066","Arc-Lomonosovfonna.Divine.2011_Arc_066","Arc-Lomonosovfonna.Divine.2011","GlacierIce","d18O","temperature","degC",78.8647,17.425
+"LPDf7bace53","Ocn-DryTortugas.Lund.2006_LPDf7bace53","Ocn-DryTortugas.Lund.2006","MarineSediment","Mg/Ca","temperature","degC",24.59,-83.58
+"Asia_147","Asi-MONG009.Jacoby.2013_Asia_147","Asi-MONG009.Jacoby.2013","Wood","ring width","trsgi","unitless",49.92,91.57
+"Asia_174","Asi-NEPA029.Krusic.2013_Asia_174","Asi-NEPA029.Krusic.2013","Wood","ring width","trsgi","unitless",28.18,85.43
+"Asia_325","Asi-MiddleYangtzeRiver.Zhang.1980_Asia_325","Asi-MiddleYangtzeRiver.Zhang.1980","Documents","historical","temperature","unitless",30.5,114.5
+"Asia_077","Asi-HYGJUP.PAGES2k.2013_Asia_077","Asi-HYGJUP.PAGES2k.2013","Wood","ring width","trsgi","unitless",38.7,99.68
+"Asia_169","Asi-NEPA014.Krusic.2013_Asia_169","Asi-NEPA014.Krusic.2013","Wood","ring width","trsgi","unitless",27.7,86.28
+"NAm_2656","NAm-SleepingDeerRoad.Hughes.2005_NAm_2656","NAm-SleepingDeerRoad.Hughes.2005","Wood","ring width","trsgi","unitless",44.6,-114.5
+"NAm_2668","NAm-SleepingDeerRoad.Hughes.2005_NAm_2668","NAm-SleepingDeerRoad.Hughes.2005","Wood","maximum latewood density","MXD",NA,44.6,-114.5
+"NAm_172","NAm-SettlementPointAfognakIsland.Harlan.1998_NAm_172","NAm-SettlementPointAfognakIsland.Harlan.1998","Wood","ring width","trsgi","unitless",58.1,-152.7
+"Asia_007","Asi-AltaiKorumdu.Cook.2005_Asia_007","Asi-AltaiKorumdu.Cook.2005","Wood","ring width","trsgi","unitless",50.14,87.72
+"Asia_178","Asi-BURGPW.PAGES2k.2013_Asia_178","Asi-BURGPW.PAGES2k.2013","Wood","ring width","trsgi","unitless",28.77,83.73
+"NAm_3652","NAm-SylvanPassbeiCody.Briffa.1996_NAm_3652","NAm-SylvanPassbeiCody.Briffa.1996","Wood","maximum latewood density","MXD",NA,44.4,-110.1
+"NAm_388","NAm-PrinceWilliamSound.Barclay.1999_NAm_388","NAm-PrinceWilliamSound.Barclay.1999","Wood","ring width","trsgi","unitless",60.5,-148.3
+"Asia_222","Asi-CHIN044.Brauning.2013_Asia_222","Asi-CHIN044.Brauning.2013","Wood","ring width","trsgi","unitless",29.07,93.95
+"Arc_162","Arc-PolarUrals.Wilson.2015_Arc_162","Arc-PolarUrals.Wilson.2015","Wood","ring width","density",NA,66.9,65.6
+"Arc_036","Arc-Iceland.Bergthorsson.1969_Arc_036","Arc-Iceland.Bergthorsson.1969","Documents","historical","temperature","degC",64.77,-18.37
+"NAm_1708","NAm-CornwallHills.Wilson.2005_NAm_1708","NAm-CornwallHills.Wilson.2005","Wood","ring width","trsgi","unitless",50.7,-121.5
+"NAm_1720","NAm-CornwallHills.Wilson.2005_NAm_1720","NAm-CornwallHills.Wilson.2005","Wood","maximum latewood density","MXD",NA,50.7,-121.5
+"Asia_180","Asi-NEPA027.Krusic.2013_Asia_180","Asi-NEPA027.Krusic.2013","Wood","ring width","trsgi","unitless",27.5,87.98
+"Asia_092","Asi-CHIN058.Shao.2013_Asia_092","Asi-CHIN058.Shao.2013","Wood","ring width","trsgi","unitless",34.47,110.08
+"Asia_119","Asi-YKC.Yasue.2013_Asia_119","Asi-YKC.Yasue.2013","Wood","ring width","trsgi","unitless",30.33,130.45
+"Ant_022","Ant-JamesRossIsland.Mulvaney.2013_Ant_022","Ant-JamesRossIsland.Mulvaney.2013","GlacierIce","dD","d2H","permil",-64.2017,-57.685
+"LPD7c7e19c5","Ocn-GreatBahamaBank.Lund.2006_LPD7c7e19c5","Ocn-GreatBahamaBank.Lund.2006","MarineSediment","Mg/Ca","temperature","degC",24.765,-79.29
+"Asia_004","Asi-AltaiKuraisky.Cook.2011_Asia_004","Asi-AltaiKuraisky.Cook.2011","Wood","ring width","trsgi","unitless",50.3,87.83
+"NAm_1840","NAm-Bennington.Luckman.2013_NAm_1840","NAm-Bennington.Luckman.2013","Wood","ring width","trsgi","unitless",52.7,-118.3
+"Eur_008","Eur-NorthernSpain.Martin-Chivelet.2011_Eur_008","Eur-NorthernSpain.Martin-Chivelet.2011","Speleothem","d18O","d18O","permil",42.9,-3.5
+"NAm_3867","NAm-LakeMina.St.Jacques.2008_NAm_3867","NAm-LakeMina.St.Jacques.2008","LakeSediment","pollen","temperature","degC",45.89,-95.478
+"NAm_3868","NAm-LakeMina.St.Jacques.2008_NAm_3868","NAm-LakeMina.St.Jacques.2008","LakeSediment","pollen","temperature","degC",45.89,-95.478
+"Eur_003","Eur-LakeSilvaplana.Larocque-Tobler.2010_Eur_003","Eur-LakeSilvaplana.Larocque-Tobler.2010","LakeSediment","chironomid","temperature","degC",46.5,9.8
+"O2kLR_131","Ocn-WEqPacific.Stott.2007_O2kLR_131","Ocn-WEqPacific.Stott.2007","MarineSediment","Mg/Ca","temperature","degC",-5,133.44
+"Asia_211","Asi-PAKI015.Esper.2007_Asia_211","Asi-PAKI015.Esper.2007","Wood","ring width","trsgi","unitless",35.17,75.5
+"O2kLR_118","Ocn-SWCoastOfIndia.Saraswat.2013_O2kLR_118","Ocn-SWCoastOfIndia.Saraswat.2013","MarineSediment","Mg/Ca","temperature","degC",10.98,74.9993
+"Arc_052","Arc-Lake4.Rolland.2009_Arc_052","Arc-Lake4.Rolland.2009","LakeSediment","chironomid","temperature","degC",65.1,-83.79
+"LPD13a78f9b","Ocn-EasternTropicalNorthAtlantic.Kuhnert.2011_LPD13a78f9b","Ocn-EasternTropicalNorthAtlantic.Kuhnert.2011","MarineSediment","Mg/Ca","temperature","degC",16.8402,-16.7327
+"Asia_108","Asi-MTASSP.Davi.2013_Asia_108","Asi-MTASSP.Davi.2013","Wood","ring width","trsgi","unitless",43.77,142.55
+"Asia_095","Asi-CHIN061.Shao.2013_Asia_095","Asi-CHIN061.Shao.2013","Wood","ring width","trsgi","unitless",37.03,98.63
+"Ocean2kHR_126","Ocn-MontegoBayJamaica.Haase-Schramm.2003_Ocean2kHR_126","Ocn-MontegoBayJamaica.Haase-Schramm.2003","Sclerosponge","d18O","d18O","permil",18.4667,-77.95
+"Ocean2kHR_127","Ocn-MontegoBayJamaica.Haase-Schramm.2003_Ocean2kHR_127","Ocn-MontegoBayJamaica.Haase-Schramm.2003","Sclerosponge","Sr/Ca","Sr/Ca","mmol/mol",18.4667,-77.95
+"Ant_028","Ant-Vostok.Ekaykin.2014_Ant_028","Ant-Vostok.Ekaykin.2014","GlacierIce","dD","d2H","permil",-78.2785,104.8005
+"Asia_050","Asi-DUSHJP.PAGES2k.2013_Asia_050","Asi-DUSHJP.PAGES2k.2013","Wood","ring width","trsgi","unitless",36.65,98.08
+"NAm_2308","NAm-SurpriseValley.Luckman.2001_NAm_2308","NAm-SurpriseValley.Luckman.2001","Wood","ring width","trsgi","unitless",52.8,-117.7
+"NAm_2716","NAm-LaTasajera.Biondi.2001_NAm_2716","NAm-LaTasajera.Biondi.2001","Wood","ring width","trsgi","unitless",31,-115.5
+"NAm_3472","NAm-ShermanCreekPass.Briffa.1996_NAm_3472","NAm-ShermanCreekPass.Briffa.1996","Wood","ring width","trsgi","unitless",48.7,-118.3
+"NAm_3484","NAm-ShermanCreekPass.Briffa.1996_NAm_3484","NAm-ShermanCreekPass.Briffa.1996","Wood","maximum latewood density","MXD",NA,48.7,-118.3
+"Asia_080","Asi-CHIN038.Fan.2013_Asia_080","Asi-CHIN038.Fan.2013","Wood","ring width","trsgi","unitless",27.58,99.28
+"Asia_076","Asi-CHIN026.Wright.2010_Asia_076","Asi-CHIN026.Wright.2010","Wood","ring width","trsgi","unitless",27.62,99.8
+"Asia_002","Asi-AltaiDjasator.Cook.2011_Asia_002","Asi-AltaiDjasator.Cook.2011","Wood","ring width","trsgi","unitless",49.62,88.1
+"Asia_216","Asi-NOGSAK.PAGES2k.2013_Asia_216","Asi-NOGSAK.PAGES2k.2013","Wood","ring width","trsgi","unitless",51.83,143.13
+"NAm_364","NAm-BigBendLake.Jacoby.2003_NAm_364","NAm-BigBendLake.Jacoby.2003","Wood","ring width","trsgi","unitless",61.3,-142.7
+"O2kLR_175","Ocn-KuroshioCurrent.Isono.2009_O2kLR_175","Ocn-KuroshioCurrent.Isono.2009","MarineSediment","alkenone","temperature","degC",36.03,141.78
+"O2kLR_146","Ocn-NorthwestPacificOcean.Harada.2004_O2kLR_146","Ocn-NorthwestPacificOcean.Harada.2004","MarineSediment","alkenone","temperature","degC",46.32,152.53
+"O2kLR_195","Ocn-SouthernChileMargin.Mohtadi.2007_O2kLR_195","Ocn-SouthernChileMargin.Mohtadi.2007","MarineSediment","alkenone","temperature","degC",-44.15,-75.16
+"Ant_050","Ant-US-ITASE-2002-4.Steig.2013_Ant_050","Ant-US-ITASE-2002-4.Steig.2013","GlacierIce","d18O","d18O","permil",-86.5,-107.99
+"Asia_099","Asi-CHIN065.Shao.2013_Asia_099","Asi-CHIN065.Shao.2013","Wood","ring width","trsgi","unitless",32.67,95.72
+"Asia_167","Asi-NEPA003.Krusic.2013_Asia_167","Asi-NEPA003.Krusic.2013","Wood","ring width","trsgi","unitless",29.48,82.08
+"NAm_772","NAm-DanaPlateauInyoNationalForest.King.2000_NAm_772","NAm-DanaPlateauInyoNationalForest.King.2000","Wood","ring width","trsgi","unitless",37.9,-119.2
+"NAm_3748","NAm-WrangellsComposite.D'Arrigo.2006_NAm_3748","NAm-WrangellsComposite.D'Arrigo.2006","Wood","maximum latewood density","MXD",NA,62,-142
+"Asia_075","Asi-DQHZHO.PAGES2k.2013_Asia_075","Asi-DQHZHO.PAGES2k.2013","Wood","ring width","trsgi","unitless",35,100.07
+"LPD1a0245b7","Ocn-Philippines.Stott.2007_LPD1a0245b7","Ocn-Philippines.Stott.2007","MarineSediment","Mg/Ca","temperature","degC",6.3,125.82
+"O2kLR_148","Ocn-MakassarStrait.Oppo.2009_O2kLR_148","Ocn-MakassarStrait.Oppo.2009","MarineSediment","Mg/Ca","temperature","degC",-3.53,119.2
+"Ant_012","Ant-DomeC.Stenni.2001_Ant_012","Ant-DomeC.Stenni.2001","GlacierIce","d18O","d18O","permil",-75.1,123.39
+"NAm_2728","NAm-CienegadeNuestraSenoradeGuadalupe.Fule.2009_NAm_2728","NAm-CienegadeNuestraSenoradeGuadalupe.Fule.2009","Wood","ring width","trsgi","unitless",25.1,-106.3
+"Asia_008","Asi-AltaiTjute.Cook.2011_Asia_008","Asi-AltaiTjute.Cook.2011","Wood","ring width","trsgi","unitless",50.12,87.92
+"Asia_130","Asi-SHIYAT.PAGES2k.2013_Asia_130","Asi-SHIYAT.PAGES2k.2013","Wood","ring width","trsgi","unitless",39.83,71.5
+"NAm_2632","NAm-GalenaPassSawtooth.Briffa.1996_NAm_2632","NAm-GalenaPassSawtooth.Briffa.1996","Wood","maximum latewood density","MXD",NA,43.9,-114.7
+"NAm_3124","NAm-BarlowPassamMtHood.Briffa.1996_NAm_3124","NAm-BarlowPassamMtHood.Briffa.1996","Wood","maximum latewood density","MXD",NA,45.3,-121.7
+"Aus_067","Aus-StewartIsland.D'Arrigo.1996_Aus_067","Aus-StewartIsland.D'Arrigo.1996","Wood","ring width","trsgi","unitless",-47,167.8
+"Arc_037","Arc-VoeringPlateau.Berner.2011_Arc_037","Arc-VoeringPlateau.Berner.2011","MarineSediment","diatom","temperature","degC",66.97,7.64
+"LPDefb3d2b0","Ocn-GreatBahamaBank.Richter.2006_LPDefb3d2b0","Ocn-GreatBahamaBank.Richter.2006","MarineSediment","Mg/Ca","temperature","degC",24.58,-79.26
+"NAm_2752","NAm-HighlandFireOutlook.Briffa.1996_NAm_2752","NAm-HighlandFireOutlook.Briffa.1996","Wood","maximum latewood density","MXD",NA,45.8,-112.5
+"NAm_2740","NAm-HighlandFireOutlook.Briffa.1996_NAm_2740","NAm-HighlandFireOutlook.Briffa.1996","Wood","ring width","trsgi","unitless",45.8,-112.5
+"Arc_041","Arc-ScreamingLynxLake.Clegg.2011_Arc_041","Arc-ScreamingLynxLake.Clegg.2011","LakeSediment","chironomid","temperature","degC",66.07,-145.4
+"Arc_033","Arc-Crete.Vinther.2010_Arc_033","Arc-Crete.Vinther.2010","GlacierIce","d18O","d18O","permil",71.12,-37.32
+"Ocean2kHR_102","Ocn-NorthEastBreakers_Bermuda.Kuhnert.2002_Ocean2kHR_102","Ocn-NorthEastBreakers_Bermuda.Kuhnert.2002","Coral","d18O","d18O","permil",32.47,-64.7
+"Asia_027","Asi-BT003.Cook.2010_Asia_027","Asi-BT003.Cook.2010","Wood","ring width","trsgi","unitless",27.7,90.77
+"NAm_1744","NAm-IttyhaukBay.D'Arrigo.2011_NAm_1744","NAm-IttyhaukBay.D'Arrigo.2011","Wood","ring width","trsgi","unitless",56,-61
+"NAm_2128","NAm-CardinalDivide.Luckman.2001_NAm_2128","NAm-CardinalDivide.Luckman.2001","Wood","ring width","trsgi","unitless",52.9,-117.3
+"Arc_078","Arc-Kongressvatnet.D'Andrea.2012_Arc_078","Arc-Kongressvatnet.D'Andrea.2012","LakeSediment","alkenone","temperature","degC",78.0217,13.9311
+"NAm_2464","NAm-RedMountainPassSilverton.Graybill.1994_NAm_2464","NAm-RedMountainPassSilverton.Graybill.1994","Wood","maximum latewood density","MXD",NA,37.9,-107.7
+"Asia_116","Asi-JAPA012.Yasue.1997_Asia_116","Asi-JAPA012.Yasue.1997","Wood","ring width","trsgi","unitless",44.95,142.12
+"NAm_640","NAm-CirquePeak.Graybill.1995_NAm_640","NAm-CirquePeak.Graybill.1995","Wood","ring width","trsgi","unitless",36.3,-118.2
+"Arc_011","Arc-GISP2.Grootes.1997_Arc_011","Arc-GISP2.Grootes.1997","GlacierIce","d18O","d18O","permil",72.1,-38.08
+"Arc_024","Arc-LakeDonardBaffinIsland.Moore.2001_Arc_024","Arc-LakeDonardBaffinIsland.Moore.2001","LakeSediment","varve thickness","thickness","mm",66.73,-61.35
+"Asia_196","Asi-PAKI007.Esper.2007_Asia_196","Asi-PAKI007.Esper.2007","Wood","ring width","trsgi","unitless",36.33,74.03
+"Asia_205","Asi-PAKI012.Esper.2007_Asia_205","Asi-PAKI012.Esper.2007","Wood","ring width","trsgi","unitless",36.58,75.08
+"NAm_1828","NAm-Manitoba.D'Arrigo.2006_NAm_1828","NAm-Manitoba.D'Arrigo.2006","Wood","ring width","trsgi","unitless",58,-94
+"Aus_071","Aus-TakapariCedar.Xiong.2000_Aus_071","Aus-TakapariCedar.Xiong.2000","Wood","ring width","trsgi","unitless",-40.07,175.98
+"NAm_3865","NAm-GreenLake.Menounos.2006_NAm_3865","NAm-GreenLake.Menounos.2006","LakeSediment","varve thickness","thickness",NA,50.2,-122.9
+"NAm_232","NAm-AlmondButterLower.D'Arrigo.2005_NAm_232","NAm-AlmondButterLower.D'Arrigo.2005","Wood","ring width","trsgi","unitless",65.2,-162.2
+"LPDb17a5e9e-dup","Ocn-RAPiD-12-1K.Thornalley.2009_LPDb17a5e9e-dup","Ocn-RAPiD-12-1K.Thornalley.2009","MarineSediment","Mg/Ca","temperature","degC",62.08,-17.82
+"Asia_163","Asi-MONG011.Jacoby.2006_Asia_163","Asi-MONG011.Jacoby.2006","Wood","ring width","trsgi","unitless",48.13,100.27
+"Asia_104","Asi-INDI015.Borgaonkar.2013_Asia_104","Asi-INDI015.Borgaonkar.2013","Wood","ring width","trsgi","unitless",31.2,77.23
+"Asia_170","Asi-NEPA015.Krusic.2013_Asia_170","Asi-NEPA015.Krusic.2013","Wood","ring width","trsgi","unitless",28.38,83.7
+"Arc_043","Arc-DevonIceCap.Fisher.1983_Arc_043","Arc-DevonIceCap.Fisher.1983","GlacierIce","d18O","d18O","permil",75.33,-82.5
+"Ocean2kHR_025","Ocn-HoutmanAbrolhosHAB05B.Zinke.2014_Ocean2kHR_025","Ocn-HoutmanAbrolhosHAB05B.Zinke.2014","Coral","Sr/Ca","Sr/Ca","mmol/mol",-28.4609,113.772
+"Eur_010","Eur-CoastofPortugal.Abrantes.2011_Eur_010","Eur-CoastofPortugal.Abrantes.2011","LakeSediment","alkenone","temperature","degC",41.1,-8.9
+"Asia_033","Asi-BT010.Cook.2010_Asia_033","Asi-BT010.Cook.2010","Wood","ring width","trsgi","unitless",27.25,89.38
+"Arc_049","Arc-LakePieni-Kauro.Luoto.2010_Arc_049","Arc-LakePieni-Kauro.Luoto.2010","LakeSediment","chironomid","temperature","degC",64.28,30.12
+"NAm_2116","NAm-BowSummit-PeytoLake.Luckman.2005_NAm_2116","NAm-BowSummit-PeytoLake.Luckman.2005","Wood","ring width","trsgi","unitless",51.7,-116.5
+"NAm_3819","NAm-LittlePineLake.Gajewski.1988_NAm_3819","NAm-LittlePineLake.Gajewski.1988","LakeSediment","pollen","temperature","degC",45.3,-91.5
+"Asia_335","Asi-SO90-39KG_SO130-275KL.Munz.2015_Asia_335","Asi-SO90-39KG_SO130-275KL.Munz.2015","MarineSediment","foraminifera","temperature","degC",24.8333,65.9167
+"LPDe51d17e8","Ocn-CariacoBasin.Black.2007_LPDe51d17e8","Ocn-CariacoBasin.Black.2007","MarineSediment","Mg/Ca","temperature","degC",10.77,-64.77
+"Asia_235","Asi-KunashirIsland.Demezhko.2009_Asia_235","Asi-KunashirIsland.Demezhko.2009","Other","multiproxy","temperature","degC",43.955,145.725
+"SAm_010","SAm-CentralAndes15.Neukom.2014_SAm_010","SAm-CentralAndes15.Neukom.2014","Wood","ring width","trsgi","unitless",-41.17,-71.92
+"Asia_038","Asi-CHIN020.Li.2010_Asia_038","Asi-CHIN020.Li.2010","Wood","ring width","trsgi","unitless",30.23,100.27
+"Asia_101","Asi-INDO005.D'Arrigo.2010_Asia_101","Asi-INDO005.D'Arrigo.2010","Wood","ring width","trsgi","unitless",-5.5,122.8
+"Asia_223","Asi-CHIN045.Brauning.2013_Asia_223","Asi-CHIN045.Brauning.2013","Wood","ring width","trsgi","unitless",29.62,94.67
+"LPDasan2012","Ocn-AlboranSea384B.Nieto-Moreno.2013_LPDasan2012","Ocn-AlboranSea384B.Nieto-Moreno.2013","MarineSediment","alkenone","temperature","degC",35.986,-4.7496
+"Ant_035","Ant-TaylorDome.Steig.2000_Ant_035","Ant-TaylorDome.Steig.2000","GlacierIce","d18O","d18O","permil",-77.78,158.72
+"Ocean2kHR_157","Ocn-SavusavuBay1F.Linsley.2006_Ocean2kHR_157","Ocn-SavusavuBay1F.Linsley.2006","Coral","d18O","d18O","permil",-16.8167,179.2333
+"Ocean2kHR_158","Ocn-SavusavuBay1F.Linsley.2006_Ocean2kHR_158","Ocn-SavusavuBay1F.Linsley.2006","Coral","Sr/Ca","Sr/Ca","mmol/mol",-16.8167,179.2333
+"Ocean2kHR_154","Ocn-Vanuatu.Gorman.2012_Ocean2kHR_154","Ocn-Vanuatu.Gorman.2012","Coral","d18O","d18O","permil",-15.94,166.04
+"Asia_070","Asi-CHIN017.Li.2010_Asia_070","Asi-CHIN017.Li.2010","Wood","ring width","trsgi","unitless",28.9,99.75
+"Asia_143","Asi-MONG019.Jacoby.2010_Asia_143","Asi-MONG019.Jacoby.2010","Wood","ring width","trsgi","unitless",47.1,90.97
+"NAm_3352","NAm-GraniteMountain.Graumlich.2003_NAm_3352","NAm-GraniteMountain.Graumlich.2003","Wood","ring width","trsgi","unitless",47.3,-121.3
+"Asia_081","Asi-CHIN039.Fan.2013_Asia_081","Asi-CHIN039.Fan.2013","Wood","ring width","trsgi","unitless",28.03,99.02
+"NPMlaanila2","Arc-Laanila.Lindholm.2013_NPMlaanila2","Arc-Laanila.Lindholm.2013","Wood","maximum latewood density","MXD","unitless",68.4917,27.3333
+"Asia_149","Asi-MONG024.Jacoby.2010_Asia_149","Asi-MONG024.Jacoby.2010","Wood","ring width","trsgi","unitless",48.5,88.5
+"NAm_2092","NAm-Bennington.Luckman.2001_NAm_2092","NAm-Bennington.Luckman.2001","Wood","ring width","trsgi","unitless",52.7,-118.3
+"Arc_005","Arc-CampCentury.Fisher.1969_Arc_005","Arc-CampCentury.Fisher.1969","GlacierIce","d18O","d18O","permil",77.17,-61.13
+"NAm_760","NAm-YosemiteParkEEingang.Briffa.1996_NAm_760","NAm-YosemiteParkEEingang.Briffa.1996","Wood","maximum latewood density","MXD",NA,37.8,-119.3
+"LPD84ab67b9","Ocn-CapeGhir.McGregor.2007_LPD84ab67b9","Ocn-CapeGhir.McGregor.2007","MarineSediment","alkenone","temperature","degC",30.845,-10.0983
+"Asia_063","Asi-SANGTS.PAGES2k.2013_Asia_063","Asi-SANGTS.PAGES2k.2013","Wood","ring width","trsgi","unitless",33.65,107.8
+"Asia_020","Asi-UKHLWW.Schweingruber.2002_Asia_020","Asi-UKHLWW.Schweingruber.2002","Wood","ring width","trsgi","unitless",50.15,85.37
+"Arc_079","Arc-LakeE.D'Andrea.2011_Arc_079","Arc-LakeE.D'Andrea.2011","LakeSediment","alkenone","temperature","degC",67,-50.7
+"Arc_053","Arc-StoreggaSlide.Sejrup.2011_Arc_053","Arc-StoreggaSlide.Sejrup.2011","MarineSediment","d18O","d18O","permil",63.76,5.26
+"can1101","SAm-CentralAndes11.PAGES2k.2011_can1101","SAm-CentralAndes11.PAGES2k.2011","Wood","ring width","trsgi","unitless",-40.1,-72.05
+"O2kLR_017","Ocn-GarrisonBasin.Richey.2009_O2kLR_017","Ocn-GarrisonBasin.Richey.2009","MarineSediment","Mg/Ca","temperature","degC",26.68,-93.93
+"Asia_057","Asi-TDBXJP.PAGES2k.2013_Asia_057","Asi-TDBXJP.PAGES2k.2013","Wood","ring width","trsgi","unitless",34.78,100.82
+"Arc_020","Arc-LakeC2.Lamoureux.1996_Arc_020","Arc-LakeC2.Lamoureux.1996","LakeSediment","varve thickness","thickness","mm",82.83,-77.9
+"Asia_199","Asi-PAKI028.Cook.2013_Asia_199","Asi-PAKI028.Cook.2013","Wood","ring width","trsgi","unitless",35.4,74.12
+"Asia_110","Asi-RUSS219.Jacoby.2010_Asia_110","Asi-RUSS219.Jacoby.2010","Wood","ring width","trsgi","unitless",43.88,145.6
+"Asia_010","Asi-AltaiUlaganValley.Cook.2011_Asia_010","Asi-AltaiUlaganValley.Cook.2011","Wood","ring width","trsgi","unitless",50.68,87.97
+"Arc_028","Arc-NGTB21.Schwager.1998_Arc_028","Arc-NGTB21.Schwager.1998","GlacierIce","d18O","d18O","permil",80,-41.14
+"Arc_048","Arc-LakeHamptraesk.Luoto.2009_Arc_048","Arc-LakeHamptraesk.Luoto.2009","LakeSediment","chironomid","temperature","degC",60.28,25.42
+"Asia_120","Asi-JAPA019.Sano.2013_Asia_120","Asi-JAPA019.Sano.2013","Wood","ring width","trsgi","unitless",33.73,133.12
+"Eur_020","Eur-SpanishPyrenees.Dorado-Linan.2012_Eur_020","Eur-SpanishPyrenees.Dorado-Linan.2012","Wood","ring width","trsgi","unitless",42.5,1
+"NAm_1420","NAm-TwistedTreeHeartrotHill.Jacoby.1989_NAm_1420","NAm-TwistedTreeHeartrotHill.Jacoby.1989","Wood","ring width","trsgi","unitless",65,-138.3
+"Asia_177","Asi-NEPA036.Krusic.2013_Asia_177","Asi-NEPA036.Krusic.2013","Wood","ring width","trsgi","unitless",27.73,87.2
+"NAm_940","NAm-SpruceCreek.Church.1981_NAm_940","NAm-SpruceCreek.Church.1981","Wood","ring width","trsgi","unitless",68.6,-138.6
+"Asia_043","Asi-DEZQIN.PAGES2k.2013_Asia_043","Asi-DEZQIN.PAGES2k.2013","Wood","ring width","trsgi","unitless",34.75,100.82
+"Asia_028","Asi-BT004.Cook.2010_Asia_028","Asi-BT004.Cook.2010","Wood","ring width","trsgi","unitless",27.7,90.68
+"Arc_029_varvethickness","Arc-BigRoundLake.Thomas.2009_Arc_029_varvethickness","Arc-BigRoundLake.Thomas.2009","LakeSediment","varve thickness","varveThickness","mm",69.87,-68.83
+"Eur_005","Eur-FinnishLakelands.Helama.2014_Eur_005","Eur-FinnishLakelands.Helama.2014","Wood","maximum latewood density","temperature","degC",62,28.325
+"Eur_007","Eur-Seebergsee.Larocque-Tobler.2012_Eur_007","Eur-Seebergsee.Larocque-Tobler.2012","LakeSediment","chironomid","temperature","degC",46.15,7.5
+"Asia_195","Asi-PAKI006.Esper.2007_Asia_195","Asi-PAKI006.Esper.2007","Wood","ring width","trsgi","unitless",36.33,74.03
+"Ocean2kHR_159","Ocn-HaferaIsland.Wu.2013_Ocean2kHR_159","Ocn-HaferaIsland.Wu.2013","Coral","Sr/Ca","Sr/Ca","mmol/mol",-19.9333,-174.7167
+"Arc_045","Arc-MD992275.Jiang.2005_Arc_045","Arc-MD992275.Jiang.2005","MarineSediment","diatom","temperature","degC",66.55,-17.7
+"Eur_014","Eur-NorthernScandinavia.Esper.2012_Eur_014","Eur-NorthernScandinavia.Esper.2012","Wood","maximum latewood density","MXD",NA,68,25
+"Asia_068","Asi-ZHIDJP.Shao.2003_Asia_068","Asi-ZHIDJP.Shao.2003","Wood","ring width","trsgi","unitless",33.72,96.28
+"NAm_2824","NAm-Pintlers.Littell.2011_NAm_2824","NAm-Pintlers.Littell.2011","Wood","ring width","trsgi","unitless",46,-113.4
+"NAm_460","NAm-SewardComposite.D'Arrigo.2006_NAm_460","NAm-SewardComposite.D'Arrigo.2006","Wood","maximum latewood density","MXD",NA,65.2,-162.3
+"NAm_448","NAm-SewardComposite.D'Arrigo.2006_NAm_448","NAm-SewardComposite.D'Arrigo.2006","Wood","ring width","trsgi","unitless",65.2,-162.3
+"Asia_106","Asi-KERALA.PAGES2k.2013_Asia_106","Asi-KERALA.PAGES2k.2013","Wood","ring width","trsgi","unitless",10,76.67
+"Asia_112","Asi-JAPA013.Yasue.1997_Asia_112","Asi-JAPA013.Yasue.1997","Wood","ring width","trsgi","unitless",44.35,142.18
+"NAm_064","NAm-HerringAlpine.Fritts.1995_NAm_064","NAm-HerringAlpine.Fritts.1995","Wood","ring width","trsgi","unitless",60.4,-147.8
+"Arc_007","Arc-GulfofAlaska.Wilson.2014_Arc_007","Arc-GulfofAlaska.Wilson.2014","Wood","ring width","temperature","degC",61.03,-146.59
+"O2kLR_135","Ocn-MakassarStrait.Linsley.2010_O2kLR_135","Ocn-MakassarStrait.Linsley.2010","MarineSediment","Mg/Ca","temperature","degC",-7.4,115.2
+"Asia_202","Asi-PAKI009.Esper.2007_Asia_202","Asi-PAKI009.Esper.2007","Wood","ring width","trsgi","unitless",36.58,75.08
+"NAm_3412","NAm-HartsPassN2.Peterson.1994_NAm_3412","NAm-HartsPassN2.Peterson.1994","Wood","ring width","trsgi","unitless",48.7,-120.7
+"Arc_004","Arc-LowerMurrayLake.Cook.2008_Arc_004","Arc-LowerMurrayLake.Cook.2008","LakeSediment","accumulation rate","MAR","g/cm2/yr",81.35,-69.53
+"Asia_045","Asi-HEBQIN.PAGES2k.2013_Asia_045","Asi-HEBQIN.PAGES2k.2013","Wood","ring width","trsgi","unitless",34.73,100.78
+"Arc_057","Arc-Kittelfjall.Bjorklund.2012_Arc_057","Arc-Kittelfjall.Bjorklund.2012","Wood","maximum latewood density","density",NA,65.2,15.5
+"Ocean2kHR_131","Ocn-PuntaMaroma.Vasquez-Bedoya.2012_Ocean2kHR_131","Ocn-PuntaMaroma.Vasquez-Bedoya.2012","Coral","calcification rate","calcificationRate","mm/yr",20.83,-86.74
+"NAm_148","NAm-EurekaSummit.Schweingruber.1996_NAm_148","NAm-EurekaSummit.Schweingruber.1996","Wood","ring width","trsgi","unitless",61.8,-147.3
+"NAm_160","NAm-EurekaSummit.Schweingruber.1996_NAm_160","NAm-EurekaSummit.Schweingruber.1996","Wood","maximum latewood density","MXD",NA,61.8,-147.3
+"Asia_318","Asi-EastChina.Wang.1998_Asia_318","Asi-EastChina.Wang.1998","Documents","historical","temperature","unitless",34,120
+"Asia_096","Asi-CHIN062.Shao.2013_Asia_096","Asi-CHIN062.Shao.2013","Wood","ring width","trsgi","unitless",37.03,98.67
+"Asia_012","Asi-UULEWW.Schweingruber.2002_Asia_012","Asi-UULEWW.Schweingruber.2002","Wood","ring width","trsgi","unitless",50.48,87.65
+"Ocean2kHR_138","Ocn-SecasIslandPanama.Linsley.1994_Ocean2kHR_138","Ocn-SecasIslandPanama.Linsley.1994","Coral","d18O","d18O","permil",7.95,-82
+"NAm_040","NAm-SanFrancisoPeaksUpdate.Graybill.2005_NAm_040","NAm-SanFrancisoPeaksUpdate.Graybill.2005","Wood","ring width","trsgi","unitless",35.3,-111.4
+"Asia_006","Asi-AltaiSamakhaSteppe.Cook.2011_Asia_006","Asi-AltaiSamakhaSteppe.Cook.2011","Wood","ring width","trsgi","unitless",49.72,87.28
+"Ant_026","Ant-TalosDome.Stenni.2002_Ant_026","Ant-TalosDome.Stenni.2002","GlacierIce","dD","d2H","permil",-72.8,159.06
+"Asia_164","Asi-MONG032.Jacoby.2010_Asia_164","Asi-MONG032.Jacoby.2010","Wood","ring width","trsgi","unitless",46.52,100.95
+"Eur_006","Eur-Stockholm.Leijonhufvud.2009_Eur_006","Eur-Stockholm.Leijonhufvud.2009","Documents","historical","temperature","degC",59.32,18.06
+"Arc_023","Arc-LenaRiver.McDonald.1998_Arc_023","Arc-LenaRiver.McDonald.1998","Wood","ring width","trsgi","unitless",70.67,125.87
+"NAm_2596","NAm-CameronPass.Bigler.2007_NAm_2596","NAm-CameronPass.Bigler.2007","Wood","ring width","trsgi","unitless",40.6,-105.8
+"Asia_056","Asi-TDAXJP.PAGES2k.2013_Asia_056","Asi-TDAXJP.PAGES2k.2013","Wood","ring width","trsgi","unitless",34.78,100.8
+"Asia_139","Asi-MONG016.Jacoby.2010_Asia_139","Asi-MONG016.Jacoby.2010","Wood","ring width","trsgi","unitless",48.6,88.37
+"Arc_089","Arc-AkademiiNaukIceCap.Opel.2013_Arc_089","Arc-AkademiiNaukIceCap.Opel.2013","GlacierIce","d18O","d18O","permil",80.52,94.82
+"Asia_062","Asi-CHIN004.Wu.2013_Asia_062","Asi-CHIN004.Wu.2013","Wood","ring width","trsgi","unitless",34.48,110.08
+"Asia_183","Asi-ESPPAK.PAGES2k.2013_Asia_183","Asi-ESPPAK.PAGES2k.2013","Wood","ring width","trsgi","unitless",35.17,75.5
+"NAm_976","NAm-PethaiPeninsula.Schweingruber.1996_NAm_976","NAm-PethaiPeninsula.Schweingruber.1996","Wood","maximum latewood density","MXD",NA,62.7,-111
+"Ocean2kHR_105","Ocn-NorthEastBreakers_Bermuda.Kuhnert.2005_Ocean2kHR_105","Ocn-NorthEastBreakers_Bermuda.Kuhnert.2005","Coral","d18O","d18O","permil",32.467,-64.7
+"Africa_001","Afr-ColdAirCave.Sundqvist.2013_Africa_001","Afr-ColdAirCave.Sundqvist.2013","Speleothem","d18O","d18O","permil",-24,29.18
+"NAm_3688","NAm-TogwateePass.Briffa.1996_NAm_3688","NAm-TogwateePass.Briffa.1996","Wood","ring width","trsgi","unitless",43.7,-110.1
+"NAm_3700","NAm-TogwateePass.Briffa.1996_NAm_3700","NAm-TogwateePass.Briffa.1996","Wood","maximum latewood density","MXD",NA,43.7,-110.1
+"NAm_2176","NAm-Hilda.Kavanagh.2000_NAm_2176","NAm-Hilda.Kavanagh.2000","Wood","ring width","trsgi","unitless",52.2,-117.2
+"NAm_2236","NAm-PyramidMountain.Luckman.2001_NAm_2236","NAm-PyramidMountain.Luckman.2001","Wood","ring width","trsgi","unitless",53,-118.2
+"Asia_186","Asi-PAKI001.Esper.2007_Asia_186","Asi-PAKI001.Esper.2007","Wood","ring width","trsgi","unitless",36.03,74.58
+"Asia_210","Asi-PAKI014.Esper.2007_Asia_210","Asi-PAKI014.Esper.2007","Wood","ring width","trsgi","unitless",35.17,75.5
+"Asia_100","Asi-CHIN066.Shao.2013_Asia_100","Asi-CHIN066.Shao.2013","Wood","ring width","trsgi","unitless",33.72,96.28
+"Ocean2kHR_125_iso2k","CO00DRBE_Ocean2kHR_125_iso2k","CO00DRBE","Coral","d18O","d18O","permil",32.3,-64.7
+"Ocean2kHR_128_iso2k","SS03HAJA_Ocean2kHR_128_iso2k","SS03HAJA","Sclerosponge","d18O","d18O","permil",18.47,-77.95
+"Ocean2kHR_011_iso2k","CO97CHSY_Ocean2kHR_011_iso2k","CO97CHSY","Coral","d18O","d18O","permil",-4.6062,55.4244
+"KA17RYU01_SrCa","KA17RYU01_KA17RYU01_SrCa","KA17RYU01","Coral","Sr/Ca","Sr/Ca","mmol/mol",28.3,130
+"FL17DTO02_SrCa","FL17DTO02_FL17DTO02_SrCa","FL17DTO02","Coral",NA,"Sr/Ca","mmol/mol",24.699,-82.799
+"BO14HTI01_SrCa","BO14HTI01_BO14HTI01_SrCa","BO14HTI01","Coral","Sr/Ca","Sr/Ca","mmol/mol",12.21,109.31
+"ZI04IFR01_SrCa","ZI04IFR01_ZI04IFR01_SrCa","ZI04IFR01","Coral","Sr/Ca","Sr/Ca","mmol/mol",-23.15,43.58
+"SA16CLA01_d18O","SA16CLA01_SA16CLA01_d18O","SA16CLA01","Coral","d18O","d18O","permil",18.4,-114.7
+"AB20MEN03_d18O","AB20MEN03_AB20MEN03_d18O","AB20MEN03","Coral","d18O","d18O","permil",-3.126,100.309
+"AB20MEN02_d18O","AB20MEN02_AB20MEN02_d18O","AB20MEN02","Coral","d18O","d18O","permil",-2.37,99.745
+"AB20MEN06_d18O","AB20MEN06_AB20MEN06_d18O","AB20MEN06","Coral","d18O","d18O","permil",-3.0366,100.2307
+"AB20MEN07_d18O","AB20MEN07_AB20MEN07_d18O","AB20MEN07","Coral","d18O","d18O","permil",-3.1261,100.3097
+"DR00NBB01_d18O","DR00NBB01_DR00NBB01_d18O","DR00NBB01","Coral","d18O","d18O","permil",32.5,-64.7
+"ZI16ROD01_SrCa","ZI16ROD01_ZI16ROD01_SrCa","ZI16ROD01","Coral",NA,"Sr/Ca","mmol/mol",-19.671,63.429
+"AB20MEN05_d18O","AB20MEN05_AB20MEN05_d18O","AB20MEN05","Coral","d18O","d18O","permil",-3.037,100.231
+"HE13MIS01_d18O","HE13MIS01_HE13MIS01_d18O","HE13MIS01","Coral","d18O","d18O","permil",-10.69,152.81
+"HE13MIS01_SrCa","HE13MIS01_HE13MIS01_SrCa","HE13MIS01","Coral","Sr/Ca","Sr/Ca","mmol/mol",-10.69,152.81
+"AB20MEN04_d18O","AB20MEN04_AB20MEN04_d18O","AB20MEN04","Coral","d18O","d18O","permil",-2.752,99.995
+"RA20TAI01_SrCa","RA20TAI01_RA20TAI01_SrCa","RA20TAI01","Coral","Sr/Ca","Sr/Ca","mmol/mol",21.9,120.7
+"RA20TAI01_d18O","RA20TAI01_RA20TAI01_d18O","RA20TAI01","Coral","d18O","d18O","permil",21.9,120.7
+"TA18TAS01_d18O","TA18TAS01_TA18TAS01_d18O","TA18TAS01","Coral","d18O","d18O","permil",-14.27,-169.5
+"LI04FIJ01_d18O","LI04FIJ01_LI04FIJ01_d18O","LI04FIJ01","Coral","d18O","d18O","permil",-16.82,179.23
+"LI04FIJ01_SrCa","LI04FIJ01_LI04FIJ01_SrCa","LI04FIJ01","Coral","Sr/Ca","Sr/Ca","mmol/mol",-16.82,179.23
+"WU13TON01_d18O","WU13TON01_WU13TON01_d18O","WU13TON01","Coral","d18O","d18O","permil",-19.9333,-174.7167
+"RO19PAR01_SrCa","RO19PAR01_RO19PAR01_SrCa","RO19PAR01","Coral",NA,"Sr/Ca","mmol/mol",17.9368,-67.0184
+"CH97BVB01_d18O","CH97BVB01_CH97BVB01_d18O","CH97BVB01","Coral",NA,"d18O","permil",-4.6162,55.817
+"HE18COC01_d18O","HE18COC01_HE18COC01_d18O","HE18COC01","Coral","d18O","d18O","permil",-12.0875,96.8752
+"HE18COC01_SrCa","HE18COC01_HE18COC01_SrCa","HE18COC01","Coral","Sr/Ca","Sr/Ca","mmol/mol",-12.0875,96.8752
+"MU18NPI01_SrCa","MU18NPI01_MU18NPI01_SrCa","MU18NPI01","Coral","Sr/Ca","Sr/Ca","mmol/mol",-8.67,115.51
+"MU18NPI01_d18O","MU18NPI01_MU18NPI01_d18O","MU18NPI01","Coral","d18O","d18O","permil",-8.67,115.51
+"ZI15IMP02_SrCa","ZI15IMP02_ZI15IMP02_SrCa","ZI15IMP02","Coral",NA,"Sr/Ca","mmol/mol",-17.5196,118.969
+"KI14PAR01_SrCa","KI14PAR01_KI14PAR01_SrCa","KI14PAR01","Coral","Sr/Ca","Sr/Ca","mmol/mol",18,-67
+"KI14PAR01_d18O","KI14PAR01_KI14PAR01_d18O","KI14PAR01","Coral","d18O","d18O","permil",18,-67
+"ZI15IMP01_SrCa","ZI15IMP01_ZI15IMP01_SrCa","ZI15IMP01","Coral",NA,"Sr/Ca","mmol/mol",-17.5369,118.974
+"HE02GBR01_d18O","HE02GBR01_HE02GBR01_d18O","HE02GBR01","Coral","d18O","d18O","permil",-17.78,146.13
+"HE02GBR01_SrCa","HE02GBR01_HE02GBR01_SrCa","HE02GBR01","Coral","Sr/Ca","Sr/Ca","mmol/mol",-17.78,146.13
+"GO08BER01_SrCa","GO08BER01_GO08BER01_SrCa","GO08BER01","Coral","Sr/Ca","Sr/Ca","mmol/mol",32.33,-64.68
+"GO08BER01_d18O","GO08BER01_GO08BER01_d18O","GO08BER01","Coral","d18O","d18O","permil",32.33,-64.68
+"KI08PAR01_SrCa","KI08PAR01_KI08PAR01_SrCa","KI08PAR01","Coral","Sr/Ca","Sr/Ca","mmol/mol",17.93,-67
+"AB20MEN09_d18O","AB20MEN09_AB20MEN09_d18O","AB20MEN09","Coral","d18O","d18O","permil",-3.1259,100.3094
+"AB20MEN08_d18O","AB20MEN08_AB20MEN08_d18O","AB20MEN08","Coral","d18O","d18O","permil",-3.1261,100.3098
+"XI17HAI01_SrCa","XI17HAI01_XI17HAI01_SrCa","XI17HAI01","Coral","Sr/Ca","Sr/Ca","mmol/mol",19.395,110.753
+"XI17HAI01_d18O","XI17HAI01_XI17HAI01_d18O","XI17HAI01","Coral","d18O","d18O","permil",19.395,110.753
+"DE14DTO01_SrCa","DE14DTO01_DE14DTO01_SrCa","DE14DTO01","Coral","Sr/Ca","Sr/Ca","mmol/mol",24.6988,-82.7974
+"FE18RUS01_SrCa","FE18RUS01_FE18RUS01_SrCa","FE18RUS01","Coral","Sr/Ca","Sr/Ca","mmol/mol",27.8483,34.31
+"DE14DTO02_SrCa","DE14DTO02_DE14DTO02_SrCa","DE14DTO02","Coral",NA,"Sr/Ca","mmol/mol",24.617,-82.867
+"LI06FIJ01_d18O","LI06FIJ01_LI06FIJ01_d18O","LI06FIJ01","Coral",NA,"d18O","permil",-16.82,179.23

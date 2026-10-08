@@ -1,0 +1,61 @@
+TSID,Note
+Ocean2kHR_142_iso2k,Ocean2kHR_142_iso2k is a duplicate of Ocean2kHR_142 deom most likely PAGES2k. Removing iso2k record. Same with 156 and 157
+Ocean2kHR_156_iso2k,Ocean2kHR_142_iso2k is a duplicate of Ocean2kHR_142 deom most likely PAGES2k. Removing iso2k record. Same with 156 and 157
+Ocean2kHR_157_iso2k,Ocean2kHR_142_iso2k is a duplicate of Ocean2kHR_142 deom most likely PAGES2k. Removing iso2k record. Same with 156 and 157
+LI00RAR01_d18O,Same records. Keeping 147.
+LI00RAR01_SrCa,Same record. Keeping 149
+Ocean2kHR_006_iso2k,"Same records, keeping Ocean2kHR_006 from PAGES2k"
+CH03LOM01_d18O,"Same records, keeping Ocean2kHR_006 from PAGES2k"
+Ocean2kHR_019_iso2k,Same record. Keeping Ocean2kHR_019
+FE18RUS01_d18O,Same record. Keeping Ocean2kHR_019
+CA07FLI01_SrCa,Records from different samples. Not true duplicates.
+Ocean2kHR_193_iso2k,Same record. Keeping Ocean2kHR_193
+CA07FLI01_d18O,Same record. Keeping Ocean2kHR_193
+Ocean2kHR_026_iso2k,Two records but duplicates. Keeping Ocean2kHR_023 and 026.
+KU99HOU01_d18O,Two records but duplicates. Keeping Ocean2kHR_023 and 026.
+ZI14HOU01_d18O,Two records but duplicates. Keeping Ocean2kHR_023 and 026.
+ZI14HOU01_SrCa,Two records. Keeping Ocean2kHR 027 and 025
+Ocean2kHR_133_iso2k,Same record across all compilations. Keeping Ocean2kHR_133
+QU96ESV01_d18O,Same record across all compilations. Keeping Ocean2kHR_133
+Ocean2kHR_183_iso2k,Same record across all three compilations. Keeping Ocean2kHR_183
+OS14UCP01_d18O,Same record across all three compilations. Keeping Ocean2kHR_183
+Ocean2kHR_166_iso2k,Same record across all three compilations. Keeping Ocean2kHR166
+AS05GUA01_d18O,Same record across all three compilations. Keeping Ocean2kHR166
+KI08PAR01_d18O,Same record from two different compilations. Keeping Ocean2kHR_099
+Ocean2kHR_173_iso2k,Same record from three different compilations. Keeping Ocean2kHR_173
+DU94URV01_d18O,Same record from three different compilations. Keeping Ocean2kHR_173
+Ocean2kHR_001_iso2k,Same record from three different compilations. Keeping Ocean2kHR_001
+CO00MAL01_d18O,Same record from three different compilations. Keeping Ocean2kHR_001
+DR99ABR01_d18O,Same record from two different compilations. Keeping Ocean2kHR_167
+Ocean2kHR_094_iso2k,Same record from two different compilations. Keeping Ocean2kHR_094
+Ocean2kHR_007_iso2k,Same record from three compilations (note that it's most likely from two different coral head which CoralHydro2k archived in different dataset). Keeping Ocean2kHR_007
+DA06MAF02_d18O,Same record from three compilations (note that it's most likely from two different coral head which CoralHydro2k archived in different dataset). Keeping Ocean2kHR_007
+Ocean2kHR_177_iso2k,Same record from three different compilations. Keeping Ocean2kHR_177
+UR00MAI01_d18O,Same record from three different compilations. Keeping Ocean2kHR_177
+SAm_035_iso2k,Same record from two different compilations. Keeping SAm_035
+Ocean2kHR_139,Palmyra record!!!! Keeping PCU-1cce3af5639a4ec from Dee et al. (2020)
+Ocean2kHR_139_iso2k,Palmyra record!!!! Keeping PCU-1cce3af5639a4ec from Dee et al. (2020)
+CO03PAL08_d18O,Palmyra record!!!! Keeping PCU-1cce3af5639a4ec from Dee et al. (2020)
+CO03PAL09_d18O,Palmyra record!!!! Keeping PCU-1cce3af5639a4ec from Dee et al. (2020)
+CO03PAL04_d18O,Palmyra record!!!! Keeping PCU-1cce3af5639a4ec from Dee et al. (2020)
+CO03PAL10_d18O,Palmyra record!!!! Keeping PCU-1cce3af5639a4ec from Dee et al. (2020)
+CO03PAL05_d18O,Palmyra record!!!! Keeping PCU-1cce3af5639a4ec from Dee et al. (2020)
+CO03PAL07_d18O,Palmyra record!!!! Keeping PCU-1cce3af5639a4ec from Dee et al. (2020)
+CO03PAL06_d18O,Palmyra record!!!! Keeping PCU-1cce3af5639a4ec from Dee et al. (2020)
+CO03PAL02_d18O,Palmyra record!!!! Keeping PCU-1cce3af5639a4ec from Dee et al. (2020)
+CO03PAL03_d18O,Palmyra record!!!! Keeping PCU-1cce3af5639a4ec from Dee et al. (2020)
+CO03PAL01_d18O,Palmyra record!!!! Keeping PCU-1cce3af5639a4ec from Dee et al. (2020)
+Ocean2kHR_020_iso2k,Same record from different compilations. Keeping Ocean2kHR_020
+ZI04IFR01_d18O,Same record from different compilations. Keeping Ocean2kHR_020
+DE12ANC01_SrCa,Same record from two different compilations. Keeping Ocean2kHR_134
+WE09ARR01_d18O,Same record from two different compilations. Keeping Ocean2kHR_190
+WE09ARR01_SrCa,Same record from two different compilations. Keeping Ocean2kHR_191
+Ocean2kHR_013_iso2k,Same record from two different compilations. Keeping Ocean2kHR_013
+Ocean2kHR_126_iso2k,Same record from different compilations. Keeping Ocean2kHR_126
+Ocean2kHR_105_iso2k,"Same reocords. Keeping Ocean2kHR 102 and 105 as well as DR00NBB01, which seems to be unique"
+Ocean2kHR_102_iso2k,"Same reocords. Keeping Ocean2kHR 102 and 105 as well as DR00NBB01, which seems to be unique"
+Ocean2kHR_154_iso2k,Same record from different compilation. Keeping Ocean2kHR_154
+GO12SBV01_d18O,Same record from different compilation. Keeping Ocean2kHR_154
+WU13TON01_SrCa,Same record from different compilations. Keeping Ocean2kHR_159
+Ocean2kHR_138_iso2k,Same record from different compilations. Keeping Ocean2kHR_138
+LI94SEC01_d18O,Same record from different compilations. Keeping Ocean2kHR_138

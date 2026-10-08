@@ -68,6 +68,11 @@ qc <- utils::read.csv(gzfile(file.path(qcstore, "snapshots/Pages2kTemperature/QC
 out[[4]] <- data.frame(TSid = qc$TSid[qc$inThisCompilation %in% "FALSE"], pool = "pages2k2017",
                        source = "Pages2kTemperature QC inThisCompilation FALSE")
 
+# cfr_annual: PReSto2k's duplicate removals (Gondhalekar et al., presto2k
+# data/flagged_tsids_with_notes.csv, each with its reason).
+fl <- utils::read.csv(file.path(here, "baselines", "presto2k_2025_flagged.csv"), stringsAsFactors = FALSE)
+out[[5]] <- data.frame(TSid = fl$TSID, pool = "cfr_annual", source = "PReSto2k (2025) duplicate removal")
+
 x <- do.call(rbind, out)
 x <- x[!is.na(x$TSid) & nzchar(x$TSid), ]
 # Re-admitted since: a curator's later yes outranks an earlier no. PAGES 2k
@@ -76,7 +81,8 @@ x <- x[!is.na(x$TSid) & nzchar(x$TSid), ]
 # sampleCount, ...; 2,885 TSids against the sheet's 691), which would re-admit
 # nearly everything.
 readmit <- list(temp12k = member("Temp12k"),
-                pages2k2017 = qc$TSid[qc$inThisCompilation %in% "TRUE"])
+                pages2k2017 = qc$TSid[qc$inThisCompilation %in% "TRUE"],
+                cfr_annual = character())
 x <- x[!mapply(function(t, p) t %in% readmit[[p]], x$TSid, x$pool), ]
 x <- x[!duplicated(x[c("TSid", "pool")]), ]
 utils::write.csv(x, file.path(here, "baselines", "curator_exclusions.csv"), row.names = FALSE)
@@ -91,7 +97,8 @@ ad <- rbind(
   data.frame(TSid = member("Temp12k"), pool = "temp12k", source = "Temp12k (current)"),
   data.frame(TSid = follow(base("pages2k_2_0_0.csv")), pool = "pages2k2017", source = "PAGES2k v2.0.0"),
   data.frame(TSid = qc$TSid[qc$inThisCompilation %in% "TRUE"], pool = "pages2k2017",
-             source = "Pages2kTemperature QC inThisCompilation TRUE"))
+             source = "Pages2kTemperature QC inThisCompilation TRUE"),
+  data.frame(TSid = base("presto2k_2025.csv"), pool = "cfr_annual", source = "PReSto2k (2025) proxy database"))
 ad <- ad[ad$TSid %in% present, ]
 ad <- ad[!duplicated(ad[c("TSid", "pool")]), ]
 utils::write.csv(ad, file.path(here, "baselines", "curator_admissions.csv"), row.names = FALSE)

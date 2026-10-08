@@ -30,9 +30,15 @@ pool_snapshot <- function(dir) {
 
 # Candidate records: paleo measurement columns, not axes, whose climate
 # interpretation of rank <= max_rank is the target variable. One row per TSid.
+`%||%` <- function(a, b) if (is.null(a)) b else a
+
 pool_candidates <- function(con, interp, tsids = NULL) {
   # With tsids, the interpretation is not required (curator admissions are
   # admitted on a person's judgment, whatever the metadata now says).
+  # variable "*": any climate interpretation, or none (the caller decides what
+  # an uninterpreted column must be to stay; see climate_proxies).
+  any_var <- identical(interp$variable, "*")
+  if (any_var) tsids <- tsids %||% character()
   sql <- sprintf("
     SELECT t.TSid, t.datasetId, t.tableId, t.variableName, t.units, t.proxy,
            t.proxyGeneral, t.primaryTimeseries, d.dataSetName, d.archiveType,
@@ -41,13 +47,15 @@ pool_candidates <- function(con, interp, tsids = NULL) {
            i.rank AS interpRank, i.seasonality, i.direction, i.variableDetail
     FROM timeseries t
     %s JOIN interpretations i ON i.TSid = t.TSid
-      AND i.scope = '%s' AND lower(i.variable) = lower('%s') AND i.rank <= %d
+      AND i.scope = '%s' AND %s AND i.rank <= %d
     JOIN datasets d USING (datasetId)
     WHERE t.tableType = 'paleo' AND t.tableKind = 'measurement'
       AND NOT coalesce(t.isAxis, false) %s",
     if (is.null(tsids)) "" else "LEFT",
-    interp$scope, interp$variable, as.integer(interp$max_rank),
-    if (is.null(tsids)) "" else sprintf("AND t.TSid IN (%s)", paste0("'", tsids, "'", collapse = ",")))
+    interp$scope,
+    if (any_var) "i.variable IS NOT NULL" else sprintf("lower(i.variable) = lower('%s')", interp$variable),
+    as.integer(interp$max_rank),
+    if (!length(tsids)) "" else sprintf("AND t.TSid IN (%s)", paste0("'", tsids, "'", collapse = ",")))
   x <- DBI::dbGetQuery(con, sql)
   # A column interpreted as temperature twice within the rank limit is one record.
   x <- x[order(x$TSid, x$interpRank), ]
