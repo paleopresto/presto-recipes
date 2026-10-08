@@ -37,6 +37,19 @@ one_record_per_site:
     prefer_season: annual
     defer_within_km: 8
 
+# Kaufman et al. relaxed duration and resolution "to improve the global
+# coverage, especially in the Southern Hemisphere". A record meeting these
+# relaxed thresholds is admitted when no strictly passing record lies within
+# isolation_km. Operational values.
+data_poor_exception:
+  isolation_km: 1000
+  relax:
+    duration.min_continuous: 3000
+    resolution.max_median_spacing: 600
+    chronology.max_gap: 4500
+
+curator_admissions: curator_admissions.csv
+
 interpretation:
   scope: climate
   variable: temperature

@@ -66,7 +66,11 @@ reservoir_correct <- function(ctrl, x, years) {
 
 # PAGES 2k (2017). cand and metrics joined by TSid; ctrl is pool_age_controls().
 eval_pages2k2017 <- function(x, ctrl, cfg) {
-  annual <- !is.na(x$res_win) & x$res_win <= cfg$annual_max_resolution
+  # Calendar-dated archives (documents, corals, trees) take the annual length
+  # rule whatever their sampling: the 300- and 50-year rules are about dating,
+  # and a decadal documentary series is dated to the year.
+  annual <- (!is.na(x$res_win) & x$res_win <= cfg$annual_max_resolution) |
+    is_in(x$archiveType, cfg$calendar_dated_archives)
   marine <- is_in(x$archiveType, cfg$marine_archives)
   min_len <- ifelse(annual, ifelse(marine, cfg$length$annual_marine, cfg$length$annual_terrestrial),
                     cfg$length$non_annual)
@@ -150,10 +154,36 @@ finalize <- function(x) {
   x
 }
 
+# Set cfg values by dotted path, e.g. list("duration.min_continuous" = 3000).
+relax_cfg <- function(cfg, relax) {
+  for (k in names(relax)) {
+    path <- strsplit(k, ".", fixed = TRUE)[[1]]
+    cfg[[path]] <- relax[[k]]
+  }
+  cfg
+}
+
+read_ledger <- function(cfg, key) {
+  f <- cfg[[key]]
+  if (is.null(f)) return(character())
+  l <- utils::read.csv(file.path(cfg$.dir, "baselines", f), stringsAsFactors = FALSE)
+  l$TSid[l$pool == cfg$name]
+}
+
 build_pool <- function(con, cfg) {
+  admitted <- read_ledger(cfg, "curator_admissions")
   cand <- pool_candidates(con, cfg$interpretation)
+  # Admitted records are evaluated like any other, so the pool can report
+  # whether they would have passed on their own; those the interpretation
+  # query does not find (temperature ranked second, say) are added here.
+  extra <- setdiff(admitted, cand$TSid)
+  if (length(extra)) {
+    more <- pool_candidates(con, utils::modifyList(cfg$interpretation, list(max_rank = 99)), extra)
+    cand <- rbind(cand, more)
+  }
   if (!is.null(cfg$exclude_variable_pattern))
-    cand <- cand[!grepl(cfg$exclude_variable_pattern, cand$variableName, ignore.case = TRUE), ]
+    cand <- cand[!grepl(cfg$exclude_variable_pattern, cand$variableName, ignore.case = TRUE) |
+                   cand$TSid %in% admitted, ]
   pts <- pool_points(con, cand)
   gap <- if (!is.null(cfg$duration$max_gap)) cfg$duration$max_gap else Inf
   met <- metrics_table(pts, cfg$window, gap)
@@ -161,12 +191,32 @@ build_pool <- function(con, cfg) {
   x$span_win[is.na(x$span_win)] <- 0
   x$longest_win[is.na(x$longest_win)] <- 0
   ctrl <- pool_age_controls(con, x$datasetId)
-  if (!is.null(cfg$curator_exclusions)) {
-    ex <- utils::read.csv(file.path(cfg$.dir, "baselines", cfg$curator_exclusions), stringsAsFactors = FALSE)
-    x$pass_curator <- !x$TSid %in% ex$TSid[ex$pool == cfg$name]
-  }
+  if (!is.null(cfg$curator_exclusions)) x$pass_curator <- !x$TSid %in% read_ledger(cfg, "curator_exclusions")
   ev <- switch(cfg$name, pages2k2017 = eval_pages2k2017, temp12k = eval_temp12k)
-  x <- ev(x, ctrl, cfg)
+  base <- x
+  x <- ev(base, ctrl, cfg)
+  x$selected_by <- ifelse(x$selected, "criteria", NA)
+
+  # Data-poor regions: both compilations relaxed duration, resolution and age
+  # control "to improve the global coverage". A record that passes relaxed
+  # thresholds is admitted when no record passing the strict ones lies within
+  # isolation_km of it.
+  dp <- cfg$data_poor_exception
+  if (!is.null(dp)) {
+    rx <- ev(base, ctrl, relax_cfg(cfg, dp$relax))
+    strict <- x[x$selected & !is.na(x$lat), ]
+    try_ <- which(!x$selected & rx$selected & !is.na(x$lat))
+    iso <- vapply(try_, function(i) min(haversine_km(x$lat[i], x$lon[i], strict$lat, strict$lon)), 0)
+    hit <- try_[iso > dp$isolation_km]
+    x$selected[hit] <- TRUE
+    x$selected_by[hit] <- "data-poor exception"
+  }
+
+  # Curator admissions: the compilation's own members, unless a curator has
+  # since excluded them.
+  adm <- which(!x$selected & x$TSid %in% admitted & !(x$pass_curator %in% FALSE))
+  x$selected[adm] <- TRUE
+  x$selected_by[adm] <- "curator admission"
   attr(x, "snapshot") <- attr(con, "snapshot")
   attr(x, "points") <- pts[pts$TSid %in% x$TSid[x$selected], ]
   x

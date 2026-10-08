@@ -38,6 +38,25 @@ one_record_per_site:
     prefer_season: annual
     defer_within_km: 8
 
+# Archives dated to the calendar year whatever their sampling interval.
+calendar_dated_archives: [Documents, Coral, Sclerosponge, MolluskShell, Wood]
+
+# "Records shorter than 300 yr were included in regions with sparse data" and
+# similar relaxations were made by hand; here a record meeting these relaxed
+# thresholds is admitted when no strictly passing record lies within
+# isolation_km. Operational values.
+data_poor_exception:
+  isolation_km: 500
+  relax:
+    length.annual_terrestrial: 150
+    length.annual_marine: 30
+    length.non_annual: 300
+    resolution.terrestrial: 100
+    resolution.marine: 300
+    chronology.tolerance: 400
+
+curator_admissions: curator_admissions.csv
+
 interpretation:
   scope: climate
   variable: temperature

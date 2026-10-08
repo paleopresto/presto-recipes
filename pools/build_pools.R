@@ -37,13 +37,14 @@ for (p in pools) {
   sel <- x[x$selected, ]
   message(sprintf("   %d candidates, %d selected from %d datasets", nrow(x), nrow(sel),
                   length(unique(sel$datasetId))))
+  message("   selected by: ", paste(names(table(sel$selected_by)), table(sel$selected_by), sep = "=", collapse = ", "))
   fails <- table(unlist(strsplit(x$fails[!x$selected], ";")))
   message("   failing criteria: ", paste(names(fails), fails, sep = "=", collapse = ", "))
 
   prior_file <- file.path(here, "baselines", "dedup_prior.csv")
   prior <- if (file.exists(prior_file)) read.csv(prior_file, stringsAsFactors = FALSE) else NULL
   dd <- dedup_pool(con, sel, attr(x, "points"), prior, unlist(cfg$collapse_prefer_units),
-                   cfg$one_record_per_site)
+                   cfg$one_record_per_site, read_ledger(cfg, "curator_admissions"))
   write.csv(dd$pairs, file.path(out, "dedup_pairs.csv"), row.names = FALSE)
   sel <- dd$pool
   write.csv(sel, file.path(out, "pool.csv"), row.names = FALSE)
@@ -60,15 +61,26 @@ for (p in pools) {
   if (!is.null(cfg$baseline)) {
     b <- read.csv(file.path(here, "baselines", cfg$baseline), stringsAsFactors = FALSE)
     present <- dbGetQuery(con, "SELECT TSid FROM timeseries")$TSid
-    b$in_snapshot <- b$TSid %in% present
-    b$candidate <- b$TSid %in% x$TSid
-    b$selected <- b$TSid %in% x$TSid[x$selected]
-    b$final <- b$TSid %in% sel$TSid
-    b$fails <- x$fails[match(b$TSid, x$TSid)]
+    al <- read.csv(file.path(here, "baselines", "aliases.csv"), stringsAsFactors = FALSE)
+    b$TSid_now <- ifelse(b$TSid %in% al$oldTSid & !is.na(al$TSid[match(b$TSid, al$oldTSid)]),
+                         al$TSid[match(b$TSid, al$oldTSid)], b$TSid)
+    b$in_snapshot <- b$TSid_now %in% present
+    b$candidate <- b$TSid_now %in% x$TSid
+    b$selected <- b$TSid_now %in% x$TSid[x$selected]
+    b$final <- b$TSid_now %in% sel$TSid
+    # Represented: the record itself, or the duplicate dedup kept in its place.
+    pr <- dd$pairs[dd$pairs$duplicate, ]
+    kept_for <- c(pr$TSid2[pr$keep2 %in% TRUE & pr$keep1 %in% FALSE], pr$TSid1[pr$keep1 %in% TRUE & pr$keep2 %in% FALSE])
+    names(kept_for) <- c(pr$TSid1[pr$keep2 %in% TRUE & pr$keep1 %in% FALSE], pr$TSid2[pr$keep1 %in% TRUE & pr$keep2 %in% FALSE])
+    b$represented_by <- ifelse(b$final, b$TSid_now, ifelse(b$TSid_now %in% names(kept_for), kept_for[b$TSid_now], NA))
+    b$represented <- !is.na(b$represented_by) & b$represented_by %in% sel$TSid
+    b$fails <- x$fails[match(b$TSid_now, x$TSid)]
     write.csv(b, file.path(out, "baseline.csv"), row.names = FALSE)
     message(sprintf("   baseline %s: %d records, %d in snapshot, %d candidates, %d pass criteria (recall %.1f%%), %d after dedup",
                     cfg$baseline, nrow(b), sum(b$in_snapshot), sum(b$candidate), sum(b$selected),
                     100 * sum(b$selected) / sum(b$in_snapshot), sum(b$final)))
-    message(sprintf("   new relative to baseline: %d records", sum(!sel$TSid %in% b$TSid)))
+    message(sprintf("   represented after dedup (record or its kept duplicate): %d of %d (%.1f%%)",
+                    sum(b$represented), sum(b$in_snapshot), 100 * sum(b$represented) / sum(b$in_snapshot)))
+    message(sprintf("   new relative to baseline: %d records", sum(!sel$TSid %in% b$TSid_now)))
   }
 }

@@ -30,7 +30,9 @@ pool_snapshot <- function(dir) {
 
 # Candidate records: paleo measurement columns, not axes, whose climate
 # interpretation of rank <= max_rank is the target variable. One row per TSid.
-pool_candidates <- function(con, interp) {
+pool_candidates <- function(con, interp, tsids = NULL) {
+  # With tsids, the interpretation is not required (curator admissions are
+  # admitted on a person's judgment, whatever the metadata now says).
   sql <- sprintf("
     SELECT t.TSid, t.datasetId, t.tableId, t.variableName, t.units, t.proxy,
            t.proxyGeneral, t.primaryTimeseries, d.dataSetName, d.archiveType,
@@ -38,12 +40,14 @@ pool_candidates <- function(con, interp) {
            d.geo_siteName AS siteName, d.version AS datasetVersion,
            i.rank AS interpRank, i.seasonality, i.direction, i.variableDetail
     FROM timeseries t
-    JOIN interpretations i USING (TSid)
+    %s JOIN interpretations i ON i.TSid = t.TSid
+      AND i.scope = '%s' AND lower(i.variable) = lower('%s') AND i.rank <= %d
     JOIN datasets d USING (datasetId)
     WHERE t.tableType = 'paleo' AND t.tableKind = 'measurement'
-      AND NOT coalesce(t.isAxis, false)
-      AND i.scope = '%s' AND lower(i.variable) = lower('%s') AND i.rank <= %d",
-    interp$scope, interp$variable, as.integer(interp$max_rank))
+      AND NOT coalesce(t.isAxis, false) %s",
+    if (is.null(tsids)) "" else "LEFT",
+    interp$scope, interp$variable, as.integer(interp$max_rank),
+    if (is.null(tsids)) "" else sprintf("AND t.TSid IN (%s)", paste0("'", tsids, "'", collapse = ",")))
   x <- DBI::dbGetQuery(con, sql)
   # A column interpreted as temperature twice within the rank limit is one record.
   x <- x[order(x$TSid, x$interpRank), ]

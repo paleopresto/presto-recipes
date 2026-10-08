@@ -17,6 +17,7 @@
 # is needed only where a rule cannot decide:
 #   1. prior     a decision a person already made (the DoD2k decision log)
 #   2. identical same values on every shared time point: keep the preferred
+#   2b. curated  one copy is a member of the pool's reference compilation
 #   3. update    one record is flagged as an update or recollection: keep it
 #   4. subset    the shorter lies >= 90% within the longer: keep the longer
 #   5. complementary  they overlap < 50% of the shorter: keep both
@@ -139,12 +140,20 @@ norm_season <- function(x) {
 }
 
 # Stage 0: one record per dataset, proxy and season. Returns the TSids dropped.
-collapse_within_dataset <- function(pool, prefer_units = character()) {
-  key <- paste(pool$datasetId, norm_proxy(pool), norm_season(pool$seasonality), sep = "|")
-  o <- order(key, -as.integer(pool$primaryTimeseries %in% TRUE),
+# Only columns that name their proxy are collapsed: with no proxy, two
+# temperature columns of one core (alkenone and Mg/Ca SST) cannot be told
+# apart from two versions of one record, and both are kept.
+collapse_within_dataset <- function(pool, prefer_units = character(), curated = character()) {
+  has_proxy <- !is.na(pool$proxy) & nzchar(pool$proxy)
+  key <- paste(pool$datasetId, ifelse(has_proxy, norm_proxy(pool), paste0("tsid:", pool$TSid)),
+               norm_season(pool$seasonality), sep = "|")
+  o <- order(key, -as.integer(pool$TSid %in% curated), -as.integer(pool$primaryTimeseries %in% TRUE),
              -as.integer(pool$units %in% prefer_units), -pool$n_win, pool$tableId, pool$TSid)
   p <- pool[o, ]
-  p$TSid[duplicated(key[o])]
+  # Curated records are never collapsed away: a compilation that kept two
+  # records from one core kept them deliberately.
+  drop <- duplicated(key[o]) & !p$TSid %in% curated
+  p$TSid[drop]
 }
 
 # Stage 0b: one record per site for large uniform syntheses (see the config's
@@ -175,8 +184,8 @@ collapse_syntheses <- function(con, pool, rules) {
 # Resolve duplicates in a selected pool. Returns list(pairs, pool) where pool
 # has a `dedup_keep` column and pairs records every decision and its rule.
 dedup_pool <- function(con, pool, points, prior = NULL, prefer_units = character(),
-                       syntheses = list(), opt = dedup_defaults) {
-  within <- collapse_within_dataset(pool, prefer_units)
+                       syntheses = list(), curated = character(), opt = dedup_defaults) {
+  within <- collapse_within_dataset(pool, prefer_units, curated)
   within <- c(within, collapse_syntheses(con, pool[!pool$TSid %in% within, ], syntheses))
   all_pool <- pool
   pool <- pool[!pool$TSid %in% within, ]
@@ -223,8 +232,13 @@ dedup_pool <- function(con, pool, points, prior = NULL, prefer_units = character
     w <- prefer(pref[i, ], pref[j, ])
     f_short <- max(pairs$frac1[k], pairs$frac2[k], na.rm = TRUE)
     longer <- if (pool$n_win[i] >= pool$n_win[j]) 1L else 2L
+    c1 <- a %in% curated; c2 <- b %in% curated
     if (isTRUE(pairs$identical[k])) {
       rule <- "identical"
+      if (xor(c1, c2)) w <- if (c1) 1L else 2L
+    } else if (xor(c1, c2)) {
+      # One copy is the compilation's own record: keep the curated one.
+      rule <- "curated"; w <- if (c1) 1L else 2L
     } else if (xor(up1, up2)) {
       rule <- "update"; w <- if (up1) 1L else 2L
     } else if (f_short >= opt$subset_frac) {

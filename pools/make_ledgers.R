@@ -1,12 +1,12 @@
 #!/usr/bin/env Rscript
 #
-# Build the curator exclusion ledger: records that people who assembled a
-# compilation looked at and decided against. Automated criteria cannot see
+# Build the curator ledgers: records that people who assembled a compilation
+# looked at and decided for (admissions) or against (exclusions). Automated criteria cannot see
 # most of the reasons (a calibration the authors distrust, an inverse tree-ring
 # response, a record superseded in a way the metadata does not say), so a pool
 # keeps those decisions rather than re-making them.
 #
-#   Rscript pools/make_exclusions.R <export_dir> <qcstore_dir> [cache_dir]
+#   Rscript pools/make_ledgers.R <export_dir> <qcstore_dir> [cache_dir]
 #
 # Sources, per pool:
 #   temp12k      Temperature 12k v1.0.0 records flagged Tverse
@@ -18,7 +18,13 @@
 # Exclusions are by TSid: a new dataset, or a new record in a new version of
 # a dataset, is not blocked.
 #
-# Writes pools/baselines/curator_exclusions.csv (TSid, pool, source).
+# Admissions, per pool, are the compilation itself: Temperature 12k v1.0.0
+# and current Temp12k membership; PAGES 2k v2.0.0 and inThisCompilation TRUE
+# on the current QC sheet. Baseline TSids that no longer exist are followed to
+# their current TSid through baselines/aliases.csv (make_aliases.R).
+#
+# Writes pools/baselines/curator_exclusions.csv and curator_admissions.csv
+# (TSid, pool, source).
 
 suppressPackageStartupMessages({library(DBI); library(duckdb)})
 
@@ -75,4 +81,19 @@ x <- x[!mapply(function(t, p) t %in% readmit[[p]], x$TSid, x$pool), ]
 x <- x[!duplicated(x[c("TSid", "pool")]), ]
 utils::write.csv(x, file.path(here, "baselines", "curator_exclusions.csv"), row.names = FALSE)
 print(table(x$pool, x$source))
+
+al <- utils::read.csv(file.path(here, "baselines", "aliases.csv"), stringsAsFactors = FALSE)
+follow <- function(t) { a <- al$TSid[match(t, al$oldTSid)]; ifelse(is.na(a), t, a) }
+present <- dbGetQuery(con, "SELECT TSid FROM timeseries")$TSid
+base <- function(f) utils::read.csv(file.path(here, "baselines", f), stringsAsFactors = FALSE)$TSid
+ad <- rbind(
+  data.frame(TSid = follow(base("temp12k_1_0_0.csv")), pool = "temp12k", source = "Temp12k v1.0.0"),
+  data.frame(TSid = member("Temp12k"), pool = "temp12k", source = "Temp12k (current)"),
+  data.frame(TSid = follow(base("pages2k_2_0_0.csv")), pool = "pages2k2017", source = "PAGES2k v2.0.0"),
+  data.frame(TSid = qc$TSid[qc$inThisCompilation %in% "TRUE"], pool = "pages2k2017",
+             source = "Pages2kTemperature QC inThisCompilation TRUE"))
+ad <- ad[ad$TSid %in% present, ]
+ad <- ad[!duplicated(ad[c("TSid", "pool")]), ]
+utils::write.csv(ad, file.path(here, "baselines", "curator_admissions.csv"), row.names = FALSE)
+print(table(ad$pool, ad$source))
 dbDisconnect(con, shutdown = TRUE)
