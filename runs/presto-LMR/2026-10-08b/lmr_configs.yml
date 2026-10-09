@@ -1,0 +1,79 @@
+# presto-LMR run on the PAGES 2k (2017) pool, 2026-10-08b snapshot.
+#
+# Committed as the run repository's lmr_configs.yml, which the workflow mounts
+# over the image's baked config (a shallow merge: a key here replaces the
+# image's key whole).
+#
+# Class-based seasonality, as in PReSto2k's primary product
+# (paleopresto/presto2k paleobook/C02_a_DA_with_class_based_seasonality.ipynb,
+# after LMRv2.1, Tardif et al. 2019): each proxy class calibrates against an
+# expert-curated pool of candidate seasons, and cfr keeps the best fit. Proxy
+# classes not listed fall back to cfr's defaults (Linear PSM, calendar-annual
+# season, tas), as they did there. cfr's calib_psms reads the season from
+# ptype_season_dict, not from each record's seasonality metadata.
+#
+# The image (davidedge/lmr2, cfr 2025.7.28) carries the same three dicts; they
+# are written out here so the run does not depend on what an image happens to
+# bake in. Run settings follow the PReSto2k instance
+# (DaveEdge1/presto-LMR-presto2k): 0-2010, 10 Monte Carlo seeds, 100 members.
+
+recon_period: [0, 2010]
+recon_seeds: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+nens: 100
+assim_frac: 0.75
+recon_loc_rad: 25000
+prior_annualize_months: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+prior_anom_period: [850, 1850]
+proxydb_path: /app/lipd_cfr.pkl
+save_dirpath: /recons
+
+# Annual and sub-annual records only (median spacing 0-1.2 yr), as in LMRv2.1
+# and PReSto2k: the pool also holds decadal-to-centennial records that the
+# PAGES 2k (2017) criteria admit but an annual DA should not assimilate. The
+# pool already fixes the proxy classes, so the filter is by resolution alone.
+filter_proxydb_kwargs:
+  by: dt
+  keys: [0.0, 1.2]
+
+psm_calib_period: [1850, 2015]
+nobs_lb: 25
+
+ptype_psm_dict:
+  tree.TRW: Bilinear
+  tree.MXD: Linear
+  coral.d18O: Linear
+  coral.SrCa: Linear
+  ice.d18O: Linear
+  ice.dD: Linear
+  lake.varve_thickness: Linear
+
+ptype_clim_dict:
+  tree.TRW: [tas, pr]
+  tree.MXD: [tas]
+  coral.d18O: [tas]
+  coral.SrCa: [tas]
+  ice.d18O: [tas]
+  ice.dD: [tas]
+  lake.varve_thickness: [tas]
+
+ptype_season_dict:
+  tree.TRW:            # expert-curated pool of possible growing seasons
+    - [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+    - [6, 7, 8]
+    - [3, 4, 5, 6, 7, 8]
+    - [6, 7, 8, 9, 10, 11]
+    - [-12, 1, 2]
+    - [-9, -10, -11, -12, 1, 2]
+    - [-12, 1, 2, 3, 4, 5]
+  tree.MXD:
+    - [6, 7, 8]
+    - [3, 4, 5, 6, 7, 8]
+    - [6, 7, 8, 9, 10, 11]
+    - [-12, 1, 2]
+    - [-9, -10, -11, -12, 1, 2]
+    - [-12, 1, 2, 3, 4, 5]
+  coral.d18O: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+  coral.SrCa: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+  ice.d18O: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+  ice.dD: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+  lake.varve_thickness: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]

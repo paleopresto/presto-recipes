@@ -1,0 +1,22 @@
+# BayGMST run on the PAGES 2k (2017) pool, 2026-10-08b snapshot.
+# Settings match the manuscript's BayGMST figure (LASSO reduced proxy,
+# 1-2000 CE, instrumental period from 1850), with longer chains than the
+# template default because the 1,160-record pool did not converge in a
+# short local test (max rhat 1.51 at 200 warmup / 1000 sampling).
+ptype: ALL
+rp_method: LASSO
+stan_params:
+  iter_warmup: 1000
+  iter_sampling: 2000
+  chains: 4
+  parallel_chains: 4
+partition_years:
+  t1: 1
+  t2: 1850
+  t3: 2000
+co2_params:
+  c0: 280
+  co2_coef: 5.35
+vol_params:
+  vol_coef: 25.0
+seed: 1
