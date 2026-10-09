@@ -1,0 +1,11 @@
+{
+  "mode": "bundle",
+  "pool": "temp12k-1_0_0",
+  "snapshot": "Temp12k v1.0.0",
+  "criteria": "Temperature 12k v1.0.0 as released, trimmed to its Temp12k records",
+  "bundle": {
+    "url": "https://github.com/paleopresto/presto-recipes/releases/download/baseline-temp12k-1_0_0/presto-baseline-temp12k-1_0_0.zip",
+    "sha256": "54dde4b0d2792827e2b36dd422b4893852cbf270a12c222b5d35694e57ee7b3c"
+  },
+  "uniqueID": "presto-Temp12k-baseline-temp12k-1_0_0"
+}

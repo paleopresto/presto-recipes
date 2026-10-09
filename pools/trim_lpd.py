@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Trim LiPD files to a pool's records.
 
-    python3 -I pools/trim_lpd.py <keep_tsids.txt> <src_dir> <out_dir>
+    python3 -I pools/trim_lpd.py <keep_tsids.txt> <src_dir> <out_dir> [--keep-axes]
 
 Every paleo measurement column whose TSid is not in keep_tsids.txt (one TSid
 per line: the pool's records plus the axis columns of their tables) is
@@ -9,6 +9,10 @@ removed from the JSON-LD and from its CSV, and the BagIt manifests are
 recomputed. Chron data, models and ensembles are left as they are, so age
 models and their ensembles travel with the records. Only the standard library
 is used.
+
+--keep-axes also keeps columns named as time or depth axes (age, year, depth,
+...), for files that come with no export to say which columns are axes (a
+past compilation release).
 
 Column removal follows lipdGenerator's _remove_tsids_from_lpd
 (DaveEdge1/prestoServer, getLipds/lipdGenerator/generate.py), inverted from a
@@ -46,7 +50,10 @@ def rehash(files, manifest_suffix):
     files[name] = ("\n".join(out) + "\n").encode("utf-8")
 
 
-def trim(path, keep, out_path):
+AXES = {"age", "year", "depth", "age14c", "depthtop", "depthbottom", "depth_top", "depth_bottom"}
+
+
+def trim(path, keep, out_path, keep_axes=False):
     with zipfile.ZipFile(path) as z:
         files = {n: z.read(n) for n in z.namelist()}
     jname = next(n for n in files if n.endswith(".jsonld"))
@@ -55,7 +62,8 @@ def trim(path, keep, out_path):
     for pd_ in as_list(meta.get("paleoData")):
         for table in as_list(pd_.get("measurementTable")):
             cols = as_list(table.get("columns"))
-            drop = [c for c in cols if c.get("TSid", c.get("tsid")) not in keep]
+            drop = [c for c in cols if c.get("TSid", c.get("tsid")) not in keep
+                    and not (keep_axes and str(c.get("variableName", "")).lower() in AXES)]
             if not drop:
                 kept += [c.get("TSid") for c in cols]
                 continue
@@ -87,11 +95,12 @@ def trim(path, keep, out_path):
 
 def main():
     keep_file, src, out = sys.argv[1:4]
+    keep_axes = "--keep-axes" in sys.argv[4:]
     keep = {l.strip() for l in open(keep_file) if l.strip()}
     os.makedirs(out, exist_ok=True)
     found, ndrop = set(), 0
     for f in sorted(glob.glob(os.path.join(src, "*.lpd"))):
-        kept, d = trim(f, keep, os.path.join(out, os.path.basename(f)))
+        kept, d = trim(f, keep, os.path.join(out, os.path.basename(f)), keep_axes)
         found.update(kept)
         ndrop += d
     missing = sorted(keep - found)
