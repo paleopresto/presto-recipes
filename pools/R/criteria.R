@@ -158,6 +158,23 @@ eval_cfr_annual <- function(x, ctrl, cfg) {
   finalize(x)
 }
 
+# Metadata sanity: a record labeled degC whose values cannot be temperatures
+# (growing degree days, precipitation in mm) is mislabeled, and a DA would
+# assimilate it as a several-hundred-degree anomaly. Laihalampi.Giesecke.2008
+# (GDD5 as degC) alone moved the Holocene DA's 11-10 ka GMST by -0.2 degC.
+plausibility_defaults <- list(degC = c(-90, 60), max_range_degC = 60,
+                              not_temperature_season = "GDD|degree.?day")
+
+plausible <- function(x, pts, opt = NULL) {
+  opt <- utils::modifyList(plausibility_defaults, opt %||% list())
+  lo <- tapply(pts$value, pts$TSid, min, na.rm = TRUE)[x$TSid]
+  hi <- tapply(pts$value, pts$TSid, max, na.rm = TRUE)[x$TSid]
+  dc <- tolower(gsub("[ °]", "", x$units)) %in% c("degc", "c")
+  bad_val <- dc & !is.na(lo) & (lo < opt$degC[1] | hi > opt$degC[2] | hi - lo > opt$max_range_degC)
+  bad_season <- matches(x$seasonality, opt$not_temperature_season) & matches(x$variableName, "temp")
+  !(bad_val | bad_season)
+}
+
 finalize <- function(x) {
   checks <- grep("^pass_", names(x), value = TRUE)
   m <- as.matrix(x[checks])
@@ -221,6 +238,7 @@ build_pool <- function(con, cfg) {
   x$longest_win[is.na(x$longest_win)] <- 0
   ctrl <- pool_age_controls(con, x$datasetId)
   if (!is.null(cfg$curator_exclusions)) x$pass_curator <- !x$TSid %in% read_ledger(cfg, "curator_exclusions")
+  x$pass_plausible <- plausible(x, pts, cfg$plausibility)
   ev <- switch(cfg$evaluator %||% cfg$name, pages2k2017 = eval_pages2k2017, temp12k = eval_temp12k,
                cfr_annual = eval_cfr_annual)
   base <- x
@@ -244,7 +262,7 @@ build_pool <- function(con, cfg) {
 
   # Curator admissions: the compilation's own members, unless a curator has
   # since excluded them.
-  adm <- which(!x$selected & x$TSid %in% admitted & !(x$pass_curator %in% FALSE))
+  adm <- which(!x$selected & x$TSid %in% admitted & !(x$pass_curator %in% FALSE) & x$pass_plausible)
   x$selected[adm] <- TRUE
   x$selected_by[adm] <- "curator admission"
   attr(x, "snapshot") <- attr(con, "snapshot")

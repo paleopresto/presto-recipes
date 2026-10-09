@@ -6,7 +6,8 @@
 Every paleo measurement column whose TSid is not in keep_tsids.txt (one TSid
 per line: the pool's records plus the axis columns of their tables) is
 removed from the JSON-LD and from its CSV, and the BagIt manifests are
-recomputed. Chron data, models and ensembles are left as they are, so age
+recomputed. Blank interpretation stubs (every field empty) are removed too,
+since pylipd cannot read them. Chron data, models and ensembles are left as they are, so age
 models and their ensembles travel with the records. Only the standard library
 is used.
 
@@ -51,6 +52,30 @@ def rehash(files, manifest_suffix):
 
 
 AXES = {"age", "year", "depth", "age14c", "depthtop", "depthbottom", "depth_top", "depth_bottom"}
+INTERP_KEYS = ("interpretation", "isotopeInterpretation", "climateInterpretation")
+
+
+def drop_blank_interpretations(col):
+    """Remove interpretation entries whose fields are all empty.
+
+    Editors leave stubs like {"variable": "", "direction": "", "scope": ""};
+    pylipd 1.5.3 maps the empty variable to an unlabeled individual and
+    get_timeseries() then fails with KeyError: 'label'
+    (rdf_to_lipd._set_interpretation_variable_label). Returns the count dropped.
+    """
+    n = 0
+    for k in INTERP_KEYS:
+        if k not in col:
+            continue
+        items = as_list(col[k])
+        keep = [it for it in items if not (isinstance(it, dict) and
+                all(v in ("", None, [], {}) for v in it.values()))]
+        n += len(items) - len(keep)
+        if keep:
+            col[k] = keep
+        else:
+            del col[k]
+    return n
 
 
 def trim(path, keep, out_path, keep_axes=False):
@@ -62,6 +87,8 @@ def trim(path, keep, out_path, keep_axes=False):
     for pd_ in as_list(meta.get("paleoData")):
         for table in as_list(pd_.get("measurementTable")):
             cols = as_list(table.get("columns"))
+            for c in cols:
+                drop_blank_interpretations(c)
             drop = [c for c in cols if c.get("TSid", c.get("tsid")) not in keep
                     and not (keep_axes and str(c.get("variableName", "")).lower() in AXES)]
             if not drop:
