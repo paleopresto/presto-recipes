@@ -15,6 +15,7 @@ window: [1850, 2000]
 min_overlap: 25
 variants:
   p05:        {alpha: 0.05, fdr: false, detrend: false}
+  p10:        {alpha: 0.10, fdr: false, detrend: false}   # used for presto-BayGMST (pages2k2017_local10)
   fdr10:      {alpha: 0.10, fdr: true,  detrend: false}
   p05_dt:     {alpha: 0.05, fdr: false, detrend: true}
   fdr10_dt:   {alpha: 0.10, fdr: true,  detrend: true}

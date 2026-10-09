@@ -1,8 +1,8 @@
-# BayGMST run on the PAGES 2k (2017) pool, 2026-10-08b snapshot.
-# Settings match the manuscript's BayGMST figure (LASSO reduced proxy,
-# 1-2000 CE, instrumental period from 1850), with longer chains than the
-# template default because the 1,160-record pool did not converge in a
-# short local test (max rhat 1.51 at 200 warmup / 1000 sampling).
+# BayGMST run on the PAGES 2k (2017) pool screened against local
+# instrumental temperature (pages2k2017_local10: p < 0.10, 1850-2000),
+# 2026-10-08b snapshot. LASSO reduced proxy, 1-2000 CE, instrumental period
+# from 1850. Local fits on this pool converge (max rhat 1.0 at 1000/1000);
+# the longer sampling is kept from the unscreened run.
 ptype: ALL
 rp_method: LASSO
 stan_params:
