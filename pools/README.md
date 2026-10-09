@@ -7,7 +7,7 @@ from:
 | Pool | Criteria | Baseline | Used by |
 |---|---|---|---|
 | `pages2k2017` | PAGES 2k Consortium (2017), Sci. Data 4:170088 | PAGES 2k v2.0.0 (692 records) | presto-LMR |
-| `pages2k2017_local10` | `pages2k2017`, screened on local HadCRUT5 temperature (p < 0.10, 1850-2000) | | presto-BayGMST |
+| `pages2k2017_localfdr10` | `pages2k2017`, screened on local HadCRUT5 temperature (FDR < 0.10, 1850-2000) | | presto-BayGMST |
 | `temp12k` | Kaufman et al. (2020), Sci. Data 7:115 | Temperature 12k v1.0.0 (1,332 TSids) | presto-HoloceneDA, presto-Temp12k |
 
 Each pool is built from the whole of LiPDverse, not from the compilations, so
@@ -22,12 +22,12 @@ GMST (BayGMST) need records that track temperature, which metadata alone
 cannot show. `screen_pool.R` tests each record of a pool against the nearest
 HadCRUT5 cell (AR(1)-adjusted p, sign from the interpretation direction;
 `config/screens/`), and `screened_pool.R` writes the passing records as a new
-pool (`config/pages2k2017_local10.yml`), which `build_bundle.R` packages like
+pool (`config/pages2k2017_localfdr10.yml`), which `build_bundle.R` packages like
 any other. The threshold was chosen by two-half validation in presto-paper
 (`analysis/baygmst_screening/`).
 
     Rscript pools/screen_pool.R <export_dir> pages2k2017
-    Rscript pools/screened_pool.R <export_dir> pages2k2017_local10
+    Rscript pools/screened_pool.R <export_dir> pages2k2017_localfdr10
 
 ## Running
 

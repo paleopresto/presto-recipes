@@ -1,8 +1,9 @@
 # BayGMST run on the PAGES 2k (2017) pool screened against local
-# instrumental temperature (pages2k2017_local10: p < 0.10, 1850-2000),
-# 2026-10-08b snapshot. LASSO reduced proxy, 1-2000 CE, instrumental period
-# from 1850. Local fits on this pool converge (max rhat 1.0 at 1000/1000);
-# the longer sampling is kept from the unscreened run.
+# instrumental temperature (pages2k2017_localfdr10: AR(1)-adjusted p with a
+# 10% false-discovery-rate correction, correct sign, 1850-2000), 2026-10-08b
+# snapshot. LASSO reduced proxy, 1-2000 CE, instrumental period from 1850.
+# Local fits on this pool converge (max rhat 1.0 at 1000/1000); the longer
+# sampling is kept from the unscreened run.
 ptype: ALL
 rp_method: LASSO
 stan_params:

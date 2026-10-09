@@ -1,0 +1,22 @@
+# The pages2k2017 pool, screened against local instrumental temperature,
+# for index reconstructions that calibrate a proxy composite on instrumental
+# GMST (presto-BayGMST). A subset of a pool is its own pool, so it gets its
+# own bundle and its own pinned run.
+#
+# Built by pools/screened_pool.R from the parent pool and the screen output
+# of pools/screen_pool.R. A record passes when its correlation with the
+# nearest HadCRUT5 cell over 1850-2000 has the sign its interpretation
+# predicts and an AR(1)-adjusted p-value that stays below 0.10 after a
+# Benjamini-Hochberg false-discovery-rate correction across all records
+# tested: with ~1,160 records, an uncorrected p < 0.10 would admit ~116 by
+# chance. Tested in presto-paper (analysis/baygmst_screening/): the result
+# is nearly the same as uncorrected p < 0.05 to 0.15 (31-yr r 0.94 with
+# p < 0.10) and agrees best with PReSto2k; detrended screens and p < 0.20
+# push BayGMST into a forcing-dominated, flat regime.
+
+name: pages2k2017_localfdr10
+description: PAGES 2k (2017) pool records that correlate with local HadCRUT5 temperature (BH FDR < 0.10, 1850-2000)
+reference: "PAGES 2k Consortium (2019) Nat. Geosci. 12:643; Neukom et al. (2019) Nat. Geosci. 12:643-649"
+parent: pages2k2017
+screen: local_temperature
+variant: fdr10

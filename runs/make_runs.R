@@ -17,7 +17,7 @@ base <- sprintf("https://github.com/paleopresto/presto-recipes/releases/download
 
 runs <- list(
   "presto-LMR"        = "cfr_annual",
-  "presto-BayGMST"    = "pages2k2017_local10",
+  "presto-BayGMST"    = "pages2k2017_localfdr10",
   "presto-HoloceneDA" = "temp12k",
   "presto-Temp12k"    = "temp12k")
 
