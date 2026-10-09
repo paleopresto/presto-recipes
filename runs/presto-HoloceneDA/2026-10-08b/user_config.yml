@@ -60,3 +60,6 @@ change_uncertainty:  False       # Change uncertainty values in several ways {Fa
    # 'all_#'  Set uncertainty values to a constant number.
    # 'path/to/file.txt' Use uncertainty values from a text file. The file must contain TSids and new MSE values for each proxy.
 
+
+# Run as parallel jobs over 3 age ranges (holocene_da.yml); one job would take ~7 h.
+presto_age_chunks: 3
