@@ -43,6 +43,20 @@ repeat_fraction <- function(points, window) {
   vapply(split(p$value, p$TSid), function(v) if (length(v) < 3) NA_real_ else mean(diff(v) == 0), 0)
 }
 
+# Lag-1 autocorrelation of successive in-window values (in time order, rows
+# repeating year and value counted once): near 1 for a series smoothed far
+# beyond its time step, whose values are then not independent from one step
+# to the next. Named by TSid.
+lag1_autocorrelation <- function(points, window) {
+  p <- points[is.finite(points$value) & points$year >= window$min_year & points$year <= window$max_year, ]
+  p <- p[order(p$TSid, p$year), ]
+  p <- p[!duplicated(p[c("TSid", "year", "value")]), ]
+  vapply(split(p$value, p$TSid), function(v) {
+    n <- length(v)
+    if (n < 4 || stats::sd(v) == 0) NA_real_ else stats::cor(v[-1], v[-n])
+  }, 0)
+}
+
 is_in <- function(x, set) !is.na(x) & x %in% set
 matches <- function(x, pattern) !is.null(pattern) & !is.na(x) & grepl(pattern, x, ignore.case = TRUE)
 
@@ -174,6 +188,12 @@ eval_cfr_annual <- function(x, ctrl, cfg) {
   if (!is.null(cfg$max_repeat_fraction))
     x$annual <- x$annual & (is.na(x$repeat_win) | x$repeat_win < cfg$max_repeat_fraction)
   x$pass_resolution <- x$annual
+  # cfr treats each year as an independent observation; a series smoothed
+  # over decades or centuries (GISP2 Kobashi, Great Basin, chironomid and
+  # borehole reconstructions) is matched to the calibration-period trend and
+  # weighted as many observations it does not contain.
+  if (!is.null(cfg$max_lag1))
+    x$pass_lag1 <- is.na(x$lag1_win) | x$lag1_win <= cfg$max_lag1
   marine <- is_in(x$archiveType, cfg$marine_archives)
   x$pass_length <- x$span_win >= ifelse(marine, cfg$length$annual_marine, cfg$length$annual_terrestrial)
   x$pass_calibration <- !is.na(x$n_calib) & x$n_calib >= cfg$min_calibration_years
@@ -255,6 +275,7 @@ build_pool <- function(con, cfg) {
   gap <- if (!is.null(cfg$duration$max_gap)) cfg$duration$max_gap else Inf
   met <- metrics_table(pts, cfg$window, gap)
   met$repeat_win <- repeat_fraction(pts, cfg$window)[met$TSid]
+  met$lag1_win <- lag1_autocorrelation(pts, cfg$window)[met$TSid]
   x <- merge(cand, met, by = "TSid", all.x = TRUE)
   if (!is.null(cfg$calibration_period)) {
     cp <- cfg$calibration_period

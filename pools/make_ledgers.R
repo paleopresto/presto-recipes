@@ -14,6 +14,8 @@
 #                Kaufman et al. 2020), plus current Tverse membership
 #   pages2k2017  PAGES 2k v2.0.0 records with useInGlobalTemperatureAnalysis
 #                FALSE, plus inThisCompilation FALSE on the current QC sheet
+#   cfr_annual   PReSto2k (2025)'s duplicate removals
+#   any          baselines/presto_exclusions.csv, PReSto's own decisions
 # A record now admitted to the same compilation overrides an old exclusion.
 # Exclusions are by TSid: a new dataset, or a new record in a new version of
 # a dataset, is not blocked.
@@ -72,6 +74,9 @@ out[[4]] <- data.frame(TSid = qc$TSid[qc$inThisCompilation %in% "FALSE"], pool =
 # data/flagged_tsids_with_notes.csv, each with its reason).
 fl <- utils::read.csv(file.path(here, "baselines", "presto2k_2025_flagged.csv"), stringsAsFactors = FALSE)
 out[[5]] <- data.frame(TSid = fl$TSID, pool = "cfr_annual", source = "PReSto2k (2025) duplicate removal")
+
+# Decisions made for PReSto itself, kept by hand (TSid, pool, source).
+out[[6]] <- utils::read.csv(file.path(here, "baselines", "presto_exclusions.csv"), stringsAsFactors = FALSE)
 
 x <- do.call(rbind, out)
 x <- x[!is.na(x$TSid) & nzchar(x$TSid), ]

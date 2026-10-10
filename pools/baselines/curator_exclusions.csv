@@ -2626,3 +2626,5 @@
 "WU13TON01_SrCa","cfr_annual","PReSto2k (2025) duplicate removal"
 "Ocean2kHR_138_iso2k","cfr_annual","PReSto2k (2025) duplicate removal"
 "LI94SEC01_d18O","cfr_annual","PReSto2k (2025) duplicate removal"
+"LPD78d0b77c","pages2k2017","PReSto: GISP2.Kobashi.2012 superseded by GISP2.Kobashi.2017 (same core and proxy, d15N/d40Ar; dedup misses the pair because the 2012 entry lists latitude 70.6, GISP2 is at 72.6 N)"
+"LPD78d0b77c","cfr_annual","PReSto: GISP2.Kobashi.2012 superseded by GISP2.Kobashi.2017 (same core and proxy, d15N/d40Ar; dedup misses the pair because the 2012 entry lists latitude 70.6, GISP2 is at 72.6 N)"

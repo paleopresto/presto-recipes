@@ -9,6 +9,8 @@
 # export's snapshot (run pools/screen_pool.R first) and writes
 # pools/output/<pool>/<snapshot>/pool.csv: the parent's kept records that
 # pass, in the parent's format, so build_bundle.R packages it unchanged.
+# Optional method-specific checks in the config (max_lag1) apply to the
+# parent's metrics.
 
 here <- dirname(normalizePath(sub("^--file=", "", grep("^--file=", commandArgs(FALSE), value = TRUE))))
 args <- commandArgs(trailingOnly = TRUE)
@@ -22,6 +24,14 @@ s <- utils::read.csv(file.path(pdir, sprintf("screen_%s.csv", cfg$screen)), stri
 col <- paste0("pass_", cfg$variant)
 if (!col %in% names(s)) stop(col, " not in the screen output; add the variant and rerun screen_pool.R")
 p <- p[p$dedup_keep %in% TRUE & p$TSid %in% s$TSid[s[[col]] %in% TRUE], ]
+# Method-specific checks on the parent's metrics (records.csv columns).
+if (!is.null(cfg$max_lag1)) {
+  if (!"lag1_win" %in% names(p)) stop("lag1_win not in the parent pool; rebuild it with build_pools.R")
+  drop <- !is.na(p$lag1_win) & p$lag1_win > cfg$max_lag1
+  if (any(drop)) cat(sprintf("%s: %d records fail max_lag1 %.2f: %s\n", name, sum(drop), cfg$max_lag1,
+                             paste(p$dataSetName[drop], collapse = ", ")))
+  p <- p[!drop, ]
+}
 odir <- file.path(here, "output", name, snap); dir.create(odir, recursive = TRUE, showWarnings = FALSE)
 utils::write.csv(p, file.path(odir, "pool.csv"), row.names = FALSE)
 cat(sprintf("%s: %d of the %s pool's records pass %s/%s -> %s\n", name, nrow(p), cfg$parent, cfg$screen, cfg$variant, file.path(odir, "pool.csv")))

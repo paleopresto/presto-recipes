@@ -49,6 +49,13 @@ max_resolution: 1.2
 # annual grid: Wirth et al. 2013 flood counts per century, step-interpolated
 # North Greenland Traverse accumulation series, IC16WE*, IC00SC29).
 max_repeat_fraction: 0.5
+# Fail records whose successive in-window values have lag-1 autocorrelation
+# above this: series smoothed far beyond their annual step, which cfr would
+# treat as independent annual observations. Operational, from the presto-paper
+# LMR and BayGMST attribution (2026-10). There is no clean break: on
+# 2026-10-08b the median is 0.58 and 0.98 is about the 98th percentile, with
+# 15 records between 0.95 and 0.98 left in.
+max_lag1: 0.98
 calibration_period: [1850, 2015]
 min_calibration_years: 25
 

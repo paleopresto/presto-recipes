@@ -20,3 +20,11 @@ reference: "PAGES 2k Consortium (2019) Nat. Geosci. 12:643; Neukom et al. (2019)
 parent: pages2k2017
 screen: local_temperature
 variant: fdr10
+
+# BayGMST regresses GMST on each year's proxy values and treats the years as
+# independent; drop parent records whose successive in-window values have
+# lag-1 autocorrelation above this (series smoothed far beyond their time
+# step). Same rule as cfr_annual. In presto-paper's BayGMST tests
+# (analysis/baygmst_screening/filtered_fits.R) the two GISP2 Kobashi versions
+# alone warmed 1-1000 CE by 0.06 degC.
+max_lag1: 0.98
