@@ -33,10 +33,13 @@ metrics_table <- function(points, window, max_gap = Inf) {
 
 # Fraction of successive in-window values (in time order) that repeat the
 # previous value exactly: near 0 for measured series, near 1 for a step
-# function on a regular grid. Named by TSid.
+# function on a regular grid. Rows repeating both year and value are one
+# sample written twice (GRIP.Vinther.2006 lists each 20-yr value four times),
+# not a step, and count once. Named by TSid.
 repeat_fraction <- function(points, window) {
   p <- points[is.finite(points$value) & points$year >= window$min_year & points$year <= window$max_year, ]
   p <- p[order(p$TSid, p$year), ]
+  p <- p[!duplicated(p[c("TSid", "year", "value")]), ]
   vapply(split(p$value, p$TSid), function(v) if (length(v) < 3) NA_real_ else mean(diff(v) == 0), 0)
 }
 
@@ -88,6 +91,11 @@ eval_pages2k2017 <- function(x, ctrl, cfg) {
   max_res <- ifelse(marine, cfg$resolution$marine, cfg$resolution$terrestrial)
   x$pass_resolution <- annual | is_in(x$archiveType, cfg$resolution$exempt_archives) |
     (!is.na(x$res_win) & x$res_win <= max_res)
+  # A series whose successive values mostly repeat (a step function on a
+  # finer grid) carries less information than its spacing says; see
+  # eval_cfr_annual.
+  if (!is.null(cfg$max_repeat_fraction))
+    x$pass_repeat <- is.na(x$repeat_win) | x$repeat_win < cfg$max_repeat_fraction
 
   cc <- cfg$chronology
   ctrl <- reservoir_correct(ctrl, x, cc$marine_reservoir_years)

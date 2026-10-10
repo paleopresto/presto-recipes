@@ -77,6 +77,11 @@ interpretation:
 # this many years. Operational: 1 year plus room for the odd missing ring.
 annual_max_resolution: 1.5
 
+# Fail records whose successive in-window values repeat exactly at least this
+# often: step functions on a finer grid, whose spacing overstates their
+# resolution. Operational; the same rule as cfr_annual.
+max_repeat_fraction: 0.5
+
 marine_archives: [Coral, Sclerosponge, MolluskShell, MarineSediment]
 
 length:
