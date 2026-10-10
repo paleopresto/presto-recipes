@@ -31,6 +31,15 @@ metrics_table <- function(points, window, max_gap = Inf) {
   out
 }
 
+# Fraction of successive in-window values (in time order) that repeat the
+# previous value exactly: near 0 for measured series, near 1 for a step
+# function on a regular grid. Named by TSid.
+repeat_fraction <- function(points, window) {
+  p <- points[is.finite(points$value) & points$year >= window$min_year & points$year <= window$max_year, ]
+  p <- p[order(p$TSid, p$year), ]
+  vapply(split(p$value, p$TSid), function(v) if (length(v) < 3) NA_real_ else mean(diff(v) == 0), 0)
+}
+
 is_in <- function(x, set) !is.na(x) & x %in% set
 matches <- function(x, pattern) !is.null(pattern) & !is.na(x) & grepl(pattern, x, ignore.case = TRUE)
 
@@ -149,6 +158,13 @@ eval_temp12k <- function(x, ctrl, cfg) {
 # enough overlap with the calibration period, PAGES 2k (2017) length rules.
 eval_cfr_annual <- function(x, ctrl, cfg) {
   x$annual <- !is.na(x$res_win) & x$res_win <= cfg$max_resolution
+  # A series posted on an annual grid but changing value only every few
+  # years (a running count, a step-interpolated accumulation record) is not
+  # annual information: Wirth et al. (2013)'s flood frequencies per century,
+  # on a 1-yr grid, calibrated against the 1850-1930 trend and warmed LMR's
+  # first millennium by ~0.1 degC (presto-paper, LMR attribution 2026-10).
+  if (!is.null(cfg$max_repeat_fraction))
+    x$annual <- x$annual & (is.na(x$repeat_win) | x$repeat_win < cfg$max_repeat_fraction)
   x$pass_resolution <- x$annual
   marine <- is_in(x$archiveType, cfg$marine_archives)
   x$pass_length <- x$span_win >= ifelse(marine, cfg$length$annual_marine, cfg$length$annual_terrestrial)
@@ -215,6 +231,9 @@ build_pool <- function(con, cfg) {
   if (!is.null(cfg$exclude_variable_pattern))
     cand <- cand[!grepl(cfg$exclude_variable_pattern, cand$variableName, ignore.case = TRUE) |
                    cand$TSid %in% admitted, ]
+  if (!is.null(cfg$exclude_units_pattern))
+    cand <- cand[!grepl(cfg$exclude_units_pattern, cand$units %||% "", ignore.case = TRUE) |
+                   cand$TSid %in% admitted, ]
   if (identical(cfg$interpretation$variable, "*")) {
     # Climate information: an interpretation, or a climate proxy in an archive
     # where it records surface climate regardless of metadata.
@@ -227,6 +246,7 @@ build_pool <- function(con, cfg) {
   pts <- pool_points(con, cand)
   gap <- if (!is.null(cfg$duration$max_gap)) cfg$duration$max_gap else Inf
   met <- metrics_table(pts, cfg$window, gap)
+  met$repeat_win <- repeat_fraction(pts, cfg$window)[met$TSid]
   x <- merge(cand, met, by = "TSid", all.x = TRUE)
   if (!is.null(cfg$calibration_period)) {
     cp <- cfg$calibration_period

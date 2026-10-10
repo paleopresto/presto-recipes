@@ -20,6 +20,12 @@ evaluator: cfr_annual
 window: {min_year: 1, max_year: 2100}
 
 exclude_variable_pattern: "^uncertainty|uncertainty$|error|^notes$|needsToBeChanged|^correction$|count$|^sampleCount$|^segmentLength$|^EPS$|^RBAR$|^core$|^correlationCoefficient$|^residualChronology$|^ARSTAN$"
+# Units that rule a record out of an annual DA: the placeholder
+# (Ammersee.Czymzik.2012 thickness), and rates per century or millennium,
+# which are smoothed on whatever grid they are posted (Wirth et al. 2013
+# flood frequencies, count/century on a 1-yr grid; SipleDomeA.Das.2008 melt
+# layers, count/kyr).
+exclude_units_pattern: "needsToBeChanged|/ ?century$|/ ?kyr$|/ ?ka$|per century"
 
 # Which records carry climate information. Either a climate interpretation of
 # any variable (temperature, precipitation, moisture, isotopes...), or, as
@@ -38,6 +44,11 @@ climate_proxies:
 # cfr's filter on resolution (dt in years) and its PSM calibration window and
 # minimum overlap (nobs_lb), as in the presto-LMR run config.
 max_resolution: 1.2
+# Annual in information, not only in time step: fail records whose successive
+# in-window values repeat exactly at least this often (step functions on an
+# annual grid: Wirth et al. 2013 flood counts per century, step-interpolated
+# North Greenland Traverse accumulation series, IC16WE*, IC00SC29).
+max_repeat_fraction: 0.5
 calibration_period: [1850, 2015]
 min_calibration_years: 25
 
