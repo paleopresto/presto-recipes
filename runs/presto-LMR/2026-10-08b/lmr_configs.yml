@@ -1,4 +1,4 @@
-# presto-LMR run on the PAGES 2k (2017) pool, 2026-10-08b snapshot.
+# presto-LMR run on the cfr_annual pool, 2026-10-08b snapshot (pools-2026-10-08b-r3).
 #
 # Committed as the run repository's lmr_configs.yml, which the workflow mounts
 # over the image's baked config (a shallow merge: a key here replaces the
