@@ -1,4 +1,4 @@
-# presto-LMR run on the cfr_annual pool, 2026-10-08b snapshot (pools-2026-10-08b-r3).
+# presto-LMR run on the cfr_annual pool, 2026-10-08b snapshot (pools-2026-10-08b-r4).
 #
 # Committed as the run repository's lmr_configs.yml, which the workflow mounts
 # over the image's baked config (a shallow merge: a key here replaces the
@@ -81,3 +81,14 @@ ptype_season_dict:
 # Run the 10 seeds as 2 parallel jobs of 5 (cfr-custom.yml); one job of 10 (~24 min a seed)
 # exceeds the 240-min job limit.
 presto_seed_jobs: 2
+
+# PReSto checks after PSM calibration (LMR2 pool-bundles 42c7271, 4ab0d27).
+# interpretation_screen: a record is dropped when its calibration contradicts
+#   its metadata interpretation: no PSM variable for what it records, or no
+#   season giving the interpreted sign (the best sign-consistent season is
+#   used when the best fit has the wrong sign). Written to psm_screen.csv.
+# r_floor: relative floors each record's error variance at 1% of the record's
+#   own variance (and at 0.01), so no record counts as nearly noise-free
+#   because of its units.
+interpretation_screen: true
+r_floor: relative
