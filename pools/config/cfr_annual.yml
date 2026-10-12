@@ -99,6 +99,12 @@ curator_admissions: curator_admissions.csv
 curator_exclusions: curator_exclusions.csv
 
 collapse_prefer_units: []
+# Duplicates: keep the copy with the most data (coverage, then resolution),
+# then the newer publication, then fuller interpretation metadata; detect
+# versions of one record across compilations and send those the rules cannot
+# settle to the review queue (R/dedup.R).
+dedup:
+  prefer: data
 one_record_per_site:
   - publication_title: "^LegacyClimate"
     prefer_season: annual

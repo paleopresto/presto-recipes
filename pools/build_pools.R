@@ -41,11 +41,24 @@ for (p in pools) {
   fails <- table(unlist(strsplit(x$fails[!x$selected], ";")))
   message("   failing criteria: ", paste(names(fails), fails, sep = "=", collapse = ", "))
 
-  prior_file <- file.path(here, "baselines", "dedup_prior.csv")
-  prior <- if (file.exists(prior_file)) read.csv(prior_file, stringsAsFactors = FALSE) else NULL
+  # Decisions already made on pairs; the first match is used, so PReSto
+  # curators' (dedup_decisions.csv, from the review page, newest first) come
+  # before the DoD2k log, which is read in its own order.
+  prior <- do.call(rbind, lapply(c("dedup_decisions.csv", "dedup_prior.csv"), function(f) {
+    f <- file.path(here, "baselines", f)
+    if (file.exists(f)) read.csv(f, stringsAsFactors = FALSE)[c("TSid1", "TSid2", "keep1", "keep2", "decision_type", "source")]
+  }))
   dd <- dedup_pool(con, sel, attr(x, "points"), prior, unlist(cfg$collapse_prefer_units),
-                   cfg$one_record_per_site, read_ledger(cfg, "curator_admissions"))
+                   cfg$one_record_per_site, read_ledger(cfg, "curator_admissions"),
+                   utils::modifyList(dedup_defaults, cfg$dedup %||% list()))
   write.csv(dd$pairs, file.path(out, "dedup_pairs.csv"), row.names = FALSE)
+  rv <- dd$pairs[dd$pairs$review %in% TRUE, ]
+  if (nrow(rv)) {
+    m <- function(id, col) sel[[col]][match(id, sel$TSid)]
+    for (c in c("dataSetName", "variableName", "units", "archiveType", "min_win", "max_win", "n_win"))
+      for (s in 1:2) rv[[paste0(c, s)]] <- m(rv[[paste0("TSid", s)]], c)
+  }
+  write.csv(rv, file.path(out, "dedup_review.csv"), row.names = FALSE)
   sel <- dd$pool
   write.csv(sel, file.path(out, "pool.csv"), row.names = FALSE)
   pr <- dd$pairs[dd$pairs$duplicate, ]
@@ -72,6 +85,8 @@ for (p in pools) {
     pr <- dd$pairs[dd$pairs$duplicate, ]
     kept_for <- c(pr$TSid2[pr$keep2 %in% TRUE & pr$keep1 %in% FALSE], pr$TSid1[pr$keep1 %in% TRUE & pr$keep2 %in% FALSE])
     names(kept_for) <- c(pr$TSid1[pr$keep2 %in% TRUE & pr$keep1 %in% FALSE], pr$TSid2[pr$keep1 %in% TRUE & pr$keep2 %in% FALSE])
+    # A record dropped in several pairs is represented by any partner that survived.
+    kept_for <- kept_for[kept_for %in% sel$TSid]
     b$represented_by <- ifelse(b$final, b$TSid_now, ifelse(b$TSid_now %in% names(kept_for), kept_for[b$TSid_now], NA))
     b$represented <- !is.na(b$represented_by) & b$represented_by %in% sel$TSid
     b$fails <- x$fails[match(b$TSid_now, x$TSid)]

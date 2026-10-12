@@ -25,12 +25,34 @@
 # "Preferred" is DoD2k's database priority carried over to LiPDverse
 # membership (Pages2kTemperature > iso2k > CoralHydro2k > other), then the
 # more recent publication, then more data points.
+#
+# prefer = "data" (cfr_annual) chooses the copy on what it holds instead,
+# since a pool built across LiPDverse is not reproducing one compilation:
+# longer coverage, then more data points (finer resolution), then the newer
+# publication, then fuller interpretation metadata (variable, direction,
+# season: what presto-LMR's check of interpretation against PSM reads), and
+# only then compilation priority. Membership of the reference compilation
+# (rule 2b) is then a tiebreak, not a rule.
+#
+# Versions (prefer = "data"): copies of one record that differ by age model,
+# resolution or processing fail DoD2k's RMSE test (Ningaloo Kuhnert 2000 in
+# PAGES 2k, Iso2k and CoralHydro2k; Crystal Cave in SISAL and Iso2k). A pair
+# within version_km with r or r of first differences > version_r is a version
+# pair unless both records belong to one compilation (whose curators kept them
+# apart: the PAGES 2k Asia 2013 and Alaska tree-ring networks). A version pair
+# that shares a publication DOI and lies within max_km, or whose values agree
+# at r > r_alone, is resolved as a duplicate (rule "version"); any other goes
+# to the review queue
+# (rule "review", both kept until a curator decides in
+# baselines/dedup_decisions.csv, which is read like the DoD2k log).
 
 dedup_defaults <- list(
   max_km = 8, min_overlap = 10, r = 0.9, r_alone = 0.98, rmse = 0.1,
   annual_max_resolution = 1.5, subset_frac = 0.9, complement_frac = 0.5,
   priority = c("Pages2kTemperature", "iso2k", "CoralHydro2k"),
-  update_pattern = "recollect|re-collect|update"
+  update_pattern = "recollect|re-collect|update",
+  prefer = "compilation", version_r = 0.8, version_km = 50, same_tol = 0.02,
+  ignore_compilations = "test"
 )
 
 haversine_km <- function(lat1, lon1, lat2, lon2) {
@@ -112,22 +134,30 @@ is_duplicate <- function(m, opt = dedup_defaults) {
 }
 
 # Preference score for keeping a record: higher wins.
-preference <- function(pool, membership, pubyear, opt = dedup_defaults) {
+preference <- function(pool, membership, pubyear, opt = dedup_defaults, meta = NULL, curated = character()) {
   pr <- vapply(pool$TSid, function(t) {
     m <- membership$compilation[membership$TSid == t]
     hit <- match(m, opt$priority)
     if (all(is.na(hit))) 0 else length(opt$priority) + 1 - min(hit, na.rm = TRUE)
   }, 0)
   data.frame(TSid = pool$TSid, priority = pr, pubyear = pubyear[pool$datasetId],
-             n = pool$n_win, stringsAsFactors = FALSE)
+             n = pool$n_win, span = pool$span_win,
+             meta = if (is.null(meta)) 0 else ifelse(is.na(meta[pool$TSid]), 0, unname(meta[pool$TSid])),
+             curated = as.integer(pool$TSid %in% curated), stringsAsFactors = FALSE)
 }
 
-prefer <- function(p1, p2) {
-  for (k in c("priority", "pubyear", "n")) {
+# 1 or 2: which of two records to keep. Under prefer = "data", span and n
+# within same_tol of each other count as equal.
+prefer <- function(p1, p2, opt = dedup_defaults) {
+  keys <- if (identical(opt$prefer, "data")) c("span", "n", "pubyear", "meta", "curated", "priority")
+          else c("priority", "pubyear", "n")
+  for (k in keys) {
     a <- p1[[k]]; b <- p2[[k]]
     if (is.na(a) && !is.na(b)) return(2L)
     if (!is.na(a) && is.na(b)) return(1L)
-    if (!is.na(a) && !is.na(b) && a != b) return(if (a > b) 1L else 2L)
+    if (is.na(a) || is.na(b) || a == b) next
+    if (k %in% c("span", "n") && abs(a - b) <= opt$same_tol * max(abs(a), abs(b))) next
+    return(if (a > b) 1L else 2L)
   }
   1L
 }
@@ -189,7 +219,8 @@ dedup_pool <- function(con, pool, points, prior = NULL, prefer_units = character
   within <- c(within, collapse_syntheses(con, pool[!pool$TSid %in% within, ], syntheses))
   all_pool <- pool
   pool <- pool[!pool$TSid %in% within, ]
-  cand <- dedup_candidates(pool, opt)
+  data_mode <- identical(opt$prefer, "data")
+  cand <- dedup_candidates(pool, if (data_mode) utils::modifyList(opt, list(max_km = max(opt$max_km, opt$version_km))) else opt)
   # Different seasons of one dataset are not duplicates of each other, however
   # well they correlate: that is a choice an algorithm makes, not a pool.
   same_ds <- pool$datasetId[match(cand$TSid1, pool$TSid)] == pool$datasetId[match(cand$TSid2, pool$TSid)]
@@ -208,16 +239,45 @@ dedup_pool <- function(con, pool, points, prior = NULL, prefer_units = character
     as.data.frame(pair_similarity(ser[[cand$TSid1[k]]], ser[[cand$TSid2[k]]], su, opt))
   })
   pairs <- cbind(cand, do.call(rbind, sims))
-  pairs$duplicate <- vapply(seq_len(nrow(pairs)), function(k) is_duplicate(pairs[k, ], opt), FALSE)
+  pairs$duplicate <- vapply(seq_len(nrow(pairs)), function(k) is_duplicate(pairs[k, ], opt), FALSE) &
+    pairs$km <= opt$max_km
 
   membership <- DBI::dbGetQuery(con, "SELECT TSid, compilation FROM compilations WHERE inThisCompilation")
-  pubs <- DBI::dbGetQuery(con, "SELECT datasetId, min(year) AS year FROM publications GROUP BY 1")
+  pubs <- DBI::dbGetQuery(con, sprintf("SELECT datasetId, %s(year) AS year FROM publications GROUP BY 1",
+                                       if (data_mode) "max" else "min"))
   pubyear <- stats::setNames(pubs$year, pubs$datasetId)
-  pref <- preference(pool, membership, pubyear, opt)
+  meta <- NULL
+  pairs$tier <- ifelse(pairs$duplicate, "strict", NA)
+  pairs$same_doi <- NA; pairs$shared_compilation <- NA
+  if (data_mode) {
+    # Interpretation metadata: one point each for a named variable, a
+    # direction and a season, summed over climate- and isotope-scope entries.
+    im <- DBI::dbGetQuery(con, sprintf("
+      SELECT TSid, sum((variable IS NOT NULL)::INT + (lower(direction) IN ('positive','negative','increase','decrease'))::INT
+                       + (seasonality IS NOT NULL AND seasonality <> '')::INT) AS score
+      FROM interpretations WHERE lower(scope) IN ('climate', 'isotope') AND TSid IN (%s) GROUP BY 1",
+      paste0("'", pool$TSid, "'", collapse = ",")))
+    meta <- stats::setNames(im$score, im$TSid)
+    dois <- DBI::dbGetQuery(con, "SELECT DISTINCT datasetId, lower(trim(doi)) AS doi FROM publications
+                                  WHERE doi IS NOT NULL AND trim(doi) <> ''")
+    dois$doi <- sub("^https?://(dx\\.)?doi\\.org/", "", dois$doi)
+    mem <- membership[!grepl(opt$ignore_compilations, membership$compilation, ignore.case = TRUE), ]
+    ds_of <- function(t) pool$datasetId[idx[[t]]]
+    pairs$same_doi <- mapply(function(a, b) length(intersect(dois$doi[dois$datasetId == ds_of(a)],
+                                                               dois$doi[dois$datasetId == ds_of(b)])) > 0,
+                             pairs$TSid1, pairs$TSid2)
+    pairs$shared_compilation <- mapply(function(a, b) length(intersect(mem$compilation[mem$TSid == a],
+                                                                         mem$compilation[mem$TSid == b])) > 0,
+                                       pairs$TSid1, pairs$TSid2)
+    v <- !pairs$duplicate & pairs$n > opt$min_overlap & !pairs$shared_compilation &
+      ((pairs$r > opt$version_r) %in% TRUE | (pairs$r_diff > opt$version_r) %in% TRUE)
+    pairs$tier[v] <- "version"
+  }
+  pref <- preference(pool, membership, pubyear, opt, meta, curated)
   text <- paste(pool$dataSetName, pool$siteName, pool$variableName)
 
   pairs$rule <- NA_character_; pairs$keep1 <- NA; pairs$keep2 <- NA
-  for (k in which(pairs$duplicate)) {
+  for (k in which(!is.na(pairs$tier))) {
     a <- pairs$TSid1[k]; b <- pairs$TSid2[k]; i <- idx[[a]]; j <- idx[[b]]
     pk <- if (is.null(prior)) NULL else
       prior[prior$TSid1 == a & prior$TSid2 == b | prior$TSid1 == b & prior$TSid2 == a, ]
@@ -227,22 +287,34 @@ dedup_pool <- function(con, pool, points, prior = NULL, prefer_units = character
       pairs[k, c("rule", "keep1", "keep2")] <- list("prior", d1, d2)
       next
     }
+    if (pairs$tier[k] == "version") {
+      # Same publication and close, or the same values (r > r_alone, DoD2k's
+      # threshold on its own) with coordinates that differ between
+      # compilations (Mahe Charles 1997 sits 43 km apart in two of them).
+      if ((isTRUE(pairs$same_doi[k]) && pairs$km[k] <= opt$max_km) || isTRUE(pairs$r[k] > opt$r_alone)) {
+        w <- prefer(pref[i, ], pref[j, ], opt)
+        pairs[k, c("rule", "keep1", "keep2")] <- list("version", w == 1L, w == 2L)
+      } else {
+        pairs[k, c("rule", "keep1", "keep2")] <- list("review", TRUE, TRUE)
+      }
+      next
+    }
     up1 <- grepl(opt$update_pattern, text[i], ignore.case = TRUE)
     up2 <- grepl(opt$update_pattern, text[j], ignore.case = TRUE)
-    w <- prefer(pref[i, ], pref[j, ])
+    w <- prefer(pref[i, ], pref[j, ], opt)
     f_short <- max(pairs$frac1[k], pairs$frac2[k], na.rm = TRUE)
     longer <- if (pool$n_win[i] >= pool$n_win[j]) 1L else 2L
     c1 <- a %in% curated; c2 <- b %in% curated
     if (isTRUE(pairs$identical[k])) {
       rule <- "identical"
-      if (xor(c1, c2)) w <- if (c1) 1L else 2L
-    } else if (xor(c1, c2)) {
+      if (xor(c1, c2) && !data_mode) w <- if (c1) 1L else 2L
+    } else if (xor(c1, c2) && !data_mode) {
       # One copy is the compilation's own record: keep the curated one.
       rule <- "curated"; w <- if (c1) 1L else 2L
     } else if (xor(up1, up2)) {
       rule <- "update"; w <- if (up1) 1L else 2L
     } else if (f_short >= opt$subset_frac) {
-      rule <- "subset"; w <- longer
+      rule <- "subset"; w <- if (data_mode) prefer(pref[i, ], pref[j, ], opt) else longer
     } else if (pairs$overlap_frac[k] < opt$complement_frac) {
       pairs[k, c("rule", "keep1", "keep2")] <- list("complementary", TRUE, TRUE)
       next
@@ -252,11 +324,25 @@ dedup_pool <- function(con, pool, points, prior = NULL, prefer_units = character
     pairs[k, c("rule", "keep1", "keep2")] <- list(rule, w == 1L, w == 2L)
   }
 
-  drop <- unique(c(pairs$TSid1[pairs$duplicate & pairs$keep1 %in% FALSE],
-                   pairs$TSid2[pairs$duplicate & pairs$keep2 %in% FALSE]))
+  pairs$duplicate <- !is.na(pairs$tier)
+  # A record is dropped only while some copy that beat it survives: in a chain
+  # (A loses to B, B loses to C) without A~C, dropping A and B would leave
+  # A's measurements unrepresented. Losers whose every winner is itself
+  # dropped are restored, until nothing changes.
+  lose <- rbind(data.frame(l = pairs$TSid1, w = pairs$TSid2)[pairs$duplicate & pairs$keep1 %in% FALSE & pairs$keep2 %in% TRUE, ],
+                data.frame(l = pairs$TSid2, w = pairs$TSid1)[pairs$duplicate & pairs$keep2 %in% FALSE & pairs$keep1 %in% TRUE, ])
+  both <- unique(c(pairs$TSid1[pairs$duplicate & pairs$keep1 %in% FALSE & pairs$keep2 %in% FALSE],
+                   pairs$TSid2[pairs$duplicate & pairs$keep1 %in% FALSE & pairs$keep2 %in% FALSE]))
+  drop <- unique(lose$l)
+  repeat {
+    orphan <- drop[vapply(drop, function(t) all(lose$w[lose$l == t] %in% drop), FALSE)]
+    if (!length(orphan)) break
+    drop <- setdiff(drop, orphan)
+  }
+  drop <- unique(c(drop, both))
   all_pool$dedup_keep <- !all_pool$TSid %in% c(within, drop)
   all_pool$dedup_rule <- ifelse(all_pool$TSid %in% within, "within-dataset",
                                 ifelse(all_pool$TSid %in% drop, "cross-dataset", NA))
-  pairs$review <- pairs$rule %in% "partial"
+  pairs$review <- pairs$rule %in% c("partial", "review")
   list(pairs = pairs, pool = all_pool)
 }
