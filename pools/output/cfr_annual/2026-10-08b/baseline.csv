@@ -224,7 +224,7 @@
 "NAm_3712","NAm-SheepTrail.Brown.2005_NAm_3712","NAm-SheepTrail.Brown.2005","Wood","ring width","trsgi","unitless",41.4,-106.2,"NAm_3712",TRUE,TRUE,TRUE,TRUE,"NAm_3712",TRUE,""
 "NAm_3724","NAm-SheepTrail.Brown.2005_NAm_3724","NAm-SheepTrail.Brown.2005","Wood","maximum latewood density","MXD",NA,41.4,-106.2,"NAm_3724",TRUE,TRUE,TRUE,TRUE,"NAm_3724",TRUE,""
 "NAm_2272","NAm-SmallRiver.Luckman.2001_NAm_2272","NAm-SmallRiver.Luckman.2001","Wood","ring width","trsgi","unitless",53.2,-119.5,"NAm_2272",TRUE,TRUE,TRUE,TRUE,"NAm_2272",TRUE,""
-"Ocean2kHR_177","Ocn-Maiana.Urban.2000_Ocean2kHR_177","Ocn-Maiana.Urban.2000","Coral","d18O","d18O","permil",1,173,"Ocean2kHR_177",TRUE,TRUE,TRUE,FALSE,"CO00URMA01A",TRUE,""
+"Ocean2kHR_177","Ocn-Maiana.Urban.2000_Ocean2kHR_177","Ocn-Maiana.Urban.2000","Coral","d18O","d18O","permil",1,173,"Ocean2kHR_177",TRUE,TRUE,TRUE,TRUE,"Ocean2kHR_177",TRUE,""
 "LPD9cc3baf6-dup","Ocn-GulfofGuinea.Weldeab.2007_LPD9cc3baf6-dup","Ocn-GulfofGuinea.Weldeab.2007","MarineSediment","Mg/Ca","temperature","degC",2.5,9.38,"LPD9cc3baf6-dup",TRUE,TRUE,TRUE,TRUE,"LPD9cc3baf6-dup",TRUE,"resolution;calibration"
 "Arc_031","Arc-NGRIP1.Vinther.2006_Arc_031","Arc-NGRIP1.Vinther.2006","GlacierIce","d18O","d18O","permil",75.1,-42.32,"Arc_031",TRUE,TRUE,TRUE,TRUE,"Arc_031",TRUE,""
 "Ant_008","Ant-SiteDML17.Graf.2002_Ant_008","Ant-SiteDML17.Graf.2002","GlacierIce","d18O","d18O","permil",-75.17,6.5,"Ant_008",TRUE,TRUE,TRUE,TRUE,"Ant_008",TRUE,""

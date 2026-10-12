@@ -36,6 +36,11 @@ exclude_units_pattern: "needsToBeChanged|/ ?century$|/ ?kyr$|/ ?ka$|per century"
 # sign to the interpretation's direction. A record with no interpretation is
 # left to the calibration. See presto-templates LMR2 cfr_main_code.py.
 require_climate: false
+# ...but an uninterpreted column only from a dataset with no interpreted
+# column (climate or isotope scope). Where some columns are interpreted, the
+# others (sibling chronologies, d13C beside d18O, ice chemistry beside
+# isotopes) stay out.
+uninterpreted_only_in_uninterpreted_datasets: true
 # Without the interpretation requirement, the per-core measurement columns
 # that LiPDverse's tree-ring imports carry beside each chronology would enter
 # (12,009 in 2026-10-08b, all uninterpreted), as would per-colony

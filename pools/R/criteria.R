@@ -281,6 +281,16 @@ build_pool <- function(con, cfg) {
     # calibration (presto-LMR checks interpretation against PSM after it).
     if (!isFALSE(cfg$require_climate))
       cand <- cand[cand$has_climate | cand$TSid %in% admitted, ]
+    # An uninterpreted column is a candidate only when nothing in its
+    # dataset is interpreted: where the authors interpreted some columns,
+    # those are the dataset's climate series and the rest are not.
+    if (isTRUE(cfg$uninterpreted_only_in_uninterpreted_datasets)) {
+      ii <- DBI::dbGetQuery(con, "
+        SELECT DISTINCT t.TSid, t.datasetId FROM interpretations i JOIN timeseries t USING (TSid)
+        WHERE i.variable IS NOT NULL AND lower(i.scope) IN ('climate', 'isotope')")
+      cand$interpreted <- cand$TSid %in% ii$TSid
+      cand <- cand[cand$interpreted | !cand$datasetId %in% ii$datasetId | cand$TSid %in% admitted, ]
+    }
   }
   pts <- pool_points(con, cand)
   gap <- if (!is.null(cfg$duration$max_gap)) cfg$duration$max_gap else Inf
