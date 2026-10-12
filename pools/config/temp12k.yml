@@ -32,10 +32,26 @@ curator_exclusions: curator_exclusions.csv
 # the preferred season, and none where another record of the same proxy from
 # the same place (within defer_within_km) is already in the pool, so a core is
 # not counted twice under two transfer functions.
+# LegacyClimate marks its preferred reconstruction of each variable as the
+# primary time series (WA-PLS); primary_only keeps those columns alone.
 one_record_per_site:
   - publication_title: "^LegacyClimate"
+    primary_only: true
     prefer_season: annual
     defer_within_km: 8
+
+# At a site with a Temp12k pollen record, other pollen records of that site
+# are dropped: they are mostly the same counts under another transfer
+# function or season (e.g. Shuman 2016 against Temp12k's copies of the same
+# lakes), so assimilating both counts one site twice. One site: within
+# within_km, or within named_within_km when the dataset names start with the
+# same site name. Neighbouring lakes 1-3 km apart stay separate records.
+# Operational values.
+same_site:
+  - proxy: pollen
+    prefer_compilation: Temp12k
+    within_km: 0.5
+    named_within_km: 2
 
 # Kaufman et al. relaxed duration and resolution "to improve the global
 # coverage, especially in the Southern Hemisphere". A record meeting these

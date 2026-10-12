@@ -197,6 +197,14 @@ collapse_syntheses <- function(con, pool, rules) {
     hit <- pool$datasetId %in% ds & !pool$TSid %in% drop
     if (!any(hit)) next
     s <- pool[hit, ]
+    # primary_only: keep the columns the synthesis marks as its primary
+    # time series (in datasets that mark any), before choosing a season.
+    if (isTRUE(r$primary_only)) {
+      has_primary <- s$datasetId %in% s$datasetId[s$primaryTimeseries %in% TRUE]
+      off <- has_primary & !s$primaryTimeseries %in% TRUE
+      drop <- c(drop, s$TSid[off])
+      s <- s[!off, ]
+    }
     o <- order(s$datasetId, -as.integer(norm_season(s$seasonality) %in% r$prefer_season), -s$n_win, s$TSid)
     s <- s[o, ]
     drop <- c(drop, s$TSid[duplicated(s$datasetId)])
@@ -211,12 +219,50 @@ collapse_syntheses <- function(con, pool, rules) {
   drop
 }
 
+# Stage 0c: one record per site for a proxy, preferring a compilation's copy
+# (see the config's same_site). Two records are from one site when they share
+# the proxy and lie within within_km, or within named_within_km and
+# their dataset names start with the same site name. Correlation cannot find
+# these: two reconstructions from one set of pollen counts differ in transfer
+# function, season and age model. Archive is not compared: copies of one core
+# disagree on it (LakeSediment in one, Peat in another). Returns the TSids
+# dropped.
+site_stem <- function(name) {
+  x <- tolower(sub("\\..*$", "", name))
+  gsub("lake|pond|lac|lago|laguna|[^a-z]", "", x)
+}
+collapse_same_site <- function(con, pool, rules) {
+  if (!length(rules)) return(character())
+  membership <- DBI::dbGetQuery(con, "SELECT TSid, compilation FROM compilations WHERE inThisCompilation")
+  drop <- character()
+  for (r in rules) {
+    pr <- norm_proxy(pool) == norm_proxy(data.frame(proxy = r$proxy, variableName = r$proxy))
+    pref <- pool$TSid %in% membership$TSid[membership$compilation == r$prefer_compilation]
+    keep <- pool[pr & pref, ]; other <- pool[pr & !pref & !pool$TSid %in% drop, ]
+    for (k in seq_len(nrow(other))) {
+      p <- keep
+      if (!nrow(p)) next
+      km <- haversine_km(other$lat[k], other$lon[k], p$lat, p$lon)
+      a <- site_stem(other$dataSetName[k]); b <- site_stem(p$dataSetName)
+      named <- nchar(a) >= 4 & nchar(b) >= 4 & (startsWith(a, b) | startsWith(b, a))
+      if (any(km <= r$within_km | (km <= r$named_within_km & named), na.rm = TRUE))
+        drop <- c(drop, other$TSid[k])
+    }
+  }
+  drop
+}
+
 # Resolve duplicates in a selected pool. Returns list(pairs, pool) where pool
 # has a `dedup_keep` column and pairs records every decision and its rule.
 dedup_pool <- function(con, pool, points, prior = NULL, prefer_units = character(),
-                       syntheses = list(), curated = character(), opt = dedup_defaults) {
+                       syntheses = list(), curated = character(), opt = dedup_defaults,
+                       same_site = list()) {
   within <- collapse_within_dataset(pool, prefer_units, curated)
   within <- c(within, collapse_syntheses(con, pool[!pool$TSid %in% within, ], syntheses))
+  site <- collapse_same_site(con, pool[!pool$TSid %in% within, ], same_site)
+  site <- setdiff(site, curated)
+  rule0 <- local({w <- within; function(t) ifelse(t %in% w, "within-dataset", ifelse(t %in% site, "same-site", NA))})
+  within <- c(within, site)
   all_pool <- pool
   pool <- pool[!pool$TSid %in% within, ]
   data_mode <- identical(opt$prefer, "data")
@@ -227,7 +273,7 @@ dedup_pool <- function(con, pool, points, prior = NULL, prefer_units = character
   cand <- cand[!same_ds, ]
   if (!nrow(cand)) {
     all_pool$dedup_keep <- !all_pool$TSid %in% within
-    all_pool$dedup_rule <- ifelse(all_pool$TSid %in% within, "within-dataset", NA)
+    all_pool$dedup_rule <- rule0(all_pool$TSid)
     return(list(pairs = cand, pool = all_pool))
   }
 
@@ -341,7 +387,7 @@ dedup_pool <- function(con, pool, points, prior = NULL, prefer_units = character
   }
   drop <- unique(c(drop, both))
   all_pool$dedup_keep <- !all_pool$TSid %in% c(within, drop)
-  all_pool$dedup_rule <- ifelse(all_pool$TSid %in% within, "within-dataset",
+  all_pool$dedup_rule <- ifelse(all_pool$TSid %in% within, rule0(all_pool$TSid),
                                 ifelse(all_pool$TSid %in% drop, "cross-dataset", NA))
   pairs$review <- pairs$rule %in% c("partial", "review")
   list(pairs = pairs, pool = all_pool)
