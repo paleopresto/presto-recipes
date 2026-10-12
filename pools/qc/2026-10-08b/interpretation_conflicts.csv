@@ -1,0 +1,42 @@
+"dataSetName","TSid","variableName","interpretation","entries","n_entries","n_signs","n_distinct","problem","in_presto_pool"
+"LS06MIBO","LS06MIBO10a","d18O","effectivePrecipitation","isotope: negative (rank 1, ); climate: increase (rank 1, )",2,2,2,"opposite directions",FALSE
+"LS08STCR","LS08STCR","d18O","precipitationIsotope","environment: positive (rank 2, ); isotope: negative (rank 2, Winter)",2,2,2,"opposite directions",FALSE
+"LS09SHJO","LS09SHJO","d18O","hydrologicBalance","isotope: negative (rank 1, ); climate: increase (rank 1, )",2,2,2,"opposite directions",FALSE
+"LS11BIPU","LS11BIPU01a","d18O","precipitationIsotope","environment: positive (rank 1, ); isotope: positive (rank 1, ); climate: decrease (rank 1, Dec-Mar)",3,2,3,"opposite directions",FALSE
+"LS12WOQU","LS12WOQU","d18O","effectivePrecipitation","isotope: negative (rank 1, Jun-Aug); climate: increase (rank 1, Summer)",2,2,2,"opposite directions",FALSE
+"LS13KOLA","LS13KOLA01A","d2H","precipitationIsotope","environment: positive (rank 1, Annual); isotope: positive (rank 1, Annual); climate: decrease (rank 1, Dec-Feb)",3,2,3,"opposite directions",FALSE
+"LS13WASU","LS13WASU01B","d2H","effectivePrecipitation","isotope: negative (rank 2, ); isotope: negative (rank 1, ); climate: increase (rank 1, Growing Season)",3,2,2,"opposite directions",FALSE
+"LS14ZHJU","LS14ZHJU01A-dup","d2H","effectivePrecipitation","isotope: negative (rank 1, Annual); climate: positive (rank 1, Annual)",2,2,2,"opposite directions",FALSE
+"LS15AIKA","LS15AIKA01A2","d2H","effectivePrecipitation","climate: positive (rank 2, Annual); climate: negative (rank 1, Annual)",2,2,2,"opposite directions",FALSE
+"LS15AIKA","LS15AIKA01B","d2H","effectivePrecipitation","climate: positive (rank 2, Annual); climate: negative (rank 1, Annual)",2,2,2,"opposite directions",FALSE
+"LS16THQI01","WEBaddada01","d2H","precipitationIsotope","isotope: positive (rank 1, Apr-Sep); climate: decrease (rank 1, Summer)",2,2,2,"opposite directions",FALSE
+"MS06DLDS","MS06DLDS01a","d18O","seawaterIsotope","environment: positive (rank 1, Annual); isotope: decrease (rank 2, Annual)",2,2,2,"opposite directions",FALSE
+"MS06DLGS","MS06DLGS01a","d18O","temperature","isotope: negative (rank 1, Annual); climate: increase (rank 1, Annual)",2,2,2,"opposite directions",FALSE
+"MS09DOIP","MS09DOIP01a","d18O","seawaterIsotope","environment: positive (rank 1, Annual); isotope: decrease (rank 2, Annual)",2,2,2,"opposite directions",FALSE
+"MS10BLMS","MS10BLMS01a","d18O","seawaterIsotope","environment: positive (rank 1, Annual); isotope: decrease (rank 2, Annual)",2,2,2,"opposite directions",TRUE
+"MS11CSCN","MS11CSCN01a","d18O","seawaterIsotope","environment: positive (rank 1, Annual); isotope: decrease (rank 2, Annual)",2,2,2,"opposite directions",FALSE
+"MS11CSCS","MS11CSCS01a","d18O","seawaterIsotope","environment: positive (rank 1, Annual); isotope: decrease (rank 2, Annual)",2,2,2,"opposite directions",FALSE
+"MS12CCCH","MS12CCCH01a","d18O","seawaterIsotope","environment: positive (rank 1, Annual); isotope: decrease (rank 2, Annual)",2,2,2,"opposite directions",FALSE
+"MS14MORR","MS14MORR01a","d18O","seawaterIsotope","environment: positive (rank 1, Annual); isotope: negative (rank 2, Annual)",2,2,2,"opposite directions",FALSE
+"MS15VIBC","MS14CCBC02","d18O","temperature","isotope: negative (rank 1, Annual); climate: positive (rank 1, )",2,2,2,"opposite directions",TRUE
+"NamCo.Kasper.2015","WEB-5111e-2b32-4823-9828-0593f","potassium","precipitation amount","environment: negative (rank 2, sub-annual); environment: positive (rank 1, sub-annual)",2,2,2,"opposite directions",FALSE
+"NamCo.Kasper.2015","WEB-a0a8c-89d4-4883-ba22-c77d0","titanium","precipitation amount","environment: negative (rank 2, sub-annual); environment: positive (rank 1, sub-annual)",2,2,2,"opposite directions",FALSE
+"NamCo.Kasper.2015","WEB-a0a8c-89d4-4883-ba22-c77d0","titanium","effectivePrecipitation","climate: negative (rank 2, Sub-annual); climate: positive (rank 1, Sub-annual)",2,2,2,"opposite directions",FALSE
+"NamCo.Kasper.2015","WEB-c116b-dc14-4936-87dc-ee868","calcium","E/P","environment: positive (rank 2, sub-annual); environment: negative (rank 1, sub-annual)",2,2,2,"opposite directions",FALSE
+"NamCo.Kasper.2015","WEB-aefd4-7d29-4318-a5e0-d0d86","rubidium","effectivePrecipitation","climate: negative (rank 2, Sub-annual); climate: positive (rank 1, Sub-annual)",2,2,2,"opposite directions",FALSE
+"NamCo.Kasper.2015","WEB-aefd4-7d29-4318-a5e0-d0d86","rubidium","precipitation amount","environment: negative (rank 2, sub-annual); environment: positive (rank 1, sub-annual)",2,2,2,"opposite directions",FALSE
+"NamCo.Kasper.2015","WEB-1d341-d989-4093-bfa4-58e46","silicon","precipitation amount","environment: negative (rank 2, sub-annual); environment: positive (rank 1, sub-annual)",2,2,2,"opposite directions",FALSE
+"NamCo.Kasper.2015","WEB-2447e-a89e-42fd-92e5-8a2e5","iron","precipitation amount","environment: negative (rank 2, sub-annual); environment: positive (rank 1, sub-annual)",2,2,2,"opposite directions",FALSE
+"NamCo.Kasper.2015","WEB-1d341-d989-4093-bfa4-58e46","silicon","effectivePrecipitation","climate: negative (rank 2, Sub-annual); climate: positive (rank 1, Sub-annual)",2,2,2,"opposite directions",FALSE
+"SK237-GC04.Saraswat.2013","MS13RSAS01b","temperature","salinity","isotope: positive (rank 1, Annual); climate: negative (rank 1, NaN)",2,2,2,"opposite directions",FALSE
+"TR11GRTP","WEB7c902e21","d18O","precipitationIsotope","environment: positive (rank 1, Aug); isotope: positive (rank 1, Aug); climate: negative (rank 1, Summer)",3,2,3,"opposite directions",TRUE
+"TR12BRBO","WEB1fa7c61b","d18O","precipitationIsotope","environment: positive (rank 1, Oct-Apr); isotope: positive (rank 1, Oct-Apr); climate: negative (rank 1, Oct-Apr)",3,2,3,"opposite directions",FALSE
+"TR13BROA","WEB1c82ec4b","d18O","precipitationIsotope","environment: positive (rank 1, Jun-Oct); isotope: positive (rank 1, Jun-Oct); climate: negative (rank 1, Annual)",3,2,3,"opposite directions",FALSE
+"TR15BABO","WEB255443f2","d18O","precipitationIsotope","environment: positive (rank 1, Annual); isotope: positive (rank 1, Annual); climate: negative (rank 1, Oct-Apr)",3,2,3,"opposite directions",FALSE
+"TR16WEMI","WEB3e43f177","d18O","precipitationIsotope","environment: positive (rank 1, Jun-Aug); isotope: positive (rank 1, Jun-Aug); climate: negative (rank 1, Jun-Aug)",3,2,3,"opposite directions",TRUE
+"AustreNevlingen.Kjellman.2020","WEB7d9c50f4","d2H","precipitationIsotope","isotope: positive (rank 2, Jun-Aug); isotope: positive (rank 1, Jun-Aug); climate: ? (rank 1, Summer)",3,1,2,"exact repeat",FALSE
+"AustreNevlingen.Kjellman.2020","WEB08b93587","d2H","precipitationIsotope","isotope: positive (rank 2, Jun-Aug); isotope: positive (rank 1, Jun-Aug)",2,1,1,"exact repeat",FALSE
+"AustreNevlingen.Kjellman.2020","WEB8d86bc04","d2H","precipitationIsotope","isotope: positive (rank 2, Jun-Aug); isotope: positive (rank 1, Jun-Aug)",2,1,1,"exact repeat",FALSE
+"LS11MOES","LS11MOES","d18O","effectivePrecipitation","isotope: negative (rank 2, ); isotope: negative (rank 1, )",2,1,1,"exact repeat",FALSE
+"LS13WASU","LS13WASU01A","d2H","effectivePrecipitation","isotope: negative (rank 2, ); isotope: negative (rank 1, ); climate: ? (rank 1, Growing Season)",3,1,2,"exact repeat",FALSE
+"TR11SAHU00","WEB3638db18","d18O","effectivePrecipitation","environment: negative (rank 1, Jun-Sep); isotope: negative (rank 1, Jun-Sep); climate: negative (rank 4, Jun-Sep); climate: negative (rank 3, Jun-Sep)",4,1,3,"exact repeat",FALSE

@@ -1,0 +1,268 @@
+"TSid","dataSetName","variableName","units","archiveType","proxy","min_win","max_win","n_win","interpreted_columns","in_r3_pool"
+"CO00URMA01A","CO00URMA","d18O","permil","Coral",NA,1840,1994.5,928,"d18O: temperature; d18O: seawaterIsotope",TRUE
+"WEB1b49cf10","CO17RAPA","Sr/Ca","mmol/mol","Coral",NA,1954.04,2012.38,701,"d18O: temperature; d18O: seawaterIsotope",TRUE
+"PYTBWLHQW85","Ocn-Palmyra.Cobb.2013","d18O","permil","Coral","d18O",928,1998,534,"d18O: temperature",TRUE
+"Ocean2kHR_162","Ocn-Palmyra.Nurhati.2011","d18O","permil","Coral","d18O",1886.13,1998.21,1346,"d18O: temperature; Sr/Ca: temperature",TRUE
+"WEB54d1b98b","JamesRossIsland.Mulvaney.2012","d2H","permil","GlacierIce",NA,2.32999999999993,2008,3606,"temperature: temperature",TRUE
+"RYiV0il9NAZ","SS05ROTN","Sr/Ca","unitless","Sclerosponge",NA,1890,1990,101,"d18O: temperature; d18O: salinity",TRUE
+"S2LRPi8htLOZ2D","ColdAircave.Repinski.1999","d18O","permil","Speleothem","d18O",2,1998,1288,"d18O: circulationVariable; mineralogy: circulationVariable",TRUE
+"S2LR3TAN8elzAm","KNI-51.Denniston.2013","d18O","permil","Speleothem","d18O",1757,2008.5,109,"correction: precipitation; d18O: precipitation",TRUE
+"S2LRHI9baIBtS0","LiangLuar.Griffiths.2016","d18O","permil","Speleothem","d18O",1,2004,1218,"uncertaintyHigh: precipitation; d18O: precipitation",TRUE
+"S2LRQbTNgLuktR","Sahiyacave.Sinha.2015","d18O","permil","Speleothem","d18O",4.33999999999992,2006.29,1824,"uncertaintyHigh: precipitation; d18O: precipitation",TRUE
+"WEB34c958f0","CO17RAPA","Sr/Ca","mmol/mol","Coral",NA,1954.04,2012.38,701,"d18O: temperature; d18O: seawaterIsotope",FALSE
+"WEB1ae4dccd","CO18RELC01A","Sr/Ca","mmol/mol","Coral",NA,1887.04,2012.54,1507,"d18O: temperature; d18O: seawaterIsotope",FALSE
+"WEB3309bb9e","CO18RELC01A","temperature","degC","Coral",NA,1887.04,2012.54,1507,"d18O: temperature; d18O: seawaterIsotope",FALSE
+"WEBa95b590f","CO18RELC01A","temperature","degC","Coral",NA,1887.04,2012.54,1507,"d18O: temperature; d18O: seawaterIsotope",FALSE
+"Ocean2kHR_168","Ocn-AbrahamReef.Druffel.1999","d13C","permil","Coral","d13C",1638.3,1983.3,334,"d18O: temperature",FALSE
+"Ocean2kHR_015","Ocn-AqabaJordanAQ18.Heiss.1999","d13C","permil","Coral","d13C",1788,1992,205,"d18O: temperature",FALSE
+"Ocean2kHR_017","Ocn-AqabaJordanAQ19.Heiss.1999","d13C","permil","Coral","d13C",1886,1992,107,"d18O: temperature",FALSE
+"Ocean2kHR_109","Ocn-BuccooReefTobagoMontastrea.Moses.2006","d13C","permil","Coral","d13C",1927,1990,64,"d18O: temperature",FALSE
+"Ocean2kHR_111","Ocn-BuccooReefTobagoSidereastrea.Moses.2006","d13C","permil","Coral","d13C",1932,1989,58,"d18O: temperature",FALSE
+"Ocean2kHR_170","Ocn-ClippertonAtoll.Linsley.2000","d13C","permil","Coral","d13C",1893.79,1994.04,1204,"d18O: temperature",FALSE
+"Ocean2kHR_192","Ocn-GBR.Wei.2009","d13C","permil","Coral","d13C",1807,2004,92,"Sr/Ca: temperature; d18O: temperature",FALSE
+"Ocean2kHR_024","Ocn-HoutmanAbrolhos.Kuhnert.1999","d13C","permil","Coral","d13C",1794.708,1994.375,1529,"d18O: temperature",FALSE
+"Ocean2kHR_136","Ocn-Kiritimati.Evans.1998","d13C","permil","Coral","d13C",1938.292,1993.625,665,"d18O: temperature",FALSE
+"Ocean2kHR_176","Ocn-MaloChannelEspirituSantoIsland.Kilbourne.2004","d13C","permil","Coral","d13C",1928.54,1992.46,953,"d18O: temperature; Sr/Ca: temperature",FALSE
+"Ocean2kHR_004","Ocn-Mayotte.Zinke.2008","d13C","permil","Coral","d13C",1865.62,1993.62,769,"d18O: temperature; Sr/Ca: temperature",FALSE
+"Ocean2kHR_165","Ocn-Miyanohama.Felis.2009","d13C","permil","Coral","d13C",1872.25,1994.917,737,"d18O: temperature; Sr/Ca: temperature",FALSE
+"Ocean2kHR_180","Ocn-Nauru.Guilderson.1999","d13C","permil","Coral","d13C",1897.54,1995.25,806,"d18O: temperature",FALSE
+"Ocean2kHR_009","Ocn-Ningaloo.Kuhnert.2000","d13C","permil","Coral","d13C",1878.71,1995.21,766,"d18O: temperature",FALSE
+"Ocean2kHR_182","Ocn-PalauRockIslands.Osborne.2014","d13C","permil","Coral","d13C",1899.17,2008.17,1309,"d18O: temperature",FALSE
+"Ocean2kHR_184","Ocn-PalauUlongChannel.Osborne.2014","d13C","permil","Coral","d13C",1793.17,2008.17,2581,"d18O: temperature",FALSE
+"Ocean2kHR_146","Ocn-Rabaul.Quinn.2006","d13C","permil","Coral","d13C",1867.38,1997.54,1563,"Sr/Ca: temperature; d18O: temperature",FALSE
+"Ocean2kHR_148","Ocn-Rarotonga_d18O2R.Linsley.2006","d13C","permil","Coral","d13C",1726.78,1996.91,2162,"d18O: temperature",FALSE
+"Ocean2kHR_151","Ocn-Rarotonga_d18O3R.Linsley.2006","d13C","permil","Coral","d13C",1874.68,2000.18,1005,"d18O: temperature",FALSE
+"Ocean2kHR_153","Ocn-Rarotonga_d18O99.Linsley.2006","d13C","permil","Coral","d13C",1906.88,1999.75,744,"d18O: temperature",FALSE
+"Ocean2kHR_101","Ocn-TurrumoteReefPuertoRico.Kilbourne.2008","d13C","permil","Coral","d13C",1751,2004,253,"d18O: temperature; Sr/Ca: temperature",FALSE
+"Ocean2kHR_155","Ocn-Vanuatu.Gorman.2012","d13C","permil","Coral","d13C",1842.625,2007.625,1981,"d18O: temperature",FALSE
+"Eur_027","Eur-Tallinn.Tarand.2001","JulianDay","day","Documents",NA,1500,2000,483,"temperature: temperature",FALSE
+"Asia_238","Asi-Dasuopu.Thompson.2000","chloride","ppb","GlacierIce","chloride",1450,1996,547,"d18O: temperature; dust: precipitation",FALSE
+"Asia_239","Asi-Dasuopu.Thompson.2000","nitrate","ppb","GlacierIce","nitrate",1450,1996,547,"d18O: temperature; dust: precipitation",FALSE
+"Asia_240","Asi-Dasuopu.Thompson.2000","sulfate","ppb","GlacierIce","sulfate",1450,1996,547,"d18O: temperature; dust: precipitation",FALSE
+"IC10VID301A","IC10VID3","d18O","permil","GlacierIce",NA,1,1978,1978,"d18O: temperature; d18O: precipitationIsotope",FALSE
+"SAm_037_iso2k","IC13THQU","dust","permil","GlacierIce","ice accumulation",226,2002,1777,"d18O: precipitationIsotope; d18O: temperature; thickness: temperature",FALSE
+"SAm_039_iso2k","IC13THQU","chlorine","ppb","GlacierIce","Cl",226,2002,1777,"d18O: precipitationIsotope; d18O: temperature; thickness: temperature",FALSE
+"SAm_040_iso2k","IC13THQU","sulfate","ppb","GlacierIce","sulfate",226,2002,1777,"d18O: precipitationIsotope; d18O: temperature; thickness: temperature",FALSE
+"SAm_041_iso2k","IC13THQU","nitrate","ppb","GlacierIce","nitrate",226,2002,1777,"d18O: precipitationIsotope; d18O: temperature; thickness: temperature",FALSE
+"SAm_043_iso2k","IC13THQU","ammonium","ppb","GlacierIce","ammonium",226,2002,1777,"d18O: precipitationIsotope; d18O: temperature; thickness: temperature",FALSE
+"SAm_037","SAm-QuelccayaIceCap.Thompson.2013","dust","permil","GlacierIce","dust",226,2002,1777,"d18O: temperature",FALSE
+"SAm_039","SAm-QuelccayaIceCap.Thompson.2013","chlorine","ppb","GlacierIce","Cl",226,2002,1777,"d18O: temperature",FALSE
+"SAm_040","SAm-QuelccayaIceCap.Thompson.2013","sulfate","ppb","GlacierIce","sulfate",226,2002,1777,"d18O: temperature",FALSE
+"SAm_041","SAm-QuelccayaIceCap.Thompson.2013","nitrate","ppb","GlacierIce","nitrate",226,2002,1777,"d18O: temperature",FALSE
+"SAm_043","SAm-QuelccayaIceCap.Thompson.2013","ammonium","ppb","GlacierIce","ammonium",226,2002,1777,"d18O: temperature",FALSE
+"WEBb81ba4a4","AlbercaLake.Wogau.2019","Mn/Fe","ratio","LakeSediment","Mn/Fe",1.00999999999999,1999.85,7677,"titanium: precipitation; Ca/Ti: evaporation",FALSE
+"LPD0b6c7700","Aus-DuckholeLake.Saunders.2013","BSi","percent","LakeSediment","BSi",1166.5492,2001.3208,146,"R650/R700: temperature; RABD660670: temperature",FALSE
+"LPD0e900372","Aus-DuckholeLake.Saunders.2013","C/N",NA,"LakeSediment","C/N",1166.5492,2001.3208,176,"R650/R700: temperature; RABD660670: temperature",FALSE
+"LPDe759ea6b","Aus-DuckholeLake.Saunders.2013","nitrogen","percent","LakeSediment","N",1166.5492,2001.3208,176,"R650/R700: temperature; RABD660670: temperature",FALSE
+"LPDf7751317","Aus-DuckholeLake.Saunders.2013","carbon","percent","LakeSediment","C",1166.5492,2001.3208,176,"R650/R700: temperature; RABD660670: temperature",FALSE
+"WEB-39411-9c48-45c8-beb1-5d995","EastLake.Lapointe.2012","grainSize","um","LakeSediment","grain size",244,2000,1752,"grainSize: precipitation; precipitation: precipitation",FALSE
+"WEB-4e0af-6b4a-4172-8952-eb11f","EastLake.Lapointe.2012","grainSize","um","LakeSediment","grain size",244,2000,1752,"grainSize: precipitation; precipitation: precipitation",FALSE
+"WEB-f3829-4012-4dfd-9efc-db804","EastLake.Lapointe.2012","grainSize","um","LakeSediment","grain size",244,2000,1752,"grainSize: precipitation; precipitation: precipitation",FALSE
+"WEB-5aadb-8228-4c34-820c-76a2c","Kalliojarvi.Saarni.2016","grayscale","unitless","LakeSediment","reflectance",50,2099,2049,"varveThickness: Precipitation amount",FALSE
+"GH15c59fa7","Pallcacocha.Moy.2002","reflectance",NA,"LakeSediment",NA,1.26,1950,4314,"ElNinoEvent: circulationIndex",FALSE
+"SAm_031","SAm-LagunaEscondida.Elbert.2013","BSi","mg/cm2/yr","LakeSediment","BSi",400,2005,1606,"uncertainty: temperature; temperature: temperature",FALSE
+"WEB-46f7f-0671-4d7f-92ef-e0c7a","Skilak.Thomas.2021","density","g/cm2","LakeSediment","bulk density",1.20000000000005,2099.7,5204,"varveThickness: Precipitation amount",FALSE
+"WEB-98b8b-369b-47f1-93e7-b8adc","Skilak.Thomas.2021","MS","SI","LakeSediment","magnetic susceptibility",1.20000000000005,2099.7,5204,"varveThickness: Precipitation amount",FALSE
+"S2LRcHvdTlqb9Z","ColdAircave.Repinski.1999","d13C","permil","Speleothem","d13C",2,1998,1288,"d18O: circulationVariable; mineralogy: circulationVariable",FALSE
+"S2LRFw3ymyY2hk","ColdAircave.Repinski.1999","d13C","permil","Speleothem","d13C",1636.427976,1996,820,"d18O: circulationVariable; mineralogy: circulationVariable",FALSE
+"S2LROhdjq4qi1C","Klapferlochcave.Boch.2011","d18O","permil","Speleothem","d18O",1.24210700000003,1997,1397,"uncertainty: circulationVariable",FALSE
+"S2LRZyauKbnkq2","Klapferlochcave.Boch.2011","d13C","permil","Speleothem","d13C",1.24210700000003,1997,1397,"uncertainty: circulationVariable",FALSE
+"S2LR0QfPy8vbKH","LiangLuar.Griffiths.2016","thickness","mm","Speleothem","thickness",1,2004,1155,"uncertaintyHigh: precipitation; d18O: precipitation",FALSE
+"S2LRqmHrDUYyy2","Sahiyacave.Sinha.2015","d13C","permil","Speleothem","d13C",4.33999999999992,2006.29,1824,"uncertaintyHigh: precipitation; d18O: precipitation",FALSE
+"NPMlaanila3","Arc-Laanila.Lindholm.2013","trsgi","unitless","Wood","ring width",800,2005,1206,"MXD: temperature",FALSE
+"NPMlaanila4","Arc-Laanila.Lindholm.2013","humidificationIndex","unitless","Wood","Hindex",800,2005,1206,"MXD: temperature",FALSE
+"WEB-44c62635-11db-4713-9ebc-766f71888e3a","ElMalpais.Stahle.2009","latewoodIndex","unitless","Wood","latewood width",1,2086,2086,"earlywoodIndex: storminess, with accompanying increased wetter conditions",FALSE
+"NAm_231","NAm-AlmondButterLower.D'Arrigo.2005","trsgi","unitless","Wood","ringWidth",1607,2002,396,"trsgi: temperature",FALSE
+"NAm_243","NAm-AlmondButterUpper.D'Arrigo.2005","trsgi","unitless","Wood","ringWidth",1406,2002,597,"trsgi: temperature",FALSE
+"NAm_2379","NAm-Arapahoe.Kienast.1996","trsgi","unitless","Wood","ringWidth",1610,1982,373,"trsgi: temperature; MXD: temperature",FALSE
+"NAm_2391","NAm-Arapahoe.Kienast.1996","density","g/cm3","Wood","Density",1610,1982,373,"trsgi: temperature; MXD: temperature",FALSE
+"NAm_1347","NAm-ArrowsmithMountain.Briffa.1996","trsgi","unitless","Wood","ringWidth",1629,1983,355,"MXD: temperature",FALSE
+"NAm_1348","NAm-ArrowsmithMountain.Briffa.1996","trsgi","unitless","Wood","ring width",1629,1983,355,"MXD: temperature",FALSE
+"NAm_1359","NAm-ArrowsmithMountain.Briffa.1996","density","g/cm3","Wood","Density",1629,1983,355,"MXD: temperature",FALSE
+"NAm_1455","NAm-Athabasca.Schweingruber.1996","trsgi","unitless","Wood","ringWidth",1072,1991,920,"MXD: temperature",FALSE
+"NAm_1456","NAm-Athabasca.Schweingruber.1996","trsgi","unitless","Wood","ring width",1072,1991,920,"MXD: temperature",FALSE
+"NAm_1467","NAm-Athabasca.Schweingruber.1996","density","g/cm3","Wood","Density",1072,1991,920,"MXD: temperature",FALSE
+"NAm_2067","NAm-AthabascaGlacier2.Luckman.2005","trsgi","unitless","Wood","ringWidth",920,1987,1068,"trsgi: temperature; MXD: temperature",FALSE
+"NAm_2079","NAm-AthabascaGlacier2.Luckman.2005","density","g/cm3","Wood","Density",1665,1994,330,"trsgi: temperature; MXD: temperature",FALSE
+"NAm_2787","NAm-BakerLake.Hughes.2005","trsgi","unitless","Wood","ringWidth",12,1997,1986,"trsgi: temperature; MXD: temperature",FALSE
+"NAm_2799","NAm-BakerLake.Hughes.2005","density","g/cm3","Wood","Density",1434,1997,564,"trsgi: temperature; MXD: temperature",FALSE
+"NAm_3111","NAm-BarlowPassamMtHood.Briffa.1996","trsgi","unitless","Wood","ringWidth",1504,1983,480,"MXD: temperature",FALSE
+"NAm_3112","NAm-BarlowPassamMtHood.Briffa.1996","trsgi","unitless","Wood","ring width",1504,1983,480,"MXD: temperature",FALSE
+"NAm_3123","NAm-BarlowPassamMtHood.Briffa.1996","density","g/cm3","Wood","Density",1504,1983,480,"MXD: temperature",FALSE
+"NAm_1155","NAm-BellMountain.Schweingruber.1996","trsgi","unitless","Wood","ringWidth",1649,1983,335,"MXD: temperature",FALSE
+"NAm_1156","NAm-BellMountain.Schweingruber.1996","trsgi","unitless","Wood","ring width",1649,1983,335,"MXD: temperature",FALSE
+"NAm_1167","NAm-BellMountain.Schweingruber.1996","density","g/cm3","Wood","Density",1649,1983,335,"MXD: temperature",FALSE
+"NAm_2091","NAm-Bennington.Luckman.2001","trsgi","unitless","Wood","ringWidth",1563,1996,434,"trsgi: temperature",FALSE
+"NAm_1839","NAm-Bennington.Luckman.2013","trsgi","unitless","Wood","ringWidth",1104,1996,893,"trsgi: temperature",FALSE
+"NAm_363","NAm-BigBendLake.Jacoby.2003","trsgi","unitless","Wood","ringWidth",1557,1997,441,"MXD: temperature; trsgi: temperature",FALSE
+"NAm_375","NAm-BigBendLake.Jacoby.2003","density","g/cm3","Wood","Density",1593,1997,405,"MXD: temperature; trsgi: temperature",FALSE
+"NAm_1383","NAm-BigWhite.Parish.2000","trsgi","unitless","Wood","ringWidth",1669,1998,330,"trsgi: temperature",FALSE
+"NAm_1659","NAm-BigWhite2.Wilson.2005","trsgi","unitless","Wood","ringWidth",1512,1997,486,"trsgi: temperature; MXD: temperature",FALSE
+"NAm_1671","NAm-BigWhite2.Wilson.2005","density","g/cm3","Wood","Density",1512,1997,486,"trsgi: temperature; MXD: temperature",FALSE
+"NAm_1923","NAm-BlanchardRiver.Luckman.2013","trsgi","unitless","Wood","ringWidth",1609,2003,395,"trsgi: temperature",FALSE
+"NAm_1431","NAm-Bonif.Schweingruber.1996","trsgi","unitless","Wood","ringWidth",1352,1989,638,"MXD: temperature; trsgi: temperature",FALSE
+"NAm_1443","NAm-Bonif.Schweingruber.1996","density","g/cm3","Wood","Density",1352,1989,638,"MXD: temperature; trsgi: temperature",FALSE
+"NAm_867","NAm-BorealPlateau.Graumlich.2005","trsgi","unitless","Wood","ringWidth",831,1992,1162,"trsgi: temperature",FALSE
+"NAm_2115","NAm-BowSummit-PeytoLake.Luckman.2005","trsgi","unitless","Wood","ringWidth",1575,2000,426,"trsgi: temperature",FALSE
+"NAm_255","NAm-BurntOver.D'Arrigo.2005","trsgi","unitless","Wood","ringWidth",1621,2002,382,"trsgi: temperature",FALSE
+"NAm_2595","NAm-CameronPass.Bigler.2007","trsgi","unitless","Wood","ringWidth",1552,2003,452,"trsgi: temperature",FALSE
+"NAm_195","NAm-CanyonCreek.Lloyd.2002","trsgi","unitless","Wood","ringWidth",1642,1997,356,"trsgi: temperature",FALSE
+"NAm_2127","NAm-CardinalDivide.Luckman.2001","trsgi","unitless","Wood","ringWidth",1528,1990,463,"trsgi: temperature",FALSE
+"NAm_003","NAm-CarltonRidge.Kipfmuller.2008","trsgi","unitless","Wood","ringWidth",1150,1998,849,"trsgi: temperature",FALSE
+"NAm_3231","NAm-CeaderBreaks.Briffa.1996","trsgi","unitless","Wood","ringWidth",1581,1983,403,"MXD: temperature",FALSE
+"NAm_3232","NAm-CeaderBreaks.Briffa.1996","trsgi","unitless","Wood","ring width",1581,1983,403,"MXD: temperature",FALSE
+"NAm_3243","NAm-CeaderBreaks.Briffa.1996","density","g/cm3","Wood","Density",1581,1983,403,"MXD: temperature",FALSE
+"NAm_2727","NAm-CienegadeNuestraSenoradeGuadalupe.Fule.2009","trsgi","unitless","Wood","ringWidth",1675,1993,319,"trsgi: temperature",FALSE
+"NAm_639","NAm-CirquePeak.Graybill.1995","trsgi","unitless","Wood","ringWidth",917,1987,1071,"trsgi: temperature",FALSE
+"NAm_1395","NAm-CoppermineRiver.Jacoby.1989","trsgi","unitless","Wood","ringWidth",1428,1977,550,"trsgi: temperature",FALSE
+"NAm_1707","NAm-CornwallHills.Wilson.2005","trsgi","unitless","Wood","ringWidth",1554,1997,444,"trsgi: temperature; MXD: temperature",FALSE
+"NAm_1719","NAm-CornwallHills.Wilson.2005","density","g/cm3","Wood","Density",1689,1997,309,"trsgi: temperature; MXD: temperature",FALSE
+"NAm_2499","NAm-CottonwoodPass.Briffa.1996","trsgi","unitless","Wood","ringWidth",1565,1982,418,"MXD: temperature; trsgi: temperature",FALSE
+"NAm_2511","NAm-CottonwoodPass.Briffa.1996","density","g/cm3","Wood","Density",1565,1982,418,"MXD: temperature; trsgi: temperature",FALSE
+"NAm_3087","NAm-CraterLakeNE.Briffa.2002","trsgi","unitless","Wood","ringWidth",1564,1983,420,"MXD: temperature",FALSE
+"NAm_3088","NAm-CraterLakeNE.Briffa.2002","trsgi","unitless","Wood","ring width",1564,1983,420,"MXD: temperature",FALSE
+"NAm_3099","NAm-CraterLakeNE.Briffa.2002","density","g/cm3","Wood","Density",1564,1983,420,"MXD: temperature",FALSE
+"NAm_771","NAm-DanaPlateauInyoNationalForest.King.2000","trsgi","unitless","Wood","ringWidth",1430,1996,567,"trsgi: temperature",FALSE
+"NAm_411","NAm-DeerMountain.Wiles.2011","trsgi","unitless","Wood","ringWidth",1550,1999,450,"trsgi: temperature",FALSE
+"NAm_075","NAm-DenaliNationalPark.Schweingruber.1996","trsgi","unitless","Wood","ringWidth",1551,1983,433,"MXD: temperature",FALSE
+"NAm_076","NAm-DenaliNationalPark.Schweingruber.1996","trsgi","unitless","Wood","ring width",1551,1983,433,"MXD: temperature",FALSE
+"NAm_087","NAm-DenaliNationalPark.Schweingruber.1996","density","g/cm3","Wood","Density",1551,1983,433,"MXD: temperature",FALSE
+"NAm_1059","NAm-DonJekRiverBridge.Schweingruber.1996","trsgi","unitless","Wood","ringWidth",1585,1983,399,"MXD: temperature",FALSE
+"NAm_1060","NAm-DonJekRiverBridge.Schweingruber.1996","trsgi","unitless","Wood","ring width",1585,1983,399,"MXD: temperature",FALSE
+"NAm_1071","NAm-DonJekRiverBridge.Schweingruber.1996","density","g/cm3","Wood","Density",1585,1983,399,"MXD: temperature",FALSE
+"NAm_1803","NAm-EagleFecal_PtarmiganMerge.Jacoby.2011","trsgi","unitless","Wood","ringWidth",1175,1993,819,"MXD: temperature",FALSE
+"NAm_1804","NAm-EagleFecal_PtarmiganMerge.Jacoby.2011","trsgi","unitless","Wood","ring width",1175,1993,819,"MXD: temperature",FALSE
+"NAm_1815","NAm-EagleFecal_PtarmiganMerge.Jacoby.2011","density","g/cm3","Wood","Density",1175,1993,819,"MXD: temperature",FALSE
+"NAm_2691","NAm-ElephantMountain.Conkey.1994","trsgi","unitless","Wood","ringWidth",1667,1977,311,"MXD: temperature",FALSE
+"NAm_2692","NAm-ElephantMountain.Conkey.1994","trsgi","unitless","Wood","ring width",1667,1977,311,"MXD: temperature",FALSE
+"NAm_2703","NAm-ElephantMountain.Conkey.1994","density","g/cm3","Wood","Density",1667,1977,311,"MXD: temperature",FALSE
+"NAm_147","NAm-EurekaSummit.Schweingruber.1996","trsgi","unitless","Wood","ringWidth",1654,1983,330,"MXD: temperature; trsgi: temperature",FALSE
+"NAm_159","NAm-EurekaSummit.Schweingruber.1996","density","g/cm3","Wood","Density",1654,1983,330,"MXD: temperature; trsgi: temperature",FALSE
+"NAm_3771","NAm-FirthRiver.Anchukaitis.2013","density","g/cm3","Wood","Density",1073,2002,930,"MXD: temperature",FALSE
+"NAm_807","NAm-FishCreekTrail.Biondi.2001","trsgi","unitless","Wood","ringWidth",1534,1995,462,"trsgi: temperature",FALSE
+"NAm_2811","NAm-FlintCreekRange.Hughes.2005","trsgi","unitless","Wood","ringWidth",999,1998,1000,"trsgi: temperature",FALSE
+"NAm_615","NAm-FlowerLake.Graybill.1995","trsgi","unitless","Wood","ringWidth",898,1987,1090,"trsgi: temperature",FALSE
+"NAm_2559","NAm-FoolCreek.Brown.2005","trsgi","unitless","Wood","ringWidth",1224,1992,769,"trsgi: temperature; MXD: temperature",FALSE
+"NAm_2571","NAm-FoolCreek.Brown.2005","density","g/cm3","Wood","Density",1296,1993,698,"trsgi: temperature; MXD: temperature",FALSE
+"NAm_915","NAm-FortChimo.Fritts.1981","trsgi","unitless","Wood","ringWidth",1641,1974,334,"trsgi: temperature",FALSE
+"NAm_015","NAm-FremontGlacier.Hill.0","trsgi","unitless","Wood","ringWidth",1227,2001,775,"trsgi: temperature",FALSE
+"NAm_1851","NAm-FrenchGlacier.Colenutt.1995","trsgi","unitless","Wood","ringWidth",1069,1993,925,"trsgi: temperature",FALSE
+"NAm_2619","NAm-GalenaPassSawtooth.Briffa.1996","trsgi","unitless","Wood","ringWidth",1530,1983,454,"MXD: temperature",FALSE
+"NAm_2620","NAm-GalenaPassSawtooth.Briffa.1996","trsgi","unitless","Wood","ring width",1530,1983,454,"MXD: temperature",FALSE
+"NAm_2631","NAm-GalenaPassSawtooth.Briffa.1996","density","g/cm3","Wood","Density",1530,1983,454,"MXD: temperature",FALSE
+"NAm_2151","NAm-GeraldineLakes.Luckman.2001","trsgi","unitless","Wood","ringWidth",1513,1990,478,"trsgi: temperature",FALSE
+"NAm_3351","NAm-GraniteMountain.Graumlich.2003","trsgi","unitless","Wood","ringWidth",1259,1980,722,"trsgi: temperature",FALSE
+"NAm_3663","NAm-GranitePassHuntMountain.Briffa.1996","trsgi","unitless","Wood","ringWidth",1508,1983,476,"MXD: temperature",FALSE
+"NAm_3664","NAm-GranitePassHuntMountain.Briffa.1996","trsgi","unitless","Wood","ring width",1508,1983,476,"MXD: temperature",FALSE
+"NAm_3675","NAm-GranitePassHuntMountain.Briffa.1996","density","g/cm3","Wood","Density",1508,1983,476,"MXD: temperature",FALSE
+"NAm_027","NAm-GreatBasin.Salzer.2013","trsgi","unitless","Wood","ringWidth",1,2009,2009,"trsgi: temperature",FALSE
+"NAm_3411","NAm-HartsPassN2.Peterson.1994","trsgi","unitless","Wood","ringWidth",1529,1990,462,"trsgi: temperature",FALSE
+"NAm_063","NAm-HerringAlpine.Fritts.1995","trsgi","unitless","Wood","ringWidth",1422,1972,551,"trsgi: temperature",FALSE
+"NAm_2739","NAm-HighlandFireOutlook.Briffa.1996","trsgi","unitless","Wood","ringWidth",1496,1983,488,"trsgi: temperature; MXD: temperature",FALSE
+"NAm_2751","NAm-HighlandFireOutlook.Briffa.1996","density","g/cm3","Wood","Density",1496,1983,488,"trsgi: temperature; MXD: temperature",FALSE
+"NAm_2163","NAm-HighwoodPass.Luckman.2001","trsgi","unitless","Wood","ringWidth",1613,1987,375,"trsgi: temperature",FALSE
+"NAm_2175","NAm-Hilda.Kavanagh.2000","trsgi","unitless","Wood","ringWidth",1428,2000,573,"trsgi: temperature",FALSE
+"NAm_3519","NAm-HohLakeHigh.Peterson.1994","trsgi","unitless","Wood","ringWidth",1570,1992,423,"trsgi: temperature",FALSE
+"NAm_1407","NAm-HornbyCabin.Jacoby.1989","trsgi","unitless","Wood","ringWidth",1491,1984,494,"trsgi: temperature",FALSE
+"NAm_1743","NAm-IttyhaukBay.D'Arrigo.2011","trsgi","unitless","Wood","ringWidth",1689,1998,310,"trsgi: temperature",FALSE
+"NAm_219","NAm-KobukNoatak.King.2003","trsgi","unitless","Wood","ringWidth",978,1992,1015,"trsgi: temperature",FALSE
+"NAm_1011","NAm-LacRomanel.Schweingruber.1996","trsgi","unitless","Wood","ringWidth",1659,1988,330,"MXD: temperature; trsgi: temperature",FALSE
+"NAm_1023","NAm-LacRomanel.Schweingruber.1996","density","g/cm3","Wood","Density",1659,1988,330,"MXD: temperature; trsgi: temperature",FALSE
+"NAm_1875","NAm-Landslide.Luckman.2006","trsgi","unitless","Wood","ringWidth",913,2001,1089,"trsgi: temperature",FALSE
+"NAm_2715","NAm-LaTasajera.Biondi.2001","trsgi","unitless","Wood","ringWidth",1536,1995,460,"trsgi: temperature",FALSE
+"NAm_1827","NAm-Manitoba.D'Arrigo.2006","trsgi","unitless","Wood","ringWidth",1650,1982,333,"trsgi: temperature",FALSE
+"NAm_423","NAm-McGinnisTrail.Wiles.2013","trsgi","unitless","Wood","ringWidth",1380,1999,620,"trsgi: temperature",FALSE
+"NAm_1575","NAm-MeadowMountain.Wilson.2005","trsgi","unitless","Wood","ringWidth",1669,1997,329,"trsgi: temperature; MXD: temperature",FALSE
+"NAm_1587","NAm-MeadowMountain.Wilson.2005","density","g/cm3","Wood","Density",1685,1997,313,"trsgi: temperature; MXD: temperature",FALSE
+"NAm_3615","NAm-MedicineBowPeak.Briffa.1996","trsgi","unitless","Wood","ringWidth",1401,1983,583,"trsgi: temperature; MXD: temperature",FALSE
+"NAm_3627","NAm-MedicineBowPeak.Briffa.1996","density","g/cm3","Wood","Density",1401,1983,583,"trsgi: temperature; MXD: temperature",FALSE
+"NAm_1563","NAm-MedusaBay.Buckley.2003","trsgi","unitless","Wood","ringWidth",1634,1997,364,"trsgi: temperature",FALSE
+"NAm_183","NAm-MinersWell.Wiles.2000","trsgi","unitless","Wood","ringWidth",1428,1995,568,"trsgi: temperature",FALSE
+"NAm_3555","NAm-MountAdamsLow.Peterson.1994","trsgi","unitless","Wood","ringWidth",1610,1992,383,"trsgi: temperature",FALSE
+"NAm_3015","NAm-MountWashington.Graybill.1994","trsgi","unitless","Wood","ringWidth",825,1983,1159,"trsgi: temperature",FALSE
+"NAm_555","NAm-MtLemon.Briffa.2002","trsgi","unitless","Wood","ringWidth",1568,1983,416,"MXD: temperature",FALSE
+"NAm_556","NAm-MtLemon.Briffa.2002","trsgi","unitless","Wood","ring width",1568,1983,416,"MXD: temperature",FALSE
+"NAm_567","NAm-MtLemon.Briffa.2002","density","g/cm3","Wood","Density",1568,1983,416,"MXD: temperature",FALSE
+"NAm_3423","NAm-MtStHelens.Briffa.1996","trsgi","unitless","Wood","ringWidth",1609,1983,375,"MXD: temperature",FALSE
+"NAm_3424","NAm-MtStHelens.Briffa.1996","trsgi","unitless","Wood","ring width",1609,1983,375,"MXD: temperature",FALSE
+"NAm_3435","NAm-MtStHelens.Briffa.1996","density","g/cm3","Wood","Density",1609,1983,375,"MXD: temperature",FALSE
+"NAm_291","NAm-NabesnaMine.Jacoby.2003","trsgi","unitless","Wood","ringWidth",1471,1997,527,"trsgi: temperature; MXD: temperature",FALSE
+"NAm_303","NAm-NabesnaMine.Jacoby.2003","density","g/cm3","Wood","Density",1540,1997,458,"trsgi: temperature; MXD: temperature",FALSE
+"NAm_1935","NAm-Nadahini.Luckman.2013","trsgi","unitless","Wood","ringWidth",1572,2003,432,"trsgi: temperature",FALSE
+"NAm_2211","NAm-Nakiska.Luckman.2001","trsgi","unitless","Wood","ringWidth",1619,1987,369,"trsgi: temperature",FALSE
+"NAm_3759","NAm-NorthernAlaskaComposite.D'Arrigo.2006","density","g/cm3","Wood","Density",1524,1990,467,"MXD: temperature",FALSE
+"NAm_1635","NAm-ParkMountain.Wilson.2005","trsgi","unitless","Wood","ringWidth",1477,1997,521,"MXD: temperature; trsgi: temperature",FALSE
+"NAm_1647","NAm-ParkMountain.Wilson.2005","density","g/cm3","Wood","Density",1528,1997,470,"MXD: temperature; trsgi: temperature",FALSE
+"NAm_3003","NAm-PearlPeak.Graybill.1994","trsgi","unitless","Wood","ringWidth",320,1985,1666,"trsgi: temperature",FALSE
+"NAm_963","NAm-PethaiPeninsula.Schweingruber.1996","trsgi","unitless","Wood","ringWidth",1610,1988,379,"MXD: temperature",FALSE
+"NAm_964","NAm-PethaiPeninsula.Schweingruber.1996","trsgi","unitless","Wood","ring width",1610,1988,379,"MXD: temperature",FALSE
+"NAm_975","NAm-PethaiPeninsula.Schweingruber.1996","density","g/cm3","Wood","Density",1610,1988,379,"MXD: temperature",FALSE
+"NAm_1227","NAm-PeytoLake.Schweingruber.1996","trsgi","unitless","Wood","ringWidth",1634,1983,350,"MXD: temperature; trsgi: temperature",FALSE
+"NAm_1239","NAm-PeytoLake.Schweingruber.1996","density","g/cm3","Wood","Density",1634,1983,350,"MXD: temperature; trsgi: temperature",FALSE
+"NAm_2475","NAm-PikePeaks.Harlan.1996","trsgi","unitless","Wood","ringWidth",1530,1983,454,"trsgi: temperature; MXD: temperature",FALSE
+"NAm_2487","NAm-PikePeaks.Harlan.1996","density","g/cm3","Wood","Density",1530,1983,454,"trsgi: temperature; MXD: temperature",FALSE
+"NAm_2823","NAm-Pintlers.Littell.2011","trsgi","unitless","Wood","ringWidth",1026,2005,980,"trsgi: temperature",FALSE
+"NAm_2835","NAm-PintlersTwo.Littell.2011","trsgi","unitless","Wood","ringWidth",1248,2006,759,"trsgi: temperature",FALSE
+"NAm_3591","NAm-PowderRiverPass.Briffa.1996","trsgi","unitless","Wood","ringWidth",1496,1983,488,"MXD: temperature",FALSE
+"NAm_3592","NAm-PowderRiverPass.Briffa.1996","trsgi","unitless","Wood","ring width",1496,1983,488,"MXD: temperature",FALSE
+"NAm_3603","NAm-PowderRiverPass.Briffa.1996","density","g/cm3","Wood","Density",1496,1983,488,"MXD: temperature",FALSE
+"NAm_387","NAm-PrinceWilliamSound.Barclay.1999","trsgi","unitless","Wood","ringWidth",873,1991,1119,"trsgi: temperature",FALSE
+"NAm_2235","NAm-PyramidMountain.Luckman.2001","trsgi","unitless","Wood","ringWidth",1625,1990,366,"trsgi: temperature",FALSE
+"NAm_2451","NAm-RedMountainPassSilverton.Graybill.1994","trsgi","unitless","Wood","ringWidth",1626,1983,358,"MXD: temperature",FALSE
+"NAm_2452","NAm-RedMountainPassSilverton.Graybill.1994","trsgi","unitless","Wood","ring width",1626,1983,358,"MXD: temperature",FALSE
+"NAm_2463","NAm-RedMountainPassSilverton.Graybill.1994","density","g/cm3","Wood","Density",1626,1983,358,"MXD: temperature",FALSE
+"NAm_1971","NAm-RockGlacierYukon.Kenigsberg.2013","trsgi","unitless","Wood","ringWidth",1697,2002,306,"trsgi: temperature",FALSE
+"NAm_2847","NAm-RoweLakes.Colenutt.2011","trsgi","unitless","Wood","ringWidth",1252,1990,739,"trsgi: temperature",FALSE
+"NAm_039","NAm-SanFrancisoPeaksUpdate.Graybill.2005","trsgi","unitless","Wood","ringWidth",1,2002,2002,"trsgi: temperature",FALSE
+"NAm_3375","NAm-ScatterLake.Graumlich.2003","trsgi","unitless","Wood","ringWidth",1316,1980,665,"trsgi: temperature",FALSE
+"NAm_171","NAm-SettlementPointAfognakIsland.Harlan.1998","trsgi","unitless","Wood","ringWidth",1690,1996,307,"trsgi: temperature",FALSE
+"NAm_447","NAm-SewardComposite.D'Arrigo.2006","trsgi","unitless","Wood","ringWidth",1389,2001,613,"trsgi: temperature; MXD: temperature",FALSE
+"NAm_459","NAm-SewardComposite.D'Arrigo.2006","density","g/cm3","Wood","Density",1389,2001,613,"trsgi: temperature; MXD: temperature",FALSE
+"NAm_663","NAm-SheepMountain.Graybill.1995","trsgi","unitless","Wood","ringWidth",1,1990,1990,"trsgi: temperature",FALSE
+"NAm_3711","NAm-SheepTrail.Brown.2005","trsgi","unitless","Wood","ringWidth",1097,1999,903,"trsgi: temperature; MXD: temperature",FALSE
+"NAm_3723","NAm-SheepTrail.Brown.2005","density","g/cm3","Wood","Density",1483,2000,518,"trsgi: temperature; MXD: temperature",FALSE
+"NAm_3471","NAm-ShermanCreekPass.Briffa.1996","trsgi","unitless","Wood","ringWidth",1605,1983,379,"trsgi: temperature; MXD: temperature",FALSE
+"NAm_3483","NAm-ShermanCreekPass.Briffa.1996","density","g/cm3","Wood","Density",1605,1983,379,"trsgi: temperature; MXD: temperature",FALSE
+"NAm_051","NAm-SiberianOutpostView.Bunn.2010","trsgi","unitless","Wood","ringWidth",494,2001,1508,"trsgi: temperature",FALSE
+"NAm_2259","NAm-SignalMountain.Luckman.2001","trsgi","unitless","Wood","ringWidth",1489,1990,502,"trsgi: temperature",FALSE
+"NAm_2655","NAm-SleepingDeerRoad.Hughes.2005","trsgi","unitless","Wood","ringWidth",1305,1997,693,"trsgi: temperature; MXD: temperature",FALSE
+"NAm_2667","NAm-SleepingDeerRoad.Hughes.2005","density","g/cm3","Wood","Density",1488,1997,510,"trsgi: temperature; MXD: temperature",FALSE
+"NAm_2271","NAm-SmallRiver.Luckman.2001","trsgi","unitless","Wood","ringWidth",1569,1989,421,"trsgi: temperature",FALSE
+"NAm_1107","NAm-SmithersSkiArea.Schweingruber.1996","trsgi","unitless","Wood","ringWidth",1680,1983,304,"MXD: temperature; trsgi: temperature",FALSE
+"NAm_1119","NAm-SmithersSkiArea.Schweingruber.1996","density","g/cm3","Wood","Density",1680,1983,304,"MXD: temperature; trsgi: temperature",FALSE
+"NAm_1995","NAm-SnakeCreek.Kenigsberg.2013","trsgi","unitless","Wood","ringWidth",1645,1999,355,"trsgi: temperature",FALSE
+"NAm_507","NAm-SnowBowlSanFranciscoPeak.Briffa.2002","trsgi","unitless","Wood","ringWidth",1453,1983,531,"MXD: temperature",FALSE
+"NAm_508","NAm-SnowBowlSanFranciscoPeak.Briffa.2002","trsgi","unitless","Wood","ring width",1453,1983,531,"MXD: temperature",FALSE
+"NAm_519","NAm-SnowBowlSanFranciscoPeak.Briffa.2002","density","g/cm3","Wood","Density",1453,1983,531,"MXD: temperature",FALSE
+"NAm_435","NAm-SouthernAlaskacomposite.D'Arrigo.2006","trsgi","unitless","Wood","ringWidth",1343,2000,658,"trsgi: temperature",FALSE
+"NAm_795","NAm-SpillwayLakeYosemiteNationalPark.King.2000","trsgi","unitless","Wood","ringWidth",800,1996,1197,"trsgi: temperature",FALSE
+"NAm_939","NAm-SpruceCreek.Church.1981","trsgi","unitless","Wood","ringWidth",1570,1977,408,"trsgi: temperature",FALSE
+"NAm_483","NAm-StarrigawanOldSitka.Kaiser.1996","trsgi","unitless","Wood","ringWidth",1605,1985,381,"trsgi: temperature",FALSE
+"NAm_2007","NAm-Sugarloaf.Kenigsberg.2013","trsgi","unitless","Wood","ringWidth",1670,2003,334,"trsgi: temperature",FALSE
+"NAm_2043","NAm-SunshineMeadows.Colenutt.1995","trsgi","unitless","Wood","ringWidth",1444,1990,547,"trsgi: temperature; MXD: temperature",FALSE
+"NAm_2055","NAm-SunshineMeadows.Colenutt.1995","density","g/cm3","Wood","Density",1440,1987,548,"trsgi: temperature; MXD: temperature",FALSE
+"NAm_1203","NAm-SunwaptaPass.Schweingruber.1996","trsgi","unitless","Wood","ringWidth",1608,1983,376,"MXD: temperature; trsgi: temperature",FALSE
+"NAm_1215","NAm-SunwaptaPass.Schweingruber.1996","density","g/cm3","Wood","Density",1608,1983,376,"MXD: temperature; trsgi: temperature",FALSE
+"NAm_2307","NAm-SurpriseValley.Luckman.2001","trsgi","unitless","Wood","ringWidth",1600,1990,391,"trsgi: temperature",FALSE
+"NAm_3639","NAm-SylvanPassbeiCody.Briffa.1996","trsgi","unitless","Wood","ringWidth",1388,1983,596,"MXD: temperature",FALSE
+"NAm_3640","NAm-SylvanPassbeiCody.Briffa.1996","trsgi","unitless","Wood","ring width",1388,1983,596,"MXD: temperature",FALSE
+"NAm_3651","NAm-SylvanPassbeiCody.Briffa.1996","density","g/cm3","Wood","Density",1388,1983,596,"MXD: temperature",FALSE
+"NAm_3183","NAm-TamarackBowl.Sauchyn.2016","trsgi","unitless","Wood","ringWidth",1616,2012,397,"trsgi: temperature",FALSE
+"NAm_627","NAm-TimberGapUpper.Graybill.1995","trsgi","unitless","Wood","ringWidth",699,1987,1289,"trsgi: temperature",FALSE
+"NAm_3687","NAm-TogwateePass.Briffa.1996","trsgi","unitless","Wood","ringWidth",1672,1983,312,"trsgi: temperature; MXD: temperature",FALSE
+"NAm_3699","NAm-TogwateePass.Briffa.1996","density","g/cm3","Wood","Density",1672,1983,312,"trsgi: temperature; MXD: temperature",FALSE
+"NAm_1419","NAm-TwistedTreeHeartrotHill.Jacoby.1989","trsgi","unitless","Wood","ringWidth",1459,1975,517,"trsgi: temperature",FALSE
+"NAm_879","NAm-UpperWrightLakes.Graumlich.2005","trsgi","unitless","Wood","ringWidth",1,1992,1992,"trsgi: temperature",FALSE
+"NAm_1299","NAm-VancouverCyprusProvincialPark.Briffa.1996","trsgi","unitless","Wood","ringWidth",1413,1983,571,"MXD: temperature",FALSE
+"NAm_1300","NAm-VancouverCyprusProvincialPark.Briffa.1996","trsgi","unitless","Wood","ring width",1413,1983,571,"MXD: temperature",FALSE
+"NAm_1311","NAm-VancouverCyprusProvincialPark.Briffa.1996","density","g/cm3","Wood","Density",1413,1983,571,"MXD: temperature",FALSE
+"NAm_3279","NAm-VicaryMine.Sauchyn.2016","trsgi","unitless","Wood","ringWidth",1488,2010,523,"trsgi: temperature",FALSE
+"NAm_3387","NAm-wa069.Peterson.1994","trsgi","unitless","Wood","ringWidth",1685,1991,307,"trsgi: temperature",FALSE
+"NAm_3399","NAm-wa071.Peterson.1994","trsgi","unitless","Wood","ringWidth",1585,1991,407,"trsgi: temperature",FALSE
+"NAm_279","NAm-WindyRidgeAlaska.D'Arrigo.2005","trsgi","unitless","Wood","ringWidth",1556,2002,447,"trsgi: temperature",FALSE
+"NAm_3747","NAm-WrangellsComposite.D'Arrigo.2006","density","g/cm3","Wood","Density",1540,1998,459,"MXD: temperature",FALSE
+"NAm_2775","NAm-YellowMountainRidge.King.2002","trsgi","unitless","Wood","ringWidth",470,1998,1529,"trsgi: temperature",FALSE
+"NAm_1599","NAm-Ymir.Wilson.2005","trsgi","unitless","Wood","ringWidth",1573,1997,425,"trsgi: temperature",FALSE
+"NAm_747","NAm-YosemiteParkEEingang.Briffa.1996","trsgi","unitless","Wood","ringWidth",1513,1983,471,"MXD: temperature",FALSE
+"NAm_748","NAm-YosemiteParkEEingang.Briffa.1996","trsgi","unitless","Wood","ring width",1513,1983,471,"MXD: temperature",FALSE
+"NAm_759","NAm-YosemiteParkEEingang.Briffa.1996","density","g/cm3","Wood","Density",1513,1983,471,"MXD: temperature",FALSE

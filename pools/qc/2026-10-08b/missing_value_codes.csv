@@ -1,0 +1,16 @@
+"TSid","dataSetName","variableName","units","archiveType","code","n_code","n_values","in_presto_pool"
+"WEB-d2bf8-2cef-4f2b-aedc-c15ae","BAM80-E17.Harris.2025","d2H","permil","MarineSediment",9999,6,196,FALSE
+"CO13CABL02A","CO13CABL","d18O","permil","Coral",-999,5,513,TRUE
+"WEB2f620541","GeoB12624-1.Liu.2018","calcium","cps","MarineSediment",9999,1,280,FALSE
+"WEB-2bccd-49bb-4954-8efc-a7d53","M5-422.Cullen.2000","dolomite","percent","MarineSediment",-999,3,101,FALSE
+"WEB-46f7f-0671-4d7f-92ef-e0c7a","Skilak.Thomas.2021","density","g/cm2","LakeSediment",-9999,19,6498,FALSE
+"WEB-46f7f-0671-4d7f-92ef-e0c7a","Skilak.Thomas.2021","density","g/cm2","LakeSediment",-999,12,6498,FALSE
+"WEB-98b8b-369b-47f1-93e7-b8adc","Skilak.Thomas.2021","MS","SI","LakeSediment",-9999,27,6498,FALSE
+"WEB-98b8b-369b-47f1-93e7-b8adc","Skilak.Thomas.2021","MS","SI","LakeSediment",-999,12,6498,FALSE
+"WEB3291d830","TN062-0550.Addison.2018","organicCarbon","percent","MarineSediment",-9999,3,87,FALSE
+"WEB3909c600","TN062-0550.Addison.2018","d13C","permil","MarineSediment",-9999,3,87,FALSE
+"WEBa7114cc3","TN062-0550.Addison.2018","d15N","permil","MarineSediment",-9999,3,87,FALSE
+"WEBf0918d86","TN062-0550.Addison.2018","totalNitrogen","percent","MarineSediment",-9999,3,87,FALSE
+"WEBf33edba5","TN062-0550.Addison.2018","N/C",NA,"MarineSediment",-9999,3,87,FALSE
+"WEB6e9ae6d9","WhitePond.Krause.2019","brGDGT-IIIb5me","peak area","LakeSediment",-999,74,74,FALSE
+"WEB7df5f154","WhitePond.Krause.2019","GDGT","peak area","LakeSediment",-999,74,74,FALSE
