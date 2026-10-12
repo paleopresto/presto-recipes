@@ -198,7 +198,7 @@ eval_cfr_annual <- function(x, ctrl, cfg) {
   x$pass_length <- x$span_win >= ifelse(marine, cfg$length$annual_marine, cfg$length$annual_terrestrial)
   x$pass_calibration <- !is.na(x$n_calib) & x$n_calib >= cfg$min_calibration_years
   x$pass_ptype <- is_in(x$archiveType, cfg$assimilable_archives)
-  x$pass_climate <- x$has_climate
+  if (!isFALSE(cfg$require_climate)) x$pass_climate <- x$has_climate
   finalize(x)
 }
 
@@ -262,6 +262,13 @@ build_pool <- function(con, cfg) {
   if (!is.null(cfg$exclude_units_pattern))
     cand <- cand[!grepl(cfg$exclude_units_pattern, cand$units %||% "", ignore.case = TRUE) |
                    cand$TSid %in% admitted, ]
+  if (!is.null(cfg$exclude_description_pattern) && nrow(cand)) {
+    d <- DBI::dbGetQuery(con, sprintf("SELECT TSid, description FROM timeseries WHERE TSid IN (%s)",
+                                      paste0("'", cand$TSid, "'", collapse = ",")))
+    desc <- d$description[match(cand$TSid, d$TSid)]
+    cand <- cand[!grepl(cfg$exclude_description_pattern, desc %||% "", ignore.case = TRUE) |
+                   cand$TSid %in% admitted, ]
+  }
   if (identical(cfg$interpretation$variable, "*")) {
     # Climate information: an interpretation, or a climate proxy in an archive
     # where it records surface climate regardless of metadata.
@@ -269,7 +276,11 @@ build_pool <- function(con, cfg) {
     iso <- is_in(cand$archiveType, cp$archives) &
       (matches(cand$variableName, cp$pattern) | matches(cand$proxy, cp$pattern))
     cand$has_climate <- !is.na(cand$interpRank) | iso
-    cand <- cand[cand$has_climate | cand$TSid %in% admitted, ]
+    # require_climate: false admits uninterpreted columns too, and leaves
+    # whether they carry the PSM's climate signal to the method's own
+    # calibration (presto-LMR checks interpretation against PSM after it).
+    if (!isFALSE(cfg$require_climate))
+      cand <- cand[cand$has_climate | cand$TSid %in% admitted, ]
   }
   pts <- pool_points(con, cand)
   gap <- if (!is.null(cfg$duration$max_gap)) cfg$duration$max_gap else Inf

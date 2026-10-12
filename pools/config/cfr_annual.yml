@@ -1,15 +1,16 @@
-# Annual Common Era pool for presto-LMR: every annually resolved record the
-# LMR container can assimilate, not only temperature-interpreted ones.
+# Annual Common Era pool for presto-LMR: every annually resolved site series
+# the LMR container can assimilate, whatever its interpretation.
 #
-# Generalizes PReSto2k's assembly (Gondhalekar et al., paleopresto/presto2k
-# paleobook/C01_c), which took PAGES 2k temperature records, Iso2k records
-# interpreted as temperature, and every CoralHydro2k Sr/Ca and d18O record
-# whatever its interpretation, then let cfr keep the records whose proxy
-# system model calibrates against instrumental data. Here the same logic runs
-# over all of LiPDverse: a record qualifies on what cfr needs (an annual time
-# step, a proxy class it can model, overlap with the calibration period), and
-# whether it carries temperature information is left to that calibration, as
-# LMRv2.1 and PReSto2k did.
+# A record qualifies on what cfr needs (an annual time step, a proxy class it
+# can model, overlap with the calibration period) and on being annual in
+# information (repeat and lag-1 checks). Whether it carries the climate signal
+# its PSM assumes is checked in the run, after calibration, against the
+# record's own interpretations (presto-templates LMR2 cfr_main_code.py):
+# interpretations must name a variable the PSM uses, and their directions must
+# agree with the fitted slopes. Records with no interpretation are left to the
+# calibration, as in LMRv2.1. This replaces PReSto2k's compilation-specific
+# assembly (Gondhalekar et al., paleopresto/presto2k paleobook/C01_c), which
+# would not extend to records added to LiPDverse later.
 
 name: cfr_annual
 description: Annually resolved Common Era records the LMR (cfr) container can calibrate and assimilate
@@ -27,10 +28,20 @@ exclude_variable_pattern: "^uncertainty|uncertainty$|error|^notes$|needsToBeChan
 # layers, count/kyr).
 exclude_units_pattern: "needsToBeChanged|/ ?century$|/ ?kyr$|/ ?ka$|per century"
 
-# Which records carry climate information. Either a climate interpretation of
-# any variable (temperature, precipitation, moisture, isotopes...), or, as
-# Tanaya did for CoralHydro2k, a water-isotope or trace-element measurement in
-# an archive where it records surface climate whatever the metadata says.
+# Interpretation is not required (2026-10-12). Every column enters, and the
+# LMR run checks each calibrated record against its metadata instead: a
+# record whose interpretations name no variable its PSM uses (a salinity
+# coral, a sea-ice sodium series, a precipitation-isotope-only record under a
+# temperature PSM) is dropped, as is one whose fitted slope has the opposite
+# sign to the interpretation's direction. A record with no interpretation is
+# left to the calibration. See presto-templates LMR2 cfr_main_code.py.
+require_climate: false
+# Without the interpretation requirement, the per-core measurement columns
+# that LiPDverse's tree-ring imports carry beside each chronology would enter
+# (12,009 in 2026-10-08b, all uninterpreted), as would per-colony
+# calcification rates. A pool record is a site series.
+exclude_description_pattern: "^Raw (ring width|MXD) measurements from series|measurements from individual samples"
+# With require_climate: false these only fill the has_climate column.
 interpretation:
   scope: climate
   variable: "*"
