@@ -2,9 +2,9 @@
   "mode": "bundle",
   "pool": "temp12k",
   "snapshot": "2026-10-08b",
-  "criteria": "https://github.com/paleopresto/presto-recipes/blob/pools-2026-10-08b-r5/pools/config/temp12k.yml",
+  "criteria": "https://github.com/paleopresto/presto-recipes/blob/pools-2026-10-08b-r6/pools/config/temp12k.yml",
   "bundle": {
-    "url": "https://github.com/paleopresto/presto-recipes/releases/download/pools-2026-10-08b-r5/presto-pool-temp12k-2026-10-08b.zip",
+    "url": "https://github.com/paleopresto/presto-recipes/releases/download/pools-2026-10-08b-r6/presto-pool-temp12k-2026-10-08b.zip",
     "sha256": "e3b706656857d04f76d56ad3396f7fbf4c09ead936f848348bc9327284544fdf"
   },
   "uniqueID": "presto-Temp12k-temp12k-2026-10-08b",
