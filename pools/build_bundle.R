@@ -2,7 +2,7 @@
 #
 # Package a pool as a pinned LiPD bundle for the reconstruction templates.
 #
-#   Rscript pools/build_bundle.R <pool> <export_dir> <lpd_dir>
+#   Rscript pools/build_bundle.R <pool> <export_dir> <lpd_dir | source_bundle.zip>
 #
 # lpd_dir holds the snapshot's .lpd files (each must match the export's
 # datasets.file_md5, which is checked). Each file is trimmed to the pool's
@@ -28,10 +28,26 @@ p <- p[p$dedup_keep, ]
 
 ds <- dbGetQuery(con, "SELECT datasetId, dataSetName, file_md5 FROM datasets")
 ds <- ds[ds$datasetId %in% p$datasetId, ]
-f <- file.path(src, paste0(ds$dataSetName, ".lpd"))
-md5 <- unname(tools::md5sum(f))
-bad <- is.na(md5) | md5 != ds$file_md5
-if (any(bad)) stop(sum(bad), " source files do not match the ", snap, " export, e.g. ", ds$dataSetName[bad][1])
+if (grepl("\\.zip$", src)) {
+  # A bundle of the same snapshot as the source (for a pool that is a subset
+  # of that bundle's): its manifest must record, for every dataset needed, the
+  # export's own md5, and the new bundle trims its already-trimmed files.
+  m <- jsonlite::read_json(sub("\\.zip$", ".json", src))
+  if (!identical(m$snapshot, snap)) stop("source bundle is from snapshot ", m$snapshot, ", not ", snap)
+  smd5 <- setNames(vapply(m$sources, `[[`, "", "md5"), vapply(m$sources, `[[`, "", "datasetId"))
+  bad <- is.na(smd5[ds$datasetId]) | smd5[ds$datasetId] != ds$file_md5
+  if (any(bad)) stop(sum(bad), " datasets are missing from the source bundle or from another export, e.g. ", ds$dataSetName[bad][1])
+  ux <- tempfile("srcbundle"); utils::unzip(src, exdir = ux)
+  f <- file.path(ux, sub("\\.zip$", "", basename(src)), paste0(ds$dataSetName, ".lpd"))
+  if (!all(file.exists(f))) stop("source bundle lacks files, e.g. ", basename(f[!file.exists(f)][1]))
+  missing_pool <- setdiff(p$TSid, unlist(m$TSIDs))
+  if (length(missing_pool)) stop(length(missing_pool), " pool records are not in the source bundle, e.g. ", missing_pool[1])
+} else {
+  f <- file.path(src, paste0(ds$dataSetName, ".lpd"))
+  md5 <- unname(tools::md5sum(f))
+  bad <- is.na(md5) | md5 != ds$file_md5
+  if (any(bad)) stop(sum(bad), " source files do not match the ", snap, " export, e.g. ", ds$dataSetName[bad][1])
+}
 
 duckdb::duckdb_register(con, "ds_tmp", data.frame(datasetId = ds$datasetId))
 axes <- dbGetQuery(con, "SELECT TSid FROM timeseries JOIN ds_tmp USING (datasetId)
