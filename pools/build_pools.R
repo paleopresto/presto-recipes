@@ -50,7 +50,8 @@ for (p in pools) {
   }))
   dd <- dedup_pool(con, sel, attr(x, "points"), prior, unlist(cfg$collapse_prefer_units),
                    cfg$one_record_per_site, read_ledger(cfg, "curator_admissions"),
-                   utils::modifyList(dedup_defaults, cfg$dedup %||% list()), cfg$same_site)
+                   utils::modifyList(dedup_defaults, cfg$dedup %||% list()), cfg$same_site,
+                   isTRUE(cfg$prefer_annual))
   write.csv(dd$pairs, file.path(out, "dedup_pairs.csv"), row.names = FALSE)
   rv <- dd$pairs[dd$pairs$review %in% TRUE, ]
   if (nrow(rv)) {
@@ -62,8 +63,8 @@ for (p in pools) {
   sel <- dd$pool
   write.csv(sel, file.path(out, "pool.csv"), row.names = FALSE)
   pr <- dd$pairs[dd$pairs$duplicate, ]
-  message(sprintf("   dedup: %d collapsed within datasets, %d same-site; %d cross-dataset pairs, %d duplicates (%s), %d removed, %d for review",
-                  sum(sel$dedup_rule %in% "within-dataset"), sum(sel$dedup_rule %in% "same-site"), nrow(dd$pairs), nrow(pr),
+  message(sprintf("   dedup: %d collapsed within datasets, %d same-site, %d annual-preferred; %d cross-dataset pairs, %d duplicates (%s), %d removed, %d for review",
+                  sum(sel$dedup_rule %in% "within-dataset"), sum(sel$dedup_rule %in% "same-site"), sum(sel$dedup_rule %in% "annual-preferred"), nrow(dd$pairs), nrow(pr),
                   paste(names(table(pr$rule)), table(pr$rule), sep = "=", collapse = ", "),
                   sum(sel$dedup_rule %in% "cross-dataset"), sum(pr$review)))
   sel <- sel[sel$dedup_keep, ]

@@ -186,6 +186,26 @@ collapse_within_dataset <- function(pool, prefer_units = character(), curated = 
   p$TSid[drop]
 }
 
+# Annual-type seasonality: annual, unspecified (read as annual, as Erb et al.
+# 2022 do), or the mean of the warmest and coldest months.
+annual_type <- function(x) {
+  s <- tolower(gsub("[^A-Za-z0-9+]", "", x))
+  is.na(x) | !nzchar(s) | norm_season(x) %in% "annual" |
+    grepl("^annual|^ann\\+|\\+ann$|notspecified|warmest.*coldest|coldest.*warmest|summer.*winter|winter.*summer", s)
+}
+
+# Stage 0d: within one dataset and proxy, an annual-type record stands for the
+# site; seasonal records are kept only where there is none (then every season
+# stays). This is what Temperature 12k's seasonalityGeneral classes encode
+# (summer+ and winter+ have an annual sibling, summerOnly and winterOnly do
+# not), applied to every record. Returns the TSids dropped.
+prefer_annual_records <- function(pool) {
+  has_proxy <- !is.na(pool$proxy) & nzchar(pool$proxy)
+  key <- paste(pool$datasetId, ifelse(has_proxy, norm_proxy(pool), paste0("tsid:", pool$TSid)), sep = "|")
+  ann <- annual_type(pool$seasonality)
+  pool$TSid[!ann & key %in% key[ann]]
+}
+
 # Stage 0b: one record per site for large uniform syntheses (see the config's
 # one_record_per_site). Returns the TSids dropped.
 collapse_syntheses <- function(con, pool, rules) {
@@ -256,13 +276,17 @@ collapse_same_site <- function(con, pool, rules) {
 # has a `dedup_keep` column and pairs records every decision and its rule.
 dedup_pool <- function(con, pool, points, prior = NULL, prefer_units = character(),
                        syntheses = list(), curated = character(), opt = dedup_defaults,
-                       same_site = list()) {
+                       same_site = list(), prefer_annual = FALSE) {
   within <- collapse_within_dataset(pool, prefer_units, curated)
   within <- c(within, collapse_syntheses(con, pool[!pool$TSid %in% within, ], syntheses))
   site <- collapse_same_site(con, pool[!pool$TSid %in% within, ], same_site)
   site <- setdiff(site, curated)
-  rule0 <- local({w <- within; function(t) ifelse(t %in% w, "within-dataset", ifelse(t %in% site, "same-site", NA))})
-  within <- c(within, site)
+  # Seasonal siblings of an annual record go even when curated: a compilation
+  # keeps them for seasonal composites, not as separate sites.
+  seas <- if (isTRUE(prefer_annual)) prefer_annual_records(pool[!pool$TSid %in% c(within, site), ]) else character()
+  rule0 <- local({w <- within; function(t) ifelse(t %in% w, "within-dataset", ifelse(t %in% site, "same-site",
+                                                  ifelse(t %in% seas, "annual-preferred", NA)))})
+  within <- c(within, site, seas)
   all_pool <- pool
   pool <- pool[!pool$TSid %in% within, ]
   data_mode <- identical(opt$prefer, "data")

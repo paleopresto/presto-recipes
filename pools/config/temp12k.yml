@@ -53,6 +53,14 @@ same_site:
     within_km: 0.5
     named_within_km: 2
 
+# One record per site and proxy: within a dataset and proxy, an annual-type
+# record (annual, unspecified, or the mean of the warmest and coldest months)
+# stands for the site and its seasonal siblings are dropped; where there is no
+# annual-type record, every season stays. Temperature 12k encodes this in
+# seasonalityGeneral (summer+/winter+ vs summerOnly/winterOnly) and Erb et al.
+# (2022) assimilate on it; here it applies to every record.
+prefer_annual: true
+
 # Kaufman et al. relaxed duration and resolution "to improve the global
 # coverage, especially in the Southern Hemisphere". A record meeting these
 # relaxed thresholds is admitted when no strictly passing record lies within
