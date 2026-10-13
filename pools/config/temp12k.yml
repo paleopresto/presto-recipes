@@ -88,10 +88,13 @@ resolution:
   max_median_spacing: 400
 
 chronology:
-  # "at least one age control point every 3000 years". rule: density reads
-  # this as an average (>= 1/3 ages per kyr over the record, as the QC sheet's
-  # agesPerKyr field records it); max_gap reads it as the longest gap allowed.
-  rule: density
+  # "at least one age control point every 3000 years". rule: max_gap reads it
+  # as the longest gap allowed between age controls (and between the record's
+  # ends and the nearest control); density reads it as an average (>= 1/3
+  # ages per kyr, as the QC sheet's agesPerKyr field records it). Temp12k's
+  # own members include gaps over 3000 years; they stay in through
+  # curator_admissions, so max_gap applies to records new to the pool.
+  rule: max_gap
   max_gap: 3000
   marine_reservoir_years: 400
   # Gaps were also accepted for "relatively high age frequency, typically five
@@ -99,7 +102,9 @@ chronology:
   min_ages_exception: 5
   layer_counted_archives: [GlacierIce, Wood, Coral, Documents]
   layer_counted_proxy_pattern: "varve"
-  missing_chron: pass
+  # A record whose dataset has no age controls in LiPD cannot be checked;
+  # fail it (Temp12k members are admitted through curator_admissions).
+  missing_chron: fail
 
 # Downstream algorithms decide whether they need calibrated (degC) records.
 # The pool keeps both and records which is which.
