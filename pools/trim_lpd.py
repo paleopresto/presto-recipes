@@ -15,6 +15,13 @@ is used.
 ...), for files that come with no export to say which columns are axes (a
 past compilation release).
 
+--mask-codes <records.txt> sets missing-value codes stored as data (exactly
++-9999, -999, +-99999 or +-999999) to NaN in the columns listed (the pool's
+records, not its axes), and reports each masked column. Several LiPDverse
+files carry them with no missingValue declaration a reader honours (Taylor
+Dome dD has 999999), and a method that z-scores non-degC records (Temp12k
+CPS) turns one into a spike of hundreds of degrees.
+
 Column removal follows lipdGenerator's _remove_tsids_from_lpd
 (DaveEdge1/prestoServer, getLipds/lipdGenerator/generate.py), inverted from a
 drop list to a keep list, so a bundle reads exactly as PReSto's own filtered
@@ -42,15 +49,22 @@ def rehash(files, manifest_suffix):
         return
     prefix = name[: -len(manifest_suffix)]
     out = []
+    # LiPD bags list payload files either as data/<file> (BagIt) or as bare
+    # <file>; both resolve under the bag directory.
     for line in files[name].decode("utf-8").strip().split("\n"):
         parts = line.split(None, 1)
-        if len(parts) == 2 and (prefix + parts[1]) in files:
-            out.append(f"{hashlib.md5(files[prefix + parts[1]]).hexdigest()}  {parts[1]}")
+        path = None
+        if len(parts) == 2:
+            path = next((q for q in (prefix + parts[1], prefix + "data/" + parts[1]) if q in files), None)
+        if path:
+            sep = line[len(parts[0]):len(line) - len(parts[1])]
+            out.append(f"{hashlib.md5(files[path]).hexdigest()}{sep}{parts[1]}")
         else:
             out.append(line)
     files[name] = ("\n".join(out) + "\n").encode("utf-8")
 
 
+CODES = {"-9999", "9999", "-999", "99999", "-99999", "999999", "-999999"}
 AXES = {"age", "year", "depth", "age14c", "depthtop", "depthbottom", "depth_top", "depth_bottom"}
 INTERP_KEYS = ("interpretation", "isotopeInterpretation", "climateInterpretation")
 
@@ -78,7 +92,43 @@ def drop_blank_interpretations(col):
     return n
 
 
-def trim(path, keep, out_path, keep_axes=False):
+def is_code(v):
+    v = v.strip()
+    if v in CODES:
+        return True
+    try:
+        f = float(v)
+    except ValueError:
+        return False
+    return f in {float(c) for c in CODES}
+
+
+def mask_codes(files, table, cols, mask, log, dsname):
+    """Set missing-value codes to NaN in the table's columns whose TSid is in mask."""
+    fn = table.get("filename", "")
+    cpath = next((n for n in files if fn and n.endswith(fn)), None)
+    if not cpath:
+        return
+    nums = {int(c["number"]): c.get("TSid") for c in cols
+            if c.get("TSid") in mask and isinstance(c.get("number"), (int, str))}
+    if not nums:
+        return
+    rows = list(csv.reader(io.StringIO(files[cpath].decode("utf-8"))))
+    hits = {}
+    for r in rows:
+        for i in nums:
+            if i - 1 < len(r) and is_code(r[i - 1]):
+                hits.setdefault(nums[i], set()).add(r[i - 1].strip())
+                r[i - 1] = "NaN"
+                log.setdefault((dsname, nums[i]), 0)
+                log[(dsname, nums[i])] += 1
+    if hits:
+        buf = io.StringIO()
+        csv.writer(buf).writerows(rows)
+        files[cpath] = buf.getvalue().encode("utf-8")
+
+
+def trim(path, keep, out_path, keep_axes=False, mask=None, log=None):
     with zipfile.ZipFile(path) as z:
         files = {n: z.read(n) for n in z.namelist()}
     jname = next(n for n in files if n.endswith(".jsonld"))
@@ -93,6 +143,8 @@ def trim(path, keep, out_path, keep_axes=False):
                     and not (keep_axes and str(c.get("variableName", "")).lower() in AXES)]
             if not drop:
                 kept += [c.get("TSid") for c in cols]
+                if mask:
+                    mask_codes(files, table, cols, mask, log, meta.get("dataSetName", path))
                 continue
             drop_nums = {int(c["number"]) for c in drop if isinstance(c.get("number"), (int, str))}
             new = [c for c in cols if c not in drop]
@@ -110,6 +162,8 @@ def trim(path, keep, out_path, keep_axes=False):
                 for r in rows:
                     w.writerow([v for i, v in enumerate(r) if (i + 1) not in drop_nums])
                 files[cpath] = buf.getvalue().encode("utf-8")
+            if mask:
+                mask_codes(files, table, new, mask, log, meta.get("dataSetName", path))
     files[jname] = json.dumps(meta, indent=2).encode("utf-8")
     # Data manifest first: the tag manifest checksums it.
     rehash(files, "manifest-md5.txt")
@@ -122,18 +176,26 @@ def trim(path, keep, out_path, keep_axes=False):
 
 def main():
     keep_file, src, out = sys.argv[1:4]
-    keep_axes = "--keep-axes" in sys.argv[4:]
+    opts = sys.argv[4:]
+    keep_axes = "--keep-axes" in opts
     keep = {l.strip() for l in open(keep_file) if l.strip()}
+    mask = None
+    if "--mask-codes" in opts:
+        mfile = opts[opts.index("--mask-codes") + 1]
+        mask = {l.strip() for l in open(mfile) if l.strip()}
+    log = {}
     os.makedirs(out, exist_ok=True)
     found, ndrop = set(), 0
     for f in sorted(glob.glob(os.path.join(src, "*.lpd"))):
-        kept, d = trim(f, keep, os.path.join(out, os.path.basename(f)), keep_axes)
+        kept, d = trim(f, keep, os.path.join(out, os.path.basename(f)), keep_axes, mask, log)
         found.update(kept)
         ndrop += d
     missing = sorted(keep - found)
     print(json.dumps({"files": len(glob.glob(os.path.join(out, "*.lpd"))),
                       "columns_dropped": ndrop, "keep_requested": len(keep),
-                      "keep_missing": missing[:20], "n_keep_missing": len(missing)}))
+                      "keep_missing": missing[:20], "n_keep_missing": len(missing),
+                      "codes_masked": [{"dataSetName": d, "TSid": t, "n": n}
+                                       for (d, t), n in sorted(log.items())]}))
 
 
 if __name__ == "__main__":

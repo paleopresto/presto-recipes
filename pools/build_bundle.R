@@ -8,7 +8,9 @@
 # datasets.file_md5, which is checked). Each file is trimmed to the pool's
 # records and their tables' axis columns (trim_lpd.py), so an algorithm that
 # takes every column it recognizes (the Holocene DA takes every degC column)
-# assimilates the pool and nothing else.
+# assimilates the pool and nothing else. Missing-value codes stored as data
+# (+-9999, -999, +-99999, +-999999) in the pool's records are set to NaN and
+# listed in the manifest's codes_masked.
 #
 # Writes, under pools/bundles/ (not in git; published as release assets):
 #   presto-pool-<pool>-<snapshot>.zip   the trimmed .lpd files
@@ -57,10 +59,12 @@ keep <- unique(c(p$TSid, axes))
 work <- tempfile("bundle"); dir.create(file.path(work, "src"), recursive = TRUE)
 invisible(file.copy(f, file.path(work, "src")))
 writeLines(keep, file.path(work, "keep.txt"))
+writeLines(p$TSid, file.path(work, "records.txt"))
 name <- sprintf("presto-pool-%s-%s", pool, snap)
 out <- file.path(work, name)
 res <- system2("python3", c("-I", shQuote(file.path(here, "trim_lpd.py")), shQuote(file.path(work, "keep.txt")),
-                            shQuote(file.path(work, "src")), shQuote(out)), stdout = TRUE)
+                            shQuote(file.path(work, "src")), shQuote(out),
+                            "--mask-codes", shQuote(file.path(work, "records.txt"))), stdout = TRUE)
 r <- jsonlite::fromJSON(res[length(res)])
 # Every pool record must survive trimming; a missing axis is only reported.
 lost <- intersect(r$keep_missing, p$TSid)
@@ -77,10 +81,13 @@ manifest <- list(
   pool = pool, snapshot = snap, criteria = file.path("pools/config", paste0(pool, ".yml")),
   presto_recipes_commit = commit, created = format(Sys.time(), "%Y-%m-%dT%H:%M:%S%z"),
   n_records = nrow(p), n_datasets = nrow(ds), columns_dropped = r$columns_dropped,
+  codes_masked = r$codes_masked,
   bundle = list(file = basename(zip), sha256 = sha(zip), bytes = file.size(zip)),
   TSIDs = p$TSid,
   sources = lapply(seq_len(nrow(ds)), function(i) list(dataSetName = ds$dataSetName[i],
                                                          datasetId = ds$datasetId[i], md5 = ds$file_md5[i])))
 write_json(manifest, file.path(bdir, paste0(name, ".json")), auto_unbox = TRUE, pretty = TRUE)
+if (length(r$codes_masked)) message("missing-value codes set to NaN: ",
+  paste(sprintf("%s %s (%d)", r$codes_masked$dataSetName, r$codes_masked$TSid, r$codes_masked$n), collapse = "; "))
 cat(sprintf("%s: %d records, %d datasets, %d columns dropped, %.1f MB, sha256 %s\n",
             name, nrow(p), nrow(ds), r$columns_dropped, file.size(zip) / 1e6, manifest$bundle$sha256))
