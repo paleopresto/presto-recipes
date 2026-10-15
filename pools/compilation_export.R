@@ -94,14 +94,22 @@ say <- function(d) {
     admission = sprintf("Admitted by curator ledger (%s) although it fails a criterion.", d$source),
     exception = "Kept by the data-poor exception (no other record nearby).",
     exclusion = sprintf("Excluded by hand: %s", sub("^PReSto: ", "", d$note)),
-    dedup_manual = sprintf("Curator-reviewed duplicate of %s: %s.", pr, d$rule),
+    dedup_manual = if (isTRUE(d$both_kept)) sprintf("Reviewed against %s: not duplicates, both kept.", pr)
+                   else sprintf("Curator-reviewed duplicate of %s: %s.", pr, d$rule),
     dedup_prior = sprintf("Duplicate of %s, decided by %s: %s.", pr, d$source, d$rule),
     dedup_auto = sprintf("Duplicate of %s (%s rule): dropped.", pr, d$rule),
     dedup_rule = sprintf("Dropped by the %s rule (another record from this dataset or site is kept).", d$rule),
     review_pending = sprintf("Possible duplicate of %s: awaiting curator review.", pr))
-  if (!is.na(d$note) && d$note != "" && d$kind %in% c("dedup_manual", "dedup_prior")) x <- paste0(x, " Note: ", d$note)
+  if (!is.na(d$note) && d$note != "" && d$kind %in% c("dedup_manual", "dedup_prior"))
+    x <- paste0(x, " Note: ", sub("([^.])$", "\\1.", d$note))
   x
 }
+# A PReSto review supersedes an earlier compilation's decision on the same pair.
+pk <- function(a, b) paste(pmin(a, b), pmax(a, b))
+rev <- dec$kind == "dedup_manual"
+dec <- dec[!(dec$kind == "dedup_prior" & pk(dec$TSid, dec$partner_TSid) %in% pk(dec$TSid, dec$partner_TSid)[rev]), ]
+both <- pk(man$TSid1, man$TSid2)[man$keep1 %in% TRUE & man$keep2 %in% TRUE]
+dec$both_kept <- dec$kind == "dedup_manual" & pk(dec$TSid, dec$partner_TSid) %in% both
 txt <- vapply(seq_len(nrow(dec)), function(i) say(dec[i, ]), "")
 qc <- stats::aggregate(list(QCComments = txt), list(TSid = dec$TSid), paste, collapse = " ")
 qc$QCComments <- paste("PReSto:", qc$QCComments)
