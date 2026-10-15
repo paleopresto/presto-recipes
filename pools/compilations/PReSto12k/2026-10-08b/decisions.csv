@@ -126,13 +126,7 @@
 "exception","T2L_RC24_08GC_mgca_ruber_SST_from_mgca_ruber","RC24_08GC.Arbuszewski.2013",TRUE,,,"data-poor exception",,
 "exception","T2L_WIND28K_d18o_ruber_SST_from_d18o_ruber","WIND28K.Kiefer.2006",TRUE,,,"data-poor exception",,
 "exception","WEB3ca1b65e","Mackenzie.Woltering.2014",TRUE,,,"data-poor exception",,
-"dedup_manual","PYT581AWKCZ","Tornetrask.Grudd.2002",TRUE,"Arc_012",,"dropped","PReSto review 2026-10-12","Pages2k, shorter series doesn't matter for 2k"
 "dedup_prior","NAm_3870","NAm-OregonCaves.Ersek.2012",FALSE,"S2LRzhGg35X7Yw","Oregoncavesnationalmonument.Ersek.2012","dropped","DoD2k MNE 2025-12-19",
-"dedup_prior","GH14bc173e","CapeGhir.Kim.2007",TRUE,"GH14bc173e","CapeGhir.Kim.2007","dropped","DoD2k MNE 2025-12-19",
-"dedup_prior","GH8d2ba08f","O2kLR-Tagusmudpatc.Abrantes.2005",TRUE,"GH8d2ba08f","O2kLR-Tagusmudpatc.Abrantes.2005","kept","DoD2k MNE 2025-12-19",
-"dedup_prior","SP10WINZ01A","SP10WINZ.Williams.2010",TRUE,"SP10WINZ01A","SP10WINZ.Williams.2010","kept","DoD2k MNE 2025-12-19",
-"dedup_prior","S2LRzhGg35X7Yw","Oregoncavesnationalmonument.Ersek.2012",TRUE,"S2LRzhGg35X7Yw","Oregoncavesnationalmonument.Ersek.2012","kept","DoD2k MNE 2025-12-19",
-"dedup_prior","LPD711f7893","Ocn-EmeraldBasin.Keigwin.2007",TRUE,"LPD68872399",,"kept","DoD2k MNE 2025-12-19",
 "dedup_prior","S2LRzhGg35X7Yw","Oregoncavesnationalmonument.Ersek.2012",TRUE,"NAm_3870","NAm-OregonCaves.Ersek.2012","kept","DoD2k MNE 2025-12-19",
 "dedup_auto","IC06VID301A","IC06VID3",FALSE,"PYTAUVXNNEA","DYE3.Vinther.2006","curated",,
 "dedup_auto","IC08VIRE01A","IC08VIRE",FALSE,"PYTUAENTJO2","Renland.Johnsen.1992","curated",,

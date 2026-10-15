@@ -24,6 +24,9 @@
 #     review_pending  a flagged pair that still needs a curator
 #   Columns: kind, TSid, dataSetName, in_compilation, partner_TSid,
 #   partner_dataSetName, rule, source, note.
+#   qc_comments.csv one row per record with a decision: TSid, in_compilation,
+#                  QCComments (the decisions as one sentence each), for the
+#                  compilation's QC sheet.
 
 here <- dirname(normalizePath(sub("^--file=", "", grep("^--file=", commandArgs(FALSE), value = TRUE))))
 args <- commandArgs(trailingOnly = TRUE)
@@ -45,7 +48,8 @@ row <- function(kind, TSid, partner = NA, rule = NA, source = NA, note = NA)
 # A pair is listed from the dropped record's side (or both, when both are kept).
 pair_rows <- function(d, kind, note = NA) {
   if (!nrow(d)) return(NULL)
-  d <- d[d$TSid1 %in% p$TSid | d$TSid2 %in% p$TSid, , drop = FALSE]
+  # Only pairs with both records in this pool are decisions about it.
+  d <- d[d$TSid1 %in% p$TSid & d$TSid2 %in% p$TSid & d$TSid1 != d$TSid2, , drop = FALSE]
   rbind(row(kind, d$TSid1, d$TSid2, ifelse(d$keep1, "kept", "dropped"), d$source, if (is.null(d$note)) note else d$note),
         row(kind, d$TSid2, d$TSid1, ifelse(d$keep2, "kept", "dropped"), d$source, if (is.null(d$note)) note else d$note))
 }
@@ -83,5 +87,25 @@ out <- file.path(here, "compilations", comp, snap); dir.create(out, recursive = 
 utils::write.csv(mem[, c("TSid", "datasetId", "dataSetName", "variableName", "archiveType", "selected_by")],
                  file.path(out, "members.csv"), row.names = FALSE)
 utils::write.csv(dec, file.path(out, "decisions.csv"), row.names = FALSE, na = "")
+say <- function(d) {
+  pr <- ifelse(is.na(d$partner_TSid) | d$partner_TSid == "", "",
+               sprintf("%s (%s)", d$partner_dataSetName, d$partner_TSid))
+  x <- switch(d$kind,
+    admission = sprintf("Admitted by curator ledger (%s) although it fails a criterion.", d$source),
+    exception = "Kept by the data-poor exception (no other record nearby).",
+    exclusion = sprintf("Excluded by hand: %s", sub("^PReSto: ", "", d$note)),
+    dedup_manual = sprintf("Curator-reviewed duplicate of %s: %s.", pr, d$rule),
+    dedup_prior = sprintf("Duplicate of %s, decided by %s: %s.", pr, d$source, d$rule),
+    dedup_auto = sprintf("Duplicate of %s (%s rule): dropped.", pr, d$rule),
+    dedup_rule = sprintf("Dropped by the %s rule (another record from this dataset or site is kept).", d$rule),
+    review_pending = sprintf("Possible duplicate of %s: awaiting curator review.", pr))
+  if (!is.na(d$note) && d$note != "" && d$kind %in% c("dedup_manual", "dedup_prior")) x <- paste0(x, " Note: ", d$note)
+  x
+}
+txt <- vapply(seq_len(nrow(dec)), function(i) say(dec[i, ]), "")
+qc <- stats::aggregate(list(QCComments = txt), list(TSid = dec$TSid), paste, collapse = " ")
+qc$QCComments <- paste("PReSto:", qc$QCComments)
+qc$in_compilation <- qc$TSid %in% mem$TSid
+utils::write.csv(qc[, c("TSid", "in_compilation", "QCComments")], file.path(out, "qc_comments.csv"), row.names = FALSE)
 cat(sprintf("%s (%s, %s): %d members in %d datasets\n", comp, pool, snap, nrow(mem), length(unique(mem$datasetId))))
 print(table(dec$kind))
