@@ -346,6 +346,16 @@ dedup_pool <- function(con, pool, points, prior = NULL, prefer_units = character
   pref <- preference(pool, membership, pubyear, opt, meta, curated)
   text <- paste(pool$dataSetName, pool$siteName, pool$variableName)
 
+  # A PReSto curator's decision (dedup_decisions.csv) on a candidate pair
+  # applies even when the pair falls short of every duplicate tier (e.g. two
+  # copies of one pollen record on different age models, r = 0.75). Other
+  # logs (DoD2k) still apply only to pairs that reach a tier.
+  own <- if (is.null(prior)) NULL else prior[grepl("^PReSto", prior$source), ]
+  if (!is.null(own) && nrow(own)) {
+    pk <- paste(pmin(own$TSid1, own$TSid2), pmax(own$TSid1, own$TSid2))
+    has <- paste(pmin(pairs$TSid1, pairs$TSid2), pmax(pairs$TSid1, pairs$TSid2)) %in% pk
+    pairs$tier[is.na(pairs$tier) & has] <- "prior"
+  }
   pairs$rule <- NA_character_; pairs$keep1 <- NA; pairs$keep2 <- NA
   for (k in which(!is.na(pairs$tier))) {
     a <- pairs$TSid1[k]; b <- pairs$TSid2[k]; i <- idx[[a]]; j <- idx[[b]]

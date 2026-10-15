@@ -1,4 +1,6 @@
 "TSid1","TSid2","keep1","keep2","decision_type","source","note"
+"PYTS7QT9329","RkQCQ6TMj7z",TRUE,FALSE,"MANUAL","PReSto review 2026-10-15","Same Andreev et al. (2005) July pollen record; Temp12k copy kept"
+"SP13MCUS01A","S2LRhyaKfZXIws",TRUE,FALSE,"MANUAL","PReSto review 2026-10-15","Iso2k copy kept: more values, and interpreted (SISAL copy is not)"
 "Arc_012","PYT581AWKCZ",TRUE,FALSE,"MANUAL","PReSto review 2026-10-12","Pages2k, shorter series doesn't matter for 2k"
 "BA04FIJ02_d18O","Ocean2kHR_156",FALSE,TRUE,"MANUAL","PReSto review 2026-10-12",""
 "CO04BAFI01A","LI06FIJ01_d18O",FALSE,TRUE,"MANUAL","PReSto review 2026-10-12",""

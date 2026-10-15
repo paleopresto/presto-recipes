@@ -163,6 +163,7 @@
 "exception","WEB-c1535-3d78-4399-8b0b-b17bb","LakeDuparquet.Nolin.2021",TRUE,,,"data-poor exception",,
 "exception","WEB-f31b8-69b3-4600-baec-347c0","HarricanaRiver.Nolin.2021",TRUE,,,"data-poor exception",,
 "exclusion","LPD78d0b77c",,FALSE,,,,"PReSto","PReSto: GISP2.Kobashi.2012 superseded by GISP2.Kobashi.2017 (same core and proxy, d15N/d40Ar; dedup misses the pair because the 2012 entry lists latitude 70.6, GISP2 is at 72.6 N)"
+"dedup_manual","SP13MCUS01A","SP13MCUS",TRUE,"S2LRhyaKfZXIws","Crystalcave.McCabe-Glynn.2013","kept","PReSto review 2026-10-15","Iso2k copy kept: more values, and interpreted (SISAL copy is not)"
 "dedup_manual","Arc_012","Arc-Tornetrask.Melvin.2012",TRUE,"PYT581AWKCZ","Tornetrask.Grudd.2002","kept","PReSto review 2026-10-12","Pages2k, shorter series doesn't matter for 2k"
 "dedup_manual","BA04FIJ02_d18O","BA04FIJ02",FALSE,"Ocean2kHR_156","Ocn-SavusavuBayAB.Linsley.2006","dropped","PReSto review 2026-10-12",""
 "dedup_manual","CO04BAFI01A","CO04BAFI",FALSE,"LI06FIJ01_d18O","LI06FIJ01","dropped","PReSto review 2026-10-12",""
@@ -173,6 +174,7 @@
 "dedup_manual","missRRZKEMdZ3YIABGg9v","NegroRiver.Wang.2025",TRUE,"WEB-1a688-10df-439e-a41d-ec375","PatagoniaARAR.Villalba.2012","kept","PReSto review 2026-10-12",""
 "dedup_manual","NAm_1852","NAm-FrenchGlacier.Colenutt.1995",TRUE,"NAm_2044","NAm-SunshineMeadows.Colenutt.1995","kept","PReSto review 2026-10-12",""
 "dedup_manual","SAm_015","SAm-CentralAndes6.Villalba.2014",TRUE,"WEB-1a688-10df-439e-a41d-ec375","PatagoniaARAR.Villalba.2012","kept","PReSto review 2026-10-12",""
+"dedup_manual","S2LRhyaKfZXIws","Crystalcave.McCabe-Glynn.2013",FALSE,"SP13MCUS01A","SP13MCUS","dropped","PReSto review 2026-10-15","Iso2k copy kept: more values, and interpreted (SISAL copy is not)"
 "dedup_manual","PYT581AWKCZ","Tornetrask.Grudd.2002",FALSE,"Arc_012","Arc-Tornetrask.Melvin.2012","dropped","PReSto review 2026-10-12","Pages2k, shorter series doesn't matter for 2k"
 "dedup_manual","Ocean2kHR_156","Ocn-SavusavuBayAB.Linsley.2006",TRUE,"BA04FIJ02_d18O","BA04FIJ02","kept","PReSto review 2026-10-12",""
 "dedup_manual","LI06FIJ01_d18O","LI06FIJ01",FALSE,"CO04BAFI01A","CO04BAFI","kept","PReSto review 2026-10-12",""
@@ -288,7 +290,7 @@
 "dedup_auto","CO08KIPR01A","CO08KIPR",FALSE,"Ocean2kHR_099","Ocn-TurrumoteReefPuertoRico.Kilbourne.2008","identical",,
 "dedup_auto","CO14WUCL01A","CO14WUCL",FALSE,"WU14CLI01_d18O","WU14CLI01","version",,
 "dedup_auto","CO93TAR01_d18O","CO93TAR01",FALSE,"Ocean2kHR_178_iso2k","CO93COTW","subset",,
-"dedup_auto","CO94HEAQ01A","CO94HEAQ",FALSE,"Ocean2kHR_014","Ocn-AqabaJordanAQ18.Heiss.1999","subset",,
+"dedup_auto","CO94HEAQ01A","CO94HEAQ",FALSE,"Ocean2kHR_014","Ocn-AqabaJordanAQ18.Heiss.1999","identical",,
 "dedup_auto","CO94HEAQ02A","CO94HEAQ",FALSE,"Ocean2kHR_016","Ocn-AqabaJordanAQ19.Heiss.1999","identical",,
 "dedup_auto","CO99DRGB01A","CO99DRGB",FALSE,"Ocean2kHR_167","Ocn-AbrahamReef.Druffel.1999","subset",,
 "dedup_auto","CO99KUHO01Aa","CO99KUHO",FALSE,"Ocean2kHR_023","Ocn-HoutmanAbrolhos.Kuhnert.1999","subset",,
@@ -355,7 +357,6 @@
 "dedup_auto","LS06JONA01a","LS06JONA",FALSE,"WEB88fe721c","Nar.Roberts.2016","subset",,
 "dedup_auto","Ocean2kHR_112","Ocn-TongueoftheOceanExuma.Rosenheim.2005",FALSE,"Ocean2kHR_112_iso2k","SS05ROES","version",,
 "dedup_auto","S2LRdIm2XKkLzN","Tauriuscave.Partin.2013",FALSE,"SP13PAVU01A","SP13PAVU","subset",,
-"dedup_auto","S2LRhyaKfZXIws","Crystalcave.McCabe-Glynn.2013",FALSE,"SP13MCUS01A","SP13MCUS","version",,
 "dedup_auto","Asia_068","Asi-ZHIDJP.Shao.2003",FALSE,"Asia_100","Asi-CHIN066.Shao.2013","subset",,
 "dedup_auto","Ocean2kHR_132","Ocn-Moorea.Boiseau.1998",FALSE,"BO99MOO01_d18O","BO99MOO01","version",,
 "dedup_auto","Ocean2kHR_132_iso2k","CO98BOFP",FALSE,"BO99MOO01_d18O","BO99MOO01","version",,
