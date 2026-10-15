@@ -1,4 +1,5 @@
 "TSid1","TSid2","keep1","keep2","decision_type","source","note"
+"DE14DTO01_SrCa","DE14DTO03_SrCa",TRUE,TRUE,"MANUAL","PReSto review 2026-10-15","Distinct records (24-yr overlap, r = -0.04); keep both, overriding the DoD2k log"
 "PYTS7QT9329","RkQCQ6TMj7z",TRUE,FALSE,"MANUAL","PReSto review 2026-10-15","Same Andreev et al. (2005) July pollen record; Temp12k copy kept"
 "SP13MCUS01A","S2LRhyaKfZXIws",TRUE,FALSE,"MANUAL","PReSto review 2026-10-15","Iso2k copy kept: more values, and interpreted (SISAL copy is not)"
 "Arc_012","PYT581AWKCZ",TRUE,FALSE,"MANUAL","PReSto review 2026-10-12","Pages2k, shorter series doesn't matter for 2k"

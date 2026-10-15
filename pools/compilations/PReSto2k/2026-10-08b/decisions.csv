@@ -163,6 +163,7 @@
 "exception","WEB-c1535-3d78-4399-8b0b-b17bb","LakeDuparquet.Nolin.2021",TRUE,,,"data-poor exception",,
 "exception","WEB-f31b8-69b3-4600-baec-347c0","HarricanaRiver.Nolin.2021",TRUE,,,"data-poor exception",,
 "exclusion","LPD78d0b77c",,FALSE,,,,"PReSto","PReSto: GISP2.Kobashi.2012 superseded by GISP2.Kobashi.2017 (same core and proxy, d15N/d40Ar; dedup misses the pair because the 2012 entry lists latitude 70.6, GISP2 is at 72.6 N)"
+"dedup_manual","DE14DTO01_SrCa","DE14DTO01",TRUE,"DE14DTO03_SrCa","DE14DTO03","kept","PReSto review 2026-10-15","Distinct records (24-yr overlap, r = -0.04); keep both, overriding the DoD2k log"
 "dedup_manual","SP13MCUS01A","SP13MCUS",TRUE,"S2LRhyaKfZXIws","Crystalcave.McCabe-Glynn.2013","kept","PReSto review 2026-10-15","Iso2k copy kept: more values, and interpreted (SISAL copy is not)"
 "dedup_manual","Arc_012","Arc-Tornetrask.Melvin.2012",TRUE,"PYT581AWKCZ","Tornetrask.Grudd.2002","kept","PReSto review 2026-10-12","Pages2k, shorter series doesn't matter for 2k"
 "dedup_manual","BA04FIJ02_d18O","BA04FIJ02",FALSE,"Ocean2kHR_156","Ocn-SavusavuBayAB.Linsley.2006","dropped","PReSto review 2026-10-12",""
@@ -174,6 +175,7 @@
 "dedup_manual","missRRZKEMdZ3YIABGg9v","NegroRiver.Wang.2025",TRUE,"WEB-1a688-10df-439e-a41d-ec375","PatagoniaARAR.Villalba.2012","kept","PReSto review 2026-10-12",""
 "dedup_manual","NAm_1852","NAm-FrenchGlacier.Colenutt.1995",TRUE,"NAm_2044","NAm-SunshineMeadows.Colenutt.1995","kept","PReSto review 2026-10-12",""
 "dedup_manual","SAm_015","SAm-CentralAndes6.Villalba.2014",TRUE,"WEB-1a688-10df-439e-a41d-ec375","PatagoniaARAR.Villalba.2012","kept","PReSto review 2026-10-12",""
+"dedup_manual","DE14DTO03_SrCa","DE14DTO03",TRUE,"DE14DTO01_SrCa","DE14DTO01","kept","PReSto review 2026-10-15","Distinct records (24-yr overlap, r = -0.04); keep both, overriding the DoD2k log"
 "dedup_manual","S2LRhyaKfZXIws","Crystalcave.McCabe-Glynn.2013",FALSE,"SP13MCUS01A","SP13MCUS","dropped","PReSto review 2026-10-15","Iso2k copy kept: more values, and interpreted (SISAL copy is not)"
 "dedup_manual","PYT581AWKCZ","Tornetrask.Grudd.2002",FALSE,"Arc_012","Arc-Tornetrask.Melvin.2012","dropped","PReSto review 2026-10-12","Pages2k, shorter series doesn't matter for 2k"
 "dedup_manual","Ocean2kHR_156","Ocn-SavusavuBayAB.Linsley.2006",TRUE,"BA04FIJ02_d18O","BA04FIJ02","kept","PReSto review 2026-10-12",""
