@@ -16,7 +16,35 @@
 # false-discovery-rate correction across the records tested.
 
 screen_defaults <- list(window = c(1850, 2000), alpha = 0.05, fdr = FALSE, detrend = FALSE,
-                        min_overlap = 25, min_months = 8)
+                        min_overlap = 25, min_months = 8, two_sided_without_direction = FALSE)
+
+# Each record's temperature direction and whether it is interpreted at all.
+# The direction comes from its temperature interpretation (any variable
+# naming temperature, at any rank), not from its primary interpretation:
+# the climate scope (or no scope) first, then the isotope or environment
+# scope when the climate scope gives none or an ambiguous one
+# ("decrease/increase"). "increase" counts as positive, "decrease" as
+# negative; conflicting signs give NA. `interpreted` is TRUE when the record
+# has any interpretation that names a variable.
+temperature_direction <- function(con, tsids) {
+  i <- DBI::dbGetQuery(con, "SELECT TSid, scope, variable, direction FROM interpretations")
+  i <- i[i$TSid %in% tsids & !is.na(i$variable) & trimws(i$variable) != "", ]
+  norm <- function(d) {
+    d <- tolower(trimws(d[!is.na(d)]))
+    d <- ifelse(d %in% c("positive", "increase"), "positive", ifelse(d %in% c("negative", "decrease"), "negative", NA))
+    u <- unique(stats::na.omit(d))
+    if (length(u) == 1) u else NA_character_
+  }
+  t <- i[grepl("temp", i$variable, ignore.case = TRUE), ]
+  clim <- is.na(t$scope) | t$scope %in% c("", "climate")
+  dir <- vapply(tsids, function(s) {
+    d <- norm(t$direction[t$TSid == s & clim])
+    if (is.na(d)) d <- norm(t$direction[t$TSid == s & !clim])
+    d
+  }, "")
+  data.frame(TSid = tsids, direction = unname(dir), has_temperature = tsids %in% t$TSid,
+             interpreted = tsids %in% i$TSid, stringsAsFactors = FALSE)
+}
 
 # Annual-mean HadCRUT5 grid: list(lon, lat, years, tas[lon, lat, year]).
 hadcrut_annual <- function(nc_file, years, min_months = 8) {
@@ -81,7 +109,11 @@ screen_local <- function(X, years, meta, had, opt = list()) {
   expect <- ifelse(meta$direction %in% "negative", -1, ifelse(meta$direction %in% "positive", 1, NA))
   res$expected_sign <- expect
   res$p_adj <- if (isTRUE(opt$fdr)) stats::p.adjust(res$p, "BH") else res$p
-  res$pass <- !is.na(res$p_adj) & res$p_adj < opt$alpha & !is.na(expect) & sign(res$r) == expect
+  sig <- !is.na(res$p_adj) & res$p_adj < opt$alpha
+  # Interpreted records with no temperature direction pass on either sign
+  # when the option is on (the p-value is two-sided).
+  res$pass <- sig & ((!is.na(expect) & sign(res$r) == expect) |
+                     (isTRUE(opt$two_sided_without_direction) & is.na(expect)))
   res$wrong_sign <- !is.na(res$p_adj) & res$p_adj < opt$alpha & !is.na(expect) & sign(res$r) != expect
   attr(res, "options") <- opt
   res

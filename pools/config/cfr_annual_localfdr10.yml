@@ -1,0 +1,22 @@
+# The cfr_annual pool (the PReSto2k compilation), screened against local
+# instrumental temperature, for presto-BayGMST. Replaces
+# pages2k2017_localfdr10 so that BayGMST draws on the same compilation as
+# the LMR. A subset of a pool is its own pool, with its own bundle and run.
+#
+# Built by pools/screened_pool.R from cfr_annual and the output of
+# pools/screen_pool.R with the local_temperature_interp screen: a record
+# passes when its correlation with the nearest HadCRUT5 cell over 1850-2000
+# has the sign its temperature interpretation predicts (either sign when it
+# is interpreted but gives no temperature direction) and an AR(1)-adjusted
+# p-value below 0.10 after a Benjamini-Hochberg correction across the
+# records tested. Uninterpreted records are not tested.
+
+name: cfr_annual_localfdr10
+description: PReSto2k (cfr_annual) records that correlate with local HadCRUT5 temperature (BH FDR < 0.10, 1850-2000)
+parent: cfr_annual
+screen: local_temperature_interp
+variant: fdr10
+
+# BayGMST treats years as independent; drop records whose in-window values
+# have lag-1 autocorrelation above this (cfr_annual applies the same rule).
+max_lag1: 0.98

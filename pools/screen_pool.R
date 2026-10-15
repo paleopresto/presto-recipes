@@ -31,12 +31,23 @@ con <- pool_snapshot(export)
 snap <- jsonlite::read_json(file.path(export, "export_manifest.json"))$version
 pool <- utils::read.csv(file.path(here, "output", pool_name, snap, "pool.csv"), stringsAsFactors = FALSE)
 pool <- pool[pool$dedup_keep %in% TRUE, ]
+# Screens that take the direction from the temperature interpretation test
+# only interpreted records; the rest are not candidates (and do not count
+# toward the false-discovery-rate correction).
+if (identical(cfg$direction_from, "temperature_interpretation")) {
+  td <- temperature_direction(con, pool$TSid)
+  pool$direction <- td$direction
+  cat(sprintf("%d records: %d interpreted (%d with a temperature direction), %d without an interpretation not tested\n",
+              nrow(td), sum(td$interpreted), sum(td$interpreted & !is.na(td$direction)), sum(!td$interpreted)))
+  pool <- pool[td$interpreted, ]
+}
 X <- annual_matrix(con, pool)
 had <- hadcrut_annual(nc, win[1]:win[2], cfg$instrumental$min_months %||% 8)
 
 out <- pool[match(colnames(X), pool$TSid), c("TSid", "dataSetName", "archiveType", "variableName", "lat", "lon", "direction")]
 for (v in names(cfg$variants)) {
-  s <- screen_local(X, 1:2000, pool, had, c(cfg$variants[[v]], list(window = win, min_overlap = cfg$min_overlap)))
+  s <- screen_local(X, 1:2000, pool, had, c(cfg$variants[[v]], list(window = win, min_overlap = cfg$min_overlap,
+                                                                     two_sided_without_direction = isTRUE(cfg$two_sided_without_direction))))
   out[[paste0("r_", v)]] <- s$r; out[[paste0("p_", v)]] <- s$p_adj; out[[paste0("pass_", v)]] <- s$pass
   cat(sprintf("%-10s %4d of %d pass (%d significant with the wrong sign)\n", v, sum(s$pass), nrow(s), sum(s$wrong_sign)))
 }

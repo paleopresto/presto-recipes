@@ -3,11 +3,13 @@
 # Write the query_params.json each reconstruction template reads, pointing at
 # the pool bundles for one snapshot.
 #
-#   Rscript runs/make_runs.R <snapshot> <release_tag>
+#   Rscript runs/make_runs.R <snapshot> <release_tag> [run ...]
 #
 # The bundles are published as assets of the presto-recipes release
 # <release_tag>; each query_params.json pins one by URL and sha256, and
 # carries the pool's TSids (presto-LMR's converter whitelists by them).
+# Naming runs (e.g. presto-BayGMST) writes only those, for a release that
+# carries only their pools.
 
 suppressPackageStartupMessages(library(jsonlite))
 here <- dirname(normalizePath(sub("^--file=", "", grep("^--file=", commandArgs(FALSE), value = TRUE))))
@@ -17,10 +19,11 @@ base <- sprintf("https://github.com/paleopresto/presto-recipes/releases/download
 
 runs <- list(
   "presto-LMR"        = "cfr_annual",
-  "presto-BayGMST"    = "pages2k2017_localfdr10",
+  "presto-BayGMST"    = "cfr_annual_localfdr10",
   "presto-HoloceneDA" = "temp12k",
   "presto-Temp12k"    = "temp12k")
 
+if (length(args) > 2) runs <- runs[args[-(1:2)]]
 for (r in names(runs)) {
   pool <- runs[[r]]
   m <- read_json(file.path(here, "..", "pools", "bundles", sprintf("presto-pool-%s-%s.json", pool, snap)))

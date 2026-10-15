@@ -1,0 +1,32 @@
+# Local-temperature screen for pools whose records are not all interpreted
+# as temperature (cfr_annual, i.e. the PReSto2k compilation). Same test as
+# local_temperature, with these differences:
+# - only records with an interpretation (one that names a variable) are
+#   candidates; uninterpreted records are not tested and do not count
+#   toward the false-discovery-rate correction;
+# - the expected sign is the record's temperature interpretation's
+#   direction, whatever that interpretation's rank (temperature_direction()
+#   in pools/R/screen.R), not the primary interpretation's;
+# - interpreted records with no temperature direction pass on a
+#   significant correlation of either sign (two-sided test).
+# Applied by pools/screen_pool.R.
+#
+# The variants differ in how strict the test is. The two-half validation in
+# presto-paper (analysis/baygmst_screening/) compares them.
+
+name: local_temperature_interp
+direction_from: temperature_interpretation
+two_sided_without_direction: true
+reference: "PAGES 2k Consortium (2019) Nat. Geosci. 12:643; Neukom et al. (2019) Nat. Geosci. 12:643-649"
+instrumental:
+  url: https://www.metoffice.gov.uk/hadobs/hadcrut5/data/HadCRUT.5.0.2.0/analysis/HadCRUT.5.0.2.0.analysis.anomalies.ensemble_mean.nc
+  sha256: bc56edee2d4ce926a811ee6310b8e37893c01ad0f633de5611679972c678a447
+  min_months: 8
+window: [1850, 2000]
+min_overlap: 25
+variants:
+  p05:        {alpha: 0.05, fdr: false, detrend: false}
+  p10:        {alpha: 0.10, fdr: false, detrend: false}
+  fdr10:      {alpha: 0.10, fdr: true,  detrend: false}   # used for presto-BayGMST (cfr_annual_localfdr10)
+  p05_dt:     {alpha: 0.05, fdr: false, detrend: true}
+  fdr10_dt:   {alpha: 0.10, fdr: true,  detrend: true}
