@@ -160,7 +160,15 @@ def fix_ad_axes(files, table, cols, alog, dsname, fn):
     Units are trusted only when the values could be years AD (at most 2100):
     E5.Daniels.2021 says "yr AD" for values up to 32086, which are years BP.
     """
-    if any(str(c.get("variableName", "")).lower() == "year" for c in cols):
+    names = [str(c.get("variableName", "")).lower() for c in cols]
+    # The mirror case: a year axis in years BP (NETibet.Liu.2025) is renamed age.
+    if "age" not in names:
+        for c in cols:
+            if str(c.get("variableName", "")).lower() == "year" and re.search(r"\bbp\b", str(c.get("units", "")).lower()):
+                c["variableName"] = "age"
+                alog.append({"dataSetName": dsname, "table": fn, "TSid": c.get("TSid"), "units": c.get("units"), "to": "age"})
+                return
+    if "year" in names:
         return
     for c in cols:
         if str(c.get("variableName", "")).lower() == "age" and AD_UNITS.search(str(c.get("units", "")).lower()):
@@ -168,7 +176,7 @@ def fix_ad_axes(files, table, cols, alog, dsname, fn):
             if mx is None or mx > 2100:
                 continue
             c["variableName"] = "year"
-            alog.append({"dataSetName": dsname, "table": fn, "TSid": c.get("TSid"), "units": c.get("units")})
+            alog.append({"dataSetName": dsname, "table": fn, "TSid": c.get("TSid"), "units": c.get("units"), "to": "year"})
 
 
 def trim(path, keep, out_path, keep_axes=False, mask=None, log=None, alog=None):

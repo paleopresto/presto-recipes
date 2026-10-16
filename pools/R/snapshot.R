@@ -87,13 +87,16 @@ axis_sql <- "
 # CentralEurope.Buentgen.2011, "yr AD", -398 to 2008), and reading them as
 # years BP reverses the record in time. Units are trusted only when the values
 # could be years AD (at most 2100): E5.Daniels.2021 says "yr AD" up to 32086.
+# The mirror case, an axis named year in years BP (NETibet.Liu.2025, "yr BP",
+# -60 to 3416), is read as BP.
 pool_points <- function(con, cand) {
   duckdb::duckdb_register(con, "cand_tmp", cand[, c("TSid", "datasetId", "tableId")])
   on.exit(duckdb::duckdb_unregister(con, "cand_tmp"))
   sql <- sprintf("
     WITH best AS (%s)
     SELECT c.TSid, b.pref AS axisPref, v.value_num AS value,
-      CASE WHEN b.pref = 1 OR b.ad THEN a.value_num
+      CASE WHEN b.pref = 1 AND regexp_matches(b.u, '\\bbp\\b') THEN 1950 - a.value_num
+           WHEN b.pref = 1 OR b.ad THEN a.value_num
            WHEN b.u LIKE '%%ka%%' OR b.u LIKE '%%kyr%%' THEN 1950 - 1000 * a.value_num
            ELSE 1950 - a.value_num END AS year
     FROM cand_tmp c
