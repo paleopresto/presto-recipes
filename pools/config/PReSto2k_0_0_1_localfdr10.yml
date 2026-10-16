@@ -1,0 +1,22 @@
+# The PReSto2k 0_0_1 compilation as published in LiPDverse (pool
+# PReSto2k_0_0_1, from pools/compilation_pool.R), screened against local
+# instrumental temperature for presto-BayGMST. Same screen and checks as
+# cfr_annual_localfdr10, which screens the recipe-built pool instead.
+#
+# Built by pools/screened_pool.R from cfr_annual and the output of
+# pools/screen_pool.R with the local_temperature_interp screen: a record
+# passes when its correlation with the nearest HadCRUT5 cell over 1850-2000
+# has the sign its temperature interpretation predicts (either sign when it
+# is interpreted but gives no temperature direction) and an AR(1)-adjusted
+# p-value below 0.10 after a Benjamini-Hochberg correction across the
+# records tested. Uninterpreted records are not tested.
+
+name: PReSto2k_0_0_1_localfdr10
+description: PReSto2k 0_0_1 records (from the published compilation) that correlate with local HadCRUT5 temperature (BH FDR < 0.10, 1850-2000)
+parent: PReSto2k_0_0_1
+screen: local_temperature_interp
+variant: fdr10
+
+# BayGMST treats years as independent; drop records whose in-window values
+# have lag-1 autocorrelation above this (cfr_annual applies the same rule).
+max_lag1: 0.98

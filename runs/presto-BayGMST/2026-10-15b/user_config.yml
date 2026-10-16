@@ -1,0 +1,24 @@
+# BayGMST run on the PReSto2k pool (cfr_annual) screened against local
+# instrumental temperature (cfr_annual_localfdr10: interpreted records only;
+# expected sign from the temperature interpretation, either sign when there
+# is none; AR(1)-adjusted p with a 10% false-discovery-rate correction,
+# 1850-2000; series with lag-1 autocorrelation above 0.98 dropped),
+# 2026-10-08b snapshot, pools-2026-10-08b-r9. LASSO reduced proxy, 1-2000 CE,
+# instrumental period from 1850. Sampling as in the pages2k2017_localfdr10 run.
+ptype: ALL
+rp_method: LASSO
+stan_params:
+  iter_warmup: 1000
+  iter_sampling: 2000
+  chains: 4
+  parallel_chains: 4
+partition_years:
+  t1: 1
+  t2: 1850
+  t3: 2000
+co2_params:
+  c0: 280
+  co2_coef: 5.35
+vol_params:
+  vol_coef: 25.0
+seed: 1
