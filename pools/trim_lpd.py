@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Trim LiPD files to a pool's records.
 
-    python3 -I pools/trim_lpd.py <keep_tsids.txt> <src_dir> <out_dir> [--keep-axes]
+    python3 -I pools/trim_lpd.py <keep_tsids.txt> <src_dir> <out_dir> [--keep-axes] [--fix-ad-axes]
 
 Every paleo measurement column whose TSid is not in keep_tsids.txt (one TSid
 per line: the pool's records plus the axis columns of their tables) is
@@ -14,6 +14,12 @@ is used.
 --keep-axes also keeps columns named as time or depth axes (age, year, depth,
 ...), for files that come with no export to say which columns are axes (a
 past compilation release).
+
+--fix-ad-axes renames a paleo axis column named age whose units are AD or
+CE ("yr AD") to year, unless its table already has a year column, and
+reports each rename. 164 LiPDverse axes are labeled this way, and readers
+that take an age axis as years BP (the LMR template's converter among them)
+then use the record reversed in time.
 
 --mask-codes <records.txt> sets missing-value codes stored as data (exactly
 +-9999, -999, +-99999 or +-999999) to NaN in the columns listed (the pool's
@@ -33,6 +39,7 @@ import hashlib
 import io
 import json
 import os
+import re
 import sys
 import zipfile
 
@@ -128,7 +135,20 @@ def mask_codes(files, table, cols, mask, log, dsname):
         files[cpath] = buf.getvalue().encode("utf-8")
 
 
-def trim(path, keep, out_path, keep_axes=False, mask=None, log=None):
+AD_UNITS = re.compile(r"\b(ad|ce)\b")
+
+
+def fix_ad_axes(cols, alog, dsname, fn):
+    """Rename age axes in years AD/CE to year (the column's values are unchanged)."""
+    if any(str(c.get("variableName", "")).lower() == "year" for c in cols):
+        return
+    for c in cols:
+        if str(c.get("variableName", "")).lower() == "age" and AD_UNITS.search(str(c.get("units", "")).lower()):
+            c["variableName"] = "year"
+            alog.append({"dataSetName": dsname, "table": fn, "TSid": c.get("TSid"), "units": c.get("units")})
+
+
+def trim(path, keep, out_path, keep_axes=False, mask=None, log=None, alog=None):
     with zipfile.ZipFile(path) as z:
         files = {n: z.read(n) for n in z.namelist()}
     jname = next(n for n in files if n.endswith(".jsonld"))
@@ -139,6 +159,8 @@ def trim(path, keep, out_path, keep_axes=False, mask=None, log=None):
             cols = as_list(table.get("columns"))
             for c in cols:
                 drop_blank_interpretations(c)
+            if alog is not None:
+                fix_ad_axes(cols, alog, meta.get("dataSetName", path), table.get("filename", ""))
             drop = [c for c in cols if c.get("TSid", c.get("tsid")) not in keep
                     and not (keep_axes and str(c.get("variableName", "")).lower() in AXES)]
             if not drop:
@@ -184,10 +206,11 @@ def main():
         mfile = opts[opts.index("--mask-codes") + 1]
         mask = {l.strip() for l in open(mfile) if l.strip()}
     log = {}
+    alog = [] if "--fix-ad-axes" in opts else None
     os.makedirs(out, exist_ok=True)
     found, ndrop = set(), 0
     for f in sorted(glob.glob(os.path.join(src, "*.lpd"))):
-        kept, d = trim(f, keep, os.path.join(out, os.path.basename(f)), keep_axes, mask, log)
+        kept, d = trim(f, keep, os.path.join(out, os.path.basename(f)), keep_axes, mask, log, alog)
         found.update(kept)
         ndrop += d
     missing = sorted(keep - found)
@@ -195,7 +218,8 @@ def main():
                       "columns_dropped": ndrop, "keep_requested": len(keep),
                       "keep_missing": missing[:20], "n_keep_missing": len(missing),
                       "codes_masked": [{"dataSetName": d, "TSid": t, "n": n}
-                                       for (d, t), n in sorted(log.items())]}))
+                                       for (d, t), n in sorted(log.items())],
+                      "axes_renamed": alog or []}))
 
 
 if __name__ == "__main__":

@@ -80,13 +80,17 @@ axis_sql <- "
   SELECT * FROM best"
 
 # Year of every non-missing value of every candidate. Long: TSid, year, value.
+# An axis is read as calendar years when it is named year or its units say AD
+# or CE: 164 LiPDverse paleo axes are named age but hold years AD (e.g.
+# CentralEurope.Buentgen.2011, "yr AD", -398 to 2008), and reading them as
+# years BP reverses the record in time.
 pool_points <- function(con, cand) {
   duckdb::duckdb_register(con, "cand_tmp", cand[, c("TSid", "datasetId", "tableId")])
   on.exit(duckdb::duckdb_unregister(con, "cand_tmp"))
   sql <- sprintf("
     WITH best AS (%s)
     SELECT c.TSid, b.pref AS axisPref, v.value_num AS value,
-      CASE WHEN b.pref = 1 THEN a.value_num
+      CASE WHEN b.pref = 1 OR regexp_matches(b.u, '\\b(ad|ce)\\b') THEN a.value_num
            WHEN b.u LIKE '%%ka%%' OR b.u LIKE '%%kyr%%' THEN 1950 - 1000 * a.value_num
            ELSE 1950 - a.value_num END AS year
     FROM cand_tmp c
@@ -119,7 +123,7 @@ pool_age_controls <- function(con, datasets) {
         AND lower(t.variableName) IN ('age', 'year', 'age14c')
     ), vals AS (
       SELECT c.datasetId, c.tableId, v.row_index, c.pref,
-        CASE WHEN c.pref = 2 THEN v.value_num
+        CASE WHEN c.pref = 2 OR regexp_matches(c.u, '\\b(ad|ce)\\b') THEN v.value_num
              WHEN c.u LIKE '%ka%' OR c.u LIKE '%kyr%' THEN 1950 - 1000 * v.value_num
              ELSE 1950 - v.value_num END AS year
       FROM cols c JOIN \"values\" v ON v.TSid = c.TSid

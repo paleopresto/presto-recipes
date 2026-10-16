@@ -10,7 +10,8 @@
 # takes every column it recognizes (the Holocene DA takes every degC column)
 # assimilates the pool and nothing else. Missing-value codes stored as data
 # (+-9999, -999, +-99999, +-999999) in the pool's records are set to NaN and
-# listed in the manifest's codes_masked.
+# listed in the manifest's codes_masked; axes named age that hold years AD/CE
+# are renamed year (axes_renamed), so readers do not reverse them in time.
 #
 # Writes, under pools/bundles/ (not in git; published as release assets):
 #   presto-pool-<pool>-<snapshot>.zip   the trimmed .lpd files
@@ -64,7 +65,7 @@ name <- sprintf("presto-pool-%s-%s", pool, snap)
 out <- file.path(work, name)
 res <- system2("python3", c("-I", shQuote(file.path(here, "trim_lpd.py")), shQuote(file.path(work, "keep.txt")),
                             shQuote(file.path(work, "src")), shQuote(out),
-                            "--mask-codes", shQuote(file.path(work, "records.txt"))), stdout = TRUE)
+                            "--mask-codes", shQuote(file.path(work, "records.txt")), "--fix-ad-axes"), stdout = TRUE)
 r <- jsonlite::fromJSON(res[length(res)])
 # Every pool record must survive trimming; a missing axis is only reported.
 lost <- intersect(r$keep_missing, p$TSid)
@@ -81,12 +82,14 @@ manifest <- list(
   pool = pool, snapshot = snap, criteria = file.path("pools/config", paste0(pool, ".yml")),
   presto_recipes_commit = commit, created = format(Sys.time(), "%Y-%m-%dT%H:%M:%S%z"),
   n_records = nrow(p), n_datasets = nrow(ds), columns_dropped = r$columns_dropped,
-  codes_masked = r$codes_masked,
+  codes_masked = r$codes_masked, axes_renamed = r$axes_renamed,
   bundle = list(file = basename(zip), sha256 = sha(zip), bytes = file.size(zip)),
   TSIDs = p$TSid,
   sources = lapply(seq_len(nrow(ds)), function(i) list(dataSetName = ds$dataSetName[i],
                                                          datasetId = ds$datasetId[i], md5 = ds$file_md5[i])))
 write_json(manifest, file.path(bdir, paste0(name, ".json")), auto_unbox = TRUE, pretty = TRUE)
+if (length(r$axes_renamed)) message("age axes in years AD renamed to year: ",
+  paste(unique(r$axes_renamed$dataSetName), collapse = "; "))
 if (length(r$codes_masked)) message("missing-value codes set to NaN: ",
   paste(sprintf("%s %s (%d)", r$codes_masked$dataSetName, r$codes_masked$TSid, r$codes_masked$n), collapse = "; "))
 cat(sprintf("%s: %d records, %d datasets, %d columns dropped, %.1f MB, sha256 %s\n",

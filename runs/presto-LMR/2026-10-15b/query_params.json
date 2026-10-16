@@ -4,8 +4,8 @@
   "snapshot": "2026-10-15b",
   "criteria": "https://lipdverse.org/PReSto2k/0_0_1/",
   "bundle": {
-    "url": "https://github.com/paleopresto/presto-recipes/releases/download/pools-2026-10-15b-r1/presto-pool-PReSto2k_0_0_1-2026-10-15b.zip",
-    "sha256": "c26901eda1bfea3aad41a1c48ce8cbed0e4aaaa9cacffb8e8df2713101b832f6"
+    "url": "https://github.com/paleopresto/presto-recipes/releases/download/pools-2026-10-15b-r2/presto-pool-PReSto2k_0_0_1-2026-10-15b.zip",
+    "sha256": "c19478932bd92ef8fa66fd8de42317ec4235b1d208d94c1434ddacdcb9208e4d"
   },
   "uniqueID": "presto-LMR-PReSto2k_0_0_1-2026-10-15b",
   "compilation": {
