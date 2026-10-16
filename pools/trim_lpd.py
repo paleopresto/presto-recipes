@@ -16,8 +16,9 @@ is used.
 past compilation release).
 
 --fix-ad-axes renames a paleo axis column named age whose units are AD or
-CE ("yr AD") to year, unless its table already has a year column, and
-reports each rename. 164 LiPDverse axes are labeled this way, and readers
+CE ("yr AD") to year, unless its table already has a year column or its
+values exceed 2100 (then the units, not the name, are wrong), and reports
+each rename. 164 LiPDverse axes are labeled this way, and readers
 that take an age axis as years BP (the LMR template's converter among them)
 then use the record reversed in time.
 
@@ -138,12 +139,34 @@ def mask_codes(files, table, cols, mask, log, dsname):
 AD_UNITS = re.compile(r"\b(ad|ce)\b")
 
 
-def fix_ad_axes(cols, alog, dsname, fn):
-    """Rename age axes in years AD/CE to year (the column's values are unchanged)."""
+def column_max(files, table, col):
+    fn = table.get("filename", "")
+    cpath = next((n for n in files if fn and n.endswith(fn)), None)
+    if not cpath or not isinstance(col.get("number"), (int, str)):
+        return None
+    i = int(col["number"]) - 1
+    vals = []
+    for r in csv.reader(io.StringIO(files[cpath].decode("utf-8"))):
+        try:
+            vals.append(float(r[i]))
+        except (ValueError, IndexError):
+            pass
+    return max(vals) if vals else None
+
+
+def fix_ad_axes(files, table, cols, alog, dsname, fn):
+    """Rename age axes in years AD/CE to year (the column's values are unchanged).
+
+    Units are trusted only when the values could be years AD (at most 2100):
+    E5.Daniels.2021 says "yr AD" for values up to 32086, which are years BP.
+    """
     if any(str(c.get("variableName", "")).lower() == "year" for c in cols):
         return
     for c in cols:
         if str(c.get("variableName", "")).lower() == "age" and AD_UNITS.search(str(c.get("units", "")).lower()):
+            mx = column_max(files, table, c)
+            if mx is None or mx > 2100:
+                continue
             c["variableName"] = "year"
             alog.append({"dataSetName": dsname, "table": fn, "TSid": c.get("TSid"), "units": c.get("units")})
 
@@ -160,7 +183,7 @@ def trim(path, keep, out_path, keep_axes=False, mask=None, log=None, alog=None):
             for c in cols:
                 drop_blank_interpretations(c)
             if alog is not None:
-                fix_ad_axes(cols, alog, meta.get("dataSetName", path), table.get("filename", ""))
+                fix_ad_axes(files, table, cols, alog, meta.get("dataSetName", path), table.get("filename", ""))
             drop = [c for c in cols if c.get("TSid", c.get("tsid")) not in keep
                     and not (keep_axes and str(c.get("variableName", "")).lower() in AXES)]
             if not drop:

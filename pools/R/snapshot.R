@@ -68,6 +68,8 @@ pool_candidates <- function(con, interp, tsids = NULL) {
 axis_sql <- "
   WITH ax AS (
     SELECT TSid AS axisTSid, datasetId, tableId, variableName, lower(coalesce(units, '')) AS u,
+      regexp_matches(lower(coalesce(units, '')), '\\b(ad|ce)\\b')
+        AND (SELECT max(value_num) FROM \"values\" v WHERE v.TSid = timeseries.TSid) <= 2100 AS ad,
       CASE WHEN lower(variableName) = 'year' THEN 1
            WHEN lower(variableName) = 'age' THEN 2
            WHEN lower(variableName) = 'age14c' THEN 3 END AS pref
@@ -83,14 +85,15 @@ axis_sql <- "
 # An axis is read as calendar years when it is named year or its units say AD
 # or CE: 164 LiPDverse paleo axes are named age but hold years AD (e.g.
 # CentralEurope.Buentgen.2011, "yr AD", -398 to 2008), and reading them as
-# years BP reverses the record in time.
+# years BP reverses the record in time. Units are trusted only when the values
+# could be years AD (at most 2100): E5.Daniels.2021 says "yr AD" up to 32086.
 pool_points <- function(con, cand) {
   duckdb::duckdb_register(con, "cand_tmp", cand[, c("TSid", "datasetId", "tableId")])
   on.exit(duckdb::duckdb_unregister(con, "cand_tmp"))
   sql <- sprintf("
     WITH best AS (%s)
     SELECT c.TSid, b.pref AS axisPref, v.value_num AS value,
-      CASE WHEN b.pref = 1 OR regexp_matches(b.u, '\\b(ad|ce)\\b') THEN a.value_num
+      CASE WHEN b.pref = 1 OR b.ad THEN a.value_num
            WHEN b.u LIKE '%%ka%%' OR b.u LIKE '%%kyr%%' THEN 1950 - 1000 * a.value_num
            ELSE 1950 - a.value_num END AS year
     FROM cand_tmp c
@@ -115,6 +118,8 @@ pool_age_controls <- function(con, datasets) {
   sql <- "
     WITH cols AS (
       SELECT t.TSid, t.datasetId, t.tableId, lower(coalesce(t.units, '')) AS u,
+        regexp_matches(lower(coalesce(t.units, '')), '\\b(ad|ce)\\b')
+          AND (SELECT max(value_num) FROM \"values\" v WHERE v.TSid = t.TSid) <= 2100 AS ad,
         CASE WHEN lower(t.variableName) = 'age' THEN 1
              WHEN lower(t.variableName) = 'year' THEN 2
              WHEN lower(t.variableName) = 'age14c' THEN 3 END AS pref
@@ -123,7 +128,7 @@ pool_age_controls <- function(con, datasets) {
         AND lower(t.variableName) IN ('age', 'year', 'age14c')
     ), vals AS (
       SELECT c.datasetId, c.tableId, v.row_index, c.pref,
-        CASE WHEN c.pref = 2 OR regexp_matches(c.u, '\\b(ad|ce)\\b') THEN v.value_num
+        CASE WHEN c.pref = 2 OR c.ad THEN v.value_num
              WHEN c.u LIKE '%ka%' OR c.u LIKE '%kyr%' THEN 1950 - 1000 * v.value_num
              ELSE 1950 - v.value_num END AS year
       FROM cols c JOIN \"values\" v ON v.TSid = c.TSid
