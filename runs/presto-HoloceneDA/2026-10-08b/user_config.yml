@@ -63,3 +63,8 @@ change_uncertainty:  False       # Change uncertainty values in several ways {Fa
 
 # Run as parallel jobs over 3 age ranges (holocene_da.yml); one job would take ~7 h.
 presto_age_chunks: 3
+
+# The pool already keeps one record per site and proxy, annual preferred
+# (pools-2026-10-08b-r6 prefer_annual); the template's label-based season
+# filter would also drop the seasonal records of sites with no annual one.
+presto_season_filter: false
