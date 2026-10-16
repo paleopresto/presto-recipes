@@ -643,7 +643,7 @@
 "RZsK5OW5Hsc","LagunaSaladaChiprana.EPD","LakeSediment","pollen","temperature","degC",41.23,-0.17,"RZsK5OW5Hsc",TRUE,TRUE,TRUE,FALSE,NA,FALSE,"length"
 "RoXFsXAQiB2","Laihalampi.Giesecke.2008","LakeSediment","pollen","temperature","degC",61.4833,26.0833,"RoXFsXAQiB2",TRUE,TRUE,TRUE,TRUE,"RoXFsXAQiB2",TRUE,""
 "PYTEE34B0H5","Laihalampi.Heikkila.2003","LakeSediment","pollen","temperature","degC",61.48,26.07,"PYTEE34B0H5",TRUE,TRUE,TRUE,TRUE,"PYTEE34B0H5",TRUE,""
-"RV7ogSkZbOS","LakeLyadhej-To.Andreev.2005","LakeSediment","chironomid","temperature","degC",68.26,65.8,"RV7ogSkZbOS",TRUE,TRUE,TRUE,TRUE,"RV7ogSkZbOS",TRUE,""
+"RV7ogSkZbOS","LakeLyadhej-To.Andreev.2005","LakeSediment","chironomid","temperature","degC",68.26,65.8,"RV7ogSkZbOS",TRUE,TRUE,TRUE,FALSE,"PYTS7QT9329",TRUE,""
 "R05eeEJNPBo","LakeoftheWoods.Palmer.2002","LakeSediment","chironomid","temperature","degC",49.05,-120.1833,"R05eeEJNPBo",TRUE,TRUE,TRUE,TRUE,"R05eeEJNPBo",TRUE,""
 "R6miF3Chdmb","LakeStowell.Lemmen.2018","LakeSediment","chironomid","temperature","degC",48.7833,-123.4445,"R6miF3Chdmb",TRUE,TRUE,TRUE,FALSE,NA,FALSE,""
 "R3CvZBuTHNk","LaPAS_KF02.Pivel.2013","MarineSediment","foraminifera","temperature","degC",-25.84,-45.2,"R3CvZBuTHNk",TRUE,TRUE,TRUE,TRUE,"R3CvZBuTHNk",TRUE,""

@@ -1,1 +1,1 @@
-"TSid1","TSid2","km","n","r","r_diff","rmse","rmse_diff","identical","overlap_frac","frac1","frac2","duplicate","tier","same_doi","shared_compilation","rule","keep1","keep2","review"
+"TSid1","TSid2","km","cross","n","r","r_diff","rmse","rmse_diff","identical","overlap_frac","frac1","frac2","same_frac","duplicate","tier","same_doi","shared_compilation","rule","keep1","keep2","review"

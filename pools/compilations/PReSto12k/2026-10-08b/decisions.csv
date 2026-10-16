@@ -171,6 +171,8 @@
 "dedup_auto","SP12FOAT01A","SP12FOAT",FALSE,"LPD74b7663d","Spannagel.Fohlmeister.2012","curated",,
 "dedup_auto","S2LRVHXdyY64M6","Leviathancave.Lachniet.2014",FALSE,"LPD94e74028cc","Leviathan.Lachniet.2014","curated",,
 "dedup_auto","SP12FOAT01A","SP12FOAT",FALSE,"S2LRsiwBinOC1B","Spannagelcave.Fohlmeister.2013","subset",,
+"dedup_auto","LPD7abab671-dup","LawDome.Dahl-Jensen.1999",FALSE,"LPD7abab671","Ant-DSS.DahlJensen.1999","subset",,
+"dedup_auto","RV7ogSkZbOS","LakeLyadhej-To.Andreev.2005",FALSE,"PYTS7QT9329","Lyadhej-To.Andreev.2005","subset",,
 "dedup_rule","GH4f526bba","MD79-257.Levi.2007",FALSE,,,"annual-preferred",,
 "dedup_rule","GH6a978f14","Khoe.Leipe.2015",FALSE,,,"annual-preferred",,
 "dedup_rule","GHa67edeec","Khoe.Leipe.2015",FALSE,,,"annual-preferred",,

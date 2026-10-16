@@ -45,6 +45,14 @@
 # to the review queue
 # (rule "review", both kept until a curator decides in
 # baselines/dedup_decisions.csv, which is read like the DoD2k log).
+#
+# Labels (an addition to DoD2k): two records within max_km whose archive or
+# proxy labels differ are also compared, and are duplicates only when at
+# least cross_same_frac of their shared values are equal. One record imported
+# twice under different labels is otherwise never compared (Law Dome DSS
+# borehole temperature as Borehole and GlacierIce; Iso2k ice cores with no
+# proxy, read as d2H, beside their PAGES 2k copies labeled dD). Correlation
+# alone is not enough here: d18O and dD from one core correlate at r > 0.98.
 
 dedup_defaults <- list(
   max_km = 8, min_overlap = 10, r = 0.9, r_alone = 0.98, rmse = 0.1,
@@ -52,7 +60,7 @@ dedup_defaults <- list(
   priority = c("Pages2kTemperature", "iso2k", "CoralHydro2k"),
   update_pattern = "recollect|re-collect|update",
   prefer = "compilation", version_r = 0.8, version_km = 50, same_tol = 0.02,
-  ignore_compilations = "test"
+  ignore_compilations = "test", cross_same_frac = 0.8
 )
 
 haversine_km <- function(lat1, lon1, lat2, lon2) {
@@ -83,6 +91,25 @@ dedup_candidates <- function(pool, opt = dedup_defaults) {
   do.call(rbind, out)
 }
 
+# Candidate pairs whose archive or proxy labels differ, within max_km.
+dedup_cross_candidates <- function(pool, opt = dedup_defaults) {
+  key <- paste(pool$archiveType, norm_proxy(pool), sep = "|")
+  o <- order(pool$lat); lat <- pool$lat[o]; dlat <- opt$max_km / 111
+  out <- list()
+  for (a in seq_along(o)[-length(o)]) {
+    if (is.na(lat[a])) next
+    b <- (a + 1L):length(o); b <- b[!is.na(lat[b]) & lat[b] - lat[a] <= dlat]
+    if (!length(b)) next
+    i <- o[a]; j <- o[b]
+    d <- haversine_km(pool$lat[i], pool$lon[i], pool$lat[j], pool$lon[j])
+    j <- j[!is.na(d) & d <= opt$max_km & key[j] != key[i]]
+    if (length(j)) out[[length(out) + 1L]] <- data.frame(TSid1 = pool$TSid[i], TSid2 = pool$TSid[j],
+      km = haversine_km(pool$lat[i], pool$lon[i], pool$lat[j], pool$lon[j]))
+  }
+  if (!length(out)) return(data.frame(TSid1 = character(), TSid2 = character(), km = numeric()))
+  do.call(rbind, out)
+}
+
 zs <- function(v) { s <- stats::sd(v); if (!is.finite(s) || s == 0) v * NA else (v - mean(v)) / s }
 safe_cor <- function(a, b) {
   if (length(a) < 3 || stats::sd(a) == 0 || stats::sd(b) == 0) return(NA_real_)
@@ -98,7 +125,7 @@ pair_similarity <- function(s1, s2, same_units, opt = dedup_defaults) {
   span1 <- diff(range(s1$year)); span2 <- diff(range(s2$year))
   overlap_frac <- if (hi > lo) (hi - lo) / max(1e-9, min(span1, span2)) else 0
   na <- list(n = 0L, r = NA, r_diff = NA, rmse = NA, rmse_diff = NA, identical = FALSE,
-             overlap_frac = overlap_frac, frac1 = NA, frac2 = NA)
+             overlap_frac = overlap_frac, frac1 = NA, frac2 = NA, same_frac = NA)
   if (hi <= lo) return(na)
   annual <- isTRUE(res1 <= opt$annual_max_resolution && res2 <= opt$annual_max_resolution)
   if (annual) {
@@ -120,6 +147,7 @@ pair_similarity <- function(s1, s2, same_units, opt = dedup_defaults) {
   out$rmse <- if (same_units) sqrt(mean((a - b)^2)) else NA_real_
   out$rmse_diff <- sqrt(mean((zs(da) - zs(db))^2))
   out$identical <- same_units && n == min(nrow(s1), nrow(s2)) && max(abs(a - b)) < 1e-6
+  out$same_frac <- mean(abs(a - b) < 1e-6)
   # How much of each record lies inside the other's span.
   out$frac1 <- (hi - lo) / max(1e-9, span1); out$frac2 <- (hi - lo) / max(1e-9, span2)
   out
@@ -291,6 +319,9 @@ dedup_pool <- function(con, pool, points, prior = NULL, prefer_units = character
   pool <- pool[!pool$TSid %in% within, ]
   data_mode <- identical(opt$prefer, "data")
   cand <- dedup_candidates(pool, if (data_mode) utils::modifyList(opt, list(max_km = max(opt$max_km, opt$version_km))) else opt)
+  cand$cross <- rep(FALSE, nrow(cand))
+  xc <- dedup_cross_candidates(pool, opt)
+  if (nrow(xc)) cand <- rbind(cand, cbind(xc, cross = TRUE))
   # Different seasons of one dataset are not duplicates of each other, however
   # well they correlate: that is a choice an algorithm makes, not a pool.
   same_ds <- pool$datasetId[match(cand$TSid1, pool$TSid)] == pool$datasetId[match(cand$TSid2, pool$TSid)]
@@ -311,6 +342,8 @@ dedup_pool <- function(con, pool, points, prior = NULL, prefer_units = character
   pairs <- cbind(cand, do.call(rbind, sims))
   pairs$duplicate <- vapply(seq_len(nrow(pairs)), function(k) is_duplicate(pairs[k, ], opt), FALSE) &
     pairs$km <= opt$max_km
+  pairs$duplicate[pairs$cross] <- pairs$n[pairs$cross] > opt$min_overlap &
+    (pairs$same_frac[pairs$cross] >= opt$cross_same_frac) %in% TRUE
 
   membership <- DBI::dbGetQuery(con, "SELECT TSid, compilation FROM compilations WHERE inThisCompilation")
   pubs <- DBI::dbGetQuery(con, sprintf("SELECT datasetId, %s(year) AS year FROM publications GROUP BY 1",
@@ -339,7 +372,7 @@ dedup_pool <- function(con, pool, points, prior = NULL, prefer_units = character
     pairs$shared_compilation <- mapply(function(a, b) length(intersect(mem$compilation[mem$TSid == a],
                                                                          mem$compilation[mem$TSid == b])) > 0,
                                        pairs$TSid1, pairs$TSid2)
-    v <- !pairs$duplicate & pairs$n > opt$min_overlap & !pairs$shared_compilation &
+    v <- !pairs$duplicate & !pairs$cross & pairs$n > opt$min_overlap & !pairs$shared_compilation &
       ((pairs$r > opt$version_r) %in% TRUE | (pairs$r_diff > opt$version_r) %in% TRUE)
     pairs$tier[v] <- "version"
   }
