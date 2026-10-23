@@ -60,7 +60,10 @@ dedup_defaults <- list(
   priority = c("Pages2kTemperature", "iso2k", "CoralHydro2k"),
   update_pattern = "recollect|re-collect|update",
   prefer = "compilation", version_r = 0.8, version_km = 50, same_tol = 0.02,
-  ignore_compilations = "test", cross_same_frac = 0.8
+  # Compilations whose membership the dedup does not read: test tags, and
+  # PReSto's own, which these pools compute (a published PReSto compilation
+  # would otherwise make its members look curator-separated, see Versions).
+  ignore_compilations = "test|^PReSto", cross_same_frac = 0.8
 )
 
 haversine_km <- function(lat1, lon1, lat2, lon2) {
@@ -438,24 +441,95 @@ dedup_pool <- function(con, pool, points, prior = NULL, prefer_units = character
   }
 
   pairs$duplicate <- !is.na(pairs$tier)
-  # A record is dropped only while some copy that beat it survives: in a chain
-  # (A loses to B, B loses to C) without A~C, dropping A and B would leave
-  # A's measurements unrepresented. Losers whose every winner is itself
-  # dropped are restored, until nothing changes.
-  lose <- rbind(data.frame(l = pairs$TSid1, w = pairs$TSid2)[pairs$duplicate & pairs$keep1 %in% FALSE & pairs$keep2 %in% TRUE, ],
-                data.frame(l = pairs$TSid2, w = pairs$TSid1)[pairs$duplicate & pairs$keep2 %in% FALSE & pairs$keep1 %in% TRUE, ])
-  both <- unique(c(pairs$TSid1[pairs$duplicate & pairs$keep1 %in% FALSE & pairs$keep2 %in% FALSE],
-                   pairs$TSid2[pairs$duplicate & pairs$keep1 %in% FALSE & pairs$keep2 %in% FALSE]))
-  drop <- unique(lose$l)
-  repeat {
-    orphan <- drop[vapply(drop, function(t) all(lose$w[lose$l == t] %in% drop), FALSE)]
-    if (!length(orphan)) break
-    drop <- setdiff(drop, orphan)
-  }
-  drop <- unique(c(drop, both))
+  own_key <- if (!is.null(own) && nrow(own)) paste(pmin(own$TSid1, own$TSid2), pmax(own$TSid1, own$TSid2)) else character()
+  res <- resolve_groups(pairs, pref, idx, opt, own_key)
+  pairs <- res$pairs
+  drop <- unique(c(res$drop, res$both))
   all_pool$dedup_keep <- !all_pool$TSid %in% c(within, drop)
   all_pool$dedup_rule <- ifelse(all_pool$TSid %in% within, rule0(all_pool$TSid),
                                 ifelse(all_pool$TSid %in% drop, "cross-dataset", NA))
   pairs$review <- pairs$rule %in% c("partial", "review")
+  # No two kept records may be a decided duplicate pair.
+  kept <- all_pool$TSid[all_pool$dedup_keep]
+  bad <- pairs$duplicate & !(pairs$keep1 %in% TRUE & pairs$keep2 %in% TRUE) & !pairs$review &
+    pairs$TSid1 %in% kept & pairs$TSid2 %in% kept
+  if (any(bad)) stop("dedup kept both records of ", sum(bad), " duplicate pair(s): ",
+                     paste(pairs$TSid1[bad], pairs$TSid2[bad], sep = " ~ ", collapse = "; "))
   list(pairs = pairs, pool = all_pool)
+}
+
+# Which records each group of linked duplicates keeps. The decided pairs (one
+# copy kept, one dropped) form a "beats" graph. Within a connected group,
+# records are taken in order and each is kept unless it is a decided
+# duplicate of a record already kept, so a record is dropped only while some
+# copy that beat it survives: in a chain (A loses to B, B to C) without A~C,
+# A is kept, since B is dropped and A's measurements would otherwise go
+# unrepresented.
+#   - Where the group's decisions are consistent (no cycle), the order follows
+#     them, winners before losers (ties by preference), so every pairwise
+#     decision stands.
+#   - Where they conflict (three copies of one record, each losing one
+#     pairwise decision: DoD2k chose between two of them and a rule between
+#     the others), no order honours them all. A PReSto review decides first
+#     (its winners lead, its losers trail), then the pool's preference
+#     (`prefer`); DoD2k decisions inside the cycle are set aside, since each
+#     judged one pair without the third copy. The group's pairs are marked
+#     rule "group", with the pairwise rule kept in pair_rule.
+# Pairs whose decision drops both copies are returned in `both`.
+resolve_groups <- function(pairs, pref, idx, opt, own_key = character()) {
+  pairs$pair_rule <- pairs$rule; pairs$group <- NA_integer_
+  dec <- pairs$duplicate & xor(pairs$keep1 %in% TRUE, pairs$keep2 %in% TRUE)
+  both_rows <- pairs$duplicate & pairs$keep1 %in% FALSE & pairs$keep2 %in% FALSE
+  both <- unique(c(pairs$TSid1[both_rows], pairs$TSid2[both_rows]))
+  if (!any(dec)) return(list(pairs = pairs, drop = character(), both = both))
+  w <- ifelse(pairs$keep1[dec] %in% TRUE, pairs$TSid1[dec], pairs$TSid2[dec])
+  l <- ifelse(pairs$keep1[dec] %in% TRUE, pairs$TSid2[dec], pairs$TSid1[dec])
+  e <- data.frame(w = w, l = l, row = which(dec), stringsAsFactors = FALSE)
+  e$own <- paste(pmin(e$w, e$l), pmax(e$w, e$l)) %in% own_key
+  nodes <- unique(c(e$w, e$l))
+  comp <- stats::setNames(seq_along(nodes), nodes)
+  repeat {
+    changed <- FALSE
+    for (k in seq_len(nrow(e))) {
+      ca <- comp[[e$w[k]]]; cb <- comp[[e$l[k]]]
+      if (ca != cb) { comp[comp == max(ca, cb)] <- min(ca, cb); changed <- TRUE }
+    }
+    if (!changed) break
+  }
+  better <- function(s, t) prefer(pref[idx[[s]], ], pref[idx[[t]], ], opt) == 1L
+  by_pref <- function(ts) {  # insertion sort on the pool's preference
+    out <- character()
+    for (t in ts) { k <- which(vapply(out, function(o) better(t, o), FALSE))[1]
+                    out <- if (is.na(k)) c(out, t) else append(out, t, after = k - 1L) }
+    out
+  }
+  drop <- character()
+  for (g in unique(comp)) {
+    mem <- sort(names(comp)[comp == g]); eg <- e[e$w %in% mem, ]
+    # Kahn's algorithm: winners before losers; ties by preference.
+    ord <- character(); left <- mem
+    repeat {
+      free <- left[!left %in% eg$l[!eg$w %in% ord & eg$w %in% left]]
+      if (!length(free)) break
+      t <- by_pref(free)[1]; ord <- c(ord, t); left <- setdiff(left, t)
+    }
+    cyclic <- length(left) > 0
+    if (cyclic) {
+      ow <- unique(eg$w[eg$own]); ol <- unique(eg$l[eg$own])
+      ord <- c(by_pref(intersect(ow, setdiff(mem, ol))), by_pref(setdiff(mem, c(ow, ol))),
+               by_pref(setdiff(ol, ow)), by_pref(intersect(ow, ol)))
+      ord <- unique(ord)
+    }
+    kept <- character()
+    for (t in ord) {
+      nb <- c(eg$w[eg$l == t], eg$l[eg$w == t])
+      if (any(nb %in% kept)) drop <- c(drop, t) else kept <- c(kept, t)
+    }
+    if (cyclic) {
+      r <- eg$row
+      pairs$rule[r] <- "group"; pairs$group[r] <- g
+      pairs$keep1[r] <- pairs$TSid1[r] %in% kept; pairs$keep2[r] <- pairs$TSid2[r] %in% kept
+    }
+  }
+  list(pairs = pairs, drop = drop, both = both)
 }

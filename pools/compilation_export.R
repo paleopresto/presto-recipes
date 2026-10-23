@@ -20,6 +20,8 @@
 #     dedup_manual    a reviewed duplicate pair (baselines/dedup_decisions.csv)
 #     dedup_prior     a pair decided by an earlier compilation (dedup_prior.csv)
 #     dedup_auto      a cross-dataset duplicate dropped by rule
+#     dedup_group     a pair inside a group of copies whose pairwise decisions
+#                     conflicted, resolved as one group (R/dedup.R resolve_groups)
 #     dedup_rule      dropped by a same-site or annual-preferred rule (no partner)
 #     review_pending  a flagged pair that still needs a curator
 #   Columns: kind, TSid, dataSetName, in_compilation, partner_TSid,
@@ -60,7 +62,24 @@ excl <- rd("baselines", "presto_exclusions.csv"); excl <- excl[excl$pool == pool
 adm <- rd("baselines", "curator_admissions.csv"); adm <- adm[adm$pool == pool, ]
 
 key <- function(a, b) paste(pmin(a, b), pmax(a, b))
-decided <- c(key(man$TSid1, man$TSid2), key(prior$TSid1, prior$TSid2))
+# Pairs resolved as a group: their pairwise decisions (manual, DoD2k or rule)
+# were superseded, so they are listed once, as dedup_group.
+if (is.null(pairs$rule)) pairs$rule <- NA
+grp <- pairs[pairs$rule %in% "group", ]
+gk <- key(grp$TSid1, grp$TSid2)
+man <- man[!key(man$TSid1, man$TSid2) %in% gk, ]
+prior <- prior[!key(prior$TSid1, prior$TSid2) %in% gk, ]
+if (nrow(grp)) {
+  # One sentence per record: which copy its group kept.
+  won <- unique(rbind(data.frame(g = grp$group, t = grp$TSid1, k = grp$keep1),
+                      data.frame(g = grp$group, t = grp$TSid2, k = grp$keep2)))
+  kept_of <- tapply(won$t[won$k %in% TRUE], won$g[won$k %in% TRUE], function(x) paste(unique(x), collapse = ", "))
+  n_of <- tapply(won$t, won$g, function(x) length(unique(x)))
+  grp$source <- "PReSto copy preference"
+  grp$note <- sprintf("%d copies; kept: %s", n_of[as.character(grp$group)],
+                      vapply(kept_of[as.character(grp$group)], function(k) paste(sprintf("%s (%s)", nm[strsplit(k, ", ")[[1]]], strsplit(k, ", ")[[1]]), collapse = ", "), ""))
+}
+decided <- c(key(man$TSid1, man$TSid2), key(prior$TSid1, prior$TSid2), gk)
 dup <- pairs[pairs$duplicate %in% TRUE, ]
 auto <- dup[!key(dup$TSid1, dup$TSid2) %in% decided & !dup$review %in% TRUE, ]
 auto_drop <- rbind(data.frame(t = auto$TSid1[!auto$keep1 %in% TRUE], o = auto$TSid2[!auto$keep1 %in% TRUE], r = auto$rule[!auto$keep1 %in% TRUE]),
@@ -76,10 +95,13 @@ dec <- rbind(
   row("exclusion", excl$TSid, source = "PReSto", note = excl$source),
   pair_rows(man, "dedup_manual"),
   pair_rows(prior, "dedup_prior"),
+  pair_rows(grp, "dedup_group"),
   row("dedup_auto", auto_drop$t, auto_drop$o, auto_drop$r),
   row("dedup_rule", within$TSid, rule = within$dedup_rule),
   row("review_pending", c(pend$TSid1, pend$TSid2), c(pend$TSid2, pend$TSid1)))
 dec <- dec[!duplicated(dec[, c("kind", "TSid", "partner_TSid")]), ]
+# A group is one decision per record, not one per pair.
+dec <- dec[!(dec$kind == "dedup_group" & duplicated(dec[, c("kind", "TSid")])), ]
 # Pairs whose records left the pool for other reasons are not decisions about it.
 dec <- dec[dec$TSid %in% p$TSid | dec$kind == "exclusion", ]
 
@@ -98,6 +120,8 @@ say <- function(d) {
                    else sprintf("Curator-reviewed duplicate of %s: %s.", pr, d$rule),
     dedup_prior = sprintf("Duplicate of %s, decided by %s: %s.", pr, d$source, d$rule),
     dedup_auto = sprintf("Duplicate of %s (%s rule): dropped.", pr, d$rule),
+    dedup_group = sprintf("One of %s of one record whose pairwise duplicate decisions conflicted, resolved together by PReSto's copy preference: %s.",
+                          sub("; kept: .*", "", d$note), if (d$rule == "kept") "kept" else paste0("dropped; kept ", sub(".*; kept: ", "", d$note))),
     dedup_rule = sprintf("Dropped by the %s rule (another record from this dataset or site is kept).", d$rule),
     review_pending = sprintf("Possible duplicate of %s: awaiting curator review.", pr))
   if (!is.na(d$note) && d$note != "" && d$kind %in% c("dedup_manual", "dedup_prior"))

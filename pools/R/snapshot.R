@@ -72,12 +72,17 @@ axis_sql <- "
         AND (SELECT max(value_num) FROM \"values\" v WHERE v.TSid = timeseries.TSid) <= 2100 AS ad,
       CASE WHEN lower(variableName) = 'year' THEN 1
            WHEN lower(variableName) = 'age' THEN 2
-           WHEN lower(variableName) = 'age14c' THEN 3 END AS pref
+           WHEN lower(variableName) = 'age14c' THEN 3 END AS pref,
+      lower(coalesce(description, '')) LIKE '%original published%' AS original
     FROM timeseries
     WHERE tableType = 'paleo' AND tableKind = 'measurement' AND isAxis
       AND lower(variableName) IN ('year', 'age', 'age14c')
   ), best AS (
-    SELECT * FROM ax QUALIFY row_number() OVER (PARTITION BY datasetId, tableId ORDER BY pref) = 1
+    -- A table can hold several axes of one name (SISAL: the published age
+    -- model beside linInterp, Bchron, Bacon, copRa...). Without a full order
+    -- the pick varied between runs; take the published one, then the first TSid.
+    SELECT * FROM ax QUALIFY row_number() OVER (PARTITION BY datasetId, tableId
+                                                ORDER BY pref, original DESC, axisTSid) = 1
   )
   SELECT * FROM best"
 
@@ -130,7 +135,7 @@ pool_age_controls <- function(con, datasets) {
       WHERE t.tableType = 'chron' AND t.tableKind = 'measurement'
         AND lower(t.variableName) IN ('age', 'year', 'age14c')
     ), vals AS (
-      SELECT c.datasetId, c.tableId, v.row_index, c.pref,
+      SELECT c.datasetId, c.tableId, v.row_index, c.pref, c.TSid,
         CASE WHEN c.pref = 2 OR c.ad THEN v.value_num
              WHEN c.u LIKE '%ka%' OR c.u LIKE '%kyr%' THEN 1950 - 1000 * v.value_num
              ELSE 1950 - v.value_num END AS year
@@ -146,7 +151,7 @@ pool_age_controls <- function(con, datasets) {
     FROM vals v
     LEFT JOIN rej r ON r.datasetId = v.datasetId AND r.tableId = v.tableId AND r.row_index = v.row_index
     WHERE r.row_index IS NULL
-    QUALIFY row_number() OVER (PARTITION BY v.datasetId, v.tableId, v.row_index ORDER BY v.pref) = 1"
+    QUALIFY row_number() OVER (PARTITION BY v.datasetId, v.tableId, v.row_index ORDER BY v.pref, v.TSid) = 1"
   a <- DBI::dbGetQuery(con, sql)
   a[a$year > -1e6 & a$year < 2100, ]
 }
