@@ -359,3 +359,5 @@
 "XI17HAI01_SrCa",TRUE,"PReSto: Admitted by curator ledger (PReSto2k (2025) proxy database) although it fails a criterion."
 "ZI08MAY01_d18O",FALSE,"PReSto: Duplicate of Ocn-Mayotte.Zinke.2008 (Ocean2kHR_002) (subset rule): dropped."
 "ZI08MAY01_SrCa",FALSE,"PReSto: Duplicate of Ocn-Mayotte.Zinke.2008 (Ocean2kHR_003) (subset rule): dropped."
+"RI10PBL01_d18O",FALSE,"PReSto: Removed in 0_1_0. Shorter than the length criterion; kept in 0_0_1 by the data-poor exception, which no longer applies because LandfallIsland.Raj.2021 (213 km away) now passes the criteria."
+"WEB-37e5c-997d-4a37-9355-4ebb9",FALSE,"PReSto: Removed in 0_1_0. Shorter than the length criterion; kept in 0_0_1 by the data-poor exception, which no longer applies because NightcliffReef.Patterson.2023 (134 km away) now passes the criteria."
