@@ -111,7 +111,6 @@
 "admission","T2L_VM28_122_mgca_ruber_SST_from_mgca_ruber","VM28_122.Schmidt.2004",TRUE,,,,"Temp12k v1.0.0",
 "admission","WEB-9d355-bfb0-4829-963e-4cbf2","Haukdalsvatn.Geirsdottir.2013",TRUE,,,,"Temp12k v1.0.0",
 "admission","WEB2fbd7e47","PlateauRemote.MosleyThompson.1996",TRUE,,,,"Temp12k v1.0.0",
-"admission","WEB65af657c","ElGygytgynCrater.Schwamborn.2006",TRUE,,,,"Temp12k v1.0.0",
 "admission","WEBa31332021","MiddenCluster1.Harbert.2018",TRUE,,,,"Temp12k v1.0.0",
 "admission","WEBa31332022","MiddenCluster2.Harbert.2018",TRUE,,,,"Temp12k v1.0.0",
 "admission","WEBa31332023","MiddenCluster3.Harbert.2018",TRUE,,,,"Temp12k v1.0.0",
@@ -138,6 +137,9 @@
 "exclusion","lcRn69Jr4svnPyfwzJj",,FALSE,,,,"PReSto","PReSto curator 2026-10-15: Keystone Iron Fen (Fall 1988, LegacyClimate) is the same site as Keystone Iron Bog (Fall 1985, 0.3 km away); the Iron Bog annual record (M2L8o4qa5uuP, Temp12k member) is kept"
 "exclusion","lcRRJjQrbG5Oku3RZWi",,FALSE,,,,"PReSto","PReSto curator 2026-10-15: Keystone Iron Fen (Fall 1988, LegacyClimate) is the same site as Keystone Iron Bog (Fall 1985, 0.3 km away); the Iron Bog annual record (M2L8o4qa5uuP, Temp12k member) is kept"
 "exclusion","lcRYBy2lkUuR65XMGC7",,FALSE,,,,"PReSto","PReSto curator 2026-10-15: Keystone Iron Fen (Fall 1988, LegacyClimate) is the same site as Keystone Iron Bog (Fall 1985, 0.3 km away); the Iron Bog annual record (M2L8o4qa5uuP, Temp12k member) is kept"
+"exclusion","PYT8NX1Q5ZA",,FALSE,,,,"PReSto","PReSto curator 2026-10-27: DevonIceCap.Paterson.1977 d18O is interpreted only as precipitationIsotope; PReSto12k members must carry a temperature interpretation"
+"exclusion","PYTR4UFZM3W",,FALSE,,,,"PReSto","PReSto curator 2026-10-27: 850Lake.Shemesh.2001 d18O is interpreted only as precipitationIsotope; PReSto12k members must carry a temperature interpretation"
+"exclusion","WEB65af657c",,FALSE,,,,"PReSto","PReSto curator 2026-10-27: ElGygytgynCrater.Schwamborn.2006 d18O is interpreted only as precipitationIsotope; PReSto12k members must carry a temperature interpretation"
 "dedup_manual","PYTS7QT9329","Lyadhej-To.Andreev.2005",TRUE,"RkQCQ6TMj7z","Lyadhej-To.Pollen.Russia","kept","PReSto review 2026-10-15","Same Andreev et al. (2005) July pollen record; Temp12k copy kept"
 "dedup_manual","RkQCQ6TMj7z","Lyadhej-To.Pollen.Russia",FALSE,"PYTS7QT9329","Lyadhej-To.Andreev.2005","dropped","PReSto review 2026-10-15","Same Andreev et al. (2005) July pollen record; Temp12k copy kept"
 "dedup_prior","NAm_3870","NAm-OregonCaves.Ersek.2012",FALSE,"S2LRzhGg35X7Yw","Oregoncavesnationalmonument.Ersek.2012","dropped","DoD2k MNE 2025-12-19",

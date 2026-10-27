@@ -13,3 +13,6 @@
 "added","lcRMmkClclvm9GNlhEA","DvurAnsov.Svobodova.1992","Peat","temperature","selection code change since 0.0.1; criteria"
 "added","lcRNWdvSBIPKFERzgdI","SayramLake.Jiang.2013","LakeSediment","temperature","selection code change since 0.0.1; criteria"
 "added","lcRyjtwrx4NQfsEAf7h","Kamenicky.Rybnickova.1979","Peat","temperature","selection code change since 0.0.1; criteria"
+"removed","PYT8NX1Q5ZA","DevonIceCap.Paterson.1977","GlacierIce","d18O","Excluded by hand: PReSto curator 2026-10-27: DevonIceCap.Paterson.1977 d18O is interpreted only as precipitationIsotope; PReSto12k members must carry a temperature interpretation"
+"removed","PYTR4UFZM3W","850Lake.Shemesh.2001","LakeSediment","d18O","Excluded by hand: PReSto curator 2026-10-27: 850Lake.Shemesh.2001 d18O is interpreted only as precipitationIsotope; PReSto12k members must carry a temperature interpretation"
+"removed","WEB65af657c","ElGygytgynCrater.Schwamborn.2006","GroundIce","d18O","Excluded by hand: PReSto curator 2026-10-27: ElGygytgynCrater.Schwamborn.2006 d18O is interpreted only as precipitationIsotope; PReSto12k members must carry a temperature interpretation"
