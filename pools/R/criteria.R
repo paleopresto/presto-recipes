@@ -291,6 +291,15 @@ build_pool <- function(con, cfg) {
       cand$interpreted <- cand$TSid %in% ii$TSid
       cand <- cand[cand$interpreted | !cand$datasetId %in% ii$datasetId | cand$TSid %in% admitted, ]
     }
+    # ...and only a proxy that is usually read as climate. Coral and
+    # sclerosponge D14C records circulation and the 1950s-60s bomb spike,
+    # which calibrates against the instrumental trend on that step alone
+    # (six such records entered PReSto2k 0_1_0 by criteria).
+    if (!is.null(cfg$uninterpreted_variable_pattern)) {
+      interp <- if (!is.null(cand$interpreted)) cand$interpreted else !is.na(cand$interpRank)
+      cand <- cand[interp | matches(cand$variableName, cfg$uninterpreted_variable_pattern) |
+                     cand$TSid %in% admitted, ]
+    }
   }
   pts <- pool_points(con, cand)
   gap <- if (!is.null(cfg$duration$max_gap)) cfg$duration$max_gap else Inf

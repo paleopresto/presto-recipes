@@ -41,6 +41,11 @@ require_climate: false
 # others (sibling chronologies, d13C beside d18O, ice chemistry beside
 # isotopes) stay out.
 uninterpreted_only_in_uninterpreted_datasets: true
+# ...and only a variable usually interpreted as climate (2026-10-27): stable
+# isotopes, coral and foraminiferal elemental ratios, organic paleothermometers,
+# tree-ring and varve series, and climate reconstructions themselves. Not
+# radiocarbon, element concentrations, sediment properties, or age columns.
+uninterpreted_variable_pattern: "^(d18O|dD|d2H|d13C|Sr/?Ca|Mg/?Ca|Uk37|TEX86|temperature.*|precipitation.*|streamflow|PDSI|scPDSI|PHDI|SPEI|SPI|lakeLevel|trsgi|ringWidth|MXD|earlywood.*|latewood.*|varveThickness)$"
 # Without the interpretation requirement, the per-core measurement columns
 # that LiPDverse's tree-ring imports carry beside each chronology would enter
 # (12,009 in 2026-10-08b, all uninterpreted), as would per-colony
