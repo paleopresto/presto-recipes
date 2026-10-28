@@ -2,7 +2,7 @@
 #
 # Package a pool as a pinned LiPD bundle for the reconstruction templates.
 #
-#   Rscript pools/build_bundle.R <pool> <export_dir> <lpd_dir | source_bundle.zip>
+#   Rscript pools/build_bundle.R <pool> <export_dir> <lpd_dir | source_bundle.zip> [--patch=<dir>]
 #
 # lpd_dir holds the snapshot's .lpd files (each must match the export's
 # datasets.file_md5, which is checked). Each file is trimmed to the pool's
@@ -17,11 +17,19 @@
 #   presto-pool-<pool>-<snapshot>.zip   the trimmed .lpd files
 #   presto-pool-<pool>-<snapshot>.json  manifest: snapshot, criteria, TSids,
 #                                       source md5 and bundle sha256
+#
+# --patch=<dir> substitutes the .lpd files in <dir> for their export copies, to
+# carry a curator's fix to a file before the next export without changing the
+# snapshot. Each patched file must be a dataset of the pool (same datasetId);
+# the manifest lists it under patched, with its md5 and the export's, and its
+# sources entry gives the patched md5.
 
 suppressPackageStartupMessages({library(DBI); library(duckdb); library(jsonlite)})
 here <- dirname(normalizePath(sub("^--file=", "", grep("^--file=", commandArgs(FALSE), value = TRUE))))
 args <- commandArgs(trailingOnly = TRUE)
-if (length(args) < 3) stop("usage: build_bundle.R <pool> <export_dir> <lpd_dir>")
+patch_dir <- sub("^--patch=", "", grep("^--patch=", args, value = TRUE))
+args <- grep("^--", args, value = TRUE, invert = TRUE)
+if (length(args) < 3) stop("usage: build_bundle.R <pool> <export_dir> <lpd_dir> [--patch=<dir>]")
 pool <- args[1]; export <- path.expand(args[2]); src <- path.expand(args[3])
 
 con <- dbConnect(duckdb(shared_home = FALSE), dbdir = file.path(export, "lipdverse.duckdb"), read_only = TRUE)
@@ -50,6 +58,23 @@ if (grepl("\\.zip$", src)) {
   md5 <- unname(tools::md5sum(f))
   bad <- is.na(md5) | md5 != ds$file_md5
   if (any(bad)) stop(sum(bad), " source files do not match the ", snap, " export, e.g. ", ds$dataSetName[bad][1])
+}
+
+patched <- list()
+if (length(patch_dir)) {
+  pf <- list.files(path.expand(patch_dir), pattern = "\\.lpd$", full.names = TRUE)
+  for (x in pf) {
+    i <- match(sub("\\.lpd$", "", basename(x)), ds$dataSetName)
+    if (is.na(i)) stop("patch file is not a dataset of the pool: ", basename(x))
+    ux <- tempfile("patch"); utils::unzip(x, exdir = ux)
+    id <- jsonlite::read_json(list.files(ux, "metadata\\.jsonld$", recursive = TRUE, full.names = TRUE)[1])$datasetId
+    if (!identical(id, ds$datasetId[i])) stop("patch file ", basename(x), " has datasetId ", id, ", not ", ds$datasetId[i])
+    md5x <- unname(tools::md5sum(x))
+    patched[[length(patched) + 1]] <- list(dataSetName = ds$dataSetName[i], datasetId = id,
+                                           export_md5 = ds$file_md5[i], md5 = md5x)
+    f[i] <- x; ds$file_md5[i] <- md5x
+  }
+  message("patched: ", paste(vapply(patched, `[[`, "", "dataSetName"), collapse = ", "))
 }
 
 duckdb::duckdb_register(con, "ds_tmp", data.frame(datasetId = ds$datasetId))
@@ -82,7 +107,7 @@ manifest <- list(
   pool = pool, snapshot = snap, criteria = file.path("pools/config", paste0(pool, ".yml")),
   presto_recipes_commit = commit, created = format(Sys.time(), "%Y-%m-%dT%H:%M:%S%z"),
   n_records = nrow(p), n_datasets = nrow(ds), columns_dropped = r$columns_dropped,
-  codes_masked = r$codes_masked, axes_renamed = r$axes_renamed,
+  codes_masked = r$codes_masked, axes_renamed = r$axes_renamed, patched = patched,
   bundle = list(file = basename(zip), sha256 = sha(zip), bytes = file.size(zip)),
   TSIDs = p$TSid,
   sources = lapply(seq_len(nrow(ds)), function(i) list(dataSetName = ds$dataSetName[i],
