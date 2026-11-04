@@ -22,9 +22,10 @@
 #   4. subset    the shorter lies >= 90% within the longer: keep the longer
 #   5. complementary  they overlap < 50% of the shorter: keep both
 #   6. partial   anything else: keep the longer, and list it for review
-# "Preferred" is DoD2k's database priority carried over to LiPDverse
-# membership (Pages2kTemperature > iso2k > CoralHydro2k > other), then the
-# more recent publication, then more data points.
+# "Preferred" is the compilation's own record, then longer coverage, then more
+# data points (finer resolution), then the newer publication, and only then
+# DoD2k's database priority carried over to LiPDverse membership
+# (Pages2kTemperature > iso2k > CoralHydro2k > other).
 #
 # prefer = "data" (cfr_annual) chooses the copy on what it holds instead,
 # since a pool built across LiPDverse is not reproducing one compilation:
@@ -181,7 +182,7 @@ preference <- function(pool, membership, pubyear, opt = dedup_defaults, meta = N
 # within same_tol of each other count as equal.
 prefer <- function(p1, p2, opt = dedup_defaults) {
   keys <- if (identical(opt$prefer, "data")) c("span", "n", "pubyear", "meta", "curated", "priority")
-          else c("priority", "pubyear", "n")
+          else c("curated", "span", "n", "pubyear", "priority")
   for (k in keys) {
     a <- p1[[k]]; b <- p2[[k]]
     if (is.na(a) && !is.na(b)) return(2L)
@@ -349,8 +350,7 @@ dedup_pool <- function(con, pool, points, prior = NULL, prefer_units = character
     (pairs$same_frac[pairs$cross] >= opt$cross_same_frac) %in% TRUE
 
   membership <- DBI::dbGetQuery(con, "SELECT TSid, compilation FROM compilations WHERE inThisCompilation")
-  pubs <- DBI::dbGetQuery(con, sprintf("SELECT datasetId, %s(year) AS year FROM publications GROUP BY 1",
-                                       if (data_mode) "max" else "min"))
+  pubs <- DBI::dbGetQuery(con, "SELECT datasetId, max(year) AS year FROM publications GROUP BY 1")
   pubyear <- stats::setNames(pubs$year, pubs$datasetId)
   meta <- NULL
   pairs$tier <- ifelse(pairs$duplicate, "strict", NA)
