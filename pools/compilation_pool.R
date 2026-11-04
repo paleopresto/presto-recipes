@@ -29,7 +29,7 @@ con <- pool_snapshot(path.expand(args[1]))
 snap <- attr(con, "snapshot")
 
 m <- dbGetQuery(con, "SELECT TSid, datasetId, compilationVersions FROM compilations
-                      WHERE compilation = ? AND inThisCompilation", params = list(comp))
+                      WHERE lower(compilation) = lower(?) AND inThisCompilation", params = list(comp))
 m <- m[vapply(strsplit(m$compilationVersions, "[,; ]+"), function(v) ver %in% v, FALSE), ]
 if (!nrow(m)) stop("no members of ", comp, " ", ver, " in the ", snap, " export")
 if (anyDuplicated(m$TSid)) stop("duplicate member TSids in ", comp, " ", ver)

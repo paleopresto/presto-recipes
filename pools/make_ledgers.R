@@ -54,7 +54,7 @@ release_ts <- function(url, name) {
 
 con <- dbConnect(duckdb(shared_home = FALSE), dbdir = file.path(export, "lipdverse.duckdb"), read_only = TRUE)
 member <- function(comp) dbGetQuery(con, sprintf(
-  "SELECT DISTINCT TSid FROM compilations WHERE compilation = '%s' AND inThisCompilation", comp))$TSid
+  "SELECT DISTINCT TSid FROM compilations WHERE lower(compilation) = lower('%s') AND inThisCompilation", comp))$TSid
 
 out <- list()
 

@@ -288,7 +288,7 @@ collapse_same_site <- function(con, pool, rules) {
   drop <- character()
   for (r in rules) {
     pr <- norm_proxy(pool) == norm_proxy(data.frame(proxy = r$proxy, variableName = r$proxy))
-    pref <- pool$TSid %in% membership$TSid[membership$compilation == r$prefer_compilation]
+    pref <- pool$TSid %in% membership$TSid[tolower(membership$compilation) == tolower(r$prefer_compilation)]
     keep <- pool[pr & pref, ]; other <- pool[pr & !pref & !pool$TSid %in% drop, ]
     for (k in seq_len(nrow(other))) {
       p <- keep
@@ -386,7 +386,7 @@ dedup_pool <- function(con, pool, points, prior = NULL, prefer_units = character
   # applies even when the pair falls short of every duplicate tier (e.g. two
   # copies of one pollen record on different age models, r = 0.75). Other
   # logs (DoD2k) still apply only to pairs that reach a tier.
-  own <- if (is.null(prior)) NULL else prior[grepl("^PReSto", prior$source), ]
+  own <- if (is.null(prior)) NULL else prior[grepl("^PReSto", prior$source, ignore.case = TRUE), ]
   if (!is.null(own) && nrow(own)) {
     pk <- paste(pmin(own$TSid1, own$TSid2), pmax(own$TSid1, own$TSid2))
     has <- paste(pmin(pairs$TSid1, pairs$TSid2), pmax(pairs$TSid1, pairs$TSid2)) %in% pk
