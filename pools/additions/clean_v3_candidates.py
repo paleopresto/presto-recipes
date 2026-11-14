@@ -13,10 +13,11 @@ For each file below this:
     column's own seasonality field (blank where it has none), and the sign
     its proxy implies. Coral d18O also gets isotope-scope temperature and
     seawater-isotope entries, as the Iso2k Palmyra records have.
-and rewrites the bag manifests. Dataset IDs and TSids are left for the
-LiPDverse updater to assign. Decisions: Nick McKay, 2026-11-13.
+removes dataset IDs and TSids (LiPDverse mints them), writes NFC names,
+pads short CSV rows with NA, fixes the names and Firth River columns noted
+below, and rewrites the bag manifests. Decisions: Nick McKay, 2026-11-13.
 """
-import hashlib, json, os, sys, zipfile
+import csv, hashlib, io, json, os, sys, unicodedata, zipfile
 
 src, out = sys.argv[1:3]
 os.makedirs(out, exist_ok=True)
@@ -31,6 +32,11 @@ FILES = ["Fennoscandia.Linderholm.2015", "FirthRiver.Edwards.2025", "GYE.Heeter.
 ARCHIVE = {"marine sediment": "MarineSediment", "mollusk shell": "MolluskShell", "molluskshell": "MolluskShell",
            "lake sediment": "LakeSediment", "wood": "Wood", "coral": "Coral"}
 SEASON = {"TreeNob.Edge.2021": "Apr-Nov"}
+# Output names, where the file's own name is wrong: PacificNorthwest.King.2023
+# holds Heeter et al. (2023), the record Tanaya selected (her other file of it
+# is a duplicate); Novgorod and Grimsey had typos inside ("Novogrod",
+# "Reynold"). Every dataSetName is written NFC.
+RENAME = {"PacificNorthwest.King.2023": "PacificNorthwest.Heeter.2023"}
 CORAL_BASIS = ("Coral d18O records sea surface temperature and seawater d18O; ENSO variability is the dominant "
                "source of d18O variability in the Palmyra fossil-coral records (Cobb et al., 2003; Dee et al., 2020).")
 
@@ -47,11 +53,19 @@ def detail(archive):
 
 
 md5 = lambda b: hashlib.md5(b).hexdigest()
+nfc = lambda x: unicodedata.normalize("NFC", x)
 for name in FILES:
-    zi = zipfile.ZipFile(os.path.join(src, name + ".lpd"))
-    files = {n: zi.read(n) for n in zi.namelist()}
+    src_file = [f for f in os.listdir(src) if nfc(f) == nfc(name + ".lpd")][0]
+    zi = zipfile.ZipFile(os.path.join(src, src_file))
+    files = {nfc(n): zi.read(n) for n in zi.namelist()}
+    order = [nfc(n) for n in zi.namelist()]
     jn = [n for n in files if n.endswith(".jsonld")][0]
     L = json.loads(files[jn])
+    outname = nfc(RENAME.get(name, name))
+    L["dataSetName"] = outname
+    # LiPDverse mints IDs only for files without them; these carry NOAA study
+    # numbers (the four Jalali cores share one) and PCU- TSids.
+    L.pop("datasetId", None)
     arch = ARCHIVE.get(str(L.get("archiveType")).strip().lower(), L.get("archiveType"))
     L["archiveType"] = arch
     chosen = []
@@ -61,7 +75,14 @@ for name in FILES:
             for c in cc:
                 if c.get("variableName") == "age" and str(c.get("units", "")).lower() in ("yr ad", "yr ce"):
                     c["variableName"] = "year"; c["description"] = "Year AD"
+                c.pop("TSid", None)
                 flagged = bool(c.pop("inCompilationBeta", None))
+                # Firth River: the MXD column is a standardized chronology (mean
+                # 1.0), not g/cm3, and "uncertainty" holds the number of trees.
+                if name == "FirthRiver.Edwards.2025" and c.get("variableName") == "MXD":
+                    c["units"] = "unitless"
+                if name == "FirthRiver.Edwards.2025" and c.get("variableName") == "uncertainty":
+                    c["variableName"] = "sampleCount"; c["units"] = "count"; c.pop("interpretation", None)
                 # Uncertainty columns are not records (Tree Nob's carried copies
                 # of the temperature interpretation, one misspelt "positve").
                 if (c.get("variableName") or "").lower().startswith("uncertainty"):
@@ -82,6 +103,13 @@ for name in FILES:
                     if season: iso["seasonality"] = season
                     c["interpretation"] += [iso, dict(scope="isotope", rank=2, variable="seawaterIsotope", direction="positive")]
                 chosen.append((c.get("variableName"), c.get("units"), sign, season or ""))
+    # Rows with only a year (Tree Nob 2001-2017) are padded with NA.
+    for n in [n for n in files if n.endswith(".csv")]:
+        rows = list(csv.reader(io.StringIO(files[n].decode("utf-8"))))
+        w = max((len(r) for r in rows), default=0)
+        if any(len(r) < w for r in rows):
+            buf = io.StringIO(); csv.writer(buf, lineterminator="\n").writerows([r + ["NA"] * (w - len(r)) for r in rows])
+            files[n] = buf.getvalue().encode("utf-8")
     files[jn] = json.dumps(L, indent=2, ensure_ascii=False).encode()
     root = jn.split("/")[0]
     files[root + "/manifest-md5.txt"] = "".join(f"{md5(files[n])}  {n[len(root) + 1:]}\n"
@@ -89,7 +117,7 @@ for name in FILES:
     files[root + "/tagmanifest-md5.txt"] = "".join(f"{md5(files[root + '/' + n])}  {n}\n"
                                                   for n in ("bag-info.txt", "bagit.txt", "manifest-md5.txt")
                                                   if root + "/" + n in files).encode()
-    with zipfile.ZipFile(os.path.join(out, name + ".lpd"), "w", zipfile.ZIP_DEFLATED) as zo:
-        for n in zi.namelist():
+    with zipfile.ZipFile(os.path.join(out, outname + ".lpd"), "w", zipfile.ZIP_DEFLATED) as zo:
+        for n in order:
             zo.writestr(n, files[n])
-    print(f"{name:34s} {arch:15s} {chosen}")
+    print(f"{outname:34s} {arch:15s} {chosen}")
