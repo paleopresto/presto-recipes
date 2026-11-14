@@ -88,9 +88,17 @@ writeLines(keep, file.path(work, "keep.txt"))
 writeLines(p$TSid, file.path(work, "records.txt"))
 name <- sprintf("presto-pool-%s-%s", pool, snap)
 out <- file.path(work, name)
+# Signs implied by the proxy (cfr_annual's common temperature proxies) travel
+# into the bundle as interpretations, so the reconstruction's sign check sees them.
+sign_args <- character()
+if (!is.null(p$direction_implied) && any(p$direction_implied %in% TRUE)) {
+  im <- p[p$direction_implied %in% TRUE, ]
+  jsonlite::write_json(as.list(stats::setNames(im$direction, im$TSid)), file.path(work, "signs.json"), auto_unbox = TRUE)
+  sign_args <- c("--implied-signs", shQuote(file.path(work, "signs.json")))
+}
 res <- system2("python3", c("-I", shQuote(file.path(here, "trim_lpd.py")), shQuote(file.path(work, "keep.txt")),
                             shQuote(file.path(work, "src")), shQuote(out),
-                            "--mask-codes", shQuote(file.path(work, "records.txt")), "--fix-ad-axes"), stdout = TRUE)
+                            "--mask-codes", shQuote(file.path(work, "records.txt")), "--fix-ad-axes", sign_args), stdout = TRUE)
 r <- jsonlite::fromJSON(res[length(res)])
 # Every pool record must survive trimming; a missing axis is only reported.
 lost <- intersect(r$keep_missing, p$TSid)
@@ -107,7 +115,7 @@ manifest <- list(
   pool = pool, snapshot = snap, criteria = file.path("pools/config", paste0(pool, ".yml")),
   presto_recipes_commit = commit, created = format(Sys.time(), "%Y-%m-%dT%H:%M:%S%z"),
   n_records = nrow(p), n_datasets = nrow(ds), columns_dropped = r$columns_dropped,
-  codes_masked = r$codes_masked, axes_renamed = r$axes_renamed, patched = patched,
+  codes_masked = r$codes_masked, axes_renamed = r$axes_renamed, signs_implied = r$signs_implied, patched = patched,
   bundle = list(file = basename(zip), sha256 = sha(zip), bytes = file.size(zip)),
   TSIDs = p$TSid,
   sources = lapply(seq_len(nrow(ds)), function(i) list(dataSetName = ds$dataSetName[i],
@@ -115,6 +123,7 @@ manifest <- list(
 write_json(manifest, file.path(bdir, paste0(name, ".json")), auto_unbox = TRUE, pretty = TRUE)
 if (length(r$axes_renamed)) message("age axes in years AD renamed to year: ",
   paste(unique(r$axes_renamed$dataSetName), collapse = "; "))
+if (length(r$signs_implied)) message("signs implied by the proxy: ", nrow(r$signs_implied), " records")
 if (length(r$codes_masked)) message("missing-value codes set to NaN: ",
   paste(sprintf("%s %s (%d)", r$codes_masked$dataSetName, r$codes_masked$TSid, r$codes_masked$n), collapse = "; "))
 cat(sprintf("%s: %d records, %d datasets, %d columns dropped, %.1f MB, sha256 %s\n",

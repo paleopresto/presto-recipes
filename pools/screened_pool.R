@@ -4,8 +4,8 @@
 #
 #   Rscript pools/screened_pool.R <export_dir> <pool>
 #
-# <pool> is a config (pools/config/<pool>.yml) with parent, screen and
-# variant. Reads the parent's pool.csv and screen_<screen>.csv for the
+# <pool> is a config (pools/config/<pool>.yml) with parent and, optionally,
+# screen and variant. Reads the parent's pool.csv and screen_<screen>.csv for the
 # export's snapshot (run pools/screen_pool.R first) and writes
 # pools/output/<pool>/<snapshot>/pool.csv: the parent's kept records that
 # pass, in the parent's format, so build_bundle.R packages it unchanged.
@@ -20,11 +20,28 @@ cfg <- yaml::read_yaml(file.path(here, "config", paste0(name, ".yml")))
 snap <- jsonlite::read_json(file.path(export, "export_manifest.json"))$version
 pdir <- file.path(here, "output", cfg$parent, snap)
 p <- utils::read.csv(file.path(pdir, "pool.csv"), stringsAsFactors = FALSE)
-s <- utils::read.csv(file.path(pdir, sprintf("screen_%s.csv", cfg$screen)), stringsAsFactors = FALSE)
-col <- paste0("pass_", cfg$variant)
-if (!col %in% names(s)) stop(col, " not in the screen output; add the variant and rerun screen_pool.R")
-p <- p[p$dedup_keep %in% TRUE & p$TSid %in% s$TSid[s[[col]] %in% TRUE], ]
+p <- p[p$dedup_keep %in% TRUE, ]
+# A screen (screen_pool.R output) is optional: presto-LMR's subset is
+# defined by the method checks below alone.
+if (!is.null(cfg$screen)) {
+  s <- utils::read.csv(file.path(pdir, sprintf("screen_%s.csv", cfg$screen)), stringsAsFactors = FALSE)
+  col <- paste0("pass_", cfg$variant)
+  if (!col %in% names(s)) stop(col, " not in the screen output; add the variant and rerun screen_pool.R")
+  p <- p[p$TSid %in% s$TSid[s[[col]] %in% TRUE], ]
+}
 # Method-specific checks on the parent's metrics (records.csv columns).
+check <- function(drop, what) {
+  drop[is.na(drop)] <- FALSE
+  if (any(drop)) cat(sprintf("%s: %d records fail %s\n", name, sum(drop), what))
+  p[!drop, ]
+}
+# What cfr (presto-LMR) can assimilate: an annual time step (its filter on
+# dt), overlap with the PSM calibration period, and a proxy class it models.
+if (!is.null(cfg$max_resolution)) p <- check(is.na(p$res_win) | p$res_win > cfg$max_resolution,
+                                             sprintf("max_resolution %.1f", cfg$max_resolution))
+if (!is.null(cfg$min_calibration_years)) p <- check(is.na(p$n_calib) | p$n_calib < cfg$min_calibration_years,
+                                                    sprintf("min_calibration_years %d", cfg$min_calibration_years))
+if (!is.null(cfg$archives)) p <- check(!p$archiveType %in% unlist(cfg$archives), "archives")
 if (!is.null(cfg$max_lag1)) {
   if (!"lag1_win" %in% names(p)) stop("lag1_win not in the parent pool; rebuild it with build_pools.R")
   drop <- !is.na(p$lag1_win) & p$lag1_win > cfg$max_lag1
@@ -34,4 +51,5 @@ if (!is.null(cfg$max_lag1)) {
 }
 odir <- file.path(here, "output", name, snap); dir.create(odir, recursive = TRUE, showWarnings = FALSE)
 utils::write.csv(p, file.path(odir, "pool.csv"), row.names = FALSE)
-cat(sprintf("%s: %d of the %s pool's records pass %s/%s -> %s\n", name, nrow(p), cfg$parent, cfg$screen, cfg$variant, file.path(odir, "pool.csv")))
+cat(sprintf("%s: %d of the %s pool's records pass %s -> %s\n", name, nrow(p), cfg$parent,
+            if (is.null(cfg$screen)) "the method checks" else paste0(cfg$screen, "/", cfg$variant), file.path(odir, "pool.csv")))

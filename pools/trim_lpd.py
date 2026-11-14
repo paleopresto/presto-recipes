@@ -29,6 +29,14 @@ files carry them with no missingValue declaration a reader honours (Taylor
 Dome dD has 999999), and a method that z-scores non-degC records (Temp12k
 CPS) turns one into a spike of hundreds of degrees.
 
+--implied-signs <signs.json> ({TSid: "positive"|"negative"}) gives a kept
+column the sign its proxy implies (Presto2k's common temperature proxies,
+pools/config/cfr_annual.yml uninterpreted_temperature_proxies): a temperature
+interpretation without a direction takes it, and a column with no
+temperature interpretation gets one (climate scope), each marked in its
+basis. The reconstruction's check of interpretation against PSM then
+enforces it. Each change is reported.
+
 Column removal follows lipdGenerator's _remove_tsids_from_lpd
 (DaveEdge1/prestoServer, getLipds/lipdGenerator/generate.py), inverted from a
 drop list to a keep list, so a bundle reads exactly as PReSto's own filtered
@@ -179,7 +187,29 @@ def fix_ad_axes(files, table, cols, alog, dsname, fn):
             alog.append({"dataSetName": dsname, "table": fn, "TSid": c.get("TSid"), "units": c.get("units"), "to": "year"})
 
 
-def trim(path, keep, out_path, keep_axes=False, mask=None, log=None, alog=None):
+IMPLIED_BASIS = "Sign implied by the proxy (Presto2k common temperature proxies); not in the original metadata."
+
+
+def imply_sign(col, sign):
+    """Give a column the sign its proxy implies. Returns what was done, or None."""
+    items = [it for it in as_list(col.get("interpretation")) if isinstance(it, dict)]
+    temp = [it for it in items if str(it.get("variable", "")).lower() == "temperature"
+            and str(it.get("scope", "climate")).lower() in ("climate", "isotope")]
+    if temp:
+        done = None
+        for it in temp:
+            if str(it.get("direction", "")).lower() not in ("positive", "negative"):
+                it["direction"] = sign; it["interpDirection"] = sign; it["basis"] = IMPLIED_BASIS
+                done = "direction set"
+        return done
+    rank = max([int(it["rank"]) for it in items if str(it.get("rank", "")).isdigit()] or [0]) + 1
+    items.append({"scope": "climate", "rank": rank, "variable": "temperature", "direction": sign,
+                  "interpDirection": sign, "basis": IMPLIED_BASIS})
+    col["interpretation"] = items
+    return "interpretation added"
+
+
+def trim(path, keep, out_path, keep_axes=False, mask=None, log=None, alog=None, signs=None, slog=None):
     with zipfile.ZipFile(path) as z:
         files = {n: z.read(n) for n in z.namelist()}
     jname = next(n for n in files if n.endswith(".jsonld"))
@@ -190,6 +220,11 @@ def trim(path, keep, out_path, keep_axes=False, mask=None, log=None, alog=None):
             cols = as_list(table.get("columns"))
             for c in cols:
                 drop_blank_interpretations(c)
+                if signs and c.get("TSid") in signs:
+                    what = imply_sign(c, signs[c["TSid"]])
+                    if what:
+                        slog.append({"dataSetName": meta.get("dataSetName", path), "TSid": c["TSid"],
+                                     "sign": signs[c["TSid"]], "change": what})
             if alog is not None:
                 fix_ad_axes(files, table, cols, alog, meta.get("dataSetName", path), table.get("filename", ""))
             drop = [c for c in cols if c.get("TSid", c.get("tsid")) not in keep
@@ -238,10 +273,13 @@ def main():
         mask = {l.strip() for l in open(mfile) if l.strip()}
     log = {}
     alog = [] if "--fix-ad-axes" in opts else None
+    signs, slog = None, []
+    if "--implied-signs" in opts:
+        signs = json.load(open(opts[opts.index("--implied-signs") + 1]))
     os.makedirs(out, exist_ok=True)
     found, ndrop = set(), 0
     for f in sorted(glob.glob(os.path.join(src, "*.lpd"))):
-        kept, d = trim(f, keep, os.path.join(out, os.path.basename(f)), keep_axes, mask, log, alog)
+        kept, d = trim(f, keep, os.path.join(out, os.path.basename(f)), keep_axes, mask, log, alog, signs, slog)
         found.update(kept)
         ndrop += d
     missing = sorted(keep - found)
@@ -250,7 +288,7 @@ def main():
                       "keep_missing": missing[:20], "n_keep_missing": len(missing),
                       "codes_masked": [{"dataSetName": d, "TSid": t, "n": n}
                                        for (d, t), n in sorted(log.items())],
-                      "axes_renamed": alog or []}))
+                      "axes_renamed": alog or [], "signs_implied": slog}))
 
 
 if __name__ == "__main__":
