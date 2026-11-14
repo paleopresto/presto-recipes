@@ -47,12 +47,13 @@ pool_candidates <- function(con, interp, tsids = NULL) {
            i.rank AS interpRank, i.seasonality, i.direction, i.variableDetail
     FROM timeseries t
     %s JOIN interpretations i ON i.TSid = t.TSid
-      AND i.scope = '%s' AND %s AND i.rank <= %d
+      AND lower(i.scope) IN (%s) AND %s AND i.rank <= %d
     JOIN datasets d USING (datasetId)
     WHERE t.tableType = 'paleo' AND t.tableKind = 'measurement'
       AND NOT coalesce(t.isAxis, false) %s",
     if (is.null(tsids)) "" else "LEFT",
-    interp$scope,
+    # scope may list several (Iso2k files temperature under "isotope").
+    paste0("'", tolower(unlist(interp$scope)), "'", collapse = ", "),
     if (any_var) "i.variable IS NOT NULL" else sprintf("lower(i.variable) = lower('%s')", interp$variable),
     as.integer(interp$max_rank),
     if (!length(tsids)) "" else sprintf("AND t.TSid IN (%s)", paste0("'", tsids, "'", collapse = ",")))

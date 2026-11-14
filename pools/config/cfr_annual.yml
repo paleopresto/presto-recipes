@@ -1,22 +1,26 @@
-# Annual Common Era pool for presto-LMR: every annually resolved site series
-# the LMR container can assimilate, whatever its interpretation.
-#
-# A record qualifies on what cfr needs (an annual time step, a proxy class it
-# can model, overlap with the calibration period) and on being annual in
-# information (repeat and lag-1 checks). Whether it carries the climate signal
-# its PSM assumes is checked in the run, after calibration, against the
-# record's own interpretations (presto-templates LMR2 cfr_main_code.py):
-# interpretations must name a variable the PSM uses, and their directions must
-# agree with the fitted slopes. Records with no interpretation are left to the
-# calibration, as in LMRv2.1. This replaces PReSto2k's compilation-specific
-# assembly (Gondhalekar et al., paleopresto/presto2k paleobook/C01_c), which
-# would not extend to records added to LiPDverse later.
+# Presto2k: Common Era temperature records, following the PAGES 2k
+# Consortium (2017) inclusion criteria (Sci. Data 4:170088, "Record
+# selection") as pages2k2017.yml does, with two changes (2026-11-13):
+#   - temperature may be any of a record's interpretations, not only the
+#     first-ranked one, as long as its direction is known;
+#   - a temperature interpretation need not record its sign;
+#   - annually resolved columns of common temperature proxies (coral Sr/Ca and
+#     d18O, mostly CoralHydro2k) are admitted without an interpretation, from
+#     datasets with no interpreted column, each with the direction its proxy
+#     implies, which the method calibrating it enforces.
+# What a method can assimilate (presto-LMR: an annual time step, overlap with
+# the calibration period, a proxy class it models, independent years) is a
+# screen on this compilation, not part of it. The pool keeps its name
+# (cfr_annual) because the compilation exports are keyed on it.
 
 name: cfr_annual
-description: Annually resolved Common Era records the LMR (cfr) container can calibrate and assimilate
-reference: "Tardif et al. (2019) Clim. Past 15:1251 (LMRv2.1); PReSto2k assembly, paleopresto/presto2k C01_c"
-baseline: presto2k_2025.csv
-evaluator: cfr_annual
+description: Common Era temperature records meeting the PAGES 2k (2017) criteria, with annual uninterpreted coral temperature proxies (Presto2k)
+reference: "PAGES 2k Consortium (2017) Sci. Data 4:170088, doi:10.1038/sdata.2017.88"
+baseline: pages2k_2_0_0.csv
+evaluator: pages2k2017
+# The PAGES 2k (2017) curator ledgers: its records that fail a criterion are
+# admitted, and its curators' exclusions stand.
+ledger_pool: pages2k2017
 
 window: {min_year: 1, max_year: 2100}
 
@@ -28,78 +32,88 @@ exclude_variable_pattern: "^uncertainty|uncertainty$|error|^notes$|needsToBeChan
 # layers, count/kyr).
 exclude_units_pattern: "needsToBeChanged|/ ?century$|/ ?kyr$|/ ?ka$|per century"
 
-# Interpretation is not required (2026-10-12). Every column enters, and the
-# LMR run checks each calibrated record against its metadata instead: a
-# record whose interpretations name no variable its PSM uses (a salinity
-# coral, a sea-ice sodium series, a precipitation-isotope-only record under a
-# temperature PSM) is dropped, as is one whose fitted slope has the opposite
-# sign to the interpretation's direction. A record with no interpretation is
-# left to the calibration. See presto-templates LMR2 cfr_main_code.py.
-require_climate: false
-# ...but an uninterpreted column only from a dataset with no interpreted
-# column (climate or isotope scope). Where some columns are interpreted, the
-# others (sibling chronologies, d13C beside d18O, ice chemistry beside
-# isotopes) stay out.
-uninterpreted_only_in_uninterpreted_datasets: true
-# ...and only a variable usually interpreted as climate (2026-10-27): stable
-# isotopes, coral and foraminiferal elemental ratios, organic paleothermometers,
-# tree-ring and varve series, and climate reconstructions themselves. Not
-# radiocarbon, element concentrations, sediment properties, or age columns.
-uninterpreted_variable_pattern: "^(d18O|dD|d2H|d13C|Sr/?Ca|Mg/?Ca|Uk37|TEX86|temperature.*|precipitation.*|streamflow|PDSI|scPDSI|PHDI|SPEI|SPI|lakeLevel|trsgi|ringWidth|MXD|earlywood.*|latewood.*|varveThickness)$"
-# Without the interpretation requirement, the per-core measurement columns
-# that LiPDverse's tree-ring imports carry beside each chronology would enter
-# (12,009 in 2026-10-08b, all uninterpreted), as would per-colony
-# calcification rates. A pool record is a site series.
-exclude_description_pattern: "^Raw (ring width|MXD) measurements from series|measurements from individual samples"
-# With require_climate: false these only fill the has_climate column.
 interpretation:
-  scope: climate
-  variable: "*"
+  # Iso2k records temperature as an isotope-scope interpretation.
+  scope: [climate, isotope]
+  variable: temperature
+  # Any rank (PAGES 2k took the first only): a record whose authors describe
+  # a relation to temperature, as one of its interpretations, is in.
   max_rank: 99
+  # PAGES 2k required a known sign; Presto2k keeps temperature records whose
+  # sign is not recorded (2026-11-13). A common temperature proxy (below)
+  # with no sign takes the one its proxy implies.
   require_direction: false
-  positive_only: null
-climate_proxies:
-  archives: [Coral, Sclerosponge, MolluskShell, GlacierIce, Speleothem]
-  pattern: "^d18O$|^dD$|^d2H$|^Sr/Ca$|^SrCa$|^Mg/Ca$"
+  # "Ring-width series ... correlate positively"; "inversely responding series
+  # were excluded". Applied to tree-ring proxies only.
+  positive_only:
+    archives: [Wood]
+    proxy_pattern: "ring width|TRW|MXD|density|BI|blue intensity"
 
-# cfr's filter on resolution (dt in years) and its PSM calibration window and
-# minimum overlap (nobs_lb), as in the presto-LMR run config.
-max_resolution: 1.2
+# Common temperature proxies and the sign each implies. Uninterpreted columns
+# of these are admitted only when annually resolved and only from datasets
+# with no interpreted (climate or isotope scope) column; they, and interpreted
+# records of these proxies with no recorded sign, carry the implied sign,
+# and the method calibrating them rejects a fit of the other sign.
+uninterpreted_temperature_proxies:
+  - archives: [Coral, Sclerosponge]
+    variable_pattern: "^Sr/?Ca$"
+    direction: negative
+  - archives: [Coral, Sclerosponge, MolluskShell]
+    variable_pattern: "^d18O$"
+    direction: negative
+  - archives: [Coral]
+    variable_pattern: "^Li/?Mg$"
+    direction: negative
+
 # Annual in information, not only in time step: fail records whose successive
 # in-window values repeat exactly at least this often (step functions on an
 # annual grid: Wirth et al. 2013 flood counts per century, step-interpolated
 # North Greenland Traverse accumulation series, IC16WE*, IC00SC29).
 max_repeat_fraction: 0.5
-# Fail records whose successive in-window values have lag-1 autocorrelation
-# above this: series smoothed far beyond their annual step, which cfr would
-# treat as independent annual observations. Operational, from the presto-paper
-# LMR and BayGMST attribution (2026-10). There is no clean break: on
-# 2026-10-08b the median is 0.58 and 0.98 is about the 98th percentile, with
-# 15 records between 0.95 and 0.98 left in.
-max_lag1: 0.98
+# Metric only (n_calib, for the method screens and the review site).
 calibration_period: [1850, 2015]
-min_calibration_years: 25
 
-# PAGES 2k (2017)'s length rules for annually resolved records.
-length:
-  annual_terrestrial: 300
-  annual_marine: 50
+# The PAGES 2k (2017) rules, as in pages2k2017.yml.
+calendar_dated_archives: [Documents, Coral, Sclerosponge, MolluskShell, Wood]
+# A record is annually resolved if its median spacing in the window is at most
+# this many years. Operational: 1 year plus room for the odd missing ring.
+annual_max_resolution: 1.5
 marine_archives: [Coral, Sclerosponge, MolluskShell, MarineSediment]
+length:
+  annual_terrestrial: 300   # "annually resolved terrestrial records ... over 300 years"
+  annual_marine: 50         # "annually resolved marine records ... exceeded 50 years"
+  non_annual: 500           # "a minimum length of 500 years ... coarse initial screen"
+resolution:
+  terrestrial: 50           # "terrestrial and lacustrine ... 50 years or finer"
+  marine: 200               # "marine records: a minimum average resolution of 200 years"
+  exempt_archives: [Borehole]
+chronology:
+  # "Layer-counted records" need no age control beyond their counting.
+  layer_counted_archives: [Wood, Coral, Sclerosponge, MolluskShell, Documents, GlacierIce]
+  layer_counted_proxy_pattern: "varve"
+  # "at least one chronological control point near the most recent end of the
+  # record ... another near the oldest part (or 1 CE, whichever is younger)";
+  # records longer than 1000 years need one "approximately midway, typically
+  # within two centuries of the midpoint". Operational: "near" is also 200 yr.
+  tolerance: 200
+  tolerance_resolution_multiple: 2
+  midpoint_if_longer_than: 1000
+  core_top_if_younger_than: 1900
+  marine_reservoir_years: 400
+  missing_chron: pass
 
-# Archives lipd_to_pdb.py maps to a cfr proxy class (ptype) the LMR filter
-# keeps (coral, tree, ice, lake, bivalve, marine, sclerosponge, speleothem,
-# borehole, documents, hybrid).
-assimilable_archives: [Coral, Wood, GlacierIce, LakeSediment, MolluskShell, MarineSediment,
-                       Sclerosponge, Speleothem, Borehole, Documents, Hybrid]
-
+# Relaxed thresholds for records with no strictly passing record within
+# isolation_km (PAGES 2k's "regions with sparse data"). Operational values.
 data_poor_exception:
   isolation_km: 500
   relax:
     length.annual_terrestrial: 150
     length.annual_marine: 30
+    length.non_annual: 300
+    resolution.terrestrial: 100
+    resolution.marine: 300
+    chronology.tolerance: 400
 
-# PReSto2k's records are admitted; its 60 duplicate removals stand
-# (make_ledgers.R).
 curator_admissions: curator_admissions.csv
 curator_exclusions: curator_exclusions.csv
 
@@ -110,7 +124,11 @@ collapse_prefer_units: []
 # settle to the review queue (R/dedup.R).
 dedup:
   prefer: data
+  # One record per dataset, proxy, season and variable: a pollen dataset's
+  # temperature and precipitation reconstructions are both kept.
+  collapse_by_variable: true
 one_record_per_site:
   - publication_title: "^LegacyClimate"
     prefer_season: annual
     defer_within_km: 8
+    by_variable: true

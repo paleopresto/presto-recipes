@@ -69,7 +69,7 @@ layer_counted <- function(cand, chron_cfg) {
 interp_checks <- function(cand, cfg) {
   dir <- tolower(cand$direction)
   known <- dir %in% c("positive", "negative")
-  out <- data.frame(pass_direction = if (isTRUE(cfg$require_direction)) known else TRUE)
+  out <- data.frame(pass_direction = if (isTRUE(cfg$require_direction)) known else rep(TRUE, nrow(cand)))
   po <- cfg$positive_only
   if (!is.null(po)) {
     applies <- is_in(cand$archiveType, po$archives) &
@@ -130,6 +130,11 @@ eval_pages2k2017 <- function(x, ctrl, cfg) {
   }, x$datasetId, x$min_win, x$max_win, x$res_win, lc)
   x$chron_missing <- is.na(x$pass_chronology)
   if (identical(cc$missing_chron, "pass")) x$pass_chronology[x$chron_missing] <- TRUE
+
+  # An uninterpreted column admitted as a common temperature proxy must be
+  # annually resolved, so that the method calibrating it can check its sign.
+  if (!is.null(x$uninterpreted_proxy))
+    x$pass_uninterpreted_annual <- !x$uninterpreted_proxy | (!is.na(x$res_win) & x$res_win <= cfg$annual_max_resolution)
 
   x <- cbind(x, interp_checks(x, cfg$interpretation))
   finalize(x)
@@ -241,7 +246,7 @@ read_ledger <- function(cfg, key) {
   f <- cfg[[key]]
   if (is.null(f)) return(character())
   l <- utils::read.csv(file.path(cfg$.dir, "baselines", f), stringsAsFactors = FALSE)
-  l$TSid[l$pool == cfg$name]
+  l$TSid[l$pool == (cfg$ledger_pool %||% cfg$name)]
 }
 
 build_pool <- function(con, cfg) {
@@ -255,6 +260,37 @@ build_pool <- function(con, cfg) {
     more <- pool_candidates(con, utils::modifyList(cfg$interpretation, list(max_rank = 99)), extra)
     if (!is.null(cand$has_climate)) more$has_climate <- TRUE
     cand <- rbind(cand, more)
+  }
+  # Common temperature proxies: an interpreted record with no recorded sign
+  # takes the sign its proxy implies, and uninterpreted columns of these
+  # proxies, from datasets with no interpreted column, are candidates with
+  # that sign. The method calibrating them rejects a fit of the other sign.
+  ut <- cfg$uninterpreted_temperature_proxies
+  implied <- function(u) {
+    dirn <- rep(NA_character_, nrow(u))
+    for (r in ut) {
+      hit <- is.na(dirn) & is_in(u$archiveType, r$archives) &
+        (matches(u$variableName, r$variable_pattern) | matches(u$proxy, r$variable_pattern))
+      dirn[hit] <- r$direction
+    }
+    dirn
+  }
+  if (!is.null(ut)) {
+    cand$uninterpreted_proxy <- FALSE
+    unsigned <- !tolower(cand$direction) %in% c("positive", "negative")
+    di <- ifelse(unsigned, implied(cand), NA_character_)
+    cand$direction_implied <- !is.na(di)
+    cand$direction[cand$direction_implied] <- di[cand$direction_implied]
+    ii <- DBI::dbGetQuery(con, "
+      SELECT DISTINCT t.datasetId FROM interpretations i JOIN timeseries t USING (TSid)
+      WHERE i.variable IS NOT NULL AND lower(i.scope) IN ('climate', 'isotope')")
+    u <- pool_candidates(con, list(scope = "climate", variable = "*", max_rank = 99))
+    u <- u[is.na(u$interpRank) & !u$datasetId %in% ii$datasetId & !u$TSid %in% cand$TSid, ]
+    dirn <- implied(u)
+    u <- u[!is.na(dirn), ]; u$direction <- dirn[!is.na(dirn)]
+    u$uninterpreted_proxy <- rep(TRUE, nrow(u)); u$direction_implied <- rep(TRUE, nrow(u))
+    if (!is.null(cand$has_climate)) u$has_climate <- rep(TRUE, nrow(u))
+    cand <- rbind(cand, u[names(cand)])
   }
   if (!is.null(cfg$exclude_variable_pattern))
     cand <- cand[!grepl(cfg$exclude_variable_pattern, cand$variableName, ignore.case = TRUE) |

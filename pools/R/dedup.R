@@ -64,7 +64,11 @@ dedup_defaults <- list(
   # Compilations whose membership the dedup does not read: test tags, and
   # PReSto's own, which these pools compute (a published PReSto compilation
   # would otherwise make its members look curator-separated, see Versions).
-  ignore_compilations = "test|^PReSto", cross_same_frac = 0.8
+  ignore_compilations = "test|^PReSto", cross_same_frac = 0.8,
+  # Stage 0 collapses one dataset's columns by proxy and season; with this on,
+  # also by variable, so a pool of any climate variable keeps a pollen
+  # record's temperature and precipitation reconstructions as two records.
+  collapse_by_variable = FALSE
 )
 
 haversine_km <- function(lat1, lon1, lat2, lon2) {
@@ -205,10 +209,11 @@ norm_season <- function(x) {
 # Only columns that name their proxy are collapsed: with no proxy, two
 # temperature columns of one core (alkenone and Mg/Ca SST) cannot be told
 # apart from two versions of one record, and both are kept.
-collapse_within_dataset <- function(pool, prefer_units = character(), curated = character()) {
+collapse_within_dataset <- function(pool, prefer_units = character(), curated = character(), by_variable = FALSE) {
   has_proxy <- !is.na(pool$proxy) & nzchar(pool$proxy)
   key <- paste(pool$datasetId, ifelse(has_proxy, norm_proxy(pool), paste0("tsid:", pool$TSid)),
                norm_season(pool$seasonality), sep = "|")
+  if (isTRUE(by_variable)) key <- paste(key, tolower(pool$variableName), sep = "|")
   o <- order(key, -as.integer(pool$TSid %in% curated), -as.integer(pool$primaryTimeseries %in% TRUE),
              -as.integer(pool$units %in% prefer_units), -pool$n_win, pool$tableId, pool$TSid)
   p <- pool[o, ]
@@ -257,13 +262,17 @@ collapse_syntheses <- function(con, pool, rules) {
       drop <- c(drop, s$TSid[off])
       s <- s[!off, ]
     }
-    o <- order(s$datasetId, -as.integer(norm_season(s$seasonality) %in% r$prefer_season), -s$n_win, s$TSid)
+    # by_variable: one record per site and variable (a pool of any climate
+    # variable keeps a site's temperature and precipitation reconstructions).
+    grp <- function(s) if (isTRUE(r$by_variable)) paste(s$datasetId, tolower(s$variableName)) else s$datasetId
+    o <- order(grp(s), -as.integer(norm_season(s$seasonality) %in% r$prefer_season), -s$n_win, s$TSid)
     s <- s[o, ]
-    drop <- c(drop, s$TSid[duplicated(s$datasetId)])
-    s <- s[!duplicated(s$datasetId), ]
+    drop <- c(drop, s$TSid[duplicated(grp(s))])
+    s <- s[!duplicated(grp(s)), ]
     others <- pool[!pool$datasetId %in% ds & !pool$TSid %in% drop, ]
     for (k in seq_len(nrow(s))) {
-      o2 <- others[norm_proxy(others) == norm_proxy(s[k, ]) & others$archiveType %in% s$archiveType[k], ]
+      o2 <- others[norm_proxy(others) == norm_proxy(s[k, ]) & others$archiveType %in% s$archiveType[k] &
+                     (!isTRUE(r$by_variable) | tolower(others$variableName) %in% tolower(s$variableName[k])), ]
       if (nrow(o2) && any(haversine_km(s$lat[k], s$lon[k], o2$lat, o2$lon) <= r$defer_within_km, na.rm = TRUE))
         drop <- c(drop, s$TSid[k])
     }
@@ -309,7 +318,7 @@ collapse_same_site <- function(con, pool, rules) {
 dedup_pool <- function(con, pool, points, prior = NULL, prefer_units = character(),
                        syntheses = list(), curated = character(), opt = dedup_defaults,
                        same_site = list(), prefer_annual = FALSE) {
-  within <- collapse_within_dataset(pool, prefer_units, curated)
+  within <- collapse_within_dataset(pool, prefer_units, curated, opt$collapse_by_variable)
   within <- c(within, collapse_syntheses(con, pool[!pool$TSid %in% within, ], syntheses))
   site <- collapse_same_site(con, pool[!pool$TSid %in% within, ], same_site)
   site <- setdiff(site, curated)
