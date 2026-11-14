@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>__TITLE__</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@400;500;600&family=IBM+Plex+Sans:wght@400;600&display=swap">
+<style>
+/* Duplicate review: pair list on the left; the two records side by side, their series overlaid, and the decision on the right. */
+:root {
+  --bg: #f3f4f1; --panel: #ffffff; --ink: #1d2324; --muted: #5d6768; --faint: #8b9596; --line: #dde1dc;
+  --accent: #1f6f78; --accent-soft: #d9ecee; --sel: #e7efe9;
+  --a: #2a64c8; --b: #c8641e; --a-soft: #e2ebfa; --b-soft: #f8e8dc;
+  --ok: #2e7d4f; --flag: #a86a00;
+  --f-ui: "IBM Plex Sans Condensed", "Arial Narrow", system-ui, sans-serif;
+  --f-body: "IBM Plex Sans", system-ui, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #151a1b; --panel: #1d2425; --ink: #e3e8e6; --muted: #a2adac; --faint: #77827f; --line: #2f3839;
+  --accent: #5fb7bf; --accent-soft: #1f3a3d; --sel: #233130;
+  --a: #7fa8ee; --b: #eb9a5e; --a-soft: #1e2b42; --b-soft: #3a2a1d; --ok: #6cc28d; --flag: #e0a83a; color-scheme: dark; } }
+html, body { height: 100%; margin: 0; }
+body { background: var(--bg); color: var(--ink); font: 13px/1.4 var(--f-body); }
+.app { display: grid; grid-template-columns: 300px minmax(0, 1fr); height: 100%; }
+aside { border-right: 1px solid var(--line); background: var(--panel); display: flex; flex-direction: column; min-height: 0; }
+.brand { padding: 12px 14px 4px; font: 600 15px var(--f-ui); }
+.brand small { display: block; font: 400 11px var(--f-mono); color: var(--muted); }
+.progress { padding: 4px 14px 10px; font: 12px var(--f-ui); color: var(--muted); border-bottom: 1px solid var(--line); }
+.progress b { color: var(--ink); }
+.list { overflow-y: auto; flex: 1; }
+.item { padding: 7px 14px; border-bottom: 1px solid var(--line); cursor: pointer; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; align-items: center; }
+.item:hover { background: var(--sel); }
+.item[aria-selected="true"] { background: var(--accent-soft); }
+.item .nm { font: 500 12.5px var(--f-ui); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.item .sub { font: 11px var(--f-mono); color: var(--muted); }
+.item .st { font: 600 10px var(--f-ui); letter-spacing: .06em; text-transform: uppercase; }
+.keys { padding: 8px 14px; border-top: 1px solid var(--line); font: 11px var(--f-ui); color: var(--muted); line-height: 1.7; }
+kbd { font: 11px var(--f-mono); border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 3px; padding: 0 4px; background: var(--bg); color: var(--ink); }
+main { overflow-y: auto; padding: 14px 18px 28px; min-width: 0; }
+.stats { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+.chip { font: 500 11.5px var(--f-ui); padding: 2px 8px; border-radius: 10px; background: var(--panel); border: 1px solid var(--line); color: var(--muted); }
+.chip b { color: var(--ink); font-weight: 600; }
+.chip.why { background: var(--accent-soft); color: var(--accent); border-color: transparent; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 10px 12px; min-width: 0; }
+.card h2 { font: 600 11px var(--f-ui); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0 0 8px; display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.tools button { font: 500 11px var(--f-ui); padding: 1px 7px; border: 1px solid var(--line); border-radius: 3px; background: var(--bg); color: var(--muted); cursor: pointer; text-transform: none; letter-spacing: 0; }
+.tools button[aria-pressed="true"] { color: var(--accent); border-color: var(--accent); }
+.chart { width: 100%; height: 300px; display: block; }
+.legend { display: flex; gap: 14px; font: 12px var(--f-ui); color: var(--muted); margin-top: 4px; flex-wrap: wrap; }
+.sw { display: inline-block; width: 14px; height: 3px; border-radius: 2px; vertical-align: middle; margin-right: 5px; }
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+.rec { border-top: 4px solid var(--a); }
+.rec.b { border-top-color: var(--b); }
+.rec h3 { font: 600 16px/1.25 var(--f-ui); margin: 0 0 2px; overflow-wrap: anywhere; }
+.rec .tag { font: 600 11px var(--f-mono); color: var(--a); }
+.rec.b .tag { color: var(--b); }
+.rec .sug { font: 600 10px var(--f-ui); letter-spacing: .06em; text-transform: uppercase; color: var(--ok); margin-left: 6px; }
+dl { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 3px 12px; margin: 8px 0 0; }
+dt { font: 12px var(--f-ui); color: var(--muted); }
+dd { margin: 0; font: 12px var(--f-mono); overflow-wrap: anywhere; font-variant-numeric: tabular-nums; }
+.pub { font: 12px/1.45 var(--f-body); margin: 6px 0 0; }
+.pub a { color: var(--accent); }
+.decide { margin-top: 12px; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 12px; align-items: start; }
+.btns { display: flex; gap: 6px; flex-wrap: wrap; }
+.btns button { font: 600 13px var(--f-ui); padding: 8px 12px; border-radius: 5px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); cursor: pointer; }
+.btns button[data-c="a"][aria-pressed="true"] { background: var(--a); border-color: var(--a); color: var(--panel); }
+.btns button[data-c="b"][aria-pressed="true"] { background: var(--b); border-color: var(--b); color: var(--panel); }
+.btns button[data-c="both"][aria-pressed="true"] { background: var(--ok); border-color: var(--ok); color: var(--panel); }
+.btns button:focus-visible, .item:focus-visible, textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+textarea { width: 100%; box-sizing: border-box; min-height: 58px; font: 13px var(--f-body); padding: 6px 8px; border-radius: 4px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); resize: vertical; }
+.save { font: 11px var(--f-ui); color: var(--faint); margin-top: 4px; }
+.muted { color: var(--muted); }
+@media (max-width: 900px) {
+  .app { grid-template-columns: 1fr; height: auto; }
+  .list { max-height: 220px; }
+  .pair, .decide { grid-template-columns: 1fr; }
+  main { padding: 12px 16px 24px; }
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside>
+    <div class="brand">__HEADING__<small id="snap"></small></div>
+    <div class="progress" id="prog"></div>
+    <div class="list" id="list" role="listbox" aria-label="Pairs"></div>
+    <div class="keys"><kbd>j</kbd>/<kbd>k</kbd> next/previous · <kbd>a</kbd> keep A · <kbd>b</kbd> keep B · <kbd>x</kbd> keep both · <kbd>0</kbd> clear · <kbd>n</kbd> note · <kbd>s</kbd> standardize · <kbd>u</kbd> next undecided</div>
+  </aside>
+  <main id="main"></main>
+</div>
+<script type="application/json" id="data">__DATA__</script>
+<script>
+(() => {
+const D = JSON.parse(document.getElementById('data').textContent);
+const P = D.pairs, SLUG = D.slug;
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const fmt = (x, d = 1) => x == null ? 'n/a' : Number(x).toLocaleString(undefined, { maximumFractionDigits: d });
+const WHY = { review: 'Possible versions: correlated within 50 km, no shared publication', partial: 'Partial overlap: neither lies 90% within the other' };
+let dec = {}, cur = 0, stdz = false, store = 'local';
+const LS = 'presto-dedup-' + SLUG;
+try { dec = JSON.parse(localStorage.getItem(LS) || '{}'); } catch (e) { dec = {}; }
+const saveLocal = () => { try { localStorage.setItem(LS, JSON.stringify(dec)); } catch (e) {} };
+const SAVED = 'Saved to verdicts/dedup_' + SLUG + '/', LOCAL = 'Not saved to disk (server not reachable); kept in this browser';
+$('#snap').textContent = 'export ' + D.snapshot + ' · ' + P.length + ' pairs';
+
+function renderList() {
+  $('#list').innerHTML = P.map((p, i) => {
+    const c = (dec[p.key] || {}).choice;
+    const lab = c === 'a' ? ['var(--a)', 'Keep A'] : c === 'b' ? ['var(--b)', 'Keep B'] : c === 'both' ? ['var(--ok)', 'Both'] : ['var(--faint)', ''];
+    return `<div class="item" role="option" data-i="${i}" aria-selected="${i === cur}"><span style="min-width:0">
+      <div class="nm">${esc(p.a.dataSetName)} <span class="muted">·</span> ${esc(p.b.dataSetName)}</div>
+      <div class="sub">${esc(p.a.variableName)} · ${fmt(p.km)} km · r ${fmt(p.r, 2)}</div></span>
+      <span class="st" style="color:${lab[0]}">${lab[1]}</span></div>`;
+  }).join('');
+  const n = P.filter(p => (dec[p.key] || {}).choice).length;
+  $('#prog').innerHTML = `<b>${n}</b> of ${P.length} decided`;
+}
+$('#list').addEventListener('click', e => { const it = e.target.closest('.item'); if (it) { cur = +it.dataset.i; renderList(); show(); } });
+
+function chart(p) {
+  const W = 900, H = 300, m = { l: 56, r: 14, t: 12, b: 30 };
+  const ser = [p.a, p.b].map(r => {
+    let v = r.value.slice();
+    if (stdz) { const ok = v.filter(x => x != null); const mu = ok.reduce((s, x) => s + x, 0) / ok.length; const sd = Math.sqrt(ok.reduce((s, x) => s + (x - mu) ** 2, 0) / Math.max(1, ok.length - 1)) || 1; v = v.map(x => x == null ? null : (x - mu) / sd); }
+    return { y: r.year, v };
+  });
+  const ys = ser.flatMap(s => s.y), vs = ser.flatMap(s => s.v).filter(x => x != null);
+  if (!ys.length) return '<p class="muted">No values.</p>';
+  let x0 = Math.min(...ys), x1 = Math.max(...ys); if (x1 - x0 < 1) { x0 -= 1; x1 += 1; }
+  let v0 = Math.min(...vs), v1 = Math.max(...vs); const pad = (v1 - v0) * 0.06 || 1; v0 -= pad; v1 += pad;
+  const X = x => m.l + (x - x0) / (x1 - x0) * (W - m.l - m.r), Y = v => H - m.b - (v - v0) / (v1 - v0) * (H - m.t - m.b);
+  const ticks = (a, b, n) => { const s = Math.pow(10, Math.floor(Math.log10((b - a) / n))); const st = [1, 2, 2.5, 5, 10].map(k => k * s).find(k => (b - a) / k <= n) || s * 10; const t = []; for (let v = Math.ceil(a / st) * st; v <= b + 1e-9; v += st) t.push(+v.toFixed(10)); return t; };
+  const line = (s, col) => {
+    const dt = s.y.slice(1).map((y, i) => y - s.y[i]).sort((a, b) => a - b); const med = dt[Math.floor(dt.length / 2)] || 1;
+    let d = '', pen = false;
+    s.y.forEach((y, i) => { if (s.v[i] == null) { pen = false; return; } d += (!pen || y - s.y[i - 1] > 5 * med ? 'M' : 'L') + X(y).toFixed(1) + ',' + Y(s.v[i]).toFixed(1); pen = true; });
+    return `<path d="${d}" fill="none" stroke="${col}" stroke-width="1.6" stroke-linejoin="round" opacity=".9"/>`;
+  };
+  return `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Both series over time">
+    ${ticks(v0, v1, 5).map(v => `<line x1="${m.l}" x2="${W - m.r}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--line)"/><text x="${m.l - 6}" y="${Y(v) + 3}" text-anchor="end" font-size="10" fill="var(--muted)" font-family="var(--f-mono)">${+v.toPrecision(4)}</text>`).join('')}
+    ${ticks(x0, x1, 9).filter(x => x >= x0 && x <= x1).map(x => `<text x="${X(x)}" y="${H - m.b + 15}" text-anchor="middle" font-size="10" fill="var(--muted)" font-family="var(--f-mono)">${Math.round(x)}</text>`).join('')}
+    <line x1="${m.l}" x2="${W - m.r}" y1="${H - m.b}" y2="${H - m.b}" stroke="var(--faint)"/>
+    ${line(ser[0], 'var(--a)')}${line(ser[1], 'var(--b)')}
+    <text x="${W - m.r}" y="${H - 3}" text-anchor="end" font-size="10" fill="var(--muted)">year CE</text>
+    <text transform="translate(13 ${(H - m.b + m.t) / 2}) rotate(-90)" text-anchor="middle" font-size="10" fill="var(--muted)">${stdz ? 'standardized' : esc(p.a.variableName) + ' (' + esc(p.a.units || '') + (p.b.units !== p.a.units ? ' / ' + esc(p.b.units || '') : '') + ')'}</text>
+  </svg>`;
+}
+
+function rec(r, side, p) {
+  const pubs = (r.publications || []).filter(x => x.title || x.doi).slice(0, 3).map(x => `<p class="pub">${esc((x.authors || '').split(';').slice(0, 3).join('; '))}${(x.authors || '').split(';').length > 3 ? ' et al.' : ''} ${x.year ? '(' + esc(x.year) + ')' : ''}. ${esc(x.title || '')}. ${x.doi ? `<a href="https://doi.org/${esc(String(x.doi).replace(/^https?:\/\/(dx\.)?doi\.org\//, ''))}" target="_blank" rel="noopener">doi</a>` : ''}</p>`).join('');
+  const interp = (r.interpretations || []).map(i => `${esc(i.variable)}${i.direction ? ' (' + esc(i.direction) + ')' : ''}${i.seasonality ? ', ' + esc(i.seasonality) : ''}`).join('; ');
+  return `<section class="card rec ${side}">
+    <span class="tag">${side.toUpperCase()}</span>${p.suggest === side ? '<span class="sug">rules would keep</span>' : ''}
+    <h3>${esc(r.dataSetName)}</h3>
+    <div class="muted" style="font:12px var(--f-mono)">${esc(r.TSid)}</div>
+    <dl>
+      <dt>variable</dt><dd>${esc(r.variableName)}${r.units ? ' · ' + esc(r.units) : ''}</dd>
+      <dt>archive</dt><dd>${esc(r.archiveType)}</dd>
+      <dt>lat, lon</dt><dd>${fmt(r.lat, 3)}, ${fmt(r.lon, 3)}</dd>
+      <dt>span</dt><dd>${fmt(r.start)} to ${fmt(r.end)}</dd>
+      <dt>values</dt><dd>${fmt(r.n, 0)} · ${fmt(r.resolution, 2)} yr resolution</dd>
+      <dt>compilations</dt><dd>${esc((r.compilations || []).filter(c => !/PReSto|test/i.test(c)).join(', ') || 'none')}</dd>
+      <dt>interpretation</dt><dd>${interp || '<span class="muted">none</span>'}</dd>
+    </dl>${pubs}</section>`;
+}
+
+function show() {
+  try { render(); } catch (e) { $('#main').innerHTML = `<p class="muted">Could not display this pair (${esc(e.message)}).</p>`; }
+}
+function render() {
+  const p = P[cur]; if (!p) { $('#main').innerHTML = ''; return; }
+  const d = dec[p.key] || {};
+  $('#main').innerHTML = `
+    <div class="stats">
+      <span class="chip why">${esc(WHY[p.rule] || p.rule)}</span>
+      <span class="chip"><b>${fmt(p.km)}</b> km apart</span>
+      <span class="chip"><b>${fmt(p.n, 0)}</b> shared points</span>
+      <span class="chip">r <b>${fmt(p.r, 3)}</b></span>
+      <span class="chip">r of differences <b>${fmt(p.r_diff, 3)}</b></span>
+      <span class="chip">${p.same_doi ? '<b>shared publication</b>' : 'no shared publication'}</span>
+    </div>
+    <section class="card"><h2>Both series <span class="tools"><button id="std" aria-pressed="${stdz}">Standardize</button></span></h2>${chart(p)}
+      <div class="legend"><span><span class="sw" style="background:var(--a)"></span>A ${esc(p.a.dataSetName)}</span><span><span class="sw" style="background:var(--b)"></span>B ${esc(p.b.dataSetName)}</span></div></section>
+    <div class="pair">${rec(p.a, 'a', p)}${rec(p.b, 'b', p)}</div>
+    <div class="decide card">
+      <div class="btns" role="group" aria-label="Decision">
+        <button data-c="a" aria-pressed="${d.choice === 'a'}"><kbd>a</kbd> Keep A</button>
+        <button data-c="b" aria-pressed="${d.choice === 'b'}"><kbd>b</kbd> Keep B</button>
+        <button data-c="both" aria-pressed="${d.choice === 'both'}"><kbd>x</kbd> Keep both</button>
+      </div>
+      <div><textarea id="note" placeholder="Why (n to focus). Saved with the decision and copied into dedup_decisions.csv.">${esc(d.note || '')}</textarea>
+        <div class="save" id="save">${store === 'server' ? SAVED : LOCAL}</div></div>
+    </div>`;
+  document.querySelectorAll('.btns button').forEach(b => b.addEventListener('click', () => choose(b.dataset.c)));
+  $('#std').addEventListener('click', () => { stdz = !stdz; show(); });
+  let t = null; $('#note').addEventListener('input', e => { clearTimeout(t); const v = e.target.value; t = setTimeout(() => save(p, { note: v }), 600); });
+  const it = document.querySelector(`.item[data-i="${cur}"]`); if (it) it.scrollIntoView({ block: 'nearest' });
+}
+
+let writing = Promise.resolve();
+const post = (key, d) => fetch('/api/dedup/' + SLUG, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ key, decision: d }) })
+  .then(x => { if (!x.ok) throw new Error('HTTP ' + x.status); });
+function save(p, patch) {
+  const next = { ...(dec[p.key] || {}), ...patch, tsidA: p.a.TSid, tsidB: p.b.TSid, nameA: p.a.dataSetName, nameB: p.b.dataSetName, at: new Date().toISOString() };
+  dec[p.key] = next; saveLocal(); renderList();
+  writing = writing.then(() => post(p.key, next)).then(() => { store = 'server'; const e = $('#save'); if (e) e.textContent = SAVED; })
+    .catch(() => { store = 'local'; const e = $('#save'); if (e) e.textContent = LOCAL; });
+}
+function choose(c) {
+  const p = P[cur]; if (!p) return;
+  save(p, { choice: (dec[p.key] || {}).choice === c ? null : c });
+  document.querySelectorAll('.btns button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.c === (dec[p.key] || {}).choice)));
+}
+document.addEventListener('keydown', e => {
+  if (e.target.matches('textarea')) { if (e.key === 'Escape') e.target.blur(); return; }
+  if (e.metaKey || e.ctrlKey || e.altKey) return;
+  const k = e.key;
+  if (k === 'j' || k === 'ArrowDown') { cur = Math.min(P.length - 1, cur + 1); renderList(); show(); e.preventDefault(); }
+  else if (k === 'k' || k === 'ArrowUp') { cur = Math.max(0, cur - 1); renderList(); show(); e.preventDefault(); }
+  else if (k === 'a') choose('a'); else if (k === 'b') choose('b'); else if (k === 'x') choose('both');
+  else if (k === '0') { const p = P[cur]; if (p) { save(p, { choice: null }); show(); } }
+  else if (k === 'n') { $('#note').focus(); e.preventDefault(); }
+  else if (k === 's') { stdz = !stdz; show(); }
+  else if (k === 'u') { const i = P.findIndex((p, j) => j > cur && !(dec[p.key] || {}).choice); if (i >= 0) { cur = i; renderList(); show(); } }
+});
+renderList(); show();
+(async () => {
+  try {
+    const x = await fetch('/api/dedup/' + SLUG); if (!x.ok) throw new Error();
+    const srv = await x.json(); const push = [];
+    for (const [k, v] of Object.entries(dec)) if (!srv[k] || (v.at || '') > (srv[k].at || '')) { srv[k] = v; push.push(k); }
+    dec = srv; store = 'server'; saveLocal(); renderList(); show();
+    for (const k of push) writing = writing.then(() => post(k, dec[k])).catch(() => { store = 'local'; });
+  } catch (e) { /* no server */ }
+})();
+})();
+</script>
+</body>
+</html>
