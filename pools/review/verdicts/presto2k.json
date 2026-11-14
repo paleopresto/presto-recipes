@@ -1,0 +1,1045 @@
+{
+ "Presto2k__Arc_001": {
+  "TSid": "Arc_001",
+  "compilation": "Presto2k",
+  "dataSetName": "Arc-BlueLake.Bird.2008",
+  "status": "ok",
+  "updated": "2026-11-13T22:55:48.129Z"
+ },
+ "Presto2k__Arc_002": {
+  "TSid": "Arc_002",
+  "compilation": "Presto2k",
+  "dataSetName": "Arc-Avam-Taimyr.Briffa.2008",
+  "status": "ok",
+  "updated": "2026-11-13T22:50:04.823Z"
+ },
+ "Presto2k__Arc_004": {
+  "TSid": "Arc_004",
+  "compilation": "Presto2k",
+  "dataSetName": "Arc-LowerMurrayLake.Cook.2008",
+  "status": "ok",
+  "updated": "2026-11-13T22:52:36.341Z"
+ },
+ "Presto2k__Arc_007": {
+  "TSid": "Arc_007",
+  "compilation": "Presto2k",
+  "dataSetName": "Arc-GulfofAlaska.Wilson.2014",
+  "status": "ok",
+  "updated": "2026-11-13T22:57:15.415Z"
+ },
+ "Presto2k__Arc_008": {
+  "TSid": "Arc_008",
+  "compilation": "Presto2k",
+  "dataSetName": "Arc-Yukon.D'Arrigo.2006",
+  "status": "ok",
+  "updated": "2026-11-13T22:55:07.096Z"
+ },
+ "Presto2k__Arc_016": {
+  "TSid": "Arc_016",
+  "compilation": "Presto2k",
+  "dataSetName": "Arc-Indigirka.Hughes.1999",
+  "status": "ok",
+  "updated": "2026-11-13T22:50:08.143Z"
+ },
+ "Presto2k__Arc_020": {
+  "TSid": "Arc_020",
+  "compilation": "Presto2k",
+  "dataSetName": "Arc-LakeC2.Lamoureux.1996",
+  "status": "ok",
+  "updated": "2026-11-13T22:52:17.982Z"
+ },
+ "Presto2k__Arc_023": {
+  "TSid": "Arc_023",
+  "compilation": "Presto2k",
+  "dataSetName": "Arc-LenaRiver.McDonald.1998",
+  "status": "ok",
+  "updated": "2026-11-13T22:50:06.215Z"
+ },
+ "Presto2k__Arc_027": {
+  "TSid": "Arc_027",
+  "compilation": "Presto2k",
+  "dataSetName": "Arc-NGTB18.Schwager.1998",
+  "status": "exclude",
+  "updated": "2026-11-13T22:47:44.744Z"
+ },
+ "Presto2k__Arc_028": {
+  "TSid": "Arc_028",
+  "compilation": "Presto2k",
+  "dataSetName": "Arc-NGTB21.Schwager.1998",
+  "status": "exclude",
+  "updated": "2026-11-13T22:52:06.111Z"
+ },
+ "Presto2k__Arc_039": {
+  "TSid": "Arc_039",
+  "compilation": "Presto2k",
+  "dataSetName": "Arc-MooseLake.Clegg.2010",
+  "status": "ok",
+  "updated": "2026-11-13T23:00:35.586Z"
+ },
+ "Presto2k__Arc_040": {
+  "TSid": "Arc_040",
+  "compilation": "Presto2k",
+  "dataSetName": "Arc-HudsonLake.Clegg.2011",
+  "status": "ok",
+  "updated": "2026-11-13T23:00:30.129Z"
+ },
+ "Presto2k__Arc_041": {
+  "TSid": "Arc_041",
+  "compilation": "Presto2k",
+  "dataSetName": "Arc-ScreamingLynxLake.Clegg.2011",
+  "status": "ok",
+  "updated": "2026-11-13T22:55:24.820Z"
+ },
+ "Presto2k__Arc_043": {
+  "TSid": "Arc_043",
+  "compilation": "Presto2k",
+  "dataSetName": "Arc-DevonIceCap.Fisher.1983",
+  "status": "ok",
+  "updated": "2026-11-13T22:54:20.887Z"
+ },
+ "Presto2k__Arc_073": {
+  "TSid": "Arc_073",
+  "compilation": "Presto2k",
+  "dataSetName": "Arc-HalletLake.McKay.2008",
+  "status": "ok",
+  "updated": "2026-11-13T22:57:23.249Z"
+ },
+ "Presto2k__Arc_078": {
+  "TSid": "Arc_078",
+  "compilation": "Presto2k",
+  "dataSetName": "Arc-Kongressvatnet.D'Andrea.2012",
+  "status": "ok",
+  "updated": "2026-11-13T22:48:28.297Z"
+ },
+ "Presto2k__Arc_090": {
+  "TSid": "Arc_090",
+  "compilation": "Presto2k",
+  "dataSetName": "Arc-AkademiiNaukIceCap.Opel.2013",
+  "status": "ok",
+  "updated": "2026-11-13T22:51:32.838Z"
+ },
+ "Presto2k__Arc_093": {
+  "TSid": "Arc_093",
+  "compilation": "Presto2k",
+  "dataSetName": "Arc-MackenzieDelta.Porter.2013",
+  "status": "ok",
+  "updated": "2026-11-13T22:54:53.176Z"
+ },
+ "Presto2k__Arc_099": {
+  "TSid": "Arc_099",
+  "compilation": "Presto2k",
+  "dataSetName": "Arc-WindyDome.Henderson.2011",
+  "status": "ok",
+  "updated": "2026-11-13T22:49:18.416Z"
+ },
+ "Presto2k__Arc_099d18O": {
+  "TSid": "Arc_099d18O",
+  "compilation": "Presto2k",
+  "dataSetName": "Arc-WindyDome.Henderson.2011",
+  "status": "ok",
+  "updated": "2026-11-13T22:49:02.638Z"
+ },
+ "Presto2k__Asia_108": {
+  "TSid": "Asia_108",
+  "compilation": "Presto2k",
+  "dataSetName": "Asi-MTASSP.Davi.2013",
+  "status": "ok",
+  "updated": "2026-11-13T22:51:15.618Z"
+ },
+ "Presto2k__Asia_109": {
+  "TSid": "Asia_109",
+  "compilation": "Presto2k",
+  "dataSetName": "Asi-MTASMD.Davi.2013",
+  "status": "ok",
+  "updated": "2026-11-13T22:51:11.537Z"
+ },
+ "Presto2k__Asia_110": {
+  "TSid": "Asia_110",
+  "compilation": "Presto2k",
+  "dataSetName": "Asi-RUSS219.Jacoby.2010",
+  "status": "ok",
+  "updated": "2026-11-13T22:51:00.268Z"
+ },
+ "Presto2k__Asia_112": {
+  "TSid": "Asia_112",
+  "compilation": "Presto2k",
+  "dataSetName": "Asi-JAPA013.Yasue.1997",
+  "status": "ok",
+  "updated": "2026-11-13T22:51:19.556Z"
+ },
+ "Presto2k__Asia_113": {
+  "TSid": "Asia_113",
+  "compilation": "Presto2k",
+  "dataSetName": "Asi-JAPA015.Yasue.2013",
+  "status": "ok",
+  "updated": "2026-11-13T22:51:05.984Z"
+ },
+ "Presto2k__Asia_115": {
+  "TSid": "Asia_115",
+  "compilation": "Presto2k",
+  "dataSetName": "Asi-JAPA014.Yasue.2013",
+  "status": "ok",
+  "updated": "2026-11-13T22:51:08.360Z"
+ },
+ "Presto2k__Asia_116": {
+  "TSid": "Asia_116",
+  "compilation": "Presto2k",
+  "dataSetName": "Asi-JAPA012.Yasue.1997",
+  "status": "ok",
+  "updated": "2026-11-13T22:38:43.117Z"
+ },
+ "Presto2k__Asia_133": {
+  "TSid": "Asia_133",
+  "compilation": "Presto2k",
+  "dataSetName": "Asi-RUSS236.Sano.2009",
+  "status": "ok",
+  "updated": "2026-11-13T22:50:10.560Z"
+ },
+ "Presto2k__Asia_216": {
+  "TSid": "Asia_216",
+  "compilation": "Presto2k",
+  "dataSetName": "Asi-NOGSAK.PAGES2k.2013",
+  "status": "ok",
+  "updated": "2026-11-13T22:38:32.375Z"
+ },
+ "Presto2k__Asia_235": {
+  "TSid": "Asia_235",
+  "compilation": "Presto2k",
+  "dataSetName": "Asi-KunashirIsland.Demezhko.2009",
+  "status": "ok",
+  "updated": "2026-11-13T22:50:25.488Z"
+ },
+ "Presto2k__IC00SC1801A": {
+  "TSid": "IC00SC1801A",
+  "compilation": "Presto2k",
+  "dataSetName": "IC00SC18",
+  "status": "ok",
+  "updated": "2026-11-13T22:48:02.768Z"
+ },
+ "Presto2k__IC00SC2101A": {
+  "TSid": "IC00SC2101A",
+  "compilation": "Presto2k",
+  "dataSetName": "IC00SC21",
+  "status": "ok",
+  "updated": "2026-11-13T22:52:04.224Z"
+ },
+ "Presto2k__IC04FIML01A": {
+  "TSid": "IC04FIML01A",
+  "compilation": "Presto2k",
+  "dataSetName": "IC04FIML",
+  "status": "ok",
+  "updated": "2026-11-13T23:05:55.841Z"
+ },
+ "Presto2k__IC05ISAU01A": {
+  "TSid": "IC05ISAU01A",
+  "compilation": "Presto2k",
+  "dataSetName": "IC05ISAU",
+  "status": "ok",
+  "updated": "2026-11-13T22:48:59.671Z"
+ },
+ "Presto2k__IC08DILO01A": {
+  "TSid": "IC08DILO01A",
+  "compilation": "Presto2k",
+  "dataSetName": "IC08DILO",
+  "status": "exclude",
+  "updated": "2026-11-13T22:48:49.814Z"
+ },
+ "Presto2k__IC09KA7901A": {
+  "TSid": "IC09KA7901A",
+  "compilation": "Presto2k",
+  "dataSetName": "IC09KA79",
+  "status": "ok",
+  "updated": "2026-11-13T22:53:08.558Z"
+ },
+ "Presto2k__IC11DILO01A": {
+  "TSid": "IC11DILO01A",
+  "compilation": "Presto2k",
+  "dataSetName": "IC11DILO",
+  "status": "ok",
+  "updated": "2026-11-13T22:48:53.263Z"
+ },
+ "Presto2k__IC11KIPW01A": {
+  "TSid": "IC11KIPW01A",
+  "compilation": "Presto2k",
+  "dataSetName": "IC11KIPW",
+  "status": "ok",
+  "updated": "2026-11-13T22:53:50.478Z"
+ },
+ "Presto2k__IC13OPAN01A": {
+  "TSid": "IC13OPAN01A",
+  "compilation": "Presto2k",
+  "dataSetName": "IC13OPAN",
+  "status": "ok",
+  "updated": "2026-11-13T22:49:29.295Z"
+ },
+ "Presto2k__IC16WE1901A": {
+  "TSid": "IC16WE1901A",
+  "compilation": "Presto2k",
+  "dataSetName": "IC16WE19",
+  "status": "ok",
+  "updated": "2026-11-13T22:48:16.718Z"
+ },
+ "Presto2k__IC16WE2001A": {
+  "TSid": "IC16WE2001A",
+  "compilation": "Presto2k",
+  "dataSetName": "IC16WE20",
+  "status": "ok",
+  "updated": "2026-11-13T22:48:14.228Z"
+ },
+ "Presto2k__IC16WE2201A": {
+  "TSid": "IC16WE2201A",
+  "compilation": "Presto2k",
+  "dataSetName": "IC16WE22",
+  "status": "ok",
+  "updated": "2026-11-13T22:51:48.806Z"
+ },
+ "Presto2k__IC16WE2301A": {
+  "TSid": "IC16WE2301A",
+  "compilation": "Presto2k",
+  "dataSetName": "IC16WE23",
+  "status": "ok",
+  "updated": "2026-11-13T22:51:44.142Z"
+ },
+ "Presto2k__IC76FIDE02A": {
+  "TSid": "IC76FIDE02A",
+  "compilation": "Presto2k",
+  "dataSetName": "IC76FIDE",
+  "status": "ok",
+  "updated": "2026-11-13T22:54:22.006Z"
+ },
+ "Presto2k__IC95FI8701A": {
+  "TSid": "IC95FI8701A",
+  "compilation": "Presto2k",
+  "dataSetName": "IC95FI87",
+  "status": "ok",
+  "updated": "2026-11-13T22:53:31.527Z"
+ },
+ "Presto2k__LPD995c6f3c": {
+  "TSid": "LPD995c6f3c",
+  "compilation": "Presto2k",
+  "dataSetName": "Ocn-WestSpitzberg.Bonnet.2010",
+  "status": "ok",
+  "updated": "2026-11-13T22:48:11.975Z"
+ },
+ "Presto2k__NAm_064": {
+  "TSid": "NAm_064",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-HerringAlpine.Fritts.1995",
+  "status": "ok",
+  "updated": "2026-11-13T22:57:14.598Z"
+ },
+ "Presto2k__NAm_088": {
+  "TSid": "NAm_088",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-DenaliNationalPark.Schweingruber.1996",
+  "status": "ok",
+  "updated": "2026-11-13T22:56:45.120Z"
+ },
+ "Presto2k__NAm_1072": {
+  "TSid": "NAm_1072",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-DonJekRiverBridge.Schweingruber.1996",
+  "status": "ok",
+  "updated": "2026-11-13T23:05:41.927Z"
+ },
+ "Presto2k__NAm_1108": {
+  "TSid": "NAm_1108",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-SmithersSkiArea.Schweingruber.1996",
+  "status": "ok",
+  "updated": "2026-11-13T23:06:17.696Z"
+ },
+ "Presto2k__NAm_1120": {
+  "TSid": "NAm_1120",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-SmithersSkiArea.Schweingruber.1996",
+  "status": "ok",
+  "updated": "2026-11-13T23:06:18.544Z"
+ },
+ "Presto2k__NAm_1168": {
+  "TSid": "NAm_1168",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-BellMountain.Schweingruber.1996",
+  "status": "ok",
+  "updated": "2026-11-13T23:07:03.474Z"
+ },
+ "Presto2k__NAm_1204": {
+  "TSid": "NAm_1204",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-SunwaptaPass.Schweingruber.1996",
+  "status": "ok",
+  "updated": "2026-11-13T23:08:05.017Z"
+ },
+ "Presto2k__NAm_1216": {
+  "TSid": "NAm_1216",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-SunwaptaPass.Schweingruber.1996",
+  "status": "ok",
+  "updated": "2026-11-13T23:08:08.192Z"
+ },
+ "Presto2k__NAm_1228": {
+  "TSid": "NAm_1228",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-PeytoLake.Schweingruber.1996",
+  "status": "ok",
+  "updated": "2026-11-13T23:08:50.847Z"
+ },
+ "Presto2k__NAm_1240": {
+  "TSid": "NAm_1240",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-PeytoLake.Schweingruber.1996",
+  "status": "ok",
+  "updated": "2026-11-13T23:08:51.944Z"
+ },
+ "Presto2k__NAm_1312": {
+  "TSid": "NAm_1312",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-VancouverCyprusProvincialPark.Briffa.1996",
+  "status": "ok",
+  "updated": "2026-11-13T23:10:59.920Z"
+ },
+ "Presto2k__NAm_1360": {
+  "TSid": "NAm_1360",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-ArrowsmithMountain.Briffa.1996",
+  "status": "ok",
+  "updated": "2026-11-13T23:10:55.746Z"
+ },
+ "Presto2k__NAm_1384": {
+  "TSid": "NAm_1384",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-BigWhite.Parish.2000",
+  "status": "ok",
+  "updated": "2026-11-13T23:10:38.841Z"
+ },
+ "Presto2k__NAm_1396": {
+  "TSid": "NAm_1396",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-CoppermineRiver.Jacoby.1989",
+  "status": "ok",
+  "updated": "2026-11-13T23:07:01.212Z"
+ },
+ "Presto2k__NAm_1420": {
+  "TSid": "NAm_1420",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-TwistedTreeHeartrotHill.Jacoby.1989",
+  "status": "ok",
+  "updated": "2026-11-13T23:06:57.799Z"
+ },
+ "Presto2k__NAm_1468": {
+  "TSid": "NAm_1468",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-Athabasca.Schweingruber.1996",
+  "status": "ok",
+  "updated": "2026-11-13T23:10:42.417Z"
+ },
+ "Presto2k__NAm_148": {
+  "TSid": "NAm_148",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-EurekaSummit.Schweingruber.1996",
+  "status": "ok",
+  "updated": "2026-11-13T22:56:47.775Z"
+ },
+ "Presto2k__NAm_1576": {
+  "TSid": "NAm_1576",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-MeadowMountain.Wilson.2005",
+  "status": "ok",
+  "updated": "2026-11-13T23:10:39.729Z"
+ },
+ "Presto2k__NAm_1588": {
+  "TSid": "NAm_1588",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-MeadowMountain.Wilson.2005",
+  "status": "ok",
+  "updated": "2026-11-13T23:10:40.871Z"
+ },
+ "Presto2k__NAm_160": {
+  "TSid": "NAm_160",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-EurekaSummit.Schweingruber.1996",
+  "status": "ok",
+  "updated": "2026-11-13T22:56:49.022Z"
+ },
+ "Presto2k__NAm_1600": {
+  "TSid": "NAm_1600",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-Ymir.Wilson.2005",
+  "status": "ok",
+  "updated": "2026-11-13T23:10:23.924Z"
+ },
+ "Presto2k__NAm_1636": {
+  "TSid": "NAm_1636",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-ParkMountain.Wilson.2005",
+  "status": "ok",
+  "updated": "2026-11-13T23:10:45.489Z"
+ },
+ "Presto2k__NAm_1648": {
+  "TSid": "NAm_1648",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-ParkMountain.Wilson.2005",
+  "status": "ok",
+  "updated": "2026-11-13T23:10:44.096Z"
+ },
+ "Presto2k__NAm_1660": {
+  "TSid": "NAm_1660",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-BigWhite2.Wilson.2005",
+  "status": "ok",
+  "updated": "2026-11-13T23:10:37.987Z"
+ },
+ "Presto2k__NAm_1672": {
+  "TSid": "NAm_1672",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-BigWhite2.Wilson.2005",
+  "status": "ok",
+  "updated": "2026-11-13T23:10:35.272Z"
+ },
+ "Presto2k__NAm_1708": {
+  "TSid": "NAm_1708",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-CornwallHills.Wilson.2005",
+  "status": "ok",
+  "updated": "2026-11-13T23:10:52.457Z"
+ },
+ "Presto2k__NAm_172": {
+  "TSid": "NAm_172",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-SettlementPointAfognakIsland.Harlan.1998",
+  "status": "ok",
+  "updated": "2026-11-13T22:57:11.770Z"
+ },
+ "Presto2k__NAm_1720": {
+  "TSid": "NAm_1720",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-CornwallHills.Wilson.2005",
+  "status": "ok",
+  "updated": "2026-11-13T23:10:50.864Z"
+ },
+ "Presto2k__NAm_1816": {
+  "TSid": "NAm_1816",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-EagleFecal_PtarmiganMerge.Jacoby.2011",
+  "status": "ok",
+  "updated": "2026-11-13T22:54:41.828Z"
+ },
+ "Presto2k__NAm_184": {
+  "TSid": "NAm_184",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-MinersWell.Wiles.2000",
+  "status": "ok",
+  "updated": "2026-11-13T23:06:00.860Z"
+ },
+ "Presto2k__NAm_1840": {
+  "TSid": "NAm_1840",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-Bennington.Luckman.2013",
+  "status": "ok",
+  "updated": "2026-11-13T23:07:27.977Z"
+ },
+ "Presto2k__NAm_1852": {
+  "TSid": "NAm_1852",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-FrenchGlacier.Colenutt.1995",
+  "status": "ok",
+  "updated": "2026-11-13T23:09:01.913Z"
+ },
+ "Presto2k__NAm_1876": {
+  "TSid": "NAm_1876",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-Landslide.Luckman.2006",
+  "status": "ok",
+  "updated": "2026-11-13T23:06:03.575Z"
+ },
+ "Presto2k__NAm_1924": {
+  "TSid": "NAm_1924",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-BlanchardRiver.Luckman.2013",
+  "status": "ok",
+  "updated": "2026-11-13T23:06:06.812Z"
+ },
+ "Presto2k__NAm_1936": {
+  "TSid": "NAm_1936",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-Nadahini.Luckman.2013",
+  "status": "ok",
+  "updated": "2026-11-13T23:06:08.834Z"
+ },
+ "Presto2k__NAm_196": {
+  "TSid": "NAm_196",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-CanyonCreek.Lloyd.2002",
+  "status": "ok",
+  "updated": "2026-11-13T22:56:46.549Z"
+ },
+ "Presto2k__NAm_1972": {
+  "TSid": "NAm_1972",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-RockGlacierYukon.Kenigsberg.2013",
+  "status": "ok",
+  "updated": "2026-11-13T23:06:52.936Z"
+ },
+ "Presto2k__NAm_1996": {
+  "TSid": "NAm_1996",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-SnakeCreek.Kenigsberg.2013",
+  "status": "ok",
+  "updated": "2026-11-13T23:06:13.031Z"
+ },
+ "Presto2k__NAm_2008": {
+  "TSid": "NAm_2008",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-Sugarloaf.Kenigsberg.2013",
+  "status": "ok",
+  "updated": "2026-11-13T23:06:11.498Z"
+ },
+ "Presto2k__NAm_2044": {
+  "TSid": "NAm_2044",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-SunshineMeadows.Colenutt.1995",
+  "status": "ok",
+  "updated": "2026-11-13T23:08:53.528Z"
+ },
+ "Presto2k__NAm_2056": {
+  "TSid": "NAm_2056",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-SunshineMeadows.Colenutt.1995",
+  "status": "ok",
+  "updated": "2026-11-13T23:08:56.810Z"
+ },
+ "Presto2k__NAm_2068": {
+  "TSid": "NAm_2068",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-AthabascaGlacier2.Luckman.2005",
+  "status": "ok",
+  "updated": "2026-11-13T23:08:24.833Z"
+ },
+ "Presto2k__NAm_2080": {
+  "TSid": "NAm_2080",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-AthabascaGlacier2.Luckman.2005",
+  "status": "ok",
+  "updated": "2026-11-13T23:08:26.457Z"
+ },
+ "Presto2k__NAm_2092": {
+  "TSid": "NAm_2092",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-Bennington.Luckman.2001",
+  "status": "ok",
+  "updated": "2026-11-13T23:07:07.609Z"
+ },
+ "Presto2k__NAm_2116": {
+  "TSid": "NAm_2116",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-BowSummit-PeytoLake.Luckman.2005",
+  "status": "ok",
+  "updated": "2026-11-13T23:08:45.808Z"
+ },
+ "Presto2k__NAm_2128": {
+  "TSid": "NAm_2128",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-CardinalDivide.Luckman.2001",
+  "status": "ok",
+  "updated": "2026-11-13T23:08:02.786Z"
+ },
+ "Presto2k__NAm_2152": {
+  "TSid": "NAm_2152",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-GeraldineLakes.Luckman.2001",
+  "status": "ok",
+  "updated": "2026-11-13T23:07:41.042Z"
+ },
+ "Presto2k__NAm_2164": {
+  "TSid": "NAm_2164",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-HighwoodPass.Luckman.2001",
+  "status": "ok",
+  "updated": "2026-11-13T23:09:04.303Z"
+ },
+ "Presto2k__NAm_2176": {
+  "TSid": "NAm_2176",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-Hilda.Kavanagh.2000",
+  "status": "ok",
+  "updated": "2026-11-13T23:08:41.410Z"
+ },
+ "Presto2k__NAm_220": {
+  "TSid": "NAm_220",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-KobukNoatak.King.2003",
+  "status": "ok",
+  "updated": "2026-11-13T22:55:55.630Z"
+ },
+ "Presto2k__NAm_2212": {
+  "TSid": "NAm_2212",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-Nakiska.Luckman.2001",
+  "status": "ok",
+  "updated": "2026-11-13T23:08:57.962Z"
+ },
+ "Presto2k__NAm_2236": {
+  "TSid": "NAm_2236",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-PyramidMountain.Luckman.2001",
+  "status": "ok",
+  "updated": "2026-11-13T23:07:35.682Z"
+ },
+ "Presto2k__NAm_2260": {
+  "TSid": "NAm_2260",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-SignalMountain.Luckman.2001",
+  "status": "ok",
+  "updated": "2026-11-13T23:07:38.431Z"
+ },
+ "Presto2k__NAm_2272": {
+  "TSid": "NAm_2272",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-SmallRiver.Luckman.2001",
+  "status": "ok",
+  "updated": "2026-11-13T23:07:05.169Z"
+ },
+ "Presto2k__NAm_2308": {
+  "TSid": "NAm_2308",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-SurpriseValley.Luckman.2001",
+  "status": "ok",
+  "updated": "2026-11-13T23:07:51.889Z"
+ },
+ "Presto2k__NAm_232": {
+  "TSid": "NAm_232",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-AlmondButterLower.D'Arrigo.2005",
+  "status": "ok",
+  "updated": "2026-11-13T22:56:39.968Z"
+ },
+ "Presto2k__NAm_244": {
+  "TSid": "NAm_244",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-AlmondButterUpper.D'Arrigo.2005",
+  "status": "ok",
+  "updated": "2026-11-13T22:56:29.495Z"
+ },
+ "Presto2k__NAm_256": {
+  "TSid": "NAm_256",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-BurntOver.D'Arrigo.2005",
+  "status": "ok",
+  "updated": "2026-11-13T22:56:21.569Z"
+ },
+ "Presto2k__NAm_280": {
+  "TSid": "NAm_280",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-WindyRidgeAlaska.D'Arrigo.2005",
+  "status": "ok",
+  "updated": "2026-11-13T22:56:27.794Z"
+ },
+ "Presto2k__NAm_2848": {
+  "TSid": "NAm_2848",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-RoweLakes.Colenutt.2011",
+  "status": "ok",
+  "updated": "2026-11-13T23:10:21.732Z"
+ },
+ "Presto2k__NAm_292": {
+  "TSid": "NAm_292",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-NabesnaMine.Jacoby.2003",
+  "status": "ok",
+  "updated": "2026-11-13T23:05:35.658Z"
+ },
+ "Presto2k__NAm_304": {
+  "TSid": "NAm_304",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-NabesnaMine.Jacoby.2003",
+  "status": "ok",
+  "updated": "2026-11-13T23:00:42.081Z"
+ },
+ "Presto2k__NAm_3100": {
+  "TSid": "NAm_3100",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-CraterLakeNE.Briffa.2002",
+  "status": "ok",
+  "updated": "2026-11-13T23:11:38.040Z"
+ },
+ "Presto2k__NAm_3124": {
+  "TSid": "NAm_3124",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-BarlowPassamMtHood.Briffa.1996",
+  "status": "ok",
+  "updated": "2026-11-13T23:11:34.344Z"
+ },
+ "Presto2k__NAm_3184": {
+  "TSid": "NAm_3184",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-TamarackBowl.Sauchyn.2016",
+  "status": "ok",
+  "updated": "2026-11-13T23:09:08.169Z"
+ },
+ "Presto2k__NAm_3280": {
+  "TSid": "NAm_3280",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-VicaryMine.Sauchyn.2016",
+  "status": "ok",
+  "updated": "2026-11-13T23:09:06.193Z"
+ },
+ "Presto2k__NAm_3352": {
+  "TSid": "NAm_3352",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-GraniteMountain.Graumlich.2003",
+  "status": "ok",
+  "updated": "2026-11-13T23:11:22.007Z"
+ },
+ "Presto2k__NAm_3376": {
+  "TSid": "NAm_3376",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-ScatterLake.Graumlich.2003",
+  "status": "ok",
+  "updated": "2026-11-13T23:11:18.993Z"
+ },
+ "Presto2k__NAm_3388": {
+  "TSid": "NAm_3388",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-wa069.Peterson.1994",
+  "status": "ok",
+  "updated": "2026-11-13T23:11:13.643Z"
+ },
+ "Presto2k__NAm_3400": {
+  "TSid": "NAm_3400",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-wa071.Peterson.1994",
+  "status": "ok",
+  "updated": "2026-11-13T23:11:13.023Z"
+ },
+ "Presto2k__NAm_3412": {
+  "TSid": "NAm_3412",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-HartsPassN2.Peterson.1994",
+  "status": "ok",
+  "updated": "2026-11-13T23:11:12.249Z"
+ },
+ "Presto2k__NAm_3436": {
+  "TSid": "NAm_3436",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-MtStHelens.Briffa.1996",
+  "status": "ok",
+  "updated": "2026-11-13T23:11:32.385Z"
+ },
+ "Presto2k__NAm_3472": {
+  "TSid": "NAm_3472",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-ShermanCreekPass.Briffa.1996",
+  "status": "ok",
+  "updated": "2026-11-13T23:10:33.464Z"
+ },
+ "Presto2k__NAm_3484": {
+  "TSid": "NAm_3484",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-ShermanCreekPass.Briffa.1996",
+  "status": "ok",
+  "updated": "2026-11-13T23:10:31.362Z"
+ },
+ "Presto2k__NAm_3520": {
+  "TSid": "NAm_3520",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-HohLakeHigh.Peterson.1994",
+  "status": "ok",
+  "updated": "2026-11-13T23:10:57.192Z"
+ },
+ "Presto2k__NAm_3556": {
+  "TSid": "NAm_3556",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-MountAdamsLow.Peterson.1994",
+  "status": "ok",
+  "updated": "2026-11-13T23:11:29.929Z"
+ },
+ "Presto2k__NAm_364": {
+  "TSid": "NAm_364",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-BigBendLake.Jacoby.2003",
+  "status": "ok",
+  "updated": "2026-11-13T23:00:39.511Z"
+ },
+ "Presto2k__NAm_3748": {
+  "TSid": "NAm_3748",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-WrangellsComposite.D'Arrigo.2006",
+  "status": "ok",
+  "updated": "2026-11-13T23:05:40.667Z"
+ },
+ "Presto2k__NAm_376": {
+  "TSid": "NAm_376",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-BigBendLake.Jacoby.2003",
+  "status": "ok",
+  "updated": "2026-11-13T23:00:40.976Z"
+ },
+ "Presto2k__NAm_3760": {
+  "TSid": "NAm_3760",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-NorthernAlaskaComposite.D'Arrigo.2006",
+  "status": "ok",
+  "updated": "2026-11-13T22:55:52.681Z"
+ },
+ "Presto2k__NAm_3772": {
+  "TSid": "NAm_3772",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-FirthRiver.Anchukaitis.2013",
+  "status": "ok",
+  "updated": "2026-11-13T22:55:05.393Z"
+ },
+ "Presto2k__NAm_3865": {
+  "TSid": "NAm_3865",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-GreenLake.Menounos.2006",
+  "status": "ok",
+  "updated": "2026-11-13T23:10:53.761Z"
+ },
+ "Presto2k__NAm_3870": {
+  "TSid": "NAm_3870",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-OregonCaves.Ersek.2012",
+  "status": "ok",
+  "updated": "2026-11-13T23:11:49.257Z"
+ },
+ "Presto2k__NAm_388": {
+  "TSid": "NAm_388",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-PrinceWilliamSound.Barclay.1999",
+  "status": "ok",
+  "updated": "2026-11-13T22:57:13.590Z"
+ },
+ "Presto2k__NAm_412": {
+  "TSid": "NAm_412",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-DeerMountain.Wiles.2011",
+  "status": "ok",
+  "updated": "2026-11-13T23:06:16.760Z"
+ },
+ "Presto2k__NAm_424": {
+  "TSid": "NAm_424",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-McGinnisTrail.Wiles.2013",
+  "status": "ok",
+  "updated": "2026-11-13T23:06:13.824Z"
+ },
+ "Presto2k__NAm_436": {
+  "TSid": "NAm_436",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-SouthernAlaskacomposite.D'Arrigo.2006",
+  "status": "ok",
+  "updated": "2026-11-13T23:06:15.836Z"
+ },
+ "Presto2k__NAm_448": {
+  "TSid": "NAm_448",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-SewardComposite.D'Arrigo.2006",
+  "status": "ok",
+  "updated": "2026-11-13T22:56:19.392Z"
+ },
+ "Presto2k__NAm_460": {
+  "TSid": "NAm_460",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-SewardComposite.D'Arrigo.2006",
+  "status": "ok",
+  "updated": "2026-11-13T22:55:57.249Z"
+ },
+ "Presto2k__NAm_484": {
+  "TSid": "NAm_484",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-StarrigawanOldSitka.Kaiser.1996",
+  "status": "ok",
+  "updated": "2026-11-13T23:06:14.848Z"
+ },
+ "Presto2k__NAm_940": {
+  "TSid": "NAm_940",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-SpruceCreek.Church.1981",
+  "status": "ok",
+  "updated": "2026-11-13T22:55:02.817Z"
+ },
+ "Presto2k__NAm_976": {
+  "TSid": "NAm_976",
+  "compilation": "Presto2k",
+  "dataSetName": "NAm-PethaiPeninsula.Schweingruber.1996",
+  "status": "ok",
+  "updated": "2026-11-13T23:07:02.416Z"
+ },
+ "Presto2k__NPM11111": {
+  "TSid": "NPM11111",
+  "compilation": "Presto2k",
+  "dataSetName": "IC00SC18",
+  "status": "exclude",
+  "updated": "2026-11-13T22:47:48.608Z"
+ },
+ "Presto2k__O2kLR_007": {
+  "TSid": "O2kLR_007",
+  "compilation": "Presto2k",
+  "dataSetName": "Ocn-WesternSvalbard.Spielhagen.2011",
+  "status": "ok",
+  "updated": "2026-11-13T22:48:09.943Z"
+ },
+ "Presto2k__O2kLR_146": {
+  "TSid": "O2kLR_146",
+  "compilation": "Presto2k",
+  "dataSetName": "Ocn-NorthwestPacificOcean.Harada.2004",
+  "status": "ok",
+  "updated": "2026-11-13T22:50:21.227Z"
+ },
+ "Presto2k__RxHUExQCQl5ARzJ9O": {
+  "TSid": "RxHUExQCQl5ARzJ9O",
+  "compilation": "Presto2k",
+  "dataSetName": "LinnevatnetLake.Schiefer.2017",
+  "status": "exclude",
+  "updated": "2026-11-13T22:45:35.880Z"
+ },
+ "Presto2k__WEB-2f878-2074-41c9-8e93-b6cbe": {
+  "TSid": "WEB-2f878-2074-41c9-8e93-b6cbe",
+  "compilation": "Presto2k",
+  "dataSetName": "EklutnaLake.Fortin.2019",
+  "status": "exclude",
+  "updated": "2026-11-13T22:57:01.455Z"
+ },
+ "Presto2k__WEB-5efca-4b47-4512-9904-94b4b": {
+  "TSid": "WEB-5efca-4b47-4512-9904-94b4b",
+  "compilation": "Presto2k",
+  "dataSetName": "Linnevatnet.Lapointe.2023",
+  "status": "exclude",
+  "updated": "2026-11-13T22:45:02.079Z"
+ },
+ "Presto2k__WEB-6ebbc-8d69-4d0e-9880-f6f3b": {
+  "TSid": "WEB-6ebbc-8d69-4d0e-9880-f6f3b",
+  "compilation": "Presto2k",
+  "dataSetName": "EastLake.Lapointe.2012",
+  "status": "ok",
+  "updated": "2026-11-13T22:54:34.525Z"
+ },
+ "Presto2k__WEB-79884-8efb-4707-8d00-15745": {
+  "TSid": "WEB-79884-8efb-4707-8d00-15745",
+  "compilation": "Presto2k",
+  "dataSetName": "Linnevatnet.Lapointe.2023",
+  "status": "ok",
+  "updated": "2026-11-13T22:48:19.895Z"
+ },
+ "Presto2k__WEB-94892-46f2-4770-898f-fe736": {
+  "TSid": "WEB-94892-46f2-4770-898f-fe736",
+  "compilation": "Presto2k",
+  "dataSetName": "Linnevatnet.Lapointe.2023",
+  "status": "exclude",
+  "updated": "2026-11-13T22:44:34.246Z"
+ },
+ "Presto2k__WEB-a53db-0c94-42ab-884f-bd627": {
+  "TSid": "WEB-a53db-0c94-42ab-884f-bd627",
+  "compilation": "Presto2k",
+  "dataSetName": "Skilak.Thomas.2021",
+  "status": "ok",
+  "updated": "2026-11-13T22:57:05.369Z"
+ },
+ "Presto2k__WEB-eb3fd-8359-4876-b86a-a40ff": {
+  "TSid": "WEB-eb3fd-8359-4876-b86a-a40ff",
+  "compilation": "Presto2k",
+  "dataSetName": "BritishColumbia.Brice.2021",
+  "status": "ok",
+  "updated": "2026-11-13T23:10:46.897Z"
+ }
+}
