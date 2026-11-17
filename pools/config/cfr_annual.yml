@@ -84,6 +84,16 @@ length:
   annual_marine: 50         # "annually resolved marine records ... exceeded 50 years"
   non_annual: 500           # "a minimum length of 500 years ... coarse initial screen"
 resolution:
+  # The median spacing over 1-2000 CE meets the cutoff, and the mean spacing
+  # (span / (n - 1), PAGES 2k's "average resolution") is within 5% of it. The
+  # median alone let sparse records with a few close samples pass (MS05ESCR:
+  # 7 values over 1729 years, median 90 yr, mean 288 yr). Nick, 2026-11-16.
+  metric: median_and_mean
+  mean_tolerance: 1.05
+  # Non-annual records need at least 10 values in 1-2000 CE, under the strict
+  # and the data-poor thresholds alike (2-value marine cores otherwise pass the
+  # relaxed rules). Nick, 2026-11-16.
+  min_values: 10
   terrestrial: 50           # "terrestrial and lacustrine ... 50 years or finer"
   marine: 200               # "marine records: a minimum average resolution of 200 years"
   exempt_archives: [Borehole]
@@ -110,12 +120,17 @@ data_poor_exception:
     length.annual_terrestrial: 150
     length.annual_marine: 30
     length.non_annual: 300
-    resolution.terrestrial: 100
-    resolution.marine: 300
+    # Resolution relaxed in the same proportion as the non-annual length
+    # (500 -> 300 yr, 60%): 60% of the strict sampling density, so the
+    # cutoffs are divided by 0.6 (50 -> 83, 200 -> 333 yr). Nick, 2026-11-16.
+    resolution.terrestrial: 83
+    resolution.marine: 333
     chronology.tolerance: 400
 
 curator_admissions: curator_admissions.csv
 curator_exclusions: curator_exclusions.csv
+# Nick's "exclude" verdicts from the record review page.
+review_verdicts: review/verdicts/presto2k.json
 
 collapse_prefer_units: []
 # Duplicates: keep the copy with the most data (coverage, then resolution),
@@ -124,9 +139,40 @@ collapse_prefer_units: []
 # settle to the review queue (R/dedup.R).
 dedup:
   prefer: data
-  # One record per dataset, proxy, season and variable: a pollen dataset's
-  # temperature and precipitation reconstructions are both kept.
-  collapse_by_variable: true
+  # Within a dataset, each proxy keeps one seasonality (annual first) and one
+  # variableName: a core gives its Mg/Ca or its Mg/Ca temperature, a pollen
+  # site one season. Different proxies and several cores of one proxy stay.
+  # Nick, 2026-11-16 (replaces collapse_by_variable, set when the pool took
+  # any climate variable).
+  one_variant_per_proxy: true
+  # Within a dataset, records whose series correlate at |r| >= 0.98 are one
+  # signal (varve thickness and its temperature, a table copied twice); keep
+  # the best-ranked. Within-dataset pairs fall into two groups: 17 at 0.988 or
+  # higher and the rest at 0.944 or lower. Nick, 2026-11-16.
+  within_r: 0.98
+  # Different-resolution versions of one record at one site (Penny Ice Cap
+  # 25-yr vs 10-yr Fisher 1998): with one record at least 1.5 times coarser,
+  # average the finer onto the coarser intervals; r >= 0.9 is a duplicate,
+  # 0.8 to 0.9 goes to review. Nick, 2026-11-16.
+  res_ratio: 1.5
+  res_r: 0.9
+  res_review_r: 0.8
+  # From Nick's exclusions on the review page, 2026-11-17 (see dedup.R):
+  # identical same-proxy copies up to 100 km apart (one has wrong coordinates);
+  # a pair whose labels differ only because one has no proxy label is a
+  # duplicate at |r| >= 0.99 within 2 km; same-proxy, not-annual pairs within
+  # 10 km, one inside the other, at |r| or binned r >= 0.7 go to review.
+  far_km: 100
+  cross_label_r: 0.99
+  cross_label_km: 2
+  extension_r: 0.7
+  extension_km: 10
+  # Within one dataset, collapsing by proxy and season (and keeping one
+  # variant per proxy) drops a record only if it holds the same measurements
+  # as the one kept: |r| or binned r >= 0.9, or a seasonal series beside a
+  # stated annual one in the same table. Separate cores and species stay.
+  # Nick, 2026-11-17.
+  within_collapse_r: 0.9
 one_record_per_site:
   - publication_title: "^LegacyClimate"
     prefer_season: annual

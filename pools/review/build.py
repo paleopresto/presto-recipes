@@ -17,9 +17,15 @@ src = sys.argv[1]
 site = sys.argv[2] if len(sys.argv) > 2 else os.path.join(here, "site")
 CHUNK = 20
 MAXPTS = 1500
+NEAR_KM = 5
 VERSION = "0.1.0"
-COMPS = {"Presto2k": {"slug": "presto2k", "dir": "PReSto2k", "run": "40738324606"},
-         "Presto12k": {"slug": "presto12k", "dir": "PReSto12k", "run": None}}
+# Presto2k is reviewed from the revised pool (PAGES 2k 2017 criteria) on the
+# export extract.R read, with the test LMR run's screen; Presto12k from 0.1.0.
+COMPS = {"Presto2k": {"slug": "presto2k", "dir": "PReSto2k", "run": "43551034335", "from_pool": True,
+                      "version": "revised pool", "run_export": "2026-11-03b"},
+         "Presto12k": {"slug": "presto12k", "dir": "PReSto12k", "run": None, "version": VERSION}}
+# REVIEW_ONLY=Presto2k rebuilds one compilation's pages and leaves the others.
+if os.environ.get("REVIEW_ONLY"): COMPS = {k: v for k, v in COMPS.items() if k in os.environ["REVIEW_ONLY"].split(",")}
 
 d = json.load(open(src))
 tpl = open(os.path.join(here, "template.html")).read()
@@ -58,20 +64,50 @@ def order(R):
 
 def alerts(r):
     a = []
+    if r.get("curatorExcluded"):
+        a.append(["bad", "EXCLUDED", "Marked exclude on this page: the pool leaves this record out (curator exclusion)."])
     for nb in r.get("neighbors") or []:
         if nb["km"] <= 5 and nb["variable"] == r["variable"] and nb["archive"] == r["archive"]:
             a.append(["bad", "DUP", f"<b>{esc(nb['name'])}</b> ({esc(nb['TSid'])}) is also in {r['compilation']}, {nb['km']} km away, same archive and variable."])
+    if r.get("uninterpretedProxy"):
+        a.append(["warn", "SIGN", "No temperature interpretation in the metadata: admitted as an annual series of a common temperature proxy, with the sign the proxy implies."])
+    elif r.get("impliedSign"):
+        a.append(["warn", "SIGN", "The temperature interpretation has no sign; the sign used is the one the proxy implies."])
     p = r.get("psm"); st = p and p.get("status")
     if st == "drop_direction": a.append(["bad", "LMR", "Dropped from the LMR run: no candidate season gives the interpreted sign."])
     if st == "drop_interpretation": a.append(["bad", "LMR", "Dropped from the LMR run: interpretation names no variable its PSM uses."])
     if st == "pass_reseasoned": a.append(["warn", "LMR", "Recalibrated on another season to get the interpreted sign: " + esc(p.get("detail") or "")])
     if st == "uninterpreted": a.append(["warn", "INT", "No climate interpretation; LMR calibrated it without a sign check."])
-    if r["compilation"] == "Presto2k" and not p: a.append(["warn", "LMR", "Not calibrated in the LMR run (too little overlap with instrumental data, or failed calibration)."])
+    if r["compilation"] == "Presto2k" and not p:
+        if r.get("inLMR") is False:
+            why = [w for w, bad in (("coarser than 1.2 yr", (r.get("resolution") or 0) > 1.2), ("fewer than 25 values in 1850-2015", (r.get("nCalib") or 0) < 25),
+                                    ("lag-1 above 0.98", (r.get("lag1") or 0) > 0.98)) if bad]
+            a.append(["warn", "LMR", "Not in the LMR subset" + (": " + ", ".join(why) if why else " (archive cfr does not model)") + "."])
+        elif r.get("inLMR"):
+            a.append(["warn", "LMR", f"In the LMR subset but not in test run {COMPS['Presto2k']['run']} (export {COMPS['Presto2k']['run_export']}): new on this export, or not calibrated."])
+        else:
+            a.append(["warn", "LMR", "Not calibrated in the LMR run (too little overlap with instrumental data, or failed calibration)."])
     if not r.get("interpretations"): a.append(["warn", "INT", "No interpretation metadata."])
     sb = r.get("selectedBy") or ""
     if "admission" in sb: a.append(["warn", "CUR", "Admitted by a curator ledger although it fails a criterion" + (": " + esc(r["fails"]) if r.get("fails") else ".")])
     if "exception" in sb: a.append(["warn", "CUR", "Kept by the data-poor exception (no other record nearby)."])
     return a
+
+
+def near_ids(r):
+    """Members of the same archive within NEAR_KM: where nearly all of Nick's
+    2026-11-17 exclusions were (40 of 45). Tree-ring chronologies of other
+    datasets do not count: separate trees are separate measurements."""
+    out = []
+    for nb in r.get("neighbors") or []:
+        if nb["km"] > NEAR_KM or nb["archive"] != r["archive"]: continue
+        if r["archive"] == "Wood" and nb.get("name") != r["dataSetName"]: continue
+        out.append(nb["TSid"])
+    return out
+
+
+def near(r):
+    return bool(near_ids(r))
 
 
 def thin(s):
@@ -87,10 +123,11 @@ def thin(s):
 
 
 def page_for(cn, cc, index):
-    page = tpl.replace("__DATA__", json.dumps({"snapshot": d["snapshot"], "built": d["built"], "version": VERSION,
+    page = tpl.replace("__DATA__", json.dumps({"snapshot": d["snapshot"], "built": d["built"], "version": cc["version"],
                                                "compilation": cn, "slug": cc["slug"], "records": index,
                                                "members": {cn: d["members"][cn]}}, separators=(",", ":")).replace("</", "<\\/"))
-    other = [k for k in COMPS if k != cn][0]
+    other = "Presto12k" if cn == "Presto2k" else "Presto2k"
+    oslug = other.lower()
 
     def sub(old, new):
         nonlocal page
@@ -101,16 +138,29 @@ def page_for(cn, cc, index):
     sub('Presto record review <small id="snap"></small>', f'{cn} review <small id="snap"></small>')
     # one compilation per page: the compilation filter becomes a link to the other page
     sub('<select id="fc" aria-label="Compilation"><option value="">Both compilations</option><option>Presto2k</option><option>Presto12k</option></select>',
-        f'<a class="chip" style="align-self:center;text-align:center;text-decoration:none" href="../{COMPS[other]["slug"]}/">{other} review</a>')
+        f'<a class="chip" style="align-self:center;text-align:center;text-decoration:none" href="../{oslug}/">{other} review</a>')
     sub("fc = $('#fc').value, ", "fc = '', ")
     sub("['#q', '#fc', '#fa', '#fs', '#fx']", "['#q', '#fa', '#fs', '#fx', '#fg']")
     # optionally only records with an inclusion criterion that is not green
     sub('<option value="curated">Has curator decisions</option></select>\n      </div>',
-        '<option value="curated">Has curator decisions</option></select>\n      </div>\n'
+        '<option value="curated">Has curator decisions</option><option value="near">Nearby record, same archive (5 km)</option></select>\n      </div>\n'
         '      <label style="font:12px var(--f-ui);color:var(--muted);display:flex;gap:6px;align-items:center">'
         '<input type="checkbox" id="fg"> Only records not all green for inclusion</label>')
+    # Not reviewed, plus the nearby records they could duplicate even if those
+    # were reviewed already, so a new record is judged beside them (Nick, 2026-11-17).
+    sub('<option value="todo">Not reviewed</option>',
+        '<option value="todo">Not reviewed</option><option value="todonear">Not reviewed, with their nearby records</option>')
+    sub("(!fs || statusOf(r) === fs)",
+        "(!fs || (fs === 'todonear' ? statusOf(r) === 'todo' || NT.has(r.TSid) : statusOf(r) === fs))")
+    sub("function applyFilters(keep) {", """function nearTodo() {
+  const s = new Set();
+  R.forEach(r => { if (statusOf(r) === 'todo') (r.nearIds || []).forEach(t => s.add(t)); });
+  return s;
+}
+function applyFilters(keep) {
+  const NT = $('#fs').value === 'todonear' ? nearTodo() : new Set();""")
     sub("    && (!fx || (fx === 'alert' ? r._alerts.length : r._curated))",
-        "    && (!fx || (fx === 'alert' ? r._alerts.length : r._curated))\n    && (!$('#fg').checked || !r.allGreen)")
+        "    && (!fx || (fx === 'alert' ? r._alerts.length : fx === 'near' ? r.near : r._curated))\n    && (!$('#fg').checked || !r.allGreen)")
     # records load from data/ in chunks
     sub("const R = D.records;", """const R = D.records;
 const CH = new Map();
@@ -143,6 +193,24 @@ function show() {
 function render(r) {""")
     sub("${esc(r.compilation)} 0.0.1", "${esc(r.compilation)} ${esc(D.version)}")
     if cc["run"]: sub("Not calibrated in run 39104109040.", f"Not calibrated in run {cc['run']}.")
+    # Presto2k: the time axis is always the Common Era (1 to 2025 CE), whatever
+    # the record's length; values outside it are not drawn and the y-axis fits
+    # the values inside it
+    if cn == "Presto2k":
+        sub("""  const ys = r.series.year, vs = r.series.value;
+  if (!ys.length) return '<div class="empty">No values in the export for this column.</div>';""",
+            """  const CE = [1, 2025];
+  const keep = r.series.year.map((y, i) => y >= CE[0] && y <= CE[1] && r.series.value[i] != null);
+  const ys = r.series.year.filter((y, i) => keep[i]), vs = r.series.value.filter((v, i) => keep[i]);
+  if (!ys.length) return '<div class="empty">' + (r.series.year.length ? 'No values in the Common Era.' : 'No values in the export for this column.') + '</div>';""")
+        sub("""  let x0 = Math.min(...ys), x1 = Math.max(...ys);
+  if (x1 - x0 < 1) { x0 -= 1; x1 += 1; }""", """  let x0 = CE[0], x1 = CE[1];""")
+    # which method subsets the record is in, and an implied sign
+    sub("""          <span class="chip">${esc(r.selectedBy || '')}</span>""",
+        """          <span class="chip">${esc(r.selectedBy || '')}</span>
+          ${r.inLMR != null ? `<span class="chip ${r.inLMR ? 'good' : ''}">LMR subset ${r.inLMR ? '✓' : '✗'}</span><span class="chip ${r.inBayGMST ? 'good' : ''}">BayGMST subset ${r.inBayGMST ? '✓' : '✗'}</span>` : ''}
+          ${r.impliedSign ? '<span class="chip warn">sign implied by proxy</span>' : ''}
+          ${r.curatorExcluded ? '<span class="chip bad">curator exclusion</span>' : ''}""")
     # verdicts go to the local server, which writes them to verdicts/<slug>.json
     sub("""let reviews = {}; let db = null; let store = 'local';
 try { reviews = JSON.parse(localStorage.getItem('presto-review') || '{}'); } catch (e) { reviews = {}; }
@@ -191,7 +259,7 @@ function post(id, rv) {
 
 os.makedirs(site, exist_ok=True)
 for cn, cc in COMPS.items():
-    sel = {row["TSid"]: row["selected_by"] for row in csv.DictReader(open(os.path.join(here, "..", "compilations", cc["dir"], VERSION.replace(".", "_"), "members.csv")))}
+    sel = {} if cc.get("from_pool") else {row["TSid"]: row["selected_by"] for row in csv.DictReader(open(os.path.join(here, "..", "compilations", cc["dir"], VERSION.replace(".", "_"), "members.csv")))}
     R = [r for r in d["records"] if r["compilation"] == cn]
     for r in R:
         r["selectedBy"] = sel.get(r["TSid"], r.get("selectedBy"))
@@ -212,14 +280,20 @@ for cn, cc in COMPS.items():
                           "variable": r["variable"], "proxy": r.get("proxy"), "archive": r["archive"], "alerts": alerts(r),
                           "curated": bool(r.get("decisions")) or bool(re.search("admission|exception", r.get("selectedBy") or "")),
                           "allGreen": all(v is True for v in (r.get("criteria") or {}).values()),
+                          "near": near(r), "nearIds": near_ids(r),
                           "k": k0 // CHUNK})
         json.dump(chunk, open(os.path.join(out, "data", f"c{k0 // CHUNK:03d}.json"), "w"), separators=(",", ":"))
     open(os.path.join(out, "index.html"), "w").write(page_for(cn, cc, index))
     print(f"   {len(index)} records in {len(os.listdir(os.path.join(out, 'data')))} chunks")
+    json.dump({"compilation": cn, "version": cc["version"], "n": len(index), "snapshot": d["snapshot"], "built": d["built"]},
+              open(os.path.join(out, "meta.json"), "w"))
 
-links = "".join(f'<li><a href="{cc["slug"]}/">{cn} {VERSION}</a> ({sum(r["compilation"] == cn for r in d["records"])} records)</li>' for cn, cc in COMPS.items())
+metas = [json.load(open(os.path.join(site, s, "meta.json"))) for s in ("presto2k", "presto12k") if os.path.exists(os.path.join(site, s, "meta.json"))]
+dd = os.path.join(site, "dedup-presto2k", "index.html")
+dlink = '<li><a href="dedup-presto2k/">Presto2k duplicate pairs</a></li>' if os.path.exists(dd) else ""
+links = "".join(f'<li><a href="{m["compilation"].lower()}/">{m["compilation"]} {esc(m["version"])}</a> ({m["n"]} records; export {esc(m["snapshot"])}, built {esc(m["built"])})</li>' for m in metas)
 open(os.path.join(site, "index.html"), "w").write(
     '<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Presto Record Review</title>'
     '<style>body{font:16px system-ui,sans-serif;max-width:40rem;margin:3rem auto;padding:0 16px}</style></head><body>'
-    f'<h1>Presto record review</h1><p>Export {esc(d["snapshot"])}, built {esc(d["built"])}.</p><ul>{links}</ul></body></html>')
+    f'<h1>Presto record review</h1><ul>{links}{dlink}</ul></body></html>')
 print("site ->", site)

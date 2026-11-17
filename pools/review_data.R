@@ -46,7 +46,7 @@ rec <- function(t) {
 pairs <- lapply(seq_len(nrow(rv)), function(k) {
   a <- rv$TSid1[k]; b <- rv$TSid2[k]
   w <- prefer(pref[pref$TSid == a, ], pref[pref$TSid == b, ], opt)
-  list(key = paste(sort(c(a, b)), collapse = "__"), rule = rv$rule[k], km = round(rv$km[k], 1), n = rv$n[k],
+  list(key = paste(sort(c(a, b)), collapse = "__"), rule = if (!is.null(rv$tier) && rv$tier[k] %in% c("resolution_review", "extension_review")) rv$tier[k] else rv$rule[k], km = round(rv$km[k], 1), n = rv$n[k],
        r = round(rv$r[k], 3), r_diff = round(rv$r_diff[k], 3), same_doi = isTRUE(rv$same_doi[k]),
        suggest = if (w == 1L) "a" else "b", a = rec(a), b = rec(b))
 })

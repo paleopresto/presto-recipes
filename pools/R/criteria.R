@@ -103,8 +103,19 @@ eval_pages2k2017 <- function(x, ctrl, cfg) {
   x$annual <- annual
   x$pass_length <- x$span_win >= min_len
   max_res <- ifelse(marine, cfg$resolution$marine, cfg$resolution$terrestrial)
-  x$pass_resolution <- annual | is_in(x$archiveType, cfg$resolution$exempt_archives) |
-    (!is.na(x$res_win) & x$res_win <= max_res)
+  # resolution$metric: "median" spacing (default), or "median_and_mean": the
+  # median spacing meets the cutoff and the mean spacing over the window
+  # (span / (n - 1), PAGES 2k's "average resolution") is within
+  # resolution$mean_tolerance of it. The mean check stops a few closely spaced
+  # samples from passing a sparse record.
+  x$mean_res_win <- ifelse(x$n_win > 1, x$span_win / (x$n_win - 1), NA_real_)
+  ok_res <- !is.na(x$res_win) & x$res_win <= max_res
+  if (identical(cfg$resolution$metric, "median_and_mean"))
+    ok_res <- ok_res & !is.na(x$mean_res_win) & x$mean_res_win <= max_res * (cfg$resolution$mean_tolerance %||% 1)
+  # resolution$min_values: a non-annual record needs at least this many values
+  # in the window, whatever its spacing.
+  if (!is.null(cfg$resolution$min_values)) ok_res <- ok_res & x$n_win >= cfg$resolution$min_values
+  x$pass_resolution <- annual | is_in(x$archiveType, cfg$resolution$exempt_archives) | ok_res
   # A series whose successive values mostly repeat (a step function on a
   # finer grid) carries less information than its spacing says; see
   # eval_cfr_annual.
@@ -353,6 +364,16 @@ build_pool <- function(con, cfg) {
   x$longest_win[is.na(x$longest_win)] <- 0
   ctrl <- pool_age_controls(con, x$datasetId)
   if (!is.null(cfg$curator_exclusions)) x$pass_curator <- !x$TSid %in% read_ledger(cfg, "curator_exclusions")
+  # Records a curator marked "exclude" on the review page (server.py writes
+  # review/verdicts/<slug>.json) leave the pool like any curator exclusion.
+  if (!is.null(cfg$review_verdicts)) {
+    vf <- file.path(cfg$.dir, cfg$review_verdicts)
+    if (file.exists(vf)) {
+      v <- jsonlite::fromJSON(vf, simplifyVector = FALSE)
+      ex <- vapply(Filter(function(e) identical(e$status, "exclude"), v), function(e) e$TSid, "")
+      x$pass_curator[x$TSid %in% ex] <- FALSE
+    }
+  }
   x$pass_plausible <- plausible(x, pts, cfg$plausibility)
   ev <- switch(cfg$evaluator %||% cfg$name, pages2k2017 = eval_pages2k2017, temp12k = eval_temp12k,
                cfr_annual = eval_cfr_annual)

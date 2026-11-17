@@ -18,6 +18,10 @@ files <- list.files(commandArgs(trailingOnly = TRUE)[1], pattern = "\\.json$", r
 new <- do.call(rbind, lapply(files, function(f) {
   d <- jsonlite::read_json(f)
   d <- if (!is.null(d$data)) d$data else d
+  # Cleared on the page, or a group's pair of two dropped records: no
+  # decision, and an earlier one for the pair is removed.
+  if (is.null(d$choice)) return(data.frame(TSid1 = d$tsidA, TSid2 = d$tsidB, keep1 = NA, keep2 = NA,
+                                           decision_type = "CLEARED", source = "", note = ""))
   if (!d$choice %in% c("a", "b", "both")) stop("unknown choice in ", f)
   data.frame(TSid1 = d$tsidA, TSid2 = d$tsidB, keep1 = d$choice %in% c("a", "both"),
              keep2 = d$choice %in% c("b", "both"), decision_type = "MANUAL",
@@ -27,5 +31,6 @@ out <- file.path(here, "baselines", "dedup_decisions.csv")
 old <- if (file.exists(out)) utils::read.csv(out, stringsAsFactors = FALSE) else new[0, ]
 key <- function(x) paste(pmin(x$TSid1, x$TSid2), pmax(x$TSid1, x$TSid2))
 old <- old[!key(old) %in% key(new), ]
+new <- new[new$decision_type != "CLEARED", ]
 utils::write.csv(rbind(new, old), out, row.names = FALSE)
 message(nrow(new), " decisions imported; ", nrow(new) + nrow(old), " in ", out)

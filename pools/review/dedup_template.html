@@ -6,12 +6,13 @@
 <title>__TITLE__</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@400;500;600&family=IBM+Plex+Sans:wght@400;600&display=swap">
 <style>
-/* Duplicate review: pair list on the left; the two records side by side, their series overlaid, and the decision on the right. */
+/* Duplicate review: list of pairs and linked groups on the left; a pair shows its two records side by side, a group of three or more shows every record with a keep or drop choice; series overlaid. */
 :root {
   --bg: #f3f4f1; --panel: #ffffff; --ink: #1d2324; --muted: #5d6768; --faint: #8b9596; --line: #dde1dc;
   --accent: #1f6f78; --accent-soft: #d9ecee; --sel: #e7efe9;
   --a: #2a64c8; --b: #c8641e; --a-soft: #e2ebfa; --b-soft: #f8e8dc;
   --ok: #2e7d4f; --flag: #a86a00;
+  --c3: #2e8b57; --c4: #8e44ad; --c5: #b8860b; --c6: #c0392b; --c7: #148f8f; --c8: #5d6d7e;
   --f-ui: "IBM Plex Sans Condensed", "Arial Narrow", system-ui, sans-serif;
   --f-body: "IBM Plex Sans", system-ui, sans-serif;
   --f-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
@@ -20,7 +21,7 @@
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
   --bg: #151a1b; --panel: #1d2425; --ink: #e3e8e6; --muted: #a2adac; --faint: #77827f; --line: #2f3839;
   --accent: #5fb7bf; --accent-soft: #1f3a3d; --sel: #233130;
-  --a: #7fa8ee; --b: #eb9a5e; --a-soft: #1e2b42; --b-soft: #3a2a1d; --ok: #6cc28d; --flag: #e0a83a; color-scheme: dark; } }
+  --a: #7fa8ee; --b: #eb9a5e; --c3: #6cc28d; --c4: #c39bdc; --c5: #e0c060; --c6: #ef8577; --c7: #5fc9c9; --c8: #a9b4c0; --a-soft: #1e2b42; --b-soft: #3a2a1d; --ok: #6cc28d; --flag: #e0a83a; color-scheme: dark; } }
 html, body { height: 100%; margin: 0; }
 body { background: var(--bg); color: var(--ink); font: 13px/1.4 var(--f-body); }
 .app { display: grid; grid-template-columns: 300px minmax(0, 1fr); height: 100%; }
@@ -72,6 +73,20 @@ dd { margin: 0; font: 12px var(--f-mono); overflow-wrap: anywhere; font-variant-
 textarea { width: 100%; box-sizing: border-box; min-height: 58px; font: 13px var(--f-body); padding: 6px 8px; border-radius: 4px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); resize: vertical; }
 .save { font: 11px var(--f-ui); color: var(--faint); margin-top: 4px; }
 .muted { color: var(--muted); }
+.grp { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; margin-top: 12px; }
+.kd { display: flex; gap: 6px; margin-top: 10px; }
+.kd button { font: 600 13px var(--f-ui); padding: 6px 14px; border-radius: 5px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); cursor: pointer; }
+.kd button[data-k="1"][aria-pressed="true"] { background: var(--ok); border-color: var(--ok); color: var(--panel); }
+.kd button[data-k="0"][aria-pressed="true"] { background: var(--muted); border-color: var(--muted); color: var(--panel); }
+.kd button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.gmsg { font: 13px var(--f-ui); color: var(--muted); align-self: center; }
+.tog button { font: 12px var(--f-ui); color: var(--ink); background: none; border: 1px solid var(--line); border-radius: 12px; padding: 2px 9px; cursor: pointer; }
+.tog button[aria-pressed="false"] { color: var(--faint); text-decoration: line-through; }
+.tog button[aria-pressed="false"] .sw { opacity: .25; }
+.tog button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.pt { border-collapse: collapse; width: 100%; font: 12px var(--f-mono); }
+.pt th { font: 500 11px var(--f-ui); color: var(--muted); text-align: left; padding: 3px 8px; border-bottom: 1px solid var(--line); }
+.pt td { padding: 3px 8px; border-bottom: 1px solid var(--line); font-variant-numeric: tabular-nums; }
 @media (max-width: 900px) {
   .app { grid-template-columns: 1fr; height: auto; }
   .list { max-height: 220px; }
@@ -85,8 +100,8 @@ textarea { width: 100%; box-sizing: border-box; min-height: 58px; font: 13px var
   <aside>
     <div class="brand">__HEADING__<small id="snap"></small></div>
     <div class="progress" id="prog"></div>
-    <div class="list" id="list" role="listbox" aria-label="Pairs"></div>
-    <div class="keys"><kbd>j</kbd>/<kbd>k</kbd> next/previous · <kbd>a</kbd> keep A · <kbd>b</kbd> keep B · <kbd>x</kbd> keep both · <kbd>0</kbd> clear · <kbd>n</kbd> note · <kbd>s</kbd> standardize · <kbd>u</kbd> next undecided</div>
+    <div class="list" id="list" role="listbox" aria-label="Duplicate groups"></div>
+    <div class="keys"><kbd>j</kbd>/<kbd>k</kbd> next/previous · <kbd>a</kbd> keep A · <kbd>b</kbd> keep B · <kbd>x</kbd> keep both (pairs) · <kbd>0</kbd> clear · <kbd>n</kbd> note · <kbd>s</kbd> standardize · <kbd>u</kbd> next undecided · <kbd>1</kbd>–<kbd>9</kbd> show/hide a series (groups)</div>
   </aside>
   <main id="main"></main>
 </div>
@@ -94,35 +109,64 @@ textarea { width: 100%; box-sizing: border-box; min-height: 58px; font: 13px var
 <script>
 (() => {
 const D = JSON.parse(document.getElementById('data').textContent);
-const P = D.pairs, SLUG = D.slug;
+// One item per group of linked pairs; a lone pair is a group of two records.
+const G = D.items, SLUG = D.slug;
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const fmt = (x, d = 1) => x == null ? 'n/a' : Number(x).toLocaleString(undefined, { maximumFractionDigits: d });
-const WHY = { review: 'Possible versions: correlated within 50 km, no shared publication', partial: 'Partial overlap: neither lies 90% within the other' };
-let dec = {}, cur = 0, stdz = false, store = 'local';
+const WHY = { review: 'Possible versions: correlated within 50 km, no shared publication', partial: 'Partial overlap: neither lies 90% within the other',
+  resolution_review: 'Possible different-resolution versions of one record', extension_review: 'Same site and proxy, one inside the other: a later version?' };
+const COL = ['var(--a)', 'var(--b)', 'var(--c3)', 'var(--c4)', 'var(--c5)', 'var(--c6)', 'var(--c7)', 'var(--c8)'];
+const LET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+let dec = {}, pend = {}, cur = 0, stdz = false, store = 'local';
+// Series hidden in a group's chart, by group key (toggled from the legend).
+const hidden = {};
 const LS = 'presto-dedup-' + SLUG;
 try { dec = JSON.parse(localStorage.getItem(LS) || '{}'); } catch (e) { dec = {}; }
 const saveLocal = () => { try { localStorage.setItem(LS, JSON.stringify(dec)); } catch (e) {} };
 const SAVED = 'Saved to verdicts/dedup_' + SLUG + '/', LOCAL = 'Not saved to disk (server not reachable); kept in this browser';
-$('#snap').textContent = 'export ' + D.snapshot + ' · ' + P.length + ' pairs';
+const nPairs = G.reduce((s, g) => s + g.pairs.length, 0);
+$('#snap').textContent = 'export ' + D.snapshot + ' · ' + G.length + ' to decide (' + nPairs + ' pairs)';
+const isPair = g => g.recs.length === 2;
+const pairView = g => ({ ...g.pairs[0], a: g.recs.find(r => r.TSid === g.pairs[0].a), b: g.recs.find(r => r.TSid === g.pairs[0].b) });
+
+// Keep (true) or drop (false) for each record, from the saved pair decisions:
+// dropped if any decision drops it, kept if a decision keeps it and none drops it.
+function derived(g) {
+  const st = Object.fromEntries(g.recs.map(r => [r.TSid, null]));
+  for (const p of g.pairs) {
+    const c = (dec[p.key] || {}).choice; if (!c) continue;
+    const ka = c === 'a' || c === 'both', kb = c === 'b' || c === 'both';
+    st[p.a] = st[p.a] === false ? false : ka; st[p.b] = st[p.b] === false ? false : kb;
+  }
+  return st;
+}
+const stateOf = g => pend[g.key] || derived(g);
+const decided = g => isPair(g) ? !!(dec[g.pairs[0].key] || {}).choice : Object.values(derived(g)).every(v => v !== null);
+// A record to drop needs a pair with a record that is kept; otherwise no pair decision can drop it.
+function orphans(g, st) {
+  return g.recs.filter(r => st[r.TSid] === false && !g.pairs.some(p => (p.a === r.TSid && st[p.b]) || (p.b === r.TSid && st[p.a]))).map(r => r.TSid);
+}
 
 function renderList() {
-  $('#list').innerHTML = P.map((p, i) => {
-    const c = (dec[p.key] || {}).choice;
-    const lab = c === 'a' ? ['var(--a)', 'Keep A'] : c === 'b' ? ['var(--b)', 'Keep B'] : c === 'both' ? ['var(--ok)', 'Both'] : ['var(--faint)', ''];
+  $('#list').innerHTML = G.map((g, i) => {
+    let lab = ['var(--faint)', ''];
+    if (isPair(g)) { const c = (dec[g.pairs[0].key] || {}).choice; lab = c === 'a' ? ['var(--a)', 'Keep A'] : c === 'b' ? ['var(--b)', 'Keep B'] : c === 'both' ? ['var(--ok)', 'Both'] : lab; }
+    else if (decided(g)) { const k = Object.values(derived(g)).filter(Boolean).length; lab = ['var(--ok)', `Keep ${k} of ${g.recs.length}`]; }
+    const nm = isPair(g) ? `${esc(g.recs[0].dataSetName)} <span class="muted">·</span> ${esc(g.recs[1].dataSetName)}` : `${g.recs.length} records: ${g.recs.map(r => esc(r.dataSetName)).join(', ')}`;
+    const p = g.pairs[0];
+    const sub = isPair(g) ? `${esc(g.recs[0].variableName)} · ${fmt(p.km)} km · r ${fmt(p.r, 2)}` : `${g.pairs.length} pairs · within ${fmt(Math.max(...g.pairs.map(q => q.km)))} km`;
     return `<div class="item" role="option" data-i="${i}" aria-selected="${i === cur}"><span style="min-width:0">
-      <div class="nm">${esc(p.a.dataSetName)} <span class="muted">·</span> ${esc(p.b.dataSetName)}</div>
-      <div class="sub">${esc(p.a.variableName)} · ${fmt(p.km)} km · r ${fmt(p.r, 2)}</div></span>
+      <div class="nm">${nm}</div><div class="sub">${sub}</div></span>
       <span class="st" style="color:${lab[0]}">${lab[1]}</span></div>`;
   }).join('');
-  const n = P.filter(p => (dec[p.key] || {}).choice).length;
-  $('#prog').innerHTML = `<b>${n}</b> of ${P.length} decided`;
+  $('#prog').innerHTML = `<b>${G.filter(decided).length}</b> of ${G.length} decided`;
 }
 $('#list').addEventListener('click', e => { const it = e.target.closest('.item'); if (it) { cur = +it.dataset.i; renderList(); show(); } });
 
-function chart(p) {
+function chart(recs, cols) {
   const W = 900, H = 300, m = { l: 56, r: 14, t: 12, b: 30 };
-  const ser = [p.a, p.b].map(r => {
+  const ser = recs.map(r => {
     let v = r.value.slice();
     if (stdz) { const ok = v.filter(x => x != null); const mu = ok.reduce((s, x) => s + x, 0) / ok.length; const sd = Math.sqrt(ok.reduce((s, x) => s + (x - mu) ** 2, 0) / Math.max(1, ok.length - 1)) || 1; v = v.map(x => x == null ? null : (x - mu) / sd); }
     return { y: r.year, v };
@@ -137,24 +181,23 @@ function chart(p) {
     const dt = s.y.slice(1).map((y, i) => y - s.y[i]).sort((a, b) => a - b); const med = dt[Math.floor(dt.length / 2)] || 1;
     let d = '', pen = false;
     s.y.forEach((y, i) => { if (s.v[i] == null) { pen = false; return; } d += (!pen || y - s.y[i - 1] > 5 * med ? 'M' : 'L') + X(y).toFixed(1) + ',' + Y(s.v[i]).toFixed(1); pen = true; });
-    return `<path d="${d}" fill="none" stroke="${col}" stroke-width="1.6" stroke-linejoin="round" opacity=".9"/>`;
+    return `<path d="${d}" fill="none" stroke="${col}" stroke-width="2" stroke-linejoin="round" opacity=".85"/>`;
   };
-  return `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Both series over time">
+  const units = [...new Set(recs.map(r => r.units || ''))];
+  return `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="All series over time">
     ${ticks(v0, v1, 5).map(v => `<line x1="${m.l}" x2="${W - m.r}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--line)"/><text x="${m.l - 6}" y="${Y(v) + 3}" text-anchor="end" font-size="10" fill="var(--muted)" font-family="var(--f-mono)">${+v.toPrecision(4)}</text>`).join('')}
     ${ticks(x0, x1, 9).filter(x => x >= x0 && x <= x1).map(x => `<text x="${X(x)}" y="${H - m.b + 15}" text-anchor="middle" font-size="10" fill="var(--muted)" font-family="var(--f-mono)">${Math.round(x)}</text>`).join('')}
     <line x1="${m.l}" x2="${W - m.r}" y1="${H - m.b}" y2="${H - m.b}" stroke="var(--faint)"/>
-    ${line(ser[0], 'var(--a)')}${line(ser[1], 'var(--b)')}
+    ${ser.map((s, i) => line(s, cols[i])).join('')}
     <text x="${W - m.r}" y="${H - 3}" text-anchor="end" font-size="10" fill="var(--muted)">year CE</text>
-    <text transform="translate(13 ${(H - m.b + m.t) / 2}) rotate(-90)" text-anchor="middle" font-size="10" fill="var(--muted)">${stdz ? 'standardized' : esc(p.a.variableName) + ' (' + esc(p.a.units || '') + (p.b.units !== p.a.units ? ' / ' + esc(p.b.units || '') : '') + ')'}</text>
+    <text transform="translate(13 ${(H - m.b + m.t) / 2}) rotate(-90)" text-anchor="middle" font-size="10" fill="var(--muted)">${stdz ? 'standardized' : esc(recs[0].variableName) + ' (' + units.map(esc).join(' / ') + ')'}</text>
   </svg>`;
 }
 
-function rec(r, side, p) {
+function recBody(r) {
   const pubs = (r.publications || []).filter(x => x.title || x.doi).slice(0, 3).map(x => `<p class="pub">${esc((x.authors || '').split(';').slice(0, 3).join('; '))}${(x.authors || '').split(';').length > 3 ? ' et al.' : ''} ${x.year ? '(' + esc(x.year) + ')' : ''}. ${esc(x.title || '')}. ${x.doi ? `<a href="https://doi.org/${esc(String(x.doi).replace(/^https?:\/\/(dx\.)?doi\.org\//, ''))}" target="_blank" rel="noopener">doi</a>` : ''}</p>`).join('');
   const interp = (r.interpretations || []).map(i => `${esc(i.variable)}${i.direction ? ' (' + esc(i.direction) + ')' : ''}${i.seasonality ? ', ' + esc(i.seasonality) : ''}`).join('; ');
-  return `<section class="card rec ${side}">
-    <span class="tag">${side.toUpperCase()}</span>${p.suggest === side ? '<span class="sug">rules would keep</span>' : ''}
-    <h3>${esc(r.dataSetName)}</h3>
+  return `<h3>${esc(r.dataSetName)}</h3>
     <div class="muted" style="font:12px var(--f-mono)">${esc(r.TSid)}</div>
     <dl>
       <dt>variable</dt><dd>${esc(r.variableName)}${r.units ? ' · ' + esc(r.units) : ''}</dd>
@@ -164,15 +207,81 @@ function rec(r, side, p) {
       <dt>values</dt><dd>${fmt(r.n, 0)} · ${fmt(r.resolution, 2)} yr resolution</dd>
       <dt>compilations</dt><dd>${esc((r.compilations || []).filter(c => !/PReSto|test/i.test(c)).join(', ') || 'none')}</dd>
       <dt>interpretation</dt><dd>${interp || '<span class="muted">none</span>'}</dd>
-    </dl>${pubs}</section>`;
+    </dl>${pubs}`;
 }
 
 function show() {
-  try { render(); } catch (e) { $('#main').innerHTML = `<p class="muted">Could not display this pair (${esc(e.message)}).</p>`; }
+  try { render(); } catch (e) { $('#main').innerHTML = `<p class="muted">Could not display this item (${esc(e.message)}).</p>`; }
+  const it = document.querySelector(`.item[data-i="${cur}"]`); if (it) it.scrollIntoView({ block: 'nearest' });
+}
+function noteBox(d) {
+  return `<div><textarea id="note" placeholder="Why (n to focus). Saved with the decision and copied into dedup_decisions.csv.">${esc(d.note || '')}</textarea>
+    <div class="save" id="save">${store === 'server' ? SAVED : LOCAL}</div></div>`;
 }
 function render() {
-  const p = P[cur]; if (!p) { $('#main').innerHTML = ''; return; }
-  const d = dec[p.key] || {};
+  const g = G[cur]; if (!g) { $('#main').innerHTML = ''; return; }
+  if (isPair(g)) return renderPair(g);
+  const st = stateOf(g), cols = g.recs.map((r, i) => COL[i % COL.length]);
+  const hid = hidden[g.key] || (hidden[g.key] = new Set());
+  const vis = g.recs.map((r, i) => i).filter(i => !hid.has(g.recs[i].TSid));
+  const L = Object.fromEntries(g.recs.map((r, i) => [r.TSid, LET[i]]));
+  const rules = [...new Set(g.pairs.map(p => p.rule))];
+  const orph = orphans(g, st), unset = g.recs.filter(r => st[r.TSid] === null).length, nk = Object.values(st).filter(Boolean).length;
+  const msg = unset ? `Choose keep or drop for ${unset === g.recs.length ? 'each record' : 'the remaining ' + unset}; the decision is saved once every record has one.`
+    : !nk ? 'Keep at least one record.'
+    : orph.length ? `${orph.map(t => L[t]).join(', ')} cannot be dropped here: no pair links it to a kept record. Exclude it on the record review page instead.` : '';
+  const d0 = dec[g.pairs[0].key] || {};
+  $('#main').innerHTML = `
+    <div class="stats">
+      <span class="chip why">${g.recs.length} linked records: choose which to keep</span>
+      ${rules.map(r => `<span class="chip">${esc(WHY[r] || r)}</span>`).join('')}
+    </div>
+    <section class="card"><h2>All series <span class="tools"><button id="std" aria-pressed="${stdz}">Standardize</button></span></h2>${vis.length ? chart(vis.map(i => g.recs[i]), vis.map(i => cols[i])) : '<p class="muted">All series hidden: turn one on below.</p>'}
+      <div class="legend tog" role="group" aria-label="Show or hide series">${g.recs.map((r, i) => `<button data-s="${esc(r.TSid)}" aria-pressed="${!hid.has(r.TSid)}" title="Show or hide ${esc(r.dataSetName)} (or press ${i + 1})"><span class="sw" style="background:${cols[i]}"></span>${L[r.TSid]} ${esc(r.dataSetName)}</button>`).join('')}</div></section>
+    <section class="card" style="margin-top:12px"><h2>Pairs the rules flagged</h2>
+      <table class="pt"><thead><tr><th>pair</th><th>km</th><th>shared points</th><th>r</th><th>r of differences</th><th>flagged as</th></tr></thead><tbody>
+      ${g.pairs.map(p => `<tr><td>${L[p.a]} · ${L[p.b]}</td><td>${fmt(p.km)}</td><td>${fmt(p.n, 0)}</td><td>${fmt(p.r, 3)}</td><td>${fmt(p.r_diff, 3)}</td><td>${esc(WHY[p.rule] || p.rule)}</td></tr>`).join('')}
+      </tbody></table></section>
+    <div class="grp">${g.recs.map((r, i) => `<section class="card rec" style="border-top-color:${cols[i]}">
+      <span class="tag" style="color:${cols[i]}">${L[r.TSid]}</span>
+      ${recBody(r)}
+      <div class="kd" role="group" aria-label="Keep or drop ${L[r.TSid]}">
+        <button data-t="${esc(r.TSid)}" data-k="1" aria-pressed="${st[r.TSid] === true}">Keep</button>
+        <button data-t="${esc(r.TSid)}" data-k="0" aria-pressed="${st[r.TSid] === false}">Drop</button>
+      </div></section>`).join('')}</div>
+    <div class="decide card">
+      <div class="gmsg">${esc(msg) || `<b>Keeping ${nk} of ${g.recs.length}.</b>`}</div>
+      ${noteBox(d0)}
+    </div>`;
+  document.querySelectorAll('.kd button').forEach(b => b.addEventListener('click', () => setKeep(g, b.dataset.t, b.dataset.k === '1')));
+  document.querySelectorAll('.tog button').forEach(b => b.addEventListener('click', () => toggleSeries(g, b.dataset.s)));
+  $('#std').addEventListener('click', () => { stdz = !stdz; show(); });
+  let t = null; $('#note').addEventListener('input', e => { clearTimeout(t); const v = e.target.value; t = setTimeout(() => g.pairs.forEach(p => save(p, { note: v })), 600); });
+}
+
+function toggleSeries(g, t) {
+  const h = hidden[g.key] || (hidden[g.key] = new Set());
+  if (h.has(t)) h.delete(t); else h.add(t);
+  show();
+}
+
+function setKeep(g, t, k) {
+  const st = { ...stateOf(g) }; st[t] = st[t] === k ? null : k;
+  pend[g.key] = st;
+  const complete = Object.values(st).every(v => v !== null) && Object.values(st).some(Boolean) && !orphans(g, st).length;
+  if (complete) {
+    const note = ($('#note') || {}).value || '';
+    for (const p of g.pairs) {
+      const ka = st[p.a], kb = st[p.b];
+      save(p, { choice: ka && kb ? 'both' : ka ? 'a' : kb ? 'b' : null, note });
+    }
+  }
+  renderList(); show();
+}
+
+function renderPair(g) {
+  const p = pairView(g), d = dec[p.key] || {};
+  const rec = (r, side) => `<section class="card rec ${side}"><span class="tag">${side.toUpperCase()}</span>${p.suggest === side ? '<span class="sug">rules would keep</span>' : ''}${recBody(r)}</section>`;
   $('#main').innerHTML = `
     <div class="stats">
       <span class="chip why">${esc(WHY[p.rule] || p.rule)}</span>
@@ -182,35 +291,37 @@ function render() {
       <span class="chip">r of differences <b>${fmt(p.r_diff, 3)}</b></span>
       <span class="chip">${p.same_doi ? '<b>shared publication</b>' : 'no shared publication'}</span>
     </div>
-    <section class="card"><h2>Both series <span class="tools"><button id="std" aria-pressed="${stdz}">Standardize</button></span></h2>${chart(p)}
+    <section class="card"><h2>Both series <span class="tools"><button id="std" aria-pressed="${stdz}">Standardize</button></span></h2>${chart([p.a, p.b], ['var(--a)', 'var(--b)'])}
       <div class="legend"><span><span class="sw" style="background:var(--a)"></span>A ${esc(p.a.dataSetName)}</span><span><span class="sw" style="background:var(--b)"></span>B ${esc(p.b.dataSetName)}</span></div></section>
-    <div class="pair">${rec(p.a, 'a', p)}${rec(p.b, 'b', p)}</div>
+    <div class="pair">${rec(p.a, 'a')}${rec(p.b, 'b')}</div>
     <div class="decide card">
       <div class="btns" role="group" aria-label="Decision">
         <button data-c="a" aria-pressed="${d.choice === 'a'}"><kbd>a</kbd> Keep A</button>
         <button data-c="b" aria-pressed="${d.choice === 'b'}"><kbd>b</kbd> Keep B</button>
         <button data-c="both" aria-pressed="${d.choice === 'both'}"><kbd>x</kbd> Keep both</button>
       </div>
-      <div><textarea id="note" placeholder="Why (n to focus). Saved with the decision and copied into dedup_decisions.csv.">${esc(d.note || '')}</textarea>
-        <div class="save" id="save">${store === 'server' ? SAVED : LOCAL}</div></div>
+      ${noteBox(d)}
     </div>`;
   document.querySelectorAll('.btns button').forEach(b => b.addEventListener('click', () => choose(b.dataset.c)));
   $('#std').addEventListener('click', () => { stdz = !stdz; show(); });
   let t = null; $('#note').addEventListener('input', e => { clearTimeout(t); const v = e.target.value; t = setTimeout(() => save(p, { note: v }), 600); });
-  const it = document.querySelector(`.item[data-i="${cur}"]`); if (it) it.scrollIntoView({ block: 'nearest' });
 }
 
 let writing = Promise.resolve();
 const post = (key, d) => fetch('/api/dedup/' + SLUG, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ key, decision: d }) })
   .then(x => { if (!x.ok) throw new Error('HTTP ' + x.status); });
 function save(p, patch) {
-  const next = { ...(dec[p.key] || {}), ...patch, tsidA: p.a.TSid, tsidB: p.b.TSid, nameA: p.a.dataSetName, nameB: p.b.dataSetName, at: new Date().toISOString() };
+  const g = G.find(x => x.pairs.includes(p)) || G[cur];
+  const nm = t => (g.recs.find(r => r.TSid === t) || {}).dataSetName;
+  const ta = typeof p.a === 'string' ? p.a : p.a.TSid, tb = typeof p.b === 'string' ? p.b : p.b.TSid;
+  const next = { ...(dec[p.key] || {}), ...patch, tsidA: ta, tsidB: tb, nameA: nm(ta), nameB: nm(tb), at: new Date().toISOString() };
   dec[p.key] = next; saveLocal(); renderList();
   writing = writing.then(() => post(p.key, next)).then(() => { store = 'server'; const e = $('#save'); if (e) e.textContent = SAVED; })
     .catch(() => { store = 'local'; const e = $('#save'); if (e) e.textContent = LOCAL; });
 }
 function choose(c) {
-  const p = P[cur]; if (!p) return;
+  const g = G[cur]; if (!g || !isPair(g)) return;
+  const p = g.pairs[0];
   save(p, { choice: (dec[p.key] || {}).choice === c ? null : c });
   document.querySelectorAll('.btns button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.c === (dec[p.key] || {}).choice)));
 }
@@ -218,13 +329,14 @@ document.addEventListener('keydown', e => {
   if (e.target.matches('textarea')) { if (e.key === 'Escape') e.target.blur(); return; }
   if (e.metaKey || e.ctrlKey || e.altKey) return;
   const k = e.key;
-  if (k === 'j' || k === 'ArrowDown') { cur = Math.min(P.length - 1, cur + 1); renderList(); show(); e.preventDefault(); }
+  if (k === 'j' || k === 'ArrowDown') { cur = Math.min(G.length - 1, cur + 1); renderList(); show(); e.preventDefault(); }
   else if (k === 'k' || k === 'ArrowUp') { cur = Math.max(0, cur - 1); renderList(); show(); e.preventDefault(); }
   else if (k === 'a') choose('a'); else if (k === 'b') choose('b'); else if (k === 'x') choose('both');
-  else if (k === '0') { const p = P[cur]; if (p) { save(p, { choice: null }); show(); } }
+  else if (k === '0') { const g = G[cur]; if (g) { delete pend[g.key]; g.pairs.forEach(p => save(p, { choice: null })); show(); } }
   else if (k === 'n') { $('#note').focus(); e.preventDefault(); }
   else if (k === 's') { stdz = !stdz; show(); }
-  else if (k === 'u') { const i = P.findIndex((p, j) => j > cur && !(dec[p.key] || {}).choice); if (i >= 0) { cur = i; renderList(); show(); } }
+  else if (/^[1-9]$/.test(k)) { const g = G[cur]; if (g && !isPair(g) && g.recs[+k - 1]) toggleSeries(g, g.recs[+k - 1].TSid); }
+  else if (k === 'u') { const i = G.findIndex((g, j) => j > cur && !decided(g)); if (i >= 0) { cur = i; renderList(); show(); } }
 });
 renderList(); show();
 (async () => {

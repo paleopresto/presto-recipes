@@ -68,7 +68,20 @@ dedup_defaults <- list(
   # Stage 0 collapses one dataset's columns by proxy and season; with this on,
   # also by variable, so a pool of any climate variable keeps a pollen
   # record's temperature and precipitation reconstructions as two records.
-  collapse_by_variable = FALSE
+  collapse_by_variable = FALSE,
+  # Additions (Nick, 2026-11-17), all off unless a config sets them:
+  # far_km: same-proxy copies with |r| > r_alone are duplicates up to this
+  #   distance (one copy's coordinates are wrong: CA13PEL01 and CO13CAHN,
+  #   51 km apart, r = 1).
+  # cross_label_r, cross_label_km: a pair whose labels differ because one
+  #   record has no proxy label is a duplicate at |r| >= cross_label_r within
+  #   cross_label_km (Pigmy Basin Mg/Ca and MS07JRGM's unlabelled
+  #   temperature, r = 1.0).
+  # extension_r, extension_km: same-proxy, not-annual pairs within
+  #   extension_km, the shorter inside the longer (subset_frac), at
+  #   max(|r|, r_bin) >= extension_r go to review: a later version of one
+  #   core, re-dated or extended (Moose Lake, Guliya, Agassiz).
+  far_km = NA, cross_label_r = NA, cross_label_km = NA, extension_r = NA, extension_km = NA
 )
 
 haversine_km <- function(lat1, lon1, lat2, lon2) {
@@ -79,7 +92,10 @@ haversine_km <- function(lat1, lon1, lat2, lon2) {
 
 norm_proxy <- function(x) {
   p <- ifelse(is.na(x$proxy) | x$proxy == "", x$variableName, x$proxy)
-  gsub("[^a-z0-9]", "", tolower(p))
+  p <- gsub("[^a-z0-9]", "", tolower(p))
+  # One proxy under two names (Iso2k's d2H is LiPDverse's dD).
+  p[p %in% c("d2h", "deltad", "deltadeuterium")] <- "dd"
+  p
 }
 
 # Candidate pairs: same archive, same proxy, within max_km, different TSids.
@@ -124,6 +140,29 @@ safe_cor <- function(a, b) {
   stats::cor(a, b)
 }
 
+# Correlation of two records sampled at different resolutions: the finer one
+# is averaged over the coarser one's sampling intervals, allowing a shift of
+# up to half the coarser step (one series may date bin starts, the other bin
+# centres, as Penny Ice Cap's 25-yr and 10-yr Fisher 1998 series do).
+binned_r <- function(s1, s2, res1, res2, opt = dedup_defaults) {
+  if (res1 > res2) { tmp <- s1; s1 <- s2; s2 <- tmp }
+  cr <- max(res1, res2); y <- s2$year; ny <- length(y)
+  if (ny < 3) return(list(r_bin = NA_real_, n_bin = 0L))
+  edges <- c(y[1] - (y[2] - y[1]) / 2, (y[-1] + y[-ny]) / 2, y[ny] + (y[ny] - y[ny - 1]) / 2)
+  best <- NA_real_; nb <- 0L
+  for (lag in seq(-cr / 2, cr / 2, length.out = 11)) {
+    bin <- findInterval(s1$year + lag, edges, rightmost.closed = TRUE)
+    ok <- bin >= 1 & bin <= ny
+    if (sum(ok) < 3) next
+    m <- tapply(s1$value[ok], bin[ok], mean)
+    i <- as.integer(names(m))
+    if (length(i) <= opt$min_overlap) next
+    r <- safe_cor(s2$value[i], as.numeric(m))
+    if (is.finite(r) && (is.na(best) || r > best)) { best <- r; nb <- length(i) }
+  }
+  list(r_bin = best, n_bin = nb)
+}
+
 # Similarity of two series given as data.frames with year and value.
 pair_similarity <- function(s1, s2, same_units, opt = dedup_defaults) {
   s1 <- s1[order(s1$year), ]; s2 <- s2[order(s2$year), ]
@@ -133,7 +172,8 @@ pair_similarity <- function(s1, s2, same_units, opt = dedup_defaults) {
   span1 <- diff(range(s1$year)); span2 <- diff(range(s2$year))
   overlap_frac <- if (hi > lo) (hi - lo) / max(1e-9, min(span1, span2)) else 0
   na <- list(n = 0L, r = NA, r_diff = NA, rmse = NA, rmse_diff = NA, identical = FALSE,
-             overlap_frac = overlap_frac, frac1 = NA, frac2 = NA, same_frac = NA)
+             overlap_frac = overlap_frac, frac1 = NA, frac2 = NA, same_frac = NA,
+             res_ratio = max(res1, res2) / max(min(res1, res2), 1e-9), r_bin = NA, n_bin = 0L)
   if (hi <= lo) return(na)
   annual <- isTRUE(res1 <= opt$annual_max_resolution && res2 <= opt$annual_max_resolution)
   if (annual) {
@@ -158,12 +198,18 @@ pair_similarity <- function(s1, s2, same_units, opt = dedup_defaults) {
   out$same_frac <- mean(abs(a - b) < 1e-6)
   # How much of each record lies inside the other's span.
   out$frac1 <- (hi - lo) / max(1e-9, span1); out$frac2 <- (hi - lo) / max(1e-9, span2)
+  if (out$res_ratio >= (opt$res_ratio %||% Inf)) {
+    w1 <- s1[s1$year >= lo - max(res1, res2) & s1$year <= hi + max(res1, res2), ]
+    w2 <- s2[s2$year >= lo - max(res1, res2) & s2$year <= hi + max(res1, res2), ]
+    out[c("r_bin", "n_bin")] <- binned_r(w1, w2, res1, res2, opt)
+  }
   out
 }
 
 is_duplicate <- function(m, opt = dedup_defaults) {
   if (m$n <= opt$min_overlap) return(FALSE)
-  if (isTRUE(m$identical) || isTRUE(m$r > opt$r_alone)) return(TRUE)
+  # |r|: a temperature calibrated from d18O runs opposite to the d18O.
+  if (isTRUE(m$identical) || isTRUE(abs(m$r) > opt$r_alone)) return(TRUE)
   corr <- isTRUE(m$r > opt$r) || isTRUE(m$r_diff > opt$r)
   close <- isTRUE(m$rmse < opt$rmse) || isTRUE(m$rmse_diff < opt$rmse)
   corr && close
@@ -179,13 +225,16 @@ preference <- function(pool, membership, pubyear, opt = dedup_defaults, meta = N
   data.frame(TSid = pool$TSid, priority = pr, pubyear = pubyear[pool$datasetId],
              n = pool$n_win, span = pool$span_win,
              meta = if (is.null(meta)) 0 else ifelse(is.na(meta[pool$TSid]), 0, unname(meta[pool$TSid])),
-             curated = as.integer(pool$TSid %in% curated), stringsAsFactors = FALSE)
+             curated = as.integer(pool$TSid %in% curated),
+             calibrated = as.integer(tolower(pool$variableName) == "temperature"), stringsAsFactors = FALSE)
 }
 
 # 1 or 2: which of two records to keep. Under prefer = "data", span and n
 # within same_tol of each other count as equal.
 prefer <- function(p1, p2, opt = dedup_defaults) {
-  keys <- if (identical(opt$prefer, "data")) c("span", "n", "pubyear", "meta", "curated", "priority")
+  # Calibrated temperature over the raw proxy it was calibrated from, at
+  # equal span (Nick, 2026-11-16 and 2026-11-17).
+  keys <- if (identical(opt$prefer, "data")) c("span", "calibrated", "n", "pubyear", "meta", "curated", "priority")
           else c("curated", "span", "n", "pubyear", "priority")
   for (k in keys) {
     a <- p1[[k]]; b <- p2[[k]]
@@ -214,13 +263,16 @@ collapse_within_dataset <- function(pool, prefer_units = character(), curated = 
   key <- paste(pool$datasetId, ifelse(has_proxy, norm_proxy(pool), paste0("tsid:", pool$TSid)),
                norm_season(pool$seasonality), sep = "|")
   if (isTRUE(by_variable)) key <- paste(key, tolower(pool$variableName), sep = "|")
-  o <- order(key, -as.integer(pool$TSid %in% curated), -as.integer(pool$primaryTimeseries %in% TRUE),
+  o <- order(key, -as.integer(pool$TSid %in% curated), -as.integer(tolower(pool$variableName) == "temperature"),
+             -as.integer(pool$primaryTimeseries %in% TRUE),
              -as.integer(pool$units %in% prefer_units), -pool$n_win, pool$tableId, pool$TSid)
   p <- pool[o, ]
   # Curated records are never collapsed away: a compilation that kept two
   # records from one core kept them deliberately.
   drop <- duplicated(key[o]) & !p$TSid %in% curated
-  p$TSid[drop]
+  out <- p$TSid[drop]
+  attr(out, "rep") <- p$TSid[match(key[o], key[o])][drop]
+  out
 }
 
 # Annual-type seasonality: annual, unspecified (read as annual, as Erb et al.
@@ -313,25 +365,160 @@ collapse_same_site <- function(con, pool, rules) {
   drop
 }
 
+# Stage 0e: one season and one variable per dataset and proxy. Within a
+# dataset, the records of one proxy keep a single seasonality (a calibrated
+# temperature first, then annual-type, then the season of the best-ranked
+# record) and then a single
+# variableName (the best-ranked record's), so a core contributes its Mg/Ca or
+# its Mg/Ca temperature but not both, and a pollen site one season. Records
+# that share the chosen season and variable (several cores in one dataset)
+# all stay, as do different proxies and curated records. Records without a
+# proxy are left alone. Returns the TSids dropped.
+one_variant_per_proxy <- function(pool, curated = character()) {
+  has_proxy <- !is.na(pool$proxy) & nzchar(pool$proxy)
+  p <- pool[has_proxy, ]
+  if (!nrow(p)) return(character())
+  key <- paste(p$datasetId, norm_proxy(p), sep = "|")
+  # A missing season ranks after a stated annual one: SelinCo's unlabelled
+  # pollen temperature beside its annual one, in the same table, is a second
+  # reconstruction from one assemblage (Nick, 2026-11-17).
+  vseas <- function(x) ifelse(is.na(x) | !nzchar(gsub("[^A-Za-z0-9]", "", x)) | tolower(x) == "na", "unspecified",
+                              ifelse(annual_type(x), "annual", norm_season(x)))
+  seas <- vseas(p$seasonality)
+  calibrated <- tolower(p$variableName) == "temperature"
+  rank <- order(key, -as.integer(p$TSid %in% curated), -as.integer(calibrated), -as.integer(seas == "annual"),
+                -as.integer(seas == "unspecified"),
+                -as.integer(p$primaryTimeseries %in% TRUE), -p$n_win, p$TSid)
+  best <- p[rank, ][!duplicated(key[rank]), ]
+  bk <- paste(best$datasetId, norm_proxy(best), sep = "|")
+  bseas <- vseas(best$seasonality)
+  i <- match(key, bk)
+  # A missing season counts as annual, except beside a record of the same
+  # table: separate tables are often separate specimens (Te Reinga's and
+  # Leviathan's stalagmites), one table is one set of samples.
+  aseas <- function(x) ifelse(annual_type(x), "annual", norm_season(x))
+  off <- (aseas(p$seasonality) != aseas(best$seasonality)[i] |
+    tolower(p$variableName) != tolower(best$variableName[i]) |
+    (p$tableId == best$tableId[i] & seas != bseas[i])) & !p$TSid %in% curated
+  out <- p$TSid[off]
+  attr(out, "rep") <- best$TSid[i][off]
+  out
+}
+
+# Stage 0f: near-copies within one dataset. Records of one dataset whose
+# series correlate at |r| >= opt$within_r (on their common years) are one
+# signal, e.g. a varve-thickness series and the temperature calibrated from
+# it, or two tables holding the same core. So are two resolutions of one
+# series (binned r >= opt$res_r, as for the cross-dataset resolution tier)
+# when their Common Era spans are within subset_frac of each other; if one
+# covers clearly more (Dasuopu's 10-yr series from 1010, annual from 1450),
+# both stay (Nick, 2026-11-16). Only the best-ranked of each such
+# group stays (curated, then calibrated temperature, annual-type, primary
+# timeseries, more values); this applies to curated records too, since two
+# curated near-copies still count once. Nick, 2026-11-16. Returns the TSids
+# dropped.
+within_dataset_correlated <- function(pool, points, curated = character(), opt = dedup_defaults) {
+  thr <- opt$within_r %||% NA_real_
+  if (!is.finite(thr) || !nrow(pool)) return(character())
+  seas <- ifelse(annual_type(pool$seasonality), "annual", "seasonal")
+  rank <- order(pool$datasetId, -as.integer(pool$TSid %in% curated),
+                -as.integer(tolower(pool$variableName) == "temperature"),
+                -as.integer(seas == "annual"), -as.integer(pool$primaryTimeseries %in% TRUE),
+                -as.integer(!is.na(pool$proxy) & nzchar(pool$proxy)),
+                -round(log(pmax(pool$span_win, 1)) / log(1 + opt$same_tol)), -pool$n_win, pool$TSid)
+  p <- pool[rank, ]
+  multi <- names(which(table(p$datasetId) > 1))
+  pts <- split(points[points$TSid %in% p$TSid[p$datasetId %in% multi], c("TSid", "year", "value")],
+               points$TSid[points$TSid %in% p$TSid[p$datasetId %in% multi]])
+  drop <- character()
+  for (ds in multi) {
+    q <- p[p$datasetId == ds, ]; kept <- character()
+    for (i in seq_len(nrow(q))) {
+      t <- q$TSid[i]; s <- pts[[t]]
+      hit <- FALSE
+      if (!is.null(s) && nrow(s) > 2) for (k in kept) {
+        m <- pair_similarity(s, pts[[k]], identical(q$units[i], q$units[q$TSid == k]), opt)
+        sp <- c(q$span_win[i], q$span_win[q$TSid == k])
+        similar_span <- min(sp) >= opt$subset_frac * max(sp)
+        if ((is.finite(m$r) && abs(m$r) >= thr) ||
+            (is.finite(m$r_bin) && m$r_bin >= (opt$res_r %||% Inf) && similar_span)) { hit <- TRUE; break }
+      }
+      if (hit) drop <- c(drop, t) else kept <- c(kept, t)
+    }
+  }
+  drop
+}
+
+# Within-dataset collapses (stages 0 and 0e) drop a record only when it
+# carries the same measurements as the record kept for its key: |r| or binned
+# r >= opt$within_collapse_r; a seasonal series beside a stated annual one
+# in the same table (one set of samples); two records of one assemblage proxy
+# (pollen, chironomids, diatoms, dinocysts...) with similar spans, in any
+# table: one assemblage calibrated or reduced to ratios more than one way
+# (LegacyClimate's pollen reconstructions); two seasons composited from one series; or a
+# seawater d18O derived from the record kept (`derived`). Separate cores, coral heads or
+# foraminifera species filed in one dataset under one proxy stay (Nick,
+# 2026-11-17: distinct measurements on the same material are fine). Returns
+# the subset of `drop` to remove; `rep` maps each to the record kept.
+assemblage_pattern <- "pollen|chironomid|diatom|dinocyst|dinoflagellate|radiolaria|ostracod|testate|coccolith|cladocera|assemblage"
+same_measurements <- function(pool, drop, rep, points, opt, derived = character()) {
+  thr <- opt$within_collapse_r %||% NA_real_
+  if (!is.finite(thr) || !length(drop)) return(drop)
+  ids <- unique(c(drop, rep))
+  ser <- split(points[points$TSid %in% ids, c("year", "value")], points$TSid[points$TSid %in% ids])
+  i <- match(drop, pool$TSid); j <- match(rep, pool$TSid)
+  keep_drop <- vapply(seq_along(drop), function(k) {
+    a <- pool[i[k], ]; b <- pool[j[k], ]
+    if (drop[k] %in% derived) return(TRUE)
+    s1 <- ser[[drop[k]]]; s2 <- ser[[rep[k]]]
+    if (is.null(s1) || is.null(s2) || nrow(s1) < 3 || nrow(s2) < 3) return(FALSE)
+    if (grepl(assemblage_pattern, paste(a$proxy, b$proxy), ignore.case = TRUE)) {
+      sp <- c(a$span_win, b$span_win)  # Common Era spans: the series run further back
+      if (min(sp) >= opt$subset_frac * max(sp)) return(TRUE)
+    }
+    if (identical(a$tableId, b$tableId)) {
+      if (norm_season(b$seasonality) %in% "annual" && !annual_type(a$seasonality)) return(TRUE)
+      # Two seasons composited from one series (Hon Tre's Jan-Mar and Sep-Nov Sr/Ca).
+      if (!annual_type(a$seasonality) && !annual_type(b$seasonality) &&
+          isTRUE(all.equal(sort(s1$year), sort(s2$year)))) return(TRUE)
+    }
+    m <- tryCatch(pair_similarity(s1, s2, FALSE, utils::modifyList(opt, list(res_ratio = 1.01))), error = function(e) NULL)
+    if (is.null(m)) return(FALSE)
+    sim <- suppressWarnings(max(abs(m$r), abs(m$r_bin), na.rm = TRUE))
+    is.finite(sim) && sim >= thr
+  }, FALSE)
+  drop[keep_drop]
+}
+
 # Resolve duplicates in a selected pool. Returns list(pairs, pool) where pool
 # has a `dedup_keep` column and pairs records every decision and its rule.
 dedup_pool <- function(con, pool, points, prior = NULL, prefer_units = character(),
                        syntheses = list(), curated = character(), opt = dedup_defaults,
                        same_site = list(), prefer_annual = FALSE) {
   within <- collapse_within_dataset(pool, prefer_units, curated, opt$collapse_by_variable)
+  derived <- if (is.finite(opt$within_collapse_r %||% NA)) DBI::dbGetQuery(con, sprintf(
+    "SELECT TSid FROM timeseries WHERE TSid IN (%s) AND (TSid LIKE '%%_sw' OR lower(description) LIKE '%%seawater%%')",
+    paste0("'", pool$TSid, "'", collapse = ",")))$TSid else character()
+  within <- same_measurements(pool, within, attr(within, "rep"), points, opt, derived)
   within <- c(within, collapse_syntheses(con, pool[!pool$TSid %in% within, ], syntheses))
   site <- collapse_same_site(con, pool[!pool$TSid %in% within, ], same_site)
   site <- setdiff(site, curated)
   # Seasonal siblings of an annual record go even when curated: a compilation
   # keeps them for seasonal composites, not as separate sites.
   seas <- if (isTRUE(prefer_annual)) prefer_annual_records(pool[!pool$TSid %in% c(within, site), ]) else character()
+  var1 <- if (isTRUE(opt$one_variant_per_proxy))
+    one_variant_per_proxy(pool[!pool$TSid %in% c(within, site, seas), ], curated) else character()
+  var1 <- same_measurements(pool, var1, attr(var1, "rep"), points, opt, derived)
+  wcor <- within_dataset_correlated(pool[!pool$TSid %in% c(within, site, seas, var1), ], points, curated, opt)
   rule0 <- local({w <- within; function(t) ifelse(t %in% w, "within-dataset", ifelse(t %in% site, "same-site",
-                                                  ifelse(t %in% seas, "annual-preferred", NA)))})
-  within <- c(within, site, seas)
+                                                  ifelse(t %in% seas, "annual-preferred",
+                                                  ifelse(t %in% var1, "one-variant-per-proxy",
+                                                  ifelse(t %in% wcor, "within-dataset-correlated", NA)))))})
+  within <- c(within, site, seas, var1, wcor)
   all_pool <- pool
   pool <- pool[!pool$TSid %in% within, ]
   data_mode <- identical(opt$prefer, "data")
-  cand <- dedup_candidates(pool, if (data_mode) utils::modifyList(opt, list(max_km = max(opt$max_km, opt$version_km))) else opt)
+  cand <- dedup_candidates(pool, if (data_mode) utils::modifyList(opt, list(max_km = max(opt$max_km, opt$version_km, opt$far_km, na.rm = TRUE))) else opt)
   cand$cross <- rep(FALSE, nrow(cand))
   xc <- dedup_cross_candidates(pool, opt)
   if (nrow(xc)) cand <- rbind(cand, cbind(xc, cross = TRUE))
@@ -357,6 +544,12 @@ dedup_pool <- function(con, pool, points, prior = NULL, prefer_units = character
     pairs$km <= opt$max_km
   pairs$duplicate[pairs$cross] <- pairs$n[pairs$cross] > opt$min_overlap &
     (pairs$same_frac[pairs$cross] >= opt$cross_same_frac) %in% TRUE
+  if (is.finite(opt$cross_label_r %||% NA)) {
+    unl <- function(t) { pr <- pool$proxy[match(t, pool$TSid)]; is.na(pr) | !nzchar(pr) }
+    cl <- pairs$cross & pairs$n > opt$min_overlap & pairs$km <= opt$cross_label_km &
+      (unl(pairs$TSid1) | unl(pairs$TSid2)) & (abs(pairs$r) >= opt$cross_label_r) %in% TRUE
+    pairs$duplicate[cl] <- TRUE
+  }
 
   membership <- DBI::dbGetQuery(con, "SELECT TSid, compilation FROM compilations WHERE inThisCompilation")
   pubs <- DBI::dbGetQuery(con, "SELECT datasetId, max(year) AS year FROM publications GROUP BY 1")
@@ -384,9 +577,34 @@ dedup_pool <- function(con, pool, points, prior = NULL, prefer_units = character
     pairs$shared_compilation <- mapply(function(a, b) length(intersect(mem$compilation[mem$TSid == a],
                                                                          mem$compilation[mem$TSid == b])) > 0,
                                        pairs$TSid1, pairs$TSid2)
-    v <- !pairs$duplicate & !pairs$cross & pairs$n > opt$min_overlap & !pairs$shared_compilation &
-      ((pairs$r > opt$version_r) %in% TRUE | (pairs$r_diff > opt$version_r) %in% TRUE)
+    near_identical <- (abs(pairs$r) > opt$r_alone) %in% TRUE
+    v <- !pairs$duplicate & !pairs$cross & pairs$n > opt$min_overlap &
+      ((!pairs$shared_compilation & pairs$km <= opt$version_km &
+        ((abs(pairs$r) > opt$version_r) %in% TRUE | (abs(pairs$r_diff) > opt$version_r) %in% TRUE)) |
+       (near_identical & pairs$km <= max(opt$version_km, opt$far_km, na.rm = TRUE)))
     pairs$tier[v] <- "version"
+  }
+  # Different-resolution versions of one record (Nick, 2026-11-16): same site
+  # and proxy, one at least res_ratio times coarser, and the finer averaged
+  # onto the coarser intervals correlates at r_bin >= res_r. Between
+  # res_review_r and res_r the pair goes to review. Only when the two Common
+  # Era spans are within subset_frac of each other: a coarser version that
+  # reaches further back is kept alongside the finer one.
+  if (is.finite(opt$res_r %||% NA)) {
+    sw <- pool$span_win[idx[pairs$TSid1]]; sw2 <- pool$span_win[idx[pairs$TSid2]]
+    similar_span <- (pmin(sw, sw2) >= opt$subset_frac * pmax(sw, sw2)) %in% TRUE
+    rb <- is.na(pairs$tier) & !pairs$cross & pairs$km <= opt$max_km & (pairs$n_bin > opt$min_overlap) %in% TRUE &
+      similar_span
+    pairs$tier[rb & (pairs$r_bin >= opt$res_r) %in% TRUE] <- "resolution"
+    pairs$tier[rb & (pairs$r_bin >= opt$res_review_r & pairs$r_bin < opt$res_r) %in% TRUE] <- "resolution_review"
+  }
+  if (is.finite(opt$extension_r %||% NA)) {
+    res_max <- pmax(pool$res_win[idx[pairs$TSid1]], pool$res_win[idx[pairs$TSid2]])
+    s <- pmax(abs(pairs$r), pairs$r_bin, na.rm = TRUE)
+    ex <- is.na(pairs$tier) & !pairs$cross & pairs$km <= opt$extension_km & pairs$n > opt$min_overlap &
+      (res_max > opt$annual_max_resolution) %in% TRUE &
+      (pmax(pairs$frac1, pairs$frac2, na.rm = TRUE) >= opt$subset_frac) %in% TRUE & (s >= opt$extension_r) %in% TRUE
+    pairs$tier[ex] <- "extension_review"
   }
   pref <- preference(pool, membership, pubyear, opt, meta, curated)
   text <- paste(pool$dataSetName, pool$siteName, pool$variableName)
@@ -412,11 +630,20 @@ dedup_pool <- function(con, pool, points, prior = NULL, prefer_units = character
       pairs[k, c("rule", "keep1", "keep2")] <- list("prior", d1, d2)
       next
     }
+    if (pairs$tier[k] == "resolution") {
+      w <- prefer(pref[i, ], pref[j, ], opt)
+      pairs[k, c("rule", "keep1", "keep2")] <- list("resolution", w == 1L, w == 2L)
+      next
+    }
+    if (pairs$tier[k] %in% c("resolution_review", "extension_review")) {
+      pairs[k, c("rule", "keep1", "keep2")] <- list("review", TRUE, TRUE)
+      next
+    }
     if (pairs$tier[k] == "version") {
       # Same publication and close, or the same values (r > r_alone, DoD2k's
       # threshold on its own) with coordinates that differ between
       # compilations (Mahe Charles 1997 sits 43 km apart in two of them).
-      if ((isTRUE(pairs$same_doi[k]) && pairs$km[k] <= opt$max_km) || isTRUE(pairs$r[k] > opt$r_alone)) {
+      if ((isTRUE(pairs$same_doi[k]) && pairs$km[k] <= opt$max_km) || isTRUE(abs(pairs$r[k]) > opt$r_alone)) {
         w <- prefer(pref[i, ], pref[j, ], opt)
         pairs[k, c("rule", "keep1", "keep2")] <- list("version", w == 1L, w == 2L)
       } else {

@@ -105,6 +105,30 @@ ad <- rbind(
              source = "Pages2kTemperature QC inThisCompilation TRUE"),
   data.frame(TSid = base("presto2k_2025.csv"), pool = "cfr_annual", source = "PReSto2k (2025) proxy database"))
 ad <- ad[ad$TSid %in% present, ]
+# A TSid can be reused: PAGES 2k v2.0.0's LPDb17a5e9e (RAPiD-12-1K) and
+# LPD9cc3baf6 (Gulf of Guinea) are now GreatBasin.Salzer.2014's
+# uncertaintyLow column and Turkana.Berke.2012, while the records themselves
+# carry -dup TSids. An admission from a baseline with coordinates stands only
+# if the export's record is within 100 km or has the same dataset name.
+# (Agassiz.Lecavalier.2017 is 4,753 km off but keeps its name.)
+here_ts <- dbGetQuery(con, "SELECT t.TSid, d.dataSetName, d.geo_latitude AS lat, d.geo_longitude AS lon
+                             FROM timeseries t JOIN datasets d USING (datasetId)")
+nm <- function(x) gsub("[^a-z0-9]", "", tolower(sub("^(Ocn|Arc|Ant|Asia|Aus|Eur|NAm|SAm|Afr|Africa|O2kLR|Ocean2kHR)-", "", x)))
+same_record <- function(tsid, f) {
+  b <- utils::read.csv(file.path(here, "baselines", f), stringsAsFactors = FALSE)
+  b$TSid <- follow(b$TSid)
+  b <- b[match(tsid, b$TSid), ]; e <- here_ts[match(tsid, here_ts$TSid), ]
+  r <- pi / 180
+  km <- 2 * 6371 * asin(pmin(1, sqrt(sin((e$lat - b$lat) * r / 2)^2 +
+          cos(b$lat * r) * cos(e$lat * r) * sin((e$lon - b$lon) * r / 2)^2)))
+  is.na(b$TSid) | is.na(km) | km <= 100 | nm(b$dataSetName) == nm(e$dataSetName)
+}
+srcs <- c("Temp12k v1.0.0" = "temp12k_1_0_0.csv", "PAGES2k v2.0.0" = "pages2k_2_0_0.csv")
+for (s in names(srcs)) {
+  i <- which(ad$source == s); ok <- same_record(ad$TSid[i], srcs[[s]])
+  if (any(!ok)) message("Dropped reused TSids from ", s, ": ", paste(ad$TSid[i][!ok], collapse = ", "))
+  ad <- ad[-i[!ok], , drop = FALSE]
+}
 ad <- ad[!duplicated(ad[c("TSid", "pool")]), ]
 utils::write.csv(ad, file.path(here, "baselines", "curator_admissions.csv"), row.names = FALSE)
 print(table(ad$pool, ad$source))

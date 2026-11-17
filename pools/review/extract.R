@@ -9,9 +9,18 @@ con <- pool_snapshot(args[1]); snap <- attr(con, "snapshot")
 want <- args[-(1:2)]
 
 comps <- list(
-  Presto2k = list(dir = "PReSto2k", pool = "PReSto2k_0_1_0",
-                  psm = "~/GitHub/presto-paper/analysis/data/runs/presto-LMR-run-presto2k-0_1_0/psm_screen.csv"),
+  # Presto2k: the revised pool (PAGES 2k 2017 criteria) on this export, with
+  # the LMR and BayGMST subsets and the test LMR run's PSM screen.
+  Presto2k = list(dir = "PReSto2k", pool = "cfr_annual", from_pool = TRUE,
+                  lmr = "presto2k_test_lmr", bay = "presto2k_test_localfdr10",
+                  psm = "~/GitHub/presto-paper/analysis/data/runs/presto-LMR-run-presto2k-test-2026-11/psm_screen.csv"),
   Presto12k = list(dir = "PReSto12k", pool = "PReSto12k_0_1_0", psm = NA))
+# REVIEW_ONLY=Presto2k extracts one compilation (build.py takes the same variable).
+if (nzchar(Sys.getenv("REVIEW_ONLY"))) comps <- comps[names(comps) %in% strsplit(Sys.getenv("REVIEW_ONLY"), ",")[[1]]]
+pool_file <- function(pool) {
+  f <- file.path(rec_dir, "output", pool, snap, "pool.csv")
+  if (file.exists(f)) f else list.files(file.path(rec_dir, "output", pool), "pool.csv", recursive = TRUE, full.names = TRUE)[1]
+}
 
 num <- function(x, d = 3) if (is.null(x) || length(x) == 0 || is.na(x)) NULL else round(as.numeric(x), d)
 chr <- function(x) if (is.null(x) || length(x) == 0 || is.na(x) || x == "") NULL else as.character(x)
@@ -25,13 +34,37 @@ for (cn in names(comps)) {
   cc <- comps[[cn]]
   cdir <- file.path(rec_dir, "compilations", cc$dir, "0_1_0")
   mem <- read.csv(file.path(cdir, "members.csv"), stringsAsFactors = FALSE)
+  pf <- pool_file(cc$pool)
   dec <- read.csv(file.path(cdir, "decisions.csv"), stringsAsFactors = FALSE)
   qc <- read.csv(file.path(cdir, "qc_comments.csv"), stringsAsFactors = FALSE)
-  pool <- read.csv(list.files(file.path(rec_dir, "output", cc$pool), "pool.csv", recursive = TRUE, full.names = TRUE)[1],
-                   stringsAsFactors = FALSE)
+  pool <- read.csv(pf, stringsAsFactors = FALSE)
   pool <- pool[!duplicated(pool$TSid), ]
-  scr <- file.path(dirname(list.files(file.path(rec_dir, "output", cc$pool), "pool.csv", recursive = TRUE, full.names = TRUE)[1]),
-                   "screen_local_temperature_interp.csv")
+  excluded <- character()
+  if (isTRUE(cc$from_pool)) {
+    kp <- pool[pool$dedup_keep %in% TRUE, ]
+    # Records a curator excluded on this page stay listed, flagged, though the
+    # pool leaves them out (criteria.R reads the same verdicts).
+    vf <- file.path(rec_dir, "review", "verdicts", paste0(tolower(cn), ".json"))
+    if (file.exists(vf)) {
+      v <- jsonlite::fromJSON(vf, simplifyVector = FALSE)
+      excluded <- unique(vapply(Filter(function(e) identical(e$status, "exclude"), v), function(e) e$TSid, ""))
+      rc <- read.csv(file.path(dirname(pf), "records.csv"), stringsAsFactors = FALSE)
+      ex <- rc[rc$TSid %in% setdiff(excluded, kp$TSid) & !rc$TSid %in% pool$TSid, ]
+      if (nrow(ex)) {
+        for (k in setdiff(names(pool), names(ex))) ex[[k]] <- NA
+        pool <- rbind(pool, ex[, names(pool)])
+      }
+      xr <- pool[pool$TSid %in% setdiff(excluded, kp$TSid), ]
+      xr$selected_by <- "curator exclusion"
+      pool$selected_by[pool$TSid %in% xr$TSid] <- "curator exclusion"
+      kp <- rbind(kp, xr)
+    }
+    mem <- data.frame(TSid = kp$TSid, archiveType = kp$archiveType, variableName = kp$variableName,
+                      dataSetName = kp$dataSetName, selected_by = kp$selected_by, stringsAsFactors = FALSE)
+  }
+  sub_ids <- function(p) if (is.null(p)) character(0) else read.csv(pool_file(p), stringsAsFactors = FALSE)$TSid
+  in_lmr <- sub_ids(cc$lmr); in_bay <- sub_ids(cc$bay)
+  scr <- file.path(dirname(pf), "screen_local_temperature_interp.csv")
   scr <- if (file.exists(scr)) read.csv(scr, stringsAsFactors = FALSE) else NULL
   psm <- if (!is.na(cc$psm)) read.csv(path.expand(cc$psm), stringsAsFactors = FALSE) else NULL
   mp <- pool[match(mem$TSid, pool$TSid), ]
@@ -71,6 +104,9 @@ for (cn in names(comps)) {
       start = num(r$min_win, 1), end = num(r$max_win, 1), n = r$n_win, resolution = num(r$res_win, 2),
       lag1 = num(r$lag1_win, 2), repeatFrac = num(r$repeat_win, 2), nCalib = num(r$n_calib, 0),
       selectedBy = r$selected_by, fails = chr(r$fails), dedupRule = chr(r$dedup_rule),
+      curatorExcluded = t %in% excluded,
+      impliedSign = isTRUE(as.logical(r$direction_implied)), uninterpretedProxy = isTRUE(as.logical(r$uninterpreted_proxy)),
+      inLMR = if (is.null(cc$lmr)) NULL else t %in% in_lmr, inBayGMST = if (is.null(cc$bay)) NULL else t %in% in_bay,
       criteria = setNames(lapply(crit, function(k) r[[k]]), sub("^pass_", "", crit)),
       compilations = unique(paste(comp$compilation[comp$TSid == t])),
       interpretations = lapply(seq_len(nrow(it)), function(i) list(rank = it$rank[i], scope = chr(it$scope[i]),
