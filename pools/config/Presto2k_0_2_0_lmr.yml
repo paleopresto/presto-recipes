@@ -1,0 +1,15 @@
+# Presto2k 0.2.0 (export 2026-11-17b): the records of the revised Presto2k (cfr_annual, PAGES 2k
+# 2017 criteria) that presto-LMR can assimilate. Built by pools/screened_pool.R.
+name: Presto2k_0_2_0_lmr
+description: Revised Presto2k records presto-LMR (cfr) can assimilate
+parent: cfr_annual
+# cfr's filter on resolution (dt in years), as in the presto-LMR run config.
+max_resolution: 1.2
+# PSM calibration overlap with 1850-2015 (nobs_lb in the run config).
+min_calibration_years: 25
+# Archives lipd_to_pdb.py maps to a cfr proxy class the LMR filter keeps.
+archives: [Coral, Wood, GlacierIce, LakeSediment, MolluskShell, MarineSediment,
+           Sclerosponge, Speleothem, Borehole, Documents, Hybrid]
+# cfr treats each year as independent; series smoothed far beyond their annual
+# step are not (presto-paper LMR and BayGMST attribution, 2026-10).
+max_lag1: 0.98

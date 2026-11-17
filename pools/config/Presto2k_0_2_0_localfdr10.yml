@@ -1,0 +1,11 @@
+# Presto2k 0.2.0 (export 2026-11-17b): the revised Presto2k (cfr_annual) records that correlate
+# with local HadCRUT5 temperature, for presto-BayGMST. Same screen and checks
+# as PReSto2k_0_1_0_localfdr10. Built by pools/screened_pool.R.
+name: Presto2k_0_2_0_localfdr10
+description: Revised Presto2k records that correlate with local HadCRUT5 temperature (BH FDR < 0.10, 1850-2000)
+parent: cfr_annual
+screen: local_temperature_interp
+variant: fdr10
+max_lag1: 0.98
+# BayGMST works on annual series, as in 0.1.0 (all annual).
+max_resolution: 1.2
