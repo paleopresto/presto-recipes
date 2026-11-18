@@ -73,6 +73,8 @@ data_poor_exception:
     chronology.max_gap: 4500
 
 curator_admissions: curator_admissions.csv
+# Nick's "exclude" verdicts from the record review page.
+review_verdicts: review/verdicts/presto12k.json
 
 interpretation:
   scope: climate
@@ -117,3 +119,38 @@ chronology:
 # Downstream algorithms decide whether they need calibrated (degC) records.
 # The pool keeps both and records which is which.
 calibrated_units: [degC]
+
+# Duplicates, following Presto2k (cfr_annual.yml, Nick 2026-11-16 and
+# 2026-11-17): one record per set of measurements. Differences agreed for
+# the Holocene (Nick, 2026-11-17): seasons stay as above (prefer_annual, not
+# one_variant_per_proxy), since the Holocene DA assimilates summer and winter
+# separately; and of two copies, the one with more data stays (span, then
+# calibrated temperature over its raw proxy, then more values), with the
+# Temperature 12k copy winning when the data are equal.
+dedup:
+  prefer: data
+  prefer_keys: ["span", "calibrated", "n", "priority", "curated", "pubyear", "meta"]
+  priority: [Temp12k]
+  # Within a dataset, records whose series correlate at |r| >= 0.98 are one
+  # signal.
+  within_r: 0.98
+  # Different-resolution versions of one record at one site: average the
+  # finer onto the coarser; r >= 0.9 is a duplicate, 0.8 to 0.9 goes to review.
+  res_ratio: 1.5
+  res_r: 0.9
+  res_review_r: 0.8
+  # Automatic only within 1 km; matches 1 to 8 km apart go to review
+  # (neighbouring cores and lakes correlate at 0.9 when smoothed).
+  res_km: 1
+  # Same-proxy copies up to 100 km apart (wrong coordinates); unlabelled
+  # copies at |r| >= 0.99 within 2 km; same-proxy pairs within 10 km, one
+  # inside the other, at |r| or binned r >= 0.7 go to review (a core re-dated
+  # or extended).
+  far_km: 100
+  cross_label_r: 0.99
+  cross_label_km: 2
+  extension_r: 0.7
+  extension_km: 10
+  # Collapsing one dataset's columns by proxy and season drops a record only
+  # if it holds the same measurements as the one kept.
+  within_collapse_r: 0.9

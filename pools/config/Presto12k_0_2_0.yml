@@ -1,0 +1,6 @@
+# Presto12k 0.2.0 (export 2026-11-17b): the whole revised temp12k pool, for
+# presto-HoloceneDA and presto-Temp12k, as PReSto12k 0.1.0 was. Built by
+# pools/screened_pool.R (no screen and no method checks).
+name: Presto12k_0_2_0
+description: Presto12k 0.2.0, all records (Temperature 12k criteria, Presto duplicate rules)
+parent: temp12k

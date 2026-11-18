@@ -41,6 +41,13 @@ class Handler(SimpleHTTPRequestHandler):
     def __init__(self, *a, **k):
         super().__init__(*a, directory=SITE, **k)
 
+    def end_headers(self):
+        # pages are rebuilt often: make the browser check for a new copy each
+        # time (it still gets 304 Not Modified when nothing changed)
+        if self.command == "GET" and not self.path.startswith("/api/"):
+            self.send_header("Cache-Control", "no-cache")
+        super().end_headers()
+
     def log_message(self, fmt, *a):
         if self.command == "POST" or (len(a) > 1 and str(a[1]) not in ("200", "304")):
             super().log_message(fmt, *a)

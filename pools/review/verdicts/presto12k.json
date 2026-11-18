@@ -1,0 +1,1057 @@
+{
+ "Presto12k__GH194ddf83": {
+  "TSid": "GH194ddf83",
+  "compilation": "Presto12k",
+  "dataSetName": "HomesteadScarp.McGlone.2010",
+  "note": "Kept in the duplicate review (vs MountHoney.McGlone.2010).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__GH3417a779": {
+  "TSid": "GH3417a779",
+  "compilation": "Presto12k",
+  "dataSetName": "Composit_MD012421,KR0206",
+  "note": "Kept in the duplicate review (vs MD01_2421.Isono.2009).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__GH39dccbdc": {
+  "TSid": "GH39dccbdc",
+  "compilation": "Presto12k",
+  "dataSetName": "MD952042.Bard.2002",
+  "note": "Kept in the duplicate review (vs MD01-2444.Martrat.2007, SU81_18.Bard.2000).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__GH4c7e3422": {
+  "TSid": "GH4c7e3422",
+  "compilation": "Presto12k",
+  "dataSetName": "74KL_UK37.Huguet.2006",
+  "note": "Kept in the duplicate review (vs SO42_74KL.Huguet.2006).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__GH73726cce": {
+  "TSid": "GH73726cce",
+  "compilation": "Presto12k",
+  "dataSetName": "MountHoney.McGlone.2010",
+  "note": "Kept in the duplicate review (vs HomesteadScarp.McGlone.2010).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__GH8784f3d0": {
+  "TSid": "GH8784f3d0",
+  "compilation": "Presto12k",
+  "dataSetName": "MD01-2444.Martrat.2007",
+  "note": "Kept in the duplicate review (vs MD952042.Bard.2002).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__GH8d2ba08f": {
+  "TSid": "GH8d2ba08f",
+  "compilation": "Presto12k",
+  "dataSetName": "O2kLR-Tagusmudpatc.Abrantes.2005",
+  "note": "Kept in the duplicate review (vs D13902).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__GHe913d7ac": {
+  "TSid": "GHe913d7ac",
+  "compilation": "Presto12k",
+  "dataSetName": "Vostok.Vimeux.2002",
+  "status": "ok",
+  "updated": "2026-11-18T00:29:57.653Z"
+ },
+ "Presto12k__IC08VI7701A": {
+  "TSid": "IC08VI7701A",
+  "compilation": "Presto12k",
+  "dataSetName": "IC08VI77",
+  "status": "exclude",
+  "updated": "2026-11-18T00:36:47.252Z"
+ },
+ "Presto12k__IC08VI7901A": {
+  "TSid": "IC08VI7901A",
+  "compilation": "Presto12k",
+  "dataSetName": "IC08VI79",
+  "status": "ok",
+  "updated": "2026-11-18T00:36:56.012Z"
+ },
+ "Presto12k__IC08VI8401A": {
+  "TSid": "IC08VI8401A",
+  "compilation": "Presto12k",
+  "dataSetName": "IC08VI84",
+  "status": "ok",
+  "updated": "2026-11-18T00:36:57.541Z"
+ },
+ "Presto12k__LPD44c75538_SST_from_Uk37": {
+  "TSid": "LPD44c75538_SST_from_Uk37",
+  "compilation": "Presto12k",
+  "dataSetName": "TTR17_434G.Rodrigo-Gamiz.2014",
+  "note": "Kept in the duplicate review (vs 161_976.Martrat.2014).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__LPD6a7b432f": {
+  "TSid": "LPD6a7b432f",
+  "compilation": "Presto12k",
+  "dataSetName": "GeoB7702-3.Castaneda.2016",
+  "status": "ok",
+  "updated": "2026-11-18T00:29:31.036Z"
+ },
+ "Presto12k__LPD6e872195": {
+  "TSid": "LPD6e872195",
+  "compilation": "Presto12k",
+  "dataSetName": "MD99-2256.Jennings.2015",
+  "status": "ok",
+  "updated": "2026-11-18T00:35:43.309Z"
+ },
+ "Presto12k__LPD8a78a6cc": {
+  "TSid": "LPD8a78a6cc",
+  "compilation": "Presto12k",
+  "dataSetName": "PL0739PC.Lea.2003",
+  "status": "exclude",
+  "updated": "2026-11-18T00:38:20.764Z"
+ },
+ "Presto12k__LPD8d94d24a": {
+  "TSid": "LPD8d94d24a",
+  "compilation": "Presto12k",
+  "dataSetName": "MD99-2266.Moossen.2015",
+  "status": "ok",
+  "updated": "2026-11-18T00:36:33.468Z"
+ },
+ "Presto12k__LPD91355717": {
+  "TSid": "LPD91355717",
+  "compilation": "Presto12k",
+  "dataSetName": "LagoVerdarolo.Samartin.2011",
+  "note": "Kept in the duplicate review (vs Gemini.Samartin.2017).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__LPDb217bdbexxxx_SST_from_Uk37": {
+  "TSid": "LPDb217bdbexxxx_SST_from_Uk37",
+  "compilation": "Presto12k",
+  "dataSetName": "ODP658C_UK37.Zhao.1995",
+  "status": "ok",
+  "updated": "2026-11-18T00:30:38.980Z"
+ },
+ "Presto12k__LPDfba15ede": {
+  "TSid": "LPDfba15ede",
+  "compilation": "Presto12k",
+  "dataSetName": "MD97-2151.Yamamoto.2013",
+  "note": "Kept in the duplicate review (vs MD97_2151.Yamamoto.2013).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__M2L215porczP": {
+  "TSid": "M2L215porczP",
+  "compilation": "Presto12k",
+  "dataSetName": "Camp11.Brubaker.1975",
+  "note": "Kept in the duplicate review (vs LostLake_MI.Brubaker.1975).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__M2L22e53lc9P": {
+  "TSid": "M2L22e53lc9P",
+  "compilation": "Presto12k",
+  "dataSetName": "RiviereFeuilles1.Larouche.1981",
+  "note": "Kept in the duplicate review (vs RiviereFeuilles2.Larouche.1981).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__M2L64f6irzrP": {
+  "TSid": "M2L64f6irzrP",
+  "compilation": "Presto12k",
+  "dataSetName": "LostLake_MI.Brubaker.1975",
+  "note": "Kept in the duplicate review (vs Camp11.Brubaker.1975).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__M2L7thzxje2P": {
+  "TSid": "M2L7thzxje2P",
+  "compilation": "Presto12k",
+  "dataSetName": "Hams.Bennett.1987",
+  "status": "ok",
+  "updated": "2026-11-18T00:35:04.524Z"
+ },
+ "Presto12k__M2LfdkrvgyhP": {
+  "TSid": "M2LfdkrvgyhP",
+  "compilation": "Presto12k",
+  "dataSetName": "Delorme1.Bouchard.1982",
+  "status": "ok",
+  "updated": "2026-11-18T00:34:53.396Z"
+ },
+ "Presto12k__M2Lhd1b9ejrP": {
+  "TSid": "M2Lhd1b9ejrP",
+  "compilation": "Presto12k",
+  "dataSetName": "Decoy.Szeicz.1991",
+  "status": "ok",
+  "updated": "2026-11-18T00:35:04.177Z"
+ },
+ "Presto12k__M2LkxhxpqjbP": {
+  "TSid": "M2LkxhxpqjbP",
+  "compilation": "Presto12k",
+  "dataSetName": "LR1.Gajewski.1993",
+  "status": "ok",
+  "updated": "2026-11-18T00:34:41.244Z"
+ },
+ "Presto12k__M2Llq9tn1s2P": {
+  "TSid": "M2Llq9tn1s2P",
+  "compilation": "Presto12k",
+  "dataSetName": "LR3.Gajewski.1992",
+  "status": "ok",
+  "updated": "2026-11-18T00:34:41.867Z"
+ },
+ "Presto12k__M2Lqsgb2az4P": {
+  "TSid": "M2Lqsgb2az4P",
+  "compilation": "Presto12k",
+  "dataSetName": "DavisLake.Barnosky.1981",
+  "status": "ok",
+  "updated": "2026-11-18T00:37:38.750Z"
+ },
+ "Presto12k__M2LqxikmeduP": {
+  "TSid": "M2LqxikmeduP",
+  "compilation": "Presto12k",
+  "dataSetName": "Delorme2.Bouchard.1982",
+  "status": "ok",
+  "updated": "2026-11-18T00:34:53.012Z"
+ },
+ "Presto12k__M2Lwxwvqju6P": {
+  "TSid": "M2Lwxwvqju6P",
+  "compilation": "Presto12k",
+  "dataSetName": "RiviereFeuilles2.Larouche.1981",
+  "note": "Kept in the duplicate review (vs RiviereFeuilles1.Larouche.1981).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__MS03KTCB01": {
+  "TSid": "MS03KTCB01",
+  "compilation": "Presto12k",
+  "dataSetName": "MS03KTCB",
+  "status": "ok",
+  "updated": "2026-11-18T00:37:52.163Z"
+ },
+ "Presto12k__MS03KTCB02": {
+  "TSid": "MS03KTCB02",
+  "compilation": "Presto12k",
+  "dataSetName": "MS03KTCB",
+  "status": "ok",
+  "updated": "2026-11-18T00:37:50.781Z"
+ },
+ "Presto12k__MS97HLCB03": {
+  "TSid": "MS97HLCB03",
+  "compilation": "Presto12k",
+  "dataSetName": "MS97HLCB",
+  "status": "ok",
+  "updated": "2026-11-18T00:38:07.293Z"
+ },
+ "Presto12k__MS97HLCB04": {
+  "TSid": "MS97HLCB04",
+  "compilation": "Presto12k",
+  "dataSetName": "MS97HLCB",
+  "status": "ok",
+  "updated": "2026-11-18T00:38:01.917Z"
+ },
+ "Presto12k__PYTBX955XJ2": {
+  "TSid": "PYTBX955XJ2",
+  "compilation": "Presto12k",
+  "dataSetName": "MD99-2256.Olafsdottir.2010",
+  "status": "ok",
+  "updated": "2026-11-18T00:35:43.915Z"
+ },
+ "Presto12k__PYTD73YMWR3": {
+  "TSid": "PYTD73YMWR3",
+  "compilation": "Presto12k",
+  "dataSetName": "Raigastvere.Seppa.2004",
+  "status": "ok",
+  "updated": "2026-11-18T00:28:45.964Z"
+ },
+ "Presto12k__PYTEE34B0H5": {
+  "TSid": "PYTEE34B0H5",
+  "compilation": "Presto12k",
+  "dataSetName": "Laihalampi.Heikkila.2003",
+  "status": "ok",
+  "updated": "2026-11-18T00:27:58.867Z"
+ },
+ "Presto12k__PYTT5VJ1IP1": {
+  "TSid": "PYTT5VJ1IP1",
+  "compilation": "Presto12k",
+  "dataSetName": "Kinnshaugen.Seppa.2009",
+  "status": "ok",
+  "updated": "2026-11-18T00:27:52.731Z"
+ },
+ "Presto12k__PYTZPNPWL0E": {
+  "TSid": "PYTZPNPWL0E",
+  "compilation": "Presto12k",
+  "dataSetName": "GRIP.Vinther.2006",
+  "note": "Kept in the duplicate review (vs IC06VIGR).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__R3Snc0P3mi3": {
+  "TSid": "R3Snc0P3mi3",
+  "compilation": "Presto12k",
+  "dataSetName": "SaegistalseePollen.Wick.2003",
+  "note": "Kept in the duplicate review (vs Hinterburgseeli.EPD).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__R4EA7xKol5Q": {
+  "TSid": "R4EA7xKol5Q",
+  "compilation": "Presto12k",
+  "dataSetName": "PTHE.Self.2015",
+  "note": "Kept in the duplicate review (vs GYXO.Self.2015).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__R56JsH0b7h7": {
+  "TSid": "R56JsH0b7h7",
+  "compilation": "Presto12k",
+  "dataSetName": "161_976.Martrat.2014",
+  "note": "Kept in the duplicate review (vs TTR17_434G.Rodrigo-Gamiz.2014).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__RAftFZHtDFF": {
+  "TSid": "RAftFZHtDFF",
+  "compilation": "Presto12k",
+  "dataSetName": "StaroselskyMoch.Novenko.2018",
+  "status": "ok",
+  "updated": "2026-11-18T00:28:17.603Z"
+ },
+ "Presto12k__RF4G8wwNMQV": {
+  "TSid": "RF4G8wwNMQV",
+  "compilation": "Presto12k",
+  "dataSetName": "Lednica-1.Makohonienko.1991",
+  "note": "Kept in the duplicate review (vs Lednica-2.Litt.1991, Skrzetuszewskie.Litt.2001).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__RFh4TAxf8GA": {
+  "TSid": "RFh4TAxf8GA",
+  "compilation": "Presto12k",
+  "dataSetName": "Flarken.Berglund.1966",
+  "note": "Kept in the duplicate review (vs Flarken.Seppa.2005).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__RHTI56Pxs41": {
+  "TSid": "RHTI56Pxs41",
+  "compilation": "Presto12k",
+  "dataSetName": "Klotjaernen.Pollen.Sweden",
+  "note": "Kept in the duplicate review (vs klotjarnen.Seppa.2009).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__RJMuYNva9bv": {
+  "TSid": "RJMuYNva9bv",
+  "compilation": "Presto12k",
+  "dataSetName": "WachseldornUntermoos.Oeschger.1980",
+  "note": "Kept in the duplicate review (vs Haengstli.Heeb.1972).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__RLcBkd6hOuO": {
+  "TSid": "RLcBkd6hOuO",
+  "compilation": "Presto12k",
+  "dataSetName": "D13902",
+  "note": "Kept in the duplicate review (vs O2kLR-Tagusmudpatc.Abrantes.2005).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__RShtOmHDliM": {
+  "TSid": "RShtOmHDliM",
+  "compilation": "Presto12k",
+  "dataSetName": "Agassiz.Lecavalier.2017",
+  "note": "Kept in the duplicate review (vs agassiz.Vinther.2009).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__RUxYioPilbU": {
+  "TSid": "RUxYioPilbU",
+  "compilation": "Presto12k",
+  "dataSetName": "SV_04",
+  "note": "Kept in the duplicate review (vs GIK23258_2.Martrat.2003, SV04.Rigual-Hernndez.2017).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__RYLGNrM0mIK": {
+  "TSid": "RYLGNrM0mIK",
+  "compilation": "Presto12k",
+  "dataSetName": "Skrzetuszewskie.Litt.2001",
+  "note": "Kept in the duplicate review (vs Lednica-1.Makohonienko.1991, Lednica-2.Litt.1991).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__Rb55CRDFnYw": {
+  "TSid": "Rb55CRDFnYw",
+  "compilation": "Presto12k",
+  "dataSetName": "LiivjarveBog.Koff.1989",
+  "note": "Kept in the duplicate review (vs LiivjarveBog.Koff.1990).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__RbIuRfn9Vxz_SST_from_Uk37": {
+  "TSid": "RbIuRfn9Vxz_SST_from_Uk37",
+  "compilation": "Presto12k",
+  "dataSetName": "M77_2_059_1.N_rnberg.2015",
+  "status": "ok",
+  "updated": "2026-11-18T00:38:26.388Z"
+ },
+ "Presto12k__RdbNEBCu3Ry": {
+  "TSid": "RdbNEBCu3Ry",
+  "compilation": "Presto12k",
+  "dataSetName": "RaigastvereLake.Pirrus.1987",
+  "note": "Non-physical values and an alternative from this site",
+  "status": "exclude",
+  "updated": "2026-11-18T00:28:43.753Z"
+ },
+ "Presto12k__RoNOJ66CLPP": {
+  "TSid": "RoNOJ66CLPP",
+  "compilation": "Presto12k",
+  "dataSetName": "Lednica-2.Litt.1991",
+  "note": "Kept in the duplicate review (vs Lednica-1.Makohonienko.1991, Skrzetuszewskie.Litt.2001).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__RoXFsXAQiB2": {
+  "TSid": "RoXFsXAQiB2",
+  "compilation": "Presto12k",
+  "dataSetName": "Laihalampi.Giesecke.2008",
+  "status": "ok",
+  "updated": "2026-11-18T00:27:59.240Z"
+ },
+ "Presto12k__RrR5q3ibRjl": {
+  "TSid": "RrR5q3ibRjl",
+  "compilation": "Presto12k",
+  "dataSetName": "Gemini.Samartin.2017",
+  "note": "Kept in the duplicate review (vs LagoVerdarolo.Samartin.2011).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__RtjepH1yLMd": {
+  "TSid": "RtjepH1yLMd",
+  "compilation": "Presto12k",
+  "dataSetName": "Hinterburgsee.Heiri.2004",
+  "note": "Kept in the duplicate review (vs Hinterburgsee.Heiri.2003).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__RwrQPSdvMms": {
+  "TSid": "RwrQPSdvMms",
+  "compilation": "Presto12k",
+  "dataSetName": "Hinterburgseeli.EPD",
+  "note": "Kept in the duplicate review (vs SaegistalseePollen.Wick.2003).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__RznCZXhHXPN": {
+  "TSid": "RznCZXhHXPN",
+  "compilation": "Presto12k",
+  "dataSetName": "GYXO.Self.2015",
+  "note": "Kept in the duplicate review (vs PTHE.Self.2015).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__RzyRCrnQ01a": {
+  "TSid": "RzyRCrnQ01a",
+  "compilation": "Presto12k",
+  "dataSetName": "Haengstli.Heeb.1972",
+  "note": "Kept in the duplicate review (vs WachseldornUntermoos.Oeschger.1980).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__T2L_GIK17940_2_d18o_ruber_SST_from_d18o_ruber": {
+  "TSid": "T2L_GIK17940_2_d18o_ruber_SST_from_d18o_ruber",
+  "compilation": "Presto12k",
+  "dataSetName": "GIK17940_2.Pelejero.1999",
+  "note": "Kept in the duplicate review (vs MS99LWSC).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__T2L_GIK23258_2_uk37_SST_from_uk37": {
+  "TSid": "T2L_GIK23258_2_uk37_SST_from_uk37",
+  "compilation": "Presto12k",
+  "dataSetName": "GIK23258_2.Martrat.2003",
+  "note": "Kept in the duplicate review (vs SV04.Rigual-Hernndez.2017, SV_04).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__T2L_GeoB4905_4_d18o_ruber_pink_SST_from_d18o_ruber_pink": {
+  "TSid": "T2L_GeoB4905_4_d18o_ruber_pink_SST_from_d18o_ruber_pink",
+  "compilation": "Presto12k",
+  "dataSetName": "GeoB4905_4.Weldeab.2005",
+  "note": "Kept in the duplicate review (vs MD03_2707.Weldeab.2007).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__T2L_GeoB4905_4_mgca_ruber_pink_SST_from_mgca_ruber_pink": {
+  "TSid": "T2L_GeoB4905_4_mgca_ruber_pink_SST_from_mgca_ruber_pink",
+  "compilation": "Presto12k",
+  "dataSetName": "GeoB4905_4.Weldeab.2005",
+  "note": "Kept in the duplicate review (vs GeoB4905.Weldeab.2005).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__T2L_GeoB5901_2_uk37_SST_from_uk37": {
+  "TSid": "T2L_GeoB5901_2_uk37_SST_from_uk37",
+  "compilation": "Presto12k",
+  "dataSetName": "GeoB5901_2.Kim.2004",
+  "note": "Kept in the duplicate review (vs M39008_3.Eynaud.2009).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__T2L_GeoB6518_1_d18o_ruber_SST_from_d18o_ruber": {
+  "TSid": "T2L_GeoB6518_1_d18o_ruber_SST_from_d18o_ruber",
+  "compilation": "Presto12k",
+  "dataSetName": "GeoB6518_1.Schefu.2005",
+  "note": "Kept in the duplicate review (vs MS05ESCR).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__T2L_GeoB7702_3_tex86_SST_from_tex86": {
+  "TSid": "T2L_GeoB7702_3_tex86_SST_from_tex86",
+  "compilation": "Presto12k",
+  "dataSetName": "GeoB7702_3.Castaneda.2010",
+  "status": "ok",
+  "updated": "2026-11-18T00:29:30.563Z"
+ },
+ "Presto12k__T2L_JR51GC_35_uk37_SST_from_uk37": {
+  "TSid": "T2L_JR51GC_35_uk37_SST_from_uk37",
+  "compilation": "Presto12k",
+  "dataSetName": "JR51GC_35.Bendle.2007",
+  "note": "Kept in the duplicate review (vs JR51-GC35.Bendle.2007).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__T2L_KNR195_5_CDH26_uk37_SST_from_uk37": {
+  "TSid": "T2L_KNR195_5_CDH26_uk37_SST_from_uk37",
+  "compilation": "Presto12k",
+  "dataSetName": "KNR195_5_CDH26.Bova.2015",
+  "status": "ok",
+  "updated": "2026-11-18T00:38:27.786Z"
+ },
+ "Presto12k__T2L_M135_004_3_uk37_SST_from_uk37": {
+  "TSid": "T2L_M135_004_3_uk37_SST_from_uk37",
+  "compilation": "Presto12k",
+  "dataSetName": "M135_004_3.Salvatteci.2019",
+  "status": "ok",
+  "updated": "2026-11-18T00:38:38.349Z"
+ },
+ "Presto12k__T2L_M135_005_3_uk37_SST_from_uk37": {
+  "TSid": "T2L_M135_005_3_uk37_SST_from_uk37",
+  "compilation": "Presto12k",
+  "dataSetName": "M135_005_3.Salvatteci.2019",
+  "status": "ok",
+  "updated": "2026-11-18T00:38:37.892Z"
+ },
+ "Presto12k__T2L_M39008_3_d18o_bulloides_SST_from_d18o_bulloides": {
+  "TSid": "T2L_M39008_3_d18o_bulloides_SST_from_d18o_bulloides",
+  "compilation": "Presto12k",
+  "dataSetName": "M39008_3.Eynaud.2009",
+  "note": "Kept in the duplicate review (vs MD99_2341.Eynaud.2009).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__T2L_M39008_3_uk37_SST_from_uk37": {
+  "TSid": "T2L_M39008_3_uk37_SST_from_uk37",
+  "compilation": "Presto12k",
+  "dataSetName": "M39008_3.Eynaud.2009",
+  "note": "Kept in the duplicate review (vs GeoB5901_2.Kim.2004).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__T2L_MD03_2707_d18o_ruber_pink_SST_from_d18o_ruber_pink": {
+  "TSid": "T2L_MD03_2707_d18o_ruber_pink_SST_from_d18o_ruber_pink",
+  "compilation": "Presto12k",
+  "dataSetName": "MD03_2707.Weldeab.2007",
+  "note": "Kept in the duplicate review (vs GeoB4905_4.Weldeab.2005).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__T2L_MD03_2707_mgca_ruber_pink_SST_from_mgca_ruber_pink": {
+  "TSid": "T2L_MD03_2707_mgca_ruber_pink_SST_from_mgca_ruber_pink",
+  "compilation": "Presto12k",
+  "dataSetName": "MD03_2707.Weldeab.2007",
+  "status": "ok",
+  "updated": "2026-11-18T00:30:28.146Z"
+ },
+ "Presto12k__T2L_MD95_2011_d18o_pachyderma_SST_from_d18o_pachyderma": {
+  "TSid": "T2L_MD95_2011_d18o_pachyderma_SST_from_d18o_pachyderma",
+  "compilation": "Presto12k",
+  "dataSetName": "MD95_2011.Risebrobakken.2003",
+  "note": "Kept in the duplicate review (vs MS03BRNS).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__T2L_MD95_2011_d18o_pachyderma_d_SST_from_d18o_pachyderma_d": {
+  "TSid": "T2L_MD95_2011_d18o_pachyderma_d_SST_from_d18o_pachyderma_d",
+  "compilation": "Presto12k",
+  "dataSetName": "MD95_2011.Risebrobakken.2003",
+  "note": "Kept in the duplicate review (vs MS03BRNS).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__T2L_MD95_2015_uk37_SST_from_uk37": {
+  "TSid": "T2L_MD95_2015_uk37_SST_from_uk37",
+  "compilation": "Presto12k",
+  "dataSetName": "MD95_2015.Marchal.2002",
+  "note": "Kept in the duplicate review (vs MD95-2015.Giraudeau.2002).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__T2L_MD97_2151_tex86_SST_from_tex86": {
+  "TSid": "T2L_MD97_2151_tex86_SST_from_tex86",
+  "compilation": "Presto12k",
+  "dataSetName": "MD97_2151.Yamamoto.2013",
+  "note": "Kept in the duplicate review (vs MD97-2151.Yamamoto.2013).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__T2L_MD97_2151_uk37_SST_from_uk37": {
+  "TSid": "T2L_MD97_2151_uk37_SST_from_uk37",
+  "compilation": "Presto12k",
+  "dataSetName": "MD97_2151.Yamamoto.2013",
+  "note": "Kept in the duplicate review (vs MD97-2151.Yamamoto.2013).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__T2L_MD99_2269_uk37_SST_from_uk37": {
+  "TSid": "T2L_MD99_2269_uk37_SST_from_uk37",
+  "compilation": "Presto12k",
+  "dataSetName": "MD99_2269.Kristjnsd_ttir.2017",
+  "status": "ok",
+  "updated": "2026-11-18T00:36:28.058Z"
+ },
+ "Presto12k__T2L_MD99_2341_d18o_bulloides_SST_from_d18o_bulloides": {
+  "TSid": "T2L_MD99_2341_d18o_bulloides_SST_from_d18o_bulloides",
+  "compilation": "Presto12k",
+  "dataSetName": "MD99_2341.Eynaud.2009",
+  "note": "Kept in the duplicate review (vs M39008_3.Eynaud.2009).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__T2L_MV99_PC14_mgca_bulloides_SST_from_mgca_bulloides": {
+  "TSid": "T2L_MV99_PC14_mgca_bulloides_SST_from_mgca_bulloides",
+  "compilation": "Presto12k",
+  "dataSetName": "MV99_PC14.Marchitto.2010",
+  "note": "Kept in the duplicate review (vs MV99-GC41.Marchitto.2010).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__T2L_ODP108_658C_uk37_SST_from_uk37": {
+  "TSid": "T2L_ODP108_658C_uk37_SST_from_uk37",
+  "compilation": "Presto12k",
+  "dataSetName": "ODP108_658C.Zhao.1995",
+  "status": "ok",
+  "updated": "2026-11-18T00:30:37.716Z"
+ },
+ "Presto12k__T2L_ODP_175_1084B_mgca_bulloides_SST_from_mgca_bulloides": {
+  "TSid": "T2L_ODP_175_1084B_mgca_bulloides_SST_from_mgca_bulloides",
+  "compilation": "Presto12k",
+  "dataSetName": "ODP_175_1084B.Farmer.2005",
+  "note": "Kept in the duplicate review (vs ODP1084B).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__T2L_P178_15P_mgca_ruber_SST_from_mgca_ruber": {
+  "TSid": "T2L_P178_15P_mgca_ruber_SST_from_mgca_ruber",
+  "compilation": "Presto12k",
+  "dataSetName": "P178_15P.Tierney.2016",
+  "note": "Kept in the duplicate review (vs P178-15P.Tierney.2015).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__T2L_PC01_uk37_SST_from_uk37": {
+  "TSid": "T2L_PC01_uk37_SST_from_uk37",
+  "compilation": "Presto12k",
+  "dataSetName": "MR003-K03-PC01.Harada.2004",
+  "note": "Kept in the duplicate review (vs PC_01).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__T2L_PL07_39PC_mgca_ruber_SST_from_mgca_ruber": {
+  "TSid": "T2L_PL07_39PC_mgca_ruber_SST_from_mgca_ruber",
+  "compilation": "Presto12k",
+  "dataSetName": "PL07_39PC.Lea.2003",
+  "status": "ok",
+  "updated": "2026-11-18T00:38:20.165Z"
+ },
+ "Presto12k__T2L_SO42_74KL_tex86_SST_from_tex86": {
+  "TSid": "T2L_SO42_74KL_tex86_SST_from_tex86",
+  "compilation": "Presto12k",
+  "dataSetName": "SO42_74KL.Huguet.2006",
+  "note": "Kept in the duplicate review (vs 74KL_TEX86.Huguet.2006).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__T2L_SO42_74KL_uk37_SST_from_uk37": {
+  "TSid": "T2L_SO42_74KL_uk37_SST_from_uk37",
+  "compilation": "Presto12k",
+  "dataSetName": "SO42_74KL.Huguet.2006",
+  "note": "Kept in the duplicate review (vs 74KL_UK37.Huguet.2006).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__T2L_SU81_18_uk37_SST_from_uk37": {
+  "TSid": "T2L_SU81_18_uk37_SST_from_uk37",
+  "compilation": "Presto12k",
+  "dataSetName": "SU81_18.Bard.2000",
+  "note": "Kept in the duplicate review (vs MD952042.Bard.2002).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__T2L_SV04_uk37_SST_from_uk37": {
+  "TSid": "T2L_SV04_uk37_SST_from_uk37",
+  "compilation": "Presto12k",
+  "dataSetName": "SV04.Rigual-Hernndez.2017",
+  "note": "Kept in the duplicate review (vs GIK23258_2.Martrat.2003, SV_04).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__WEB-89cd0-397e-4dd7-aba9-04c27": {
+  "TSid": "WEB-89cd0-397e-4dd7-aba9-04c27",
+  "compilation": "Presto12k",
+  "dataSetName": "Vostok.Petit.1999",
+  "note": "superseded by Vimeux.2002",
+  "status": "exclude",
+  "updated": "2026-11-18T00:30:10.834Z"
+ },
+ "Presto12k__WEBa31332025": {
+  "TSid": "WEBa31332025",
+  "compilation": "Presto12k",
+  "dataSetName": "MiddenCluster5.Harbert.2018",
+  "status": "ok",
+  "updated": "2026-11-18T00:37:25.061Z"
+ },
+ "Presto12k__WEBa31332026": {
+  "TSid": "WEBa31332026",
+  "compilation": "Presto12k",
+  "dataSetName": "MiddenCluster6.Harbert.2018",
+  "status": "ok",
+  "updated": "2026-11-18T00:37:23.533Z"
+ },
+ "Presto12k__lcR5oT3tRefOTRAcIQA": {
+  "TSid": "lcR5oT3tRefOTRAcIQA",
+  "compilation": "Presto12k",
+  "dataSetName": "RuppertLake.Higuera.2006",
+  "status": "ok",
+  "updated": "2026-11-18T00:37:06.358Z"
+ },
+ "Presto12k__lcR7C89X0D750Sp8O1T": {
+  "TSid": "lcR7C89X0D750Sp8O1T",
+  "compilation": "Presto12k",
+  "dataSetName": "UncleSethsPond.Oswald.2018",
+  "note": "Kept in the duplicate review (vs BlaneysPond.Oswald.2018).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__lcRCAwCLeLf2Ass8e8d": {
+  "TSid": "lcRCAwCLeLf2Ass8e8d",
+  "compilation": "Presto12k",
+  "dataSetName": "LagoPreola.Calo.2010",
+  "status": "ok",
+  "updated": "2026-11-18T00:28:55.875Z"
+ },
+ "Presto12k__lcRDvLX8Mtk66NsiYvd": {
+  "TSid": "lcRDvLX8Mtk66NsiYvd",
+  "compilation": "Presto12k",
+  "dataSetName": "LakeBayanchagan.Jiang.2010",
+  "note": "Kept in the duplicate review (vs BayanchaganLakeBY.Jiang.2006).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__lcRECwrgNEg2rI5bmm4": {
+  "TSid": "lcRECwrgNEg2rI5bmm4",
+  "compilation": "Presto12k",
+  "dataSetName": "LiivjarveBog.Koff.1990",
+  "note": "Kept in the duplicate review (vs LiivjarveBog.Koff.1989).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__lcREFsvQV9Z5n99omGW": {
+  "TSid": "lcREFsvQV9Z5n99omGW",
+  "compilation": "Presto12k",
+  "dataSetName": "KellysLough.Leira.2007",
+  "note": "Kept in the duplicate review (vs GlendaloughValley.Haslett.2006).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__lcREvnzXCBPDrAKPAdx": {
+  "TSid": "lcREvnzXCBPDrAKPAdx",
+  "compilation": "Presto12k",
+  "dataSetName": "LagodiMuzzano.Gobet.2000",
+  "note": "Kept in the duplicate review (vs LagodiOriglio.Tinner.1999).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__lcRFUzyLKiYLOgpI35G": {
+  "TSid": "lcRFUzyLKiYLOgpI35G",
+  "compilation": "Presto12k",
+  "dataSetName": "Steregoiu.Bjorkman.2003",
+  "note": "Kept in the duplicate review (vs PrelucaTiganului.Feurdean.2005).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__lcRGUIJVZXUOcOOW3Z2": {
+  "TSid": "lcRGUIJVZXUOcOOW3Z2",
+  "compilation": "Presto12k",
+  "dataSetName": "PrelucaTiganului.Feurdean.2005",
+  "note": "Kept in the duplicate review (vs Steregoiu.Bjorkman.2003).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__lcRHKZ7szqSj00EvPu1": {
+  "TSid": "lcRHKZ7szqSj00EvPu1",
+  "compilation": "Presto12k",
+  "dataSetName": "Popradskepleso.Carter.2020",
+  "note": "Kept in the duplicate review (vs Popradskepleso.Rybnickova.2006).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__lcRI1GuVejAPox6p56U": {
+  "TSid": "lcRI1GuVejAPox6p56U",
+  "compilation": "Presto12k",
+  "dataSetName": "StotzelLeisSite.Watson.2018",
+  "note": "Kept in the duplicate review (vs StotzelLeisSite.Shane.1976).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__lcRIO9qA5tCPx5bECXz": {
+  "TSid": "lcRIO9qA5tCPx5bECXz",
+  "compilation": "Presto12k",
+  "dataSetName": "Naskak.Lozhkin.2011",
+  "note": "Kept in the duplicate review (vs StLawrenceSection2.Lozhkin.1998).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__lcRIOjiPAOx2bl9UByb": {
+  "TSid": "lcRIOjiPAOx2bl9UByb",
+  "compilation": "Presto12k",
+  "dataSetName": "ApplemanLake.Gill.2009",
+  "note": "Kept in the duplicate review (vs PrettyLake.Williams.1974).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__lcRKBajQ1ppcVcsLgLT": {
+  "TSid": "lcRKBajQ1ppcVcsLgLT",
+  "compilation": "Presto12k",
+  "dataSetName": "StLawrenceSection2.Lozhkin.1998",
+  "note": "Kept in the duplicate review (vs Naskak.Lozhkin.2011).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__lcRNGNsaKfKIPRrpzby": {
+  "TSid": "lcRNGNsaKfKIPRrpzby",
+  "compilation": "Presto12k",
+  "dataSetName": "Kinnshaugen.Birks.2012",
+  "status": "ok",
+  "updated": "2026-11-18T00:27:53.264Z"
+ },
+ "Presto12k__lcRSuD8Onf0HVJXJi6v": {
+  "TSid": "lcRSuD8Onf0HVJXJi6v",
+  "compilation": "Presto12k",
+  "dataSetName": "StaroselskyMoch.Novenko.2009",
+  "status": "ok",
+  "updated": "2026-11-18T00:28:19.252Z"
+ },
+ "Presto12k__lcRU8yYkci6OjS8Y4Mx": {
+  "TSid": "lcRU8yYkci6OjS8Y4Mx",
+  "compilation": "Presto12k",
+  "dataSetName": "Popradskepleso.Rybnickova.2006",
+  "note": "Kept in the duplicate review (vs Popradskepleso.Carter.2020).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__lcRUFMZfedLZj2Mslpy": {
+  "TSid": "lcRUFMZfedLZj2Mslpy",
+  "compilation": "Presto12k",
+  "dataSetName": "ChampGazon.JouffroyBapicot.2010",
+  "note": "Kept in the duplicate review (vs Nataloup.JouffroyBapicot.2010).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__lcRVBrP7XtZ6QojKVE5": {
+  "TSid": "lcRVBrP7XtZ6QojKVE5",
+  "compilation": "Presto12k",
+  "dataSetName": "Feuenried.Rosch.1985",
+  "note": "Kept in the duplicate review (vs Durchenbergried.Rosch.1990).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__lcRVlyku7zu3eUFEXQy": {
+  "TSid": "lcRVlyku7zu3eUFEXQy",
+  "compilation": "Presto12k",
+  "dataSetName": "Pashennoe.Tarasov.1994",
+  "status": "ok",
+  "updated": "2026-11-18T00:28:09.162Z"
+ },
+ "Presto12k__lcRYDpDqfEgErHVxpMM": {
+  "TSid": "lcRYDpDqfEgErHVxpMM",
+  "compilation": "Presto12k",
+  "dataSetName": "BlaneysPond.Oswald.2018",
+  "note": "Kept in the duplicate review (vs UncleSethsPond.Oswald.2018).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__lcRZuVrPOYyCKYmUMlg": {
+  "TSid": "lcRZuVrPOYyCKYmUMlg",
+  "compilation": "Presto12k",
+  "dataSetName": "Nataloup.JouffroyBapicot.2010",
+  "note": "Kept in the duplicate review (vs ChampGazon.JouffroyBapicot.2010).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__lcRd2c3OHXKRKMoHEX1": {
+  "TSid": "lcRd2c3OHXKRKMoHEX1",
+  "compilation": "Presto12k",
+  "dataSetName": "LackanBog.Holland.1975",
+  "note": "Kept in the duplicate review (vs Carrivmoragh.Holland.1975).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__lcRdr1mXf7h9m2RMXg7": {
+  "TSid": "lcRdr1mXf7h9m2RMXg7",
+  "compilation": "Presto12k",
+  "dataSetName": "LagodiOriglio.Tinner.1999",
+  "note": "Kept in the duplicate review (vs LagodiMuzzano.Gobet.2000).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__lcRevSrSJ6Y4iMApChz": {
+  "TSid": "lcRevSrSJ6Y4iMApChz",
+  "compilation": "Presto12k",
+  "dataSetName": "Durchenbergried.Rosch.1990",
+  "note": "Kept in the duplicate review (vs Feuenried.Rosch.1985).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__lcRhvzlxTGuzlHGnB5h": {
+  "TSid": "lcRhvzlxTGuzlHGnB5h",
+  "compilation": "Presto12k",
+  "dataSetName": "ViitnaLinajarv.Saarse.1998",
+  "note": "Kept in the duplicate review (vs ViitnaLinajarv.Punning.2003).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__lcRiZwyxe36q9MIRQgU": {
+  "TSid": "lcRiZwyxe36q9MIRQgU",
+  "compilation": "Presto12k",
+  "dataSetName": "DavisLake.Barnosky.1981Legacy",
+  "status": "ok",
+  "updated": "2026-11-18T00:35:20.465Z"
+ },
+ "Presto12k__lcRibcytgNyGsDyKKLM": {
+  "TSid": "lcRibcytgNyGsDyKKLM",
+  "compilation": "Presto12k",
+  "dataSetName": "LacdesGrenouilles.Finsinger.2020",
+  "note": "Kept in the duplicate review (vs LacMouton.deBeaulieu.1977).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__lcRieKpOwEIOhx612Bq": {
+  "TSid": "lcRieKpOwEIOhx612Bq",
+  "compilation": "Presto12k",
+  "dataSetName": "GlendaloughValley.Haslett.2006",
+  "note": "Kept in the duplicate review (vs KellysLough.Leira.2007).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__lcRjHwrv3sQi848C5rd": {
+  "TSid": "lcRjHwrv3sQi848C5rd",
+  "compilation": "Presto12k",
+  "dataSetName": "GorgoBasso.Tinner.2009",
+  "status": "ok",
+  "updated": "2026-11-18T00:28:56.323Z"
+ },
+ "Presto12k__lcRjRy7UlD0LJPP6QlR": {
+  "TSid": "lcRjRy7UlD0LJPP6QlR",
+  "compilation": "Presto12k",
+  "dataSetName": "RuppertLake.Brubaker.1983",
+  "status": "ok",
+  "updated": "2026-11-18T00:37:04.802Z"
+ },
+ "Presto12k__lcRlitJ6bhFM9Vjj8fn": {
+  "TSid": "lcRlitJ6bhFM9Vjj8fn",
+  "compilation": "Presto12k",
+  "dataSetName": "PrettyLake.Williams.1974",
+  "note": "Kept in the duplicate review (vs ApplemanLake.Gill.2009).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__lcRmAOaEqnhncdt7MMw": {
+  "TSid": "lcRmAOaEqnhncdt7MMw",
+  "compilation": "Presto12k",
+  "dataSetName": "ViitnaLinajarv.Punning.2003",
+  "note": "Kept in the duplicate review (vs ViitnaLinajarv.Saarse.1998).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__lcRnOCNKmfHWk2l61dP": {
+  "TSid": "lcRnOCNKmfHWk2l61dP",
+  "compilation": "Presto12k",
+  "dataSetName": "KaraseLake.Tarasov.1995",
+  "status": "ok",
+  "updated": "2026-11-18T00:28:06.427Z"
+ },
+ "Presto12k__lcRnTdhTn8R97r7FUvb": {
+  "TSid": "lcRnTdhTn8R97r7FUvb",
+  "compilation": "Presto12k",
+  "dataSetName": "LacLongInferieur.deBeaulieu.1977",
+  "status": "ok",
+  "updated": "2026-11-18T00:29:09.993Z"
+ },
+ "Presto12k__lcRncE6oryl40UeJFWv": {
+  "TSid": "lcRncE6oryl40UeJFWv",
+  "compilation": "Presto12k",
+  "dataSetName": "LilyLake.Flakne.2003",
+  "status": "ok",
+  "updated": "2026-11-18T00:35:11.499Z"
+ },
+ "Presto12k__lcRoVbGfxemWxllmEZb": {
+  "TSid": "lcRoVbGfxemWxllmEZb",
+  "compilation": "Presto12k",
+  "dataSetName": "LacduMontdOrgeSion.Colombaroli.2013",
+  "note": "Kept in the duplicate review (vs GouilleLoere.Tinner.2003).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__lcRpkEDQ0uqW344PYcC": {
+  "TSid": "lcRpkEDQ0uqW344PYcC",
+  "compilation": "Presto12k",
+  "dataSetName": "Carrivmoragh.Holland.1975",
+  "note": "Kept in the duplicate review (vs LackanBog.Holland.1975).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__lcRquwxyJiptdcFjgAp": {
+  "TSid": "lcRquwxyJiptdcFjgAp",
+  "compilation": "Presto12k",
+  "dataSetName": "StotzelLeisSite.Shane.1976",
+  "note": "Kept in the duplicate review (vs StotzelLeisSite.Watson.2018).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__lcRryE2REIGCnOYFhHr": {
+  "TSid": "lcRryE2REIGCnOYFhHr",
+  "compilation": "Presto12k",
+  "dataSetName": "GouilleLoere.Tinner.2003",
+  "note": "Kept in the duplicate review (vs LacduMontdOrgeSion.Colombaroli.2013).",
+  "status": "ok",
+  "updated": "2026-11-18T00:26:34.000Z"
+ },
+ "Presto12k__lcRsAjTJqI8VhyQ5qB0": {
+  "TSid": "lcRsAjTJqI8VhyQ5qB0",
+  "compilation": "Presto12k",
+  "dataSetName": "LilyLake.Minckley.2007",
+  "status": "ok",
+  "updated": "2026-11-18T00:37:09.673Z"
+ },
+ "Presto12k__lcRzk16RCDWNQRVxBqJ": {
+  "TSid": "lcRzk16RCDWNQRVxBqJ",
+  "compilation": "Presto12k",
+  "dataSetName": "LacMouton.deBeaulieu.1977",
+  "note": "Kept in the duplicate review (vs LacdesGrenouilles.Finsinger.2020).",
+  "status": "ok",
+  "updated": "2026-11-18T00:29:15.348Z"
+ }
+}

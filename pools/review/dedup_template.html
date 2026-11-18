@@ -101,7 +101,7 @@ textarea { width: 100%; box-sizing: border-box; min-height: 58px; font: 13px var
     <div class="brand">__HEADING__<small id="snap"></small></div>
     <div class="progress" id="prog"></div>
     <div class="list" id="list" role="listbox" aria-label="Duplicate groups"></div>
-    <div class="keys"><kbd>j</kbd>/<kbd>k</kbd> next/previous · <kbd>a</kbd> keep A · <kbd>b</kbd> keep B · <kbd>x</kbd> keep both (pairs) · <kbd>0</kbd> clear · <kbd>n</kbd> note · <kbd>s</kbd> standardize · <kbd>u</kbd> next undecided · <kbd>1</kbd>–<kbd>9</kbd> show/hide a series (groups)</div>
+    <div class="keys"><kbd>j</kbd>/<kbd>k</kbd> next/previous · <kbd>a</kbd> keep A · <kbd>b</kbd> keep B · <kbd>x</kbd> keep both (pairs) · <kbd>0</kbd> clear · <kbd>n</kbd> note · <kbd>s</kbd> standardize · <kbd>u</kbd> next undecided · <kbd>1</kbd>–<kbd>9</kbd> show/hide a series</div>
   </aside>
   <main id="main"></main>
 </div>
@@ -110,7 +110,7 @@ textarea { width: 100%; box-sizing: border-box; min-height: 58px; font: 13px var
 (() => {
 const D = JSON.parse(document.getElementById('data').textContent);
 // One item per group of linked pairs; a lone pair is a group of two records.
-const G = D.items, SLUG = D.slug;
+const G = D.items, SLUG = D.slug, HOLO = /12k/i.test(SLUG);
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const fmt = (x, d = 1) => x == null ? 'n/a' : Number(x).toLocaleString(undefined, { maximumFractionDigits: d });
@@ -166,10 +166,13 @@ $('#list').addEventListener('click', e => { const it = e.target.closest('.item')
 
 function chart(recs, cols) {
   const W = 900, H = 300, m = { l: 56, r: 14, t: 12, b: 30 };
+  // Presto12k: plotted in years BP (as -BP, so older is left), nothing older
+  // than 12,000 BP
   const ser = recs.map(r => {
-    let v = r.value.slice();
+    let v = r.value.slice(), y = r.year.slice();
+    if (HOLO) { const k = y.map((t, i) => i).filter(i => y[i] >= -10050); v = k.map(i => v[i]); y = k.map(i => y[i] - 1950); }
     if (stdz) { const ok = v.filter(x => x != null); const mu = ok.reduce((s, x) => s + x, 0) / ok.length; const sd = Math.sqrt(ok.reduce((s, x) => s + (x - mu) ** 2, 0) / Math.max(1, ok.length - 1)) || 1; v = v.map(x => x == null ? null : (x - mu) / sd); }
-    return { y: r.year, v };
+    return { y, v };
   });
   const ys = ser.flatMap(s => s.y), vs = ser.flatMap(s => s.v).filter(x => x != null);
   if (!ys.length) return '<p class="muted">No values.</p>';
@@ -186,10 +189,10 @@ function chart(recs, cols) {
   const units = [...new Set(recs.map(r => r.units || ''))];
   return `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="All series over time">
     ${ticks(v0, v1, 5).map(v => `<line x1="${m.l}" x2="${W - m.r}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--line)"/><text x="${m.l - 6}" y="${Y(v) + 3}" text-anchor="end" font-size="10" fill="var(--muted)" font-family="var(--f-mono)">${+v.toPrecision(4)}</text>`).join('')}
-    ${ticks(x0, x1, 9).filter(x => x >= x0 && x <= x1).map(x => `<text x="${X(x)}" y="${H - m.b + 15}" text-anchor="middle" font-size="10" fill="var(--muted)" font-family="var(--f-mono)">${Math.round(x)}</text>`).join('')}
+    ${ticks(x0, x1, 9).filter(x => x >= x0 && x <= x1).map(x => `<text x="${X(x)}" y="${H - m.b + 15}" text-anchor="middle" font-size="10" fill="var(--muted)" font-family="var(--f-mono)">${Math.round(HOLO ? -x : x)}</text>`).join('')}
     <line x1="${m.l}" x2="${W - m.r}" y1="${H - m.b}" y2="${H - m.b}" stroke="var(--faint)"/>
     ${ser.map((s, i) => line(s, cols[i])).join('')}
-    <text x="${W - m.r}" y="${H - 3}" text-anchor="end" font-size="10" fill="var(--muted)">year CE</text>
+    <text x="${W - m.r}" y="${H - 3}" text-anchor="end" font-size="10" fill="var(--muted)">${HOLO ? 'yr BP' : 'year CE'}</text>
     <text transform="translate(13 ${(H - m.b + m.t) / 2}) rotate(-90)" text-anchor="middle" font-size="10" fill="var(--muted)">${stdz ? 'standardized' : esc(recs[0].variableName) + ' (' + units.map(esc).join(' / ') + ')'}</text>
   </svg>`;
 }
@@ -203,7 +206,7 @@ function recBody(r) {
       <dt>variable</dt><dd>${esc(r.variableName)}${r.units ? ' · ' + esc(r.units) : ''}</dd>
       <dt>archive</dt><dd>${esc(r.archiveType)}</dd>
       <dt>lat, lon</dt><dd>${fmt(r.lat, 3)}, ${fmt(r.lon, 3)}</dd>
-      <dt>span</dt><dd>${fmt(r.start)} to ${fmt(r.end)}</dd>
+      <dt>span</dt><dd>${HOLO ? (r.start == null ? 'n/a' : Math.round(1950 - r.start)) + ' to ' + (r.end == null ? 'n/a' : Math.round(1950 - r.end)) + ' yr BP' : fmt(r.start) + ' to ' + fmt(r.end)}</dd>
       <dt>values</dt><dd>${fmt(r.n, 0)} · ${fmt(r.resolution, 2)} yr resolution</dd>
       <dt>compilations</dt><dd>${esc((r.compilations || []).filter(c => !/PReSto|test/i.test(c)).join(', ') || 'none')}</dd>
       <dt>interpretation</dt><dd>${interp || '<span class="muted">none</span>'}</dd>
@@ -281,6 +284,8 @@ function setKeep(g, t, k) {
 
 function renderPair(g) {
   const p = pairView(g), d = dec[p.key] || {};
+  const hid = hidden[g.key] || (hidden[g.key] = new Set());
+  const vis = [[p.a, 'var(--a)'], [p.b, 'var(--b)']].filter(x => !hid.has(x[0].TSid));
   const rec = (r, side) => `<section class="card rec ${side}"><span class="tag">${side.toUpperCase()}</span>${p.suggest === side ? '<span class="sug">rules would keep</span>' : ''}${recBody(r)}</section>`;
   $('#main').innerHTML = `
     <div class="stats">
@@ -291,8 +296,8 @@ function renderPair(g) {
       <span class="chip">r of differences <b>${fmt(p.r_diff, 3)}</b></span>
       <span class="chip">${p.same_doi ? '<b>shared publication</b>' : 'no shared publication'}</span>
     </div>
-    <section class="card"><h2>Both series <span class="tools"><button id="std" aria-pressed="${stdz}">Standardize</button></span></h2>${chart([p.a, p.b], ['var(--a)', 'var(--b)'])}
-      <div class="legend"><span><span class="sw" style="background:var(--a)"></span>A ${esc(p.a.dataSetName)}</span><span><span class="sw" style="background:var(--b)"></span>B ${esc(p.b.dataSetName)}</span></div></section>
+    <section class="card"><h2>Both series <span class="tools"><button id="std" aria-pressed="${stdz}">Standardize</button></span></h2>${vis.length ? chart(vis.map(x => x[0]), vis.map(x => x[1])) : '<p class="muted">Both series hidden: turn one on below.</p>'}
+      <div class="legend tog" role="group" aria-label="Show or hide series">${[[p.a, 'var(--a)', 'A'], [p.b, 'var(--b)', 'B']].map(([r, c, l], i) => `<button data-s="${esc(r.TSid)}" aria-pressed="${!hid.has(r.TSid)}" title="Show or hide ${esc(r.dataSetName)} (or press ${i + 1})"><span class="sw" style="background:${c}"></span>${l} ${esc(r.dataSetName)}</button>`).join('')}</div></section>
     <div class="pair">${rec(p.a, 'a')}${rec(p.b, 'b')}</div>
     <div class="decide card">
       <div class="btns" role="group" aria-label="Decision">
@@ -303,6 +308,7 @@ function renderPair(g) {
       ${noteBox(d)}
     </div>`;
   document.querySelectorAll('.btns button').forEach(b => b.addEventListener('click', () => choose(b.dataset.c)));
+  document.querySelectorAll('.tog button').forEach(b => b.addEventListener('click', () => toggleSeries(g, b.dataset.s)));
   $('#std').addEventListener('click', () => { stdz = !stdz; show(); });
   let t = null; $('#note').addEventListener('input', e => { clearTimeout(t); const v = e.target.value; t = setTimeout(() => save(p, { note: v }), 600); });
 }
@@ -335,7 +341,7 @@ document.addEventListener('keydown', e => {
   else if (k === '0') { const g = G[cur]; if (g) { delete pend[g.key]; g.pairs.forEach(p => save(p, { choice: null })); show(); } }
   else if (k === 'n') { $('#note').focus(); e.preventDefault(); }
   else if (k === 's') { stdz = !stdz; show(); }
-  else if (/^[1-9]$/.test(k)) { const g = G[cur]; if (g && !isPair(g) && g.recs[+k - 1]) toggleSeries(g, g.recs[+k - 1].TSid); }
+  else if (/^[1-9]$/.test(k)) { const g = G[cur]; if (!g) return; if (isPair(g)) { const p = pairView(g), r = [p.a, p.b][+k - 1]; if (r) toggleSeries(g, r.TSid); } else if (g.recs[+k - 1]) toggleSeries(g, g.recs[+k - 1].TSid); }
   else if (k === 'u') { const i = G.findIndex((g, j) => j > cur && !decided(g)); if (i >= 0) { cur = i; renderList(); show(); } }
 });
 renderList(); show();

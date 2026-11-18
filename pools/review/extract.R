@@ -14,7 +14,9 @@ comps <- list(
   Presto2k = list(dir = "PReSto2k", pool = "cfr_annual", from_pool = TRUE,
                   lmr = "presto2k_test_lmr", bay = "presto2k_test_localfdr10",
                   psm = "~/GitHub/presto-paper/analysis/data/runs/presto-LMR-run-presto2k-test-2026-11/psm_screen.csv"),
-  Presto12k = list(dir = "PReSto12k", pool = "PReSto12k_0_1_0", psm = NA))
+  # Presto12k: the revised temp12k pool (Presto2k's duplicate rules, Nick
+  # 2026-11-17) on this export.
+  Presto12k = list(dir = "PReSto12k", pool = "temp12k", from_pool = TRUE, psm = NA))
 # REVIEW_ONLY=Presto2k extracts one compilation (build.py takes the same variable).
 if (nzchar(Sys.getenv("REVIEW_ONLY"))) comps <- comps[names(comps) %in% strsplit(Sys.getenv("REVIEW_ONLY"), ",")[[1]]]
 pool_file <- function(pool) {

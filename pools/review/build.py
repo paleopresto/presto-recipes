@@ -20,10 +20,12 @@ MAXPTS = 1500
 NEAR_KM = 5
 VERSION = "0.1.0"
 # Presto2k is reviewed from the revised pool (PAGES 2k 2017 criteria) on the
-# export extract.R read, with the test LMR run's screen; Presto12k from 0.1.0.
-COMPS = {"Presto2k": {"slug": "presto2k", "dir": "PReSto2k", "run": "43551034335", "from_pool": True,
+# export extract.R read, with the test LMR run's screen; Presto12k likewise
+# from the revised temp12k pool.
+COMPS = {"Presto2k": {"slug": "presto2k", "dir": "PReSto2k", "run": "43551034335", "from_pool": True, "pool": "cfr_annual",
                       "version": "revised pool", "run_export": "2026-11-03b"},
-         "Presto12k": {"slug": "presto12k", "dir": "PReSto12k", "run": None, "version": VERSION}}
+         "Presto12k": {"slug": "presto12k", "dir": "PReSto12k", "run": None, "from_pool": True, "pool": "temp12k",
+                       "version": "revised pool"}}
 # REVIEW_ONLY=Presto2k rebuilds one compilation's pages and leaves the others.
 if os.environ.get("REVIEW_ONLY"): COMPS = {k: v for k, v in COMPS.items() if k in os.environ["REVIEW_ONLY"].split(",")}
 
@@ -110,6 +112,79 @@ def near(r):
     return bool(near_ids(r))
 
 
+LIKELY_R = 0.5
+SIM, PROXY = {}, {}
+
+
+DECIDED = set()
+
+
+def load_similarity(pool, snap):
+    """The dedup's |r| (or binned r) for each pair it compared, and each
+    record's proxy, from the pool build the page shows."""
+    SIM.clear(); PROXY.clear(); DECIDED.clear()
+    dd = os.path.join(here, "..", "baselines", "dedup_decisions.csv")
+    if os.path.exists(dd):
+        DECIDED.update(frozenset((x["TSid1"], x["TSid2"])) for x in csv.DictReader(open(dd)))
+    base = os.path.join(here, "..", "output", pool, snap)
+    if not os.path.exists(os.path.join(base, "dedup_pairs.csv")): return
+    for row in csv.DictReader(open(os.path.join(base, "pool.csv"))):
+        PROXY[row["TSid"]] = re.sub("[^a-z0-9]", "", (row["proxy"] if row["proxy"] not in ("", "NA") else row["variableName"]).lower())
+    for row in csv.DictReader(open(os.path.join(base, "dedup_pairs.csv"))):
+        v = [abs(float(x)) for x in (row.get("r"), row.get("r_bin")) if x not in (None, "", "NA")]
+        SIM[frozenset((row["TSid1"], row["TSid2"]))] = max(v) if v else None
+
+
+def likely_ids(r):
+    """Nearby members of another dataset with the same proxy whose series
+    agree (|r| or binned r >= LIKELY_R, or too little overlap to compare):
+    the records a duplicate review needs to see (Nick, 2026-11-17: the 5 km
+    filter alone left 523 of Presto12k's 1775)."""
+    out = []
+    for t in near_ids(r):
+        nb = next(n for n in r["neighbors"] if n["TSid"] == t)
+        if nb.get("name") == r["dataSetName"]: continue
+        a, b = PROXY.get(r["TSid"]), PROXY.get(t)
+        if a and b and a != b: continue
+        s = SIM.get(frozenset((r["TSid"], t)))
+        if s is None or s >= LIKELY_R: out.append(t)
+    # The same site name and proxy in another dataset, at any distance: one
+    # copy's coordinates can be wrong (Kinnshaugen 101 km, PL07-39PC 103 km).
+    # Not for colonies and trees, which share a site name as separate
+    # measurements (Hainan Island, eight corals); closer than NEAR_KM the
+    # similarity test above decides.
+    if r["archive"] in ("Coral", "Sclerosponge", "Wood"): return out
+    for t in SITE.get(site_key(r), []):
+        if t == r["TSid"] or t in out or DSET.get(t) == r["dataSetName"]: continue
+        a, b = LOC.get(r["TSid"]), LOC.get(t)
+        if a and b and hav(a, b) > NEAR_KM: out.append(t)
+    # pairs already decided on the duplicate page are settled
+    return [t for t in out if frozenset((r["TSid"], t)) not in DECIDED]
+
+
+SITE, DSET, LOC = {}, {}, {}
+
+
+def hav(a, b):
+    la1, lo1, la2, lo2 = map(math.radians, (a[0], a[1], b[0], b[1]))
+    h = math.sin((la2 - la1) / 2) ** 2 + math.cos(la1) * math.cos(la2) * math.sin((lo2 - lo1) / 2) ** 2
+    return 2 * 6371 * math.asin(min(1, math.sqrt(h)))
+
+
+def site_key(r):
+    n = re.sub("[^a-z0-9]", "", (r.get("siteName") or r["dataSetName"].split(".")[0]).lower())
+    return (n, PROXY.get(r["TSid"])) if n and PROXY.get(r["TSid"]) else None
+
+
+def load_sites(R):
+    SITE.clear(); DSET.clear(); LOC.clear()
+    for r in R:
+        DSET[r["TSid"]] = r["dataSetName"]
+        if r.get("lat") is not None and r.get("lon") is not None: LOC[r["TSid"]] = (r["lat"], r["lon"])
+        k = site_key(r)
+        if k: SITE.setdefault(k, []).append(r["TSid"])
+
+
 def thin(s):
     """Min and max of each bin, in time order, for series too long to plot."""
     y, v = s["year"], s["value"]
@@ -143,24 +218,25 @@ def page_for(cn, cc, index):
     sub("['#q', '#fc', '#fa', '#fs', '#fx']", "['#q', '#fa', '#fs', '#fx', '#fg']")
     # optionally only records with an inclusion criterion that is not green
     sub('<option value="curated">Has curator decisions</option></select>\n      </div>',
-        '<option value="curated">Has curator decisions</option><option value="near">Nearby record, same archive (5 km)</option></select>\n      </div>\n'
+        '<option value="curated">Has curator decisions</option><option value="near">Nearby record, same archive (5 km)</option><option value="likely">Likely duplicate: another dataset, same proxy, 5 km, r &ge; 0.5</option></select>\n      </div>\n'
         '      <label style="font:12px var(--f-ui);color:var(--muted);display:flex;gap:6px;align-items:center">'
         '<input type="checkbox" id="fg"> Only records not all green for inclusion</label>')
     # Not reviewed, plus the nearby records they could duplicate even if those
     # were reviewed already, so a new record is judged beside them (Nick, 2026-11-17).
     sub('<option value="todo">Not reviewed</option>',
-        '<option value="todo">Not reviewed</option><option value="todonear">Not reviewed, with their nearby records</option>')
+        '<option value="todo">Not reviewed</option><option value="todonear">Not reviewed, with their nearby records</option><option value="todolikely">Not reviewed, with their likely duplicates</option>')
     sub("(!fs || statusOf(r) === fs)",
-        "(!fs || (fs === 'todonear' ? statusOf(r) === 'todo' || NT.has(r.TSid) : statusOf(r) === fs))")
+        "(!fs || (fs === 'todonear' || fs === 'todolikely' ? statusOf(r) === 'todo' || NT.has(r.TSid) : statusOf(r) === fs))")
     sub("function applyFilters(keep) {", """function nearTodo() {
   const s = new Set();
-  R.forEach(r => { if (statusOf(r) === 'todo') (r.nearIds || []).forEach(t => s.add(t)); });
+  const k = $('#fs').value === 'todolikely' ? 'likelyIds' : 'nearIds';
+  R.forEach(r => { if (statusOf(r) === 'todo') (r[k] || []).forEach(t => s.add(t)); });
   return s;
 }
 function applyFilters(keep) {
-  const NT = $('#fs').value === 'todonear' ? nearTodo() : new Set();""")
+  const NT = /^todo(near|likely)$/.test($('#fs').value) ? nearTodo() : new Set();""")
     sub("    && (!fx || (fx === 'alert' ? r._alerts.length : r._curated))",
-        "    && (!fx || (fx === 'alert' ? r._alerts.length : fx === 'near' ? r.near : r._curated))\n    && (!$('#fg').checked || !r.allGreen)")
+        "    && (!fx || (fx === 'alert' ? r._alerts.length : fx === 'near' ? r.near : fx === 'likely' ? r.likely : r._curated))\n    && (!$('#fg').checked || !r.allGreen)")
     # records load from data/ in chunks
     sub("const R = D.records;", """const R = D.records;
 const CH = new Map();
@@ -197,8 +273,9 @@ function render(r) {""")
     # the record's length; values outside it are not drawn and the y-axis fits
     # the values inside it
     if cn == "Presto2k":
-        sub("""  const ys = r.series.year, vs = r.series.value;
-  if (!ys.length) return '<div class="empty">No values in the export for this column.</div>';""",
+        sub("""  let ys = r.series.year, vs = r.series.value;
+  if (holo) { const k = ys.map((y, i) => i).filter(i => ys[i] >= -10050); ys = k.map(i => ys[i]); vs = k.map(i => vs[i]); }
+  if (!ys.length) return '<div class="empty">No values in the export for this column' + (holo ? ' in the last 12,000 years' : '') + '.</div>';""",
             """  const CE = [1, 2025];
   const keep = r.series.year.map((y, i) => y >= CE[0] && y <= CE[1] && r.series.value[i] != null);
   const ys = r.series.year.filter((y, i) => keep[i]), vs = r.series.value.filter((v, i) => keep[i]);
@@ -249,7 +326,8 @@ function post(id, rv) {
     # maps always in light colours
     m0 = page.index("function mapSvg(r)"); m1 = page.index("let showTok", m0)
     body = page[m0:m1]
-    for v, c in (("--water", "#f7f8f6"), ("--land", "#e4e2da"), ("--coast", "#c9c6bb"), ("--faint", "#8b9596"), ("--panel", "#ffffff"), ("--ink", "#1d2324")):
+    body = body.replace("var(--bad, #d33)", "#b3332b").replace("var(--f-mono, monospace)", "ui-monospace, Menlo, monospace")
+    for v, c in (("--water", "#f7f8f6"), ("--land", "#e4e2da"), ("--coast", "#c9c6bb"), ("--faint", "#8b9596"), ("--panel", "#ffffff"), ("--ink", "#1d2324"), ("--muted", "#5d6768")):
         body = body.replace(f"var({v})", c)
     assert "var(--" not in body
     page = page[:m0] + body + page[m1:]
@@ -268,7 +346,35 @@ for cn, cc in COMPS.items():
             if r.get(k) is not None and not isinstance(r[k], list): r[k] = [r[k]]
         for k in ("year", "value"):
             if not isinstance(r["series"][k], list): r["series"][k] = [r["series"][k]]
-    print(f"{cn}: {len(R)} records")
+    load_similarity(cc.get("pool", ""), d["snapshot"])
+    load_sites([r for r in d["records"] if r["compilation"] == cn])
+    # Likely duplicates both ways (each record lists only its nearest members,
+    # so A can name B without B naming A), and every partner in the record's
+    # neighbour list and map, marked, even when farther than its nearest 8.
+    RC = [r for r in d["records"] if r["compilation"] == cn]
+    byT = {r["TSid"]: r for r in RC}
+    LIK = {r["TSid"]: set() for r in RC}
+    for r in RC:
+        for t in likely_ids(r):
+            if t in LIK: LIK[r["TSid"]].add(t); LIK[t].add(r["TSid"])
+    for r in RC:
+        nbs = r.get("neighbors") or []
+        if not isinstance(nbs, list): nbs = [nbs]
+        have = {n["TSid"] for n in nbs}
+        for t in LIK[r["TSid"]]:
+            o = byT[t]
+            if t not in have:
+                km = round(hav((r["lat"], r["lon"]), (o["lat"], o["lon"])), 1) if None not in (r.get("lat"), r.get("lon"), o.get("lat"), o.get("lon")) else None
+                nbs.append({"TSid": t, "name": o["dataSetName"], "archive": o["archive"], "variable": o["variable"], "lat": o["lat"], "lon": o["lon"], "km": km})
+        for n in nbs:
+            if n["TSid"] in LIK[r["TSid"]]:
+                n["likely"] = True
+                sm = SIM.get(frozenset((r["TSid"], n["TSid"])))
+                if sm is not None: n["sim"] = round(sm, 2)
+        nbs.sort(key=lambda n: (n.get("km") is None, n.get("km") or 0))
+        r["neighbors"] = nbs
+        r["_likely"] = sorted(LIK[r["TSid"]])
+    print(f"{cn}: {len(R)} records, {sum(bool(r.get('_likely')) for r in R)} with a likely duplicate")
     R = order(R)
     out = os.path.join(site, cc["slug"]); shutil.rmtree(out, ignore_errors=True); os.makedirs(os.path.join(out, "data"))
     index = []
@@ -281,6 +387,7 @@ for cn, cc in COMPS.items():
                           "curated": bool(r.get("decisions")) or bool(re.search("admission|exception", r.get("selectedBy") or "")),
                           "allGreen": all(v is True for v in (r.get("criteria") or {}).values()),
                           "near": near(r), "nearIds": near_ids(r),
+                          "likely": bool(r.get("_likely")), "likelyIds": r.get("_likely", []),
                           "k": k0 // CHUNK})
         json.dump(chunk, open(os.path.join(out, "data", f"c{k0 // CHUNK:03d}.json"), "w"), separators=(",", ":"))
     open(os.path.join(out, "index.html"), "w").write(page_for(cn, cc, index))

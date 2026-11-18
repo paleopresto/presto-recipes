@@ -81,7 +81,12 @@ dedup_defaults <- list(
   #   extension_km, the shorter inside the longer (subset_frac), at
   #   max(|r|, r_bin) >= extension_r go to review: a later version of one
   #   core, re-dated or extended (Moose Lake, Guliya, Agassiz).
-  far_km = NA, cross_label_r = NA, cross_label_km = NA, extension_r = NA, extension_km = NA
+  # prefer_keys: the order of the keys prefer() compares (span, calibrated,
+  #   n, priority, curated, pubyear, meta), in place of the prefer mode's.
+  far_km = NA, cross_label_r = NA, cross_label_km = NA, extension_r = NA, extension_km = NA,
+  prefer_keys = NULL,
+  # res_km: resolution-tier matches farther apart than this go to review.
+  res_km = NA
 )
 
 haversine_km <- function(lat1, lon1, lat2, lon2) {
@@ -234,7 +239,8 @@ preference <- function(pool, membership, pubyear, opt = dedup_defaults, meta = N
 prefer <- function(p1, p2, opt = dedup_defaults) {
   # Calibrated temperature over the raw proxy it was calibrated from, at
   # equal span (Nick, 2026-11-16 and 2026-11-17).
-  keys <- if (identical(opt$prefer, "data")) c("span", "calibrated", "n", "pubyear", "meta", "curated", "priority")
+  keys <- if (length(opt$prefer_keys)) unlist(opt$prefer_keys)
+          else if (identical(opt$prefer, "data")) c("span", "calibrated", "n", "pubyear", "meta", "curated", "priority")
           else c("curated", "span", "n", "pubyear", "priority")
   for (k in keys) {
     a <- p1[[k]]; b <- p2[[k]]
@@ -595,8 +601,14 @@ dedup_pool <- function(con, pool, points, prior = NULL, prefer_units = character
     similar_span <- (pmin(sw, sw2) >= opt$subset_frac * pmax(sw, sw2)) %in% TRUE
     rb <- is.na(pairs$tier) & !pairs$cross & pairs$km <= opt$max_km & (pairs$n_bin > opt$min_overlap) %in% TRUE &
       similar_span
-    pairs$tier[rb & (pairs$r_bin >= opt$res_r) %in% TRUE] <- "resolution"
-    pairs$tier[rb & (pairs$r_bin >= opt$res_review_r & pairs$r_bin < opt$res_r) %in% TRUE] <- "resolution_review"
+    # Beyond res_km (when set) a match goes to review, not out: smoothed
+    # Holocene series from neighbouring cores or lakes correlate this well too
+    # (Feuenried and Durchenbergried, 6.7 km, r_bin = 0.94).
+    near <- pairs$km <= (if (is.finite(opt$res_km %||% NA)) opt$res_km else opt$max_km)
+    pairs$tier[rb & near & (pairs$r_bin >= opt$res_r) %in% TRUE] <- "resolution"
+    pairs$tier[rb & ((!near & (pairs$r_bin >= opt$res_review_r) %in% TRUE) |
+                     (pairs$r_bin >= opt$res_review_r & pairs$r_bin < opt$res_r) %in% TRUE) &
+               is.na(pairs$tier)] <- "resolution_review"
   }
   if (is.finite(opt$extension_r %||% NA)) {
     res_max <- pmax(pool$res_win[idx[pairs$TSid1]], pool$res_win[idx[pairs$TSid2]])
