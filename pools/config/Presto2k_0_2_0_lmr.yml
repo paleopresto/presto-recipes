@@ -13,3 +13,8 @@ archives: [Coral, Wood, GlacierIce, LakeSediment, MolluskShell, MarineSediment,
 # cfr treats each year as independent; series smoothed far beyond their annual
 # step are not (presto-paper LMR and BayGMST attribution, 2026-10).
 max_lag1: 0.98
+# Annual in information (moved here from the compilation in Presto2k 0.3.0):
+# successive values repeating at least half the time, and rates per century
+# or millennium.
+max_repeat_fraction: 0.5
+exclude_units_pattern: "/ ?century$|/ ?kyr$|/ ?ka$|per century"

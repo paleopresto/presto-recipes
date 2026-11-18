@@ -9,7 +9,9 @@
 # export's snapshot (run pools/screen_pool.R first) and writes
 # pools/output/<pool>/<snapshot>/pool.csv: the parent's kept records that
 # pass, in the parent's format, so build_bundle.R packages it unchanged.
-# Optional method-specific checks in the config (max_lag1) apply to the
+# Optional method-specific checks in the config (max_resolution,
+# min_calibration_years, archives, max_repeat_fraction, exclude_units_pattern,
+# max_lag1) apply to the
 # parent's metrics.
 
 here <- dirname(normalizePath(sub("^--file=", "", grep("^--file=", commandArgs(FALSE), value = TRUE))))
@@ -42,6 +44,17 @@ if (!is.null(cfg$max_resolution)) p <- check(is.na(p$res_win) | p$res_win > cfg$
 if (!is.null(cfg$min_calibration_years)) p <- check(is.na(p$n_calib) | p$n_calib < cfg$min_calibration_years,
                                                     sprintf("min_calibration_years %d", cfg$min_calibration_years))
 if (!is.null(cfg$archives)) p <- check(!p$archiveType %in% unlist(cfg$archives), "archives")
+# Annual in information, not only in time step: successive values that
+# repeat at least max_repeat_fraction of the time (step functions on an
+# annual grid), and units that are rates per century or millennium.
+if (!is.null(cfg$max_repeat_fraction)) {
+  if (!"repeat_win" %in% names(p)) stop("repeat_win not in the parent pool; rebuild it with build_pools.R")
+  p <- check(!is.na(p$repeat_win) & p$repeat_win >= cfg$max_repeat_fraction,
+             sprintf("max_repeat_fraction %.2f", cfg$max_repeat_fraction))
+}
+if (!is.null(cfg$exclude_units_pattern))
+  p <- check(grepl(cfg$exclude_units_pattern, p$units, ignore.case = TRUE),
+             sprintf("exclude_units_pattern %s", cfg$exclude_units_pattern))
 if (!is.null(cfg$max_lag1)) {
   if (!"lag1_win" %in% names(p)) stop("lag1_win not in the parent pool; rebuild it with build_pools.R")
   drop <- !is.na(p$lag1_win) & p$lag1_win > cfg$max_lag1

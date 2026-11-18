@@ -9,3 +9,8 @@ variant: fdr10
 max_lag1: 0.98
 # BayGMST works on annual series, as in 0.1.0 (all annual).
 max_resolution: 1.2
+# Annual in information (moved here from the compilation in Presto2k 0.3.0):
+# successive values repeating at least half the time, and rates per century
+# or millennium.
+max_repeat_fraction: 0.5
+exclude_units_pattern: "/ ?century$|/ ?kyr$|/ ?ka$|per century"

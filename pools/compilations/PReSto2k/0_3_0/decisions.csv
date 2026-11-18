@@ -1,0 +1,456 @@
+"kind","TSid","dataSetName","in_compilation","partner_TSid","partner_dataSetName","rule","source","note"
+"admission","Arc_041","Arc-ScreamingLynxLake.Clegg.2011",TRUE,,,,"PReSto2k (2025) proxy database",
+"admission","Arc_049","Arc-LakePieni-Kauro.Luoto.2010",TRUE,,,,"PReSto2k (2025) proxy database",
+"admission","Aus_067","Aus-StewartIsland.D'Arrigo.1996",TRUE,,,,"PReSto2k (2025) proxy database",
+"admission","LPD2a3997a7","Ocn-WesternAntarcticPeninsula.Shevenell.2011",TRUE,,,,"PReSto2k (2025) proxy database",
+"admission","LPD6315f935","Ocn-JacafFjord.Sepulveda.2009",TRUE,,,,"PReSto2k (2025) proxy database",
+"admission","LPD81e53153","Afr-P178-15P.Tierney.2015",TRUE,,,,"PReSto2k (2025) proxy database",
+"admission","O2kLR_030","Ocn-LaurentianFan.Keigwin.2005",TRUE,,,,"PReSto2k (2025) proxy database",
+"exception","GHd6662417","GeoB65181_MBT.Weijers.2007",TRUE,,,"data-poor exception",,
+"exception","GR13MAD01_SrCa","GR13MAD01",TRUE,,,"data-poor exception",,
+"exception","GR13MAD02_SrCa","GR13MAD02",TRUE,,,"data-poor exception",,
+"exception","KR20SAR01_d18O","KR20SAR01",TRUE,,,"data-poor exception",,
+"exception","KR20SAR01_SrCa","KR20SAR01",TRUE,,,"data-poor exception",,
+"exception","lcRQN1HTzRhJbpngy6G","TuskegeePond.Steventon.1983",TRUE,,,"data-poor exception",,
+"exception","lcRTSBwLOnlwQELKa7a","AsiGonia.Atherden.1999",TRUE,,,"data-poor exception",,
+"exception","LPDa77273bb","Ocn-SouthAtlanticWestAfrica.Leduc.2010",TRUE,,,"data-poor exception",,
+"exception","LS97HOKA1a","LS97HOKA",TRUE,,,"data-poor exception",,
+"exception","MS05LKLF01a","MS05LKLF",TRUE,,,"data-poor exception",,
+"exception","R3CvZBuTHNk","LaPAS_KF02.Pivel.2013",TRUE,,,"data-poor exception",,
+"exception","RI10PBL01_d18O","RI10PBL01",TRUE,,,"data-poor exception",,
+"exception","RxPYP3y92HP","CC04.Gibb.2015",TRUE,,,"data-poor exception",,
+"exception","T2L_GeoB6518_1_uk37_SST_from_uk37","GeoB6518_1.Schefu.2005",TRUE,,,"data-poor exception",,
+"exception","WEB6df77dbb","FanLake.Foster.2016",TRUE,,,"data-poor exception",,
+"exclusion","LPD78d0b77c",,FALSE,,,,"PReSto","PReSto: GISP2.Kobashi.2012 superseded by GISP2.Kobashi.2017 (same core and proxy, d15N/d40Ar; dedup misses the pair because the 2012 entry lists latitude 70.6, GISP2 is at 72.6 N)"
+"dedup_manual","Ant_022","Ant-JamesRossIsland.Mulvaney.2013",FALSE,"WEB03081f2f","JamesRossIsland.Mulvaney.2012","kept","PReSto review 2026-11-17",""
+"dedup_manual","Arc_034","Arc-Dye.Vinther.2010",TRUE,"IC06VID301A","IC06VID3","kept","PReSto review 2026-11-17",""
+"dedup_manual","Arc_034","Arc-Dye.Vinther.2010",TRUE,"IC09KAD301A","IC09KAD3","kept","PReSto review 2026-11-17",""
+"dedup_manual","Arc_034","Arc-Dye.Vinther.2010",TRUE,"PYTAUVXNNEA","DYE3.Vinther.2006","kept","PReSto review 2026-11-17",""
+"dedup_manual","Arc_035","Arc-GRIP.Vinther.2010",FALSE,"IC06VIGR01A","IC06VIGR","dropped","PReSto review 2026-11-17",""
+"dedup_manual","Arc_043","Arc-DevonIceCap.Fisher.1983",TRUE,"IC76FIDE02A","IC76FIDE","kept","PReSto review 2026-11-17",""
+"dedup_manual","Asia_236","Asi-Dasuopu.Thompson.2000",FALSE,"IC00THDS03B","IC00THDS","dropped","PReSto review 2026-11-17",""
+"dedup_manual","BA04FIJ02_d18O","BA04FIJ02",FALSE,"Ocean2kHR_156_iso2k","CO06LIFI","dropped","PReSto review 2026-11-13",""
+"dedup_manual","BO14HTI01_SrCa","BO14HTI01",TRUE,"REYG6VqlmN608cze5","HonTreIsland.Goodkin.2021","kept","PReSto review 2026-11-17",""
+"dedup_manual","DE14DTO04_SrCa","DE14DTO04",FALSE,"FL17DTO01_SrCa","FL17DTO01","dropped","PReSto review 2026-11-17",""
+"dedup_manual","GH26a3a772","NGRIP.NGRIP.2004",FALSE,"IC06VING01A","IC06VING","kept","PReSto review 2026-11-13",""
+"dedup_manual","GH37fc751b","KY07_04_01.Kubota.2010",FALSE,"WEB-99d4b-f3b6-4af1-85a2-5fad7","U1429.Lee.2022","kept","PReSto review 2026-11-17",""
+"dedup_manual","IC06VID301A","IC06VID3",FALSE,"IC09KAD301A","IC09KAD3","kept","PReSto review 2026-11-17",""
+"dedup_manual","IC06VIGR01A","IC06VIGR",TRUE,"IC10VIGR01A","IC10VIGR","kept","PReSto review 2026-11-17",""
+"dedup_manual","IC08VI7901A","IC08VI79",FALSE,"IC08VI8701A","IC08VI87","kept","PReSto review 2026-11-17",""
+"dedup_manual","IC08VI7901A","IC08VI79",FALSE,"PYTT52RRIXK","agassiz.Vinther.2009","kept","PReSto review 2026-11-17",""
+"dedup_manual","IC08VI8401A","IC08VI84",TRUE,"IC08VI8701A","IC08VI87","kept","PReSto review 2026-11-17",""
+"dedup_manual","IC08VI8401A","IC08VI84",TRUE,"PYTT52RRIXK","agassiz.Vinther.2009","kept","PReSto review 2026-11-17",""
+"dedup_manual","IC08VI8701A","IC08VI87",FALSE,"PYTT52RRIXK","agassiz.Vinther.2009","dropped","PReSto review 2026-11-13",""
+"dedup_manual","IC08VI8701A","IC08VI87",FALSE,"WEBa1e48de5","Agassiz.Lecavalier.2017","dropped","PReSto review 2026-11-17",""
+"dedup_manual","IC09KAD301A","IC09KAD3",FALSE,"PYTAUVXNNEA","DYE3.Vinther.2006","kept","PReSto review 2026-11-17",""
+"dedup_manual","IC12MUJR01A","IC12MUJR",TRUE,"WEB03081f2f","JamesRossIsland.Mulvaney.2012","kept","PReSto review 2026-11-17",""
+"dedup_manual","LI04FIJ01_d18O","LI04FIJ01",FALSE,"Ocean2kHR_156_iso2k","CO06LIFI","dropped","PReSto review 2026-11-13",""
+"dedup_manual","LI06FIJ01_d18O","LI06FIJ01",FALSE,"Ocean2kHR_157_iso2k","CO04LIFI","kept","PReSto review 2026-11-13",""
+"dedup_manual","LPDa03ec713","Ocn-CH07-98-MC-22.Saenger.2011",TRUE,"LPDa03ec713v","MS11CSCS","kept","PReSto review 2026-11-17",""
+"dedup_manual","LPDa2107e77","Ocn-KNR140‐2‐59GGC.Saenger.2011",TRUE,"LPDa2107e777","MS11CSCN","kept","PReSto review 2026-11-17",""
+"dedup_manual","LPDdd0e97b8","AMP112.vanderBilt.2016",FALSE,"WEBdb8c6da5-dup-dup","Hakluytvatnet.vanderBilt.2019","dropped","PReSto review 2026-11-17",""
+"dedup_manual","MS03SMAS01","MS03SMAS",FALSE,"T2L_SO90_63KA_d18o_ruber_SST_from_d18o_ruber","SO90_63KA.Staubwasser.2003","dropped","PReSto review 2026-11-17",""
+"dedup_manual","MS07LSSP01a","MS07LSSP",FALSE,"T2L_MD98_2181_d18o_ruber_SST_from_d18o_ruber","MD98_2181.Stott.2007","dropped","PReSto review 2026-11-17",""
+"dedup_manual","NAm_3816","NAm-RubyLake.Gajewski.1988",TRUE,"NAm_3819","NAm-LittlePineLake.Gajewski.1988","kept","PReSto review 2026-11-17",""
+"dedup_manual","NAm_3867","NAm-LakeMina.St.Jacques.2008",TRUE,"R3YK7ZO5clD","LakeMina.Pollen.USA","kept","PReSto review 2026-11-13",""
+"dedup_manual","NAm_3867","NAm-LakeMina.St.Jacques.2008",TRUE,"RiuqXXChSJC","LakeMina.Pollen.USA","kept","PReSto review 2026-11-13",""
+"dedup_manual","PYTT52RRIXK","agassiz.Vinther.2009",FALSE,"WEBa1e48de5","Agassiz.Lecavalier.2017","dropped","PReSto review 2026-11-17",""
+"dedup_manual","RHwIUPtyzHoHFexaw","Ingøya.Mette.2021",TRUE,"WEB8d8f0a7b","SH16MEIN","kept","PReSto review 2026-11-17",""
+"dedup_manual","S2LRTSbmem1S2v","Hollywoodcave.Whittaker.2011",TRUE,"SP10WINZ01A_iso2k","SP10WINZ","kept","PReSto review 2026-11-13",""
+"dedup_manual","T2L_KY07_04_PC1_mgca_ruber_SST_from_mgca_ruber","KY07_04_PC1.Kubota.2010",TRUE,"WEB-99d4b-f3b6-4af1-85a2-5fad7","U1429.Lee.2022","kept","PReSto review 2026-11-17",""
+"dedup_manual","DE14DTO01_SrCa","DE14DTO01",TRUE,"DE14DTO03_SrCa","DE14DTO03","kept","PReSto review 2026-10-15","Distinct records (24-yr overlap, r = -0.04); keep both, overriding the DoD2k log"
+"dedup_manual","BA04FIJ02_d18O","BA04FIJ02",FALSE,"Ocean2kHR_156","Ocn-SavusavuBayAB.Linsley.2006","dropped","PReSto review 2026-10-12",""
+"dedup_manual","CO04BAFI01A","CO04BAFI",TRUE,"LI06FIJ01_d18O","LI06FIJ01","dropped","PReSto review 2026-10-12",""
+"dedup_manual","CO04BAFI01A","CO04BAFI",TRUE,"Ocean2kHR_156","Ocn-SavusavuBayAB.Linsley.2006","dropped","PReSto review 2026-10-12",""
+"dedup_manual","LI04FIJ01_d18O","LI04FIJ01",FALSE,"Ocean2kHR_156","Ocn-SavusavuBayAB.Linsley.2006","dropped","PReSto review 2026-10-12",""
+"dedup_manual","LI04FIJ01_d18O","LI04FIJ01",FALSE,"Ocean2kHR_157","Ocn-SavusavuBay1F.Linsley.2006","kept","PReSto review 2026-10-12",""
+"dedup_manual","LI04FIJ01_SrCa","LI04FIJ01",TRUE,"Ocean2kHR_158","Ocn-SavusavuBay1F.Linsley.2006","kept","PReSto review 2026-10-12",""
+"dedup_manual","Ocean2kHR_139","Ocn-Palmyra.Cobb.2013",FALSE,"RAIDWSl4pAnyLRDg5","Palmyra.Dee.2020","dropped","PReSto review 2026-11-13","Nick: use Palmyra.Dee.2020 for Palmyra"
+"dedup_manual","Ocean2kHR_139_iso2k","CO03COPM",FALSE,"RAIDWSl4pAnyLRDg5","Palmyra.Dee.2020","dropped","PReSto review 2026-11-13","Nick: use Palmyra.Dee.2020 for Palmyra"
+"dedup_manual","missRx1ktAVptRioWxvEF","Palmyra.Sanchez.2020",FALSE,"Ocean2kHR_139","Ocn-Palmyra.Cobb.2013","dropped","PReSto review 2026-11-13","Both superseded by Palmyra.Dee.2020"
+"dedup_manual","missRx1ktAVptRioWxvEF","Palmyra.Sanchez.2020",FALSE,"Ocean2kHR_139_iso2k","CO03COPM","dropped","PReSto review 2026-11-13","Both superseded by Palmyra.Dee.2020"
+"dedup_manual","WEB03081f2f","JamesRossIsland.Mulvaney.2012",FALSE,"Ant_022","Ant-JamesRossIsland.Mulvaney.2013","dropped","PReSto review 2026-11-17",""
+"dedup_manual","IC06VID301A","IC06VID3",FALSE,"Arc_034","Arc-Dye.Vinther.2010","dropped","PReSto review 2026-11-17",""
+"dedup_manual","IC09KAD301A","IC09KAD3",FALSE,"Arc_034","Arc-Dye.Vinther.2010","dropped","PReSto review 2026-11-17",""
+"dedup_manual","PYTAUVXNNEA","DYE3.Vinther.2006",FALSE,"Arc_034","Arc-Dye.Vinther.2010","dropped","PReSto review 2026-11-17",""
+"dedup_manual","IC06VIGR01A","IC06VIGR",TRUE,"Arc_035","Arc-GRIP.Vinther.2010","kept","PReSto review 2026-11-17",""
+"dedup_manual","IC76FIDE02A","IC76FIDE",FALSE,"Arc_043","Arc-DevonIceCap.Fisher.1983","dropped","PReSto review 2026-11-17",""
+"dedup_manual","IC00THDS03B","IC00THDS",FALSE,"Asia_236","Asi-Dasuopu.Thompson.2000","kept","PReSto review 2026-11-17",""
+"dedup_manual","Ocean2kHR_156_iso2k","CO06LIFI",TRUE,"BA04FIJ02_d18O","BA04FIJ02","kept","PReSto review 2026-11-13",""
+"dedup_manual","REYG6VqlmN608cze5","HonTreIsland.Goodkin.2021",FALSE,"BO14HTI01_SrCa","BO14HTI01","dropped","PReSto review 2026-11-17",""
+"dedup_manual","FL17DTO01_SrCa","FL17DTO01",TRUE,"DE14DTO04_SrCa","DE14DTO04","kept","PReSto review 2026-11-17",""
+"dedup_manual","IC06VING01A","IC06VING",FALSE,"GH26a3a772","NGRIP.NGRIP.2004","dropped","PReSto review 2026-11-13",""
+"dedup_manual","WEB-99d4b-f3b6-4af1-85a2-5fad7","U1429.Lee.2022",FALSE,"GH37fc751b","KY07_04_01.Kubota.2010","dropped","PReSto review 2026-11-17",""
+"dedup_manual","IC09KAD301A","IC09KAD3",FALSE,"IC06VID301A","IC06VID3","kept","PReSto review 2026-11-17",""
+"dedup_manual","IC10VIGR01A","IC10VIGR",TRUE,"IC06VIGR01A","IC06VIGR","kept","PReSto review 2026-11-17",""
+"dedup_manual","IC08VI8701A","IC08VI87",FALSE,"IC08VI7901A","IC08VI79","dropped","PReSto review 2026-11-17",""
+"dedup_manual","PYTT52RRIXK","agassiz.Vinther.2009",FALSE,"IC08VI7901A","IC08VI79","kept","PReSto review 2026-11-17",""
+"dedup_manual","IC08VI8701A","IC08VI87",FALSE,"IC08VI8401A","IC08VI84","dropped","PReSto review 2026-11-17",""
+"dedup_manual","PYTT52RRIXK","agassiz.Vinther.2009",FALSE,"IC08VI8401A","IC08VI84","dropped","PReSto review 2026-11-17",""
+"dedup_manual","PYTT52RRIXK","agassiz.Vinther.2009",FALSE,"IC08VI8701A","IC08VI87","kept","PReSto review 2026-11-13",""
+"dedup_manual","WEBa1e48de5","Agassiz.Lecavalier.2017",TRUE,"IC08VI8701A","IC08VI87","kept","PReSto review 2026-11-17",""
+"dedup_manual","PYTAUVXNNEA","DYE3.Vinther.2006",FALSE,"IC09KAD301A","IC09KAD3","kept","PReSto review 2026-11-17",""
+"dedup_manual","WEB03081f2f","JamesRossIsland.Mulvaney.2012",FALSE,"IC12MUJR01A","IC12MUJR","dropped","PReSto review 2026-11-17",""
+"dedup_manual","Ocean2kHR_156_iso2k","CO06LIFI",TRUE,"LI04FIJ01_d18O","LI04FIJ01","kept","PReSto review 2026-11-13",""
+"dedup_manual","Ocean2kHR_157_iso2k","CO04LIFI",TRUE,"LI06FIJ01_d18O","LI06FIJ01","dropped","PReSto review 2026-11-13",""
+"dedup_manual","LPDa03ec713v","MS11CSCS",TRUE,"LPDa03ec713","Ocn-CH07-98-MC-22.Saenger.2011","kept","PReSto review 2026-11-17",""
+"dedup_manual","LPDa2107e777","MS11CSCN",TRUE,"LPDa2107e77","Ocn-KNR140‐2‐59GGC.Saenger.2011","kept","PReSto review 2026-11-17",""
+"dedup_manual","WEBdb8c6da5-dup-dup","Hakluytvatnet.vanderBilt.2019",TRUE,"LPDdd0e97b8","AMP112.vanderBilt.2016","kept","PReSto review 2026-11-17",""
+"dedup_manual","T2L_SO90_63KA_d18o_ruber_SST_from_d18o_ruber","SO90_63KA.Staubwasser.2003",TRUE,"MS03SMAS01","MS03SMAS","kept","PReSto review 2026-11-17",""
+"dedup_manual","T2L_MD98_2181_d18o_ruber_SST_from_d18o_ruber","MD98_2181.Stott.2007",TRUE,"MS07LSSP01a","MS07LSSP","kept","PReSto review 2026-11-17",""
+"dedup_manual","NAm_3819","NAm-LittlePineLake.Gajewski.1988",TRUE,"NAm_3816","NAm-RubyLake.Gajewski.1988","kept","PReSto review 2026-11-17",""
+"dedup_manual","R3YK7ZO5clD","LakeMina.Pollen.USA",FALSE,"NAm_3867","NAm-LakeMina.St.Jacques.2008","dropped","PReSto review 2026-11-13",""
+"dedup_manual","RiuqXXChSJC","LakeMina.Pollen.USA",FALSE,"NAm_3867","NAm-LakeMina.St.Jacques.2008","dropped","PReSto review 2026-11-13",""
+"dedup_manual","WEBa1e48de5","Agassiz.Lecavalier.2017",TRUE,"PYTT52RRIXK","agassiz.Vinther.2009","kept","PReSto review 2026-11-17",""
+"dedup_manual","WEB8d8f0a7b","SH16MEIN",FALSE,"RHwIUPtyzHoHFexaw","Ingøya.Mette.2021","dropped","PReSto review 2026-11-17",""
+"dedup_manual","SP10WINZ01A_iso2k","SP10WINZ",FALSE,"S2LRTSbmem1S2v","Hollywoodcave.Whittaker.2011","dropped","PReSto review 2026-11-13",""
+"dedup_manual","WEB-99d4b-f3b6-4af1-85a2-5fad7","U1429.Lee.2022",FALSE,"T2L_KY07_04_PC1_mgca_ruber_SST_from_mgca_ruber","KY07_04_PC1.Kubota.2010","dropped","PReSto review 2026-11-17",""
+"dedup_manual","DE14DTO03_SrCa","DE14DTO03",TRUE,"DE14DTO01_SrCa","DE14DTO01","kept","PReSto review 2026-10-15","Distinct records (24-yr overlap, r = -0.04); keep both, overriding the DoD2k log"
+"dedup_manual","Ocean2kHR_156","Ocn-SavusavuBayAB.Linsley.2006",FALSE,"BA04FIJ02_d18O","BA04FIJ02","kept","PReSto review 2026-10-12",""
+"dedup_manual","LI06FIJ01_d18O","LI06FIJ01",FALSE,"CO04BAFI01A","CO04BAFI","kept","PReSto review 2026-10-12",""
+"dedup_manual","Ocean2kHR_156","Ocn-SavusavuBayAB.Linsley.2006",FALSE,"CO04BAFI01A","CO04BAFI","kept","PReSto review 2026-10-12",""
+"dedup_manual","Ocean2kHR_156","Ocn-SavusavuBayAB.Linsley.2006",FALSE,"LI04FIJ01_d18O","LI04FIJ01","kept","PReSto review 2026-10-12",""
+"dedup_manual","Ocean2kHR_157","Ocn-SavusavuBay1F.Linsley.2006",FALSE,"LI04FIJ01_d18O","LI04FIJ01","dropped","PReSto review 2026-10-12",""
+"dedup_manual","Ocean2kHR_158","Ocn-SavusavuBay1F.Linsley.2006",FALSE,"LI04FIJ01_SrCa","LI04FIJ01","dropped","PReSto review 2026-10-12",""
+"dedup_manual","RAIDWSl4pAnyLRDg5","Palmyra.Dee.2020",TRUE,"Ocean2kHR_139","Ocn-Palmyra.Cobb.2013","kept","PReSto review 2026-11-13","Nick: use Palmyra.Dee.2020 for Palmyra"
+"dedup_manual","RAIDWSl4pAnyLRDg5","Palmyra.Dee.2020",TRUE,"Ocean2kHR_139_iso2k","CO03COPM","kept","PReSto review 2026-11-13","Nick: use Palmyra.Dee.2020 for Palmyra"
+"dedup_manual","Ocean2kHR_139","Ocn-Palmyra.Cobb.2013",FALSE,"missRx1ktAVptRioWxvEF","Palmyra.Sanchez.2020","dropped","PReSto review 2026-11-13","Both superseded by Palmyra.Dee.2020"
+"dedup_manual","Ocean2kHR_139_iso2k","CO03COPM",FALSE,"missRx1ktAVptRioWxvEF","Palmyra.Sanchez.2020","dropped","PReSto review 2026-11-13","Both superseded by Palmyra.Dee.2020"
+"dedup_prior","Ant_030","Ant-WDC05A.Steig.2013",FALSE,"IC13STWD01A","IC13STWD","dropped","DoD2k MNE 2025-12-19",
+"dedup_prior","Ocean2kHR_096","Ocn-LosRoques.Hetzinger.2008",FALSE,"HE08LRA01_d18O","HE08LRA01","dropped","DoD2k MNE 2025-12-19",
+"dedup_prior","Ant_023","Ant-PlateauRemote.Mosley-Thompson.2013",FALSE,"IC00COPR01A","IC00COPR","dropped","DoD2k MNE 2025-12-19",
+"dedup_prior","Ocean2kHR_006","Ocn-Lombok.Charles.2003",FALSE,"Ocean2kHR_006_iso2k","CO03CHBA","dropped","DoD2k MNE 2025-12-19",
+"dedup_prior","Ocean2kHR_142","Ocn-SavusavuBayFiji.Bagnato.2005",FALSE,"CO04BAFI00A","CO04BAFI","kept","DoD2k MNE 2025-12-19",
+"dedup_prior","Arc_018","Arc-Austfonna.Isaksson.2005",FALSE,"IC05ISAU01A","IC05ISAU","dropped","DoD2k MNE 2025-12-19",
+"dedup_prior","Asia_015","Asi-UULLWD.Schweingruber.2002",TRUE,"Asia_017","Asi-UULMXD.Schweingruber.2002","kept","DoD2k MNE 2025-12-19",
+"dedup_prior","Ocean2kHR_183","Ocn-PalauUlongChannel.Osborne.2014",FALSE,"Ocean2kHR_183_iso2k","CO14OSPA","dropped","DoD2k MNE 2025-12-19",
+"dedup_prior","Asia_011","Asi-UULTRW.Schweingruber.2002",TRUE,"Asia_012","Asi-UULEWW.Schweingruber.2002","kept","DoD2k MNE 2025-12-19",
+"dedup_prior","Ant_033","Ant-MES.Rhodes.2012",FALSE,"IC12RHME01A","IC12RHME","dropped","DoD2k MNE 2025-12-19",
+"dedup_prior","Asia_024","Asi-UKHMXD.Schweingruber.2002",TRUE,"Asia_022","Asi-UKHLWD.Schweingruber.2002","kept","DoD2k MNE 2025-12-19",
+"dedup_prior","Asia_018","Asi-UKHTRW.Schweingruber.2002",TRUE,"Asia_019","Asi-UKHEWW.Schweingruber.2002","kept","DoD2k MNE 2025-12-19",
+"dedup_prior","Ocean2kHR_001","Ocn-Malindi.Cole.2000",FALSE,"CO00MAL01_d18O","CO00MAL01","dropped","DoD2k MNE 2025-12-19",
+"dedup_prior","LPD47182517","Ocn-FeniDrift.Richter.2009",TRUE,"LPDba471ae7_iso2k","MS09TRFD","kept","DoD2k MNE 2025-12-19",
+"dedup_prior","Ant_017","Ant-CoastalDML.Thamban.2012",FALSE,"IC11LAB401A","IC11LAB4","dropped","DoD2k MNE 2025-12-19",
+"dedup_prior","Ocean2kHR_116","Ocn-FloridaBay.Swart.1996",FALSE,"CO96SWFB01A","CO96SWFB","dropped","DoD2k MNE 2025-12-19",
+"dedup_prior","Ant_027","Ant-VLG.Bertler.2011",FALSE,"IC11BEVL01A","IC11BEVL","dropped","DoD2k MNE 2025-12-19",
+"dedup_prior","Ocean2kHR_007","Ocn-Mafia.Damassa.2006",FALSE,"DA06MAF01_d18O","DA06MAF01","kept","DoD2k MNE 2025-12-19",
+"dedup_prior","Ocean2kHR_007","Ocn-Mafia.Damassa.2006",FALSE,"DA06MAF02_d18O","DA06MAF02","kept","DoD2k MNE 2025-12-19",
+"dedup_prior","Ant_025","Ant-TALDICE.Stenni.2010",FALSE,"IC11STTA01A","IC11STTA","dropped","DoD2k MNE 2025-12-19",
+"dedup_prior","NU11PAL01_d18O","NU11PAL01",FALSE,"Ocean2kHR_139","Ocn-Palmyra.Cobb.2013","dropped","DoD2k MNE 2025-12-19",
+"dedup_prior","NU11PAL01_d18O","NU11PAL01",FALSE,"Ocean2kHR_139_iso2k","CO03COPM","dropped","DoD2k MNE 2025-12-19",
+"dedup_prior","Ocean2kHR_139","Ocn-Palmyra.Cobb.2013",FALSE,"NU11PAL01_d18O","NU11PAL01","kept","DoD2k MNE 2025-12-19",
+"dedup_prior","Ocean2kHR_139","Ocn-Palmyra.Cobb.2013",FALSE,"Ocean2kHR_139_iso2k","CO03COPM","kept","DoD2k MNE 2025-12-19",
+"dedup_prior","MO06PED01_d18O","MO06PED01",FALSE,"Ocean2kHR_107_iso2k","CO06MOPE","dropped","DoD2k MNE 2025-12-19",
+"dedup_prior","Ocean2kHR_118","Ocn-BiscayneBay.Swart.1996",FALSE,"CO96SWBB01A","CO96SWBB","dropped","DoD2k MNE 2025-12-19",
+"dedup_prior","Arc_151","Arc-PrinceOfWales.Kinnard.2011",FALSE,"IC11KIPW01A","IC11KIPW","dropped","DoD2k MNE 2025-12-19",
+"dedup_prior","Ocean2kHR_097","Ocn-Guadeloupe.Steinhilber.2010",FALSE,"Ocean2kHR_097_iso2k","CO10HEIG","dropped","DoD2k MNE 2025-12-19",
+"dedup_prior","Ocean2kHR_098","Ocn-Guadeloupe.Steinhilber.2010",TRUE,"HE10GUA01_SrCa","HE10GUA01","dropped","DoD2k MNE 2025-12-19",
+"dedup_prior","Ocean2kHR_134","Ocn-AmedeeIsland.DeLong.2012",FALSE,"DE12ANC01_SrCa","DE12ANC01","dropped","DoD2k MNE 2025-12-19",
+"dedup_prior","Ant_011","Ant-DSS.Moy.2012",FALSE,"IC13PALD01A","IC13PALD","dropped","DoD2k MNE 2025-12-19",
+"dedup_prior","Ant_007","Ant-SiteDML05.Graf.2002",FALSE,"IC02GR0501A","IC02GR05","dropped","DoD2k MNE 2025-12-19",
+"dedup_prior","Arc_066","Arc-Lomonosovfonna.Divine.2011",FALSE,"IC11DILO01A","IC11DILO","dropped","DoD2k MNE 2025-12-19",
+"dedup_prior","Ant_022","Ant-JamesRossIsland.Mulvaney.2013",FALSE,"IC12MUJR01A","IC12MUJR","dropped","DoD2k MNE 2025-12-19",
+"dedup_prior","CO00KUNI01Aa","CO00KUNI",FALSE,"CO00KUNI01Ab","CO00KUNI","dropped","DoD2k MNE 2025-12-19",
+"dedup_prior","Ocean2kHR_144","Ocn-Rabaul.Quinn.2006",FALSE,"Ocean2kHR_144_iso2k","CO06QUNG","dropped","DoD2k MNE 2025-12-19",
+"dedup_prior","Ocean2kHR_188","Ocn-Clipperton1b.Wu.2014",FALSE,"CO14WUCL01A","CO14WUCL","dropped","DoD2k MNE 2025-12-19",
+"dedup_prior","Ocean2kHR_154","Ocn-Vanuatu.Gorman.2012",FALSE,"Ocean2kHR_154_iso2k","CO12GOVA","dropped","DoD2k MNE 2025-12-19",
+"dedup_prior","CO99KUHO01Aa","CO99KUHO",FALSE,"CO99KUHO01Ab","CO99KUHO","dropped","DoD2k MNE 2025-12-19",
+"dedup_prior","DA06MAF01_d18O","DA06MAF01",FALSE,"Ocean2kHR_007","Ocn-Mafia.Damassa.2006","dropped","DoD2k MNE 2025-12-19",
+"dedup_prior","DA06MAF02_d18O","DA06MAF02",FALSE,"Ocean2kHR_007","Ocn-Mafia.Damassa.2006","dropped","DoD2k MNE 2025-12-19",
+"dedup_prior","DE14DTO03_SrCa","DE14DTO03",TRUE,"DE14DTO01_SrCa","DE14DTO01","dropped","DoD2k MNE 2025-12-19",
+"dedup_prior","HE13MIS01_d18O","HE13MIS01",FALSE,"CO13HENG02A","CO13HENG","dropped","DoD2k MNE 2025-12-19",
+"dedup_prior","HE13MIS01_d18O","HE13MIS01",FALSE,"CO13HENG03A","CO13HENG","dropped","DoD2k MNE 2025-12-19",
+"dedup_prior","GU99NAU01_d18O","GU99NAU01",FALSE,"CO99GUMI01B","CO99GUMI","dropped","DoD2k MNE 2025-12-19",
+"dedup_prior","CO04BAFI00A","CO04BAFI",FALSE,"Ocean2kHR_142","Ocn-SavusavuBayFiji.Bagnato.2005","dropped","DoD2k MNE 2025-12-19",
+"dedup_prior","Ocean2kHR_139_iso2k","CO03COPM",FALSE,"NU11PAL01_d18O","NU11PAL01","dropped","DoD2k MNE 2025-12-19",
+"dedup_prior","IC13STWD01A","IC13STWD",TRUE,"Ant_030","Ant-WDC05A.Steig.2013","kept","DoD2k MNE 2025-12-19",
+"dedup_prior","HE08LRA01_d18O","HE08LRA01",FALSE,"Ocean2kHR_096","Ocn-LosRoques.Hetzinger.2008","kept","DoD2k MNE 2025-12-19",
+"dedup_prior","IC00COPR01A","IC00COPR",TRUE,"Ant_023","Ant-PlateauRemote.Mosley-Thompson.2013","kept","DoD2k MNE 2025-12-19",
+"dedup_prior","Ocean2kHR_006_iso2k","CO03CHBA",TRUE,"Ocean2kHR_006","Ocn-Lombok.Charles.2003","kept","DoD2k MNE 2025-12-19",
+"dedup_prior","IC05ISAU01A","IC05ISAU",TRUE,"Arc_018","Arc-Austfonna.Isaksson.2005","kept","DoD2k MNE 2025-12-19",
+"dedup_prior","Asia_017","Asi-UULMXD.Schweingruber.2002",FALSE,"Asia_015","Asi-UULLWD.Schweingruber.2002","dropped","DoD2k MNE 2025-12-19",
+"dedup_prior","Ocean2kHR_183_iso2k","CO14OSPA",TRUE,"Ocean2kHR_183","Ocn-PalauUlongChannel.Osborne.2014","kept","DoD2k MNE 2025-12-19",
+"dedup_prior","Asia_012","Asi-UULEWW.Schweingruber.2002",FALSE,"Asia_011","Asi-UULTRW.Schweingruber.2002","dropped","DoD2k MNE 2025-12-19",
+"dedup_prior","IC12RHME01A","IC12RHME",TRUE,"Ant_033","Ant-MES.Rhodes.2012","kept","DoD2k MNE 2025-12-19",
+"dedup_prior","Asia_022","Asi-UKHLWD.Schweingruber.2002",FALSE,"Asia_024","Asi-UKHMXD.Schweingruber.2002","dropped","DoD2k MNE 2025-12-19",
+"dedup_prior","Asia_019","Asi-UKHEWW.Schweingruber.2002",FALSE,"Asia_018","Asi-UKHTRW.Schweingruber.2002","dropped","DoD2k MNE 2025-12-19",
+"dedup_prior","CO00MAL01_d18O","CO00MAL01",FALSE,"Ocean2kHR_001","Ocn-Malindi.Cole.2000","kept","DoD2k MNE 2025-12-19",
+"dedup_prior","LPDba471ae7_iso2k","MS09TRFD",FALSE,"LPD47182517","Ocn-FeniDrift.Richter.2009","dropped","DoD2k MNE 2025-12-19",
+"dedup_prior","IC11LAB401A","IC11LAB4",TRUE,"Ant_017","Ant-CoastalDML.Thamban.2012","kept","DoD2k MNE 2025-12-19",
+"dedup_prior","CO96SWFB01A","CO96SWFB",TRUE,"Ocean2kHR_116","Ocn-FloridaBay.Swart.1996","kept","DoD2k MNE 2025-12-19",
+"dedup_prior","IC11BEVL01A","IC11BEVL",TRUE,"Ant_027","Ant-VLG.Bertler.2011","kept","DoD2k MNE 2025-12-19",
+"dedup_prior","IC11STTA01A","IC11STTA",FALSE,"Ant_025","Ant-TALDICE.Stenni.2010","kept","DoD2k MNE 2025-12-19",
+"dedup_prior","Ocean2kHR_139_iso2k","CO03COPM",FALSE,"Ocean2kHR_139","Ocn-Palmyra.Cobb.2013","dropped","DoD2k MNE 2025-12-19",
+"dedup_prior","Ocean2kHR_107_iso2k","CO06MOPE",TRUE,"MO06PED01_d18O","MO06PED01","kept","DoD2k MNE 2025-12-19",
+"dedup_prior","CO96SWBB01A","CO96SWBB",TRUE,"Ocean2kHR_118","Ocn-BiscayneBay.Swart.1996","kept","DoD2k MNE 2025-12-19",
+"dedup_prior","IC11KIPW01A","IC11KIPW",TRUE,"Arc_151","Arc-PrinceOfWales.Kinnard.2011","kept","DoD2k MNE 2025-12-19",
+"dedup_prior","Ocean2kHR_097_iso2k","CO10HEIG",TRUE,"Ocean2kHR_097","Ocn-Guadeloupe.Steinhilber.2010","kept","DoD2k MNE 2025-12-19",
+"dedup_prior","HE10GUA01_SrCa","HE10GUA01",FALSE,"Ocean2kHR_098","Ocn-Guadeloupe.Steinhilber.2010","kept","DoD2k MNE 2025-12-19",
+"dedup_prior","DE12ANC01_SrCa","DE12ANC01",TRUE,"Ocean2kHR_134","Ocn-AmedeeIsland.DeLong.2012","kept","DoD2k MNE 2025-12-19",
+"dedup_prior","IC13PALD01A","IC13PALD",TRUE,"Ant_011","Ant-DSS.Moy.2012","kept","DoD2k MNE 2025-12-19",
+"dedup_prior","IC02GR0501A","IC02GR05",TRUE,"Ant_007","Ant-SiteDML05.Graf.2002","kept","DoD2k MNE 2025-12-19",
+"dedup_prior","IC11DILO01A","IC11DILO",TRUE,"Arc_066","Arc-Lomonosovfonna.Divine.2011","kept","DoD2k MNE 2025-12-19",
+"dedup_prior","IC12MUJR01A","IC12MUJR",TRUE,"Ant_022","Ant-JamesRossIsland.Mulvaney.2013","kept","DoD2k MNE 2025-12-19",
+"dedup_prior","CO00KUNI01Ab","CO00KUNI",FALSE,"CO00KUNI01Aa","CO00KUNI","kept","DoD2k MNE 2025-12-19",
+"dedup_prior","Ocean2kHR_144_iso2k","CO06QUNG",TRUE,"Ocean2kHR_144","Ocn-Rabaul.Quinn.2006","kept","DoD2k MNE 2025-12-19",
+"dedup_prior","CO14WUCL01A","CO14WUCL",FALSE,"Ocean2kHR_188","Ocn-Clipperton1b.Wu.2014","kept","DoD2k MNE 2025-12-19",
+"dedup_prior","Ocean2kHR_154_iso2k","CO12GOVA",TRUE,"Ocean2kHR_154","Ocn-Vanuatu.Gorman.2012","kept","DoD2k MNE 2025-12-19",
+"dedup_prior","CO99KUHO01Ab","CO99KUHO",FALSE,"CO99KUHO01Aa","CO99KUHO","kept","DoD2k MNE 2025-12-19",
+"dedup_prior","DE14DTO01_SrCa","DE14DTO01",TRUE,"DE14DTO03_SrCa","DE14DTO03","dropped","DoD2k MNE 2025-12-19",
+"dedup_prior","CO13HENG02A","CO13HENG",FALSE,"HE13MIS01_d18O","HE13MIS01","dropped","DoD2k MNE 2025-12-19",
+"dedup_prior","CO13HENG03A","CO13HENG",FALSE,"HE13MIS01_d18O","HE13MIS01","dropped","DoD2k MNE 2025-12-19",
+"dedup_prior","CO99GUMI01B","CO99GUMI",TRUE,"GU99NAU01_d18O","GU99NAU01","kept","DoD2k MNE 2025-12-19",
+"dedup_group","Ocean2kHR_181","Ocn-PalauRockIslands.Osborne.2014",TRUE,"Ocean2kHR_181_iso2k","CO14OSPA","kept","PReSto copy preference","3 copies; kept: Ocn-PalauRockIslands.Osborne.2014 (Ocean2kHR_181)"
+"dedup_group","Ocean2kHR_181_iso2k","CO14OSPA",FALSE,"OS14RIP01_d18O","OS14RIP01","dropped","PReSto copy preference","3 copies; kept: Ocn-PalauRockIslands.Osborne.2014 (Ocean2kHR_181)"
+"dedup_group","Ocean2kHR_145","Ocn-Rabaul.Quinn.2006",TRUE,"Ocean2kHR_145_iso2k","CO06QUNG","kept","PReSto copy preference","3 copies; kept: Ocn-Rabaul.Quinn.2006 (Ocean2kHR_145)"
+"dedup_group","Ocean2kHR_145_iso2k","CO06QUNG",FALSE,"QU06RAB01_SrCa","QU06RAB01","dropped","PReSto copy preference","3 copies; kept: Ocn-Rabaul.Quinn.2006 (Ocean2kHR_145)"
+"dedup_group","OS14RIP01_d18O","OS14RIP01",FALSE,"Ocean2kHR_181","Ocn-PalauRockIslands.Osborne.2014","dropped","PReSto copy preference","3 copies; kept: Ocn-PalauRockIslands.Osborne.2014 (Ocean2kHR_181)"
+"dedup_group","QU06RAB01_SrCa","QU06RAB01",FALSE,"Ocean2kHR_145","Ocn-Rabaul.Quinn.2006","dropped","PReSto copy preference","3 copies; kept: Ocn-Rabaul.Quinn.2006 (Ocean2kHR_145)"
+"dedup_auto","AB08MEN01_d18O","AB08MEN01",FALSE,"Ocean2kHR_010","Ocn-MentawaiIslands.Abram.2008","subset",,
+"dedup_auto","AB08MEN01_d18O","AB08MEN01",FALSE,"Ocean2kHR_010_iso2k","CO08ABSU","subset",,
+"dedup_auto","AS05GUA01_d18O","AS05GUA01",FALSE,"Ocean2kHR_166","Ocn-DoubleReef.Asami.2005","subset",,
+"dedup_auto","AS05GUA01_d18O","AS05GUA01",FALSE,"Ocean2kHR_166_iso2k","CO05ASGU","subset",,
+"dedup_auto","BA04FIJ01_d18O","BA04FIJ01",FALSE,"CO04BAFI02A","CO04BAFI","subset",,
+"dedup_auto","BA04FIJ02_d18O","BA04FIJ02",FALSE,"CO04BAFI01A","CO04BAFI","subset",,
+"dedup_auto","CA13DIA01_d18O","CA13DIA01",FALSE,"CO13CAHN01A","CO13CAHN","subset",,
+"dedup_auto","CA13SAP01_d18O","CA13SAP01",FALSE,"CO13CABL01A","CO13CABL","subset",,
+"dedup_auto","CH03LOM01_d18O","CH03LOM01",FALSE,"Ocean2kHR_006","Ocn-Lombok.Charles.2003","version",,
+"dedup_auto","CH03LOM01_d18O","CH03LOM01",FALSE,"Ocean2kHR_006_iso2k","CO03CHBA","version",,
+"dedup_auto","CH97BVB01_d18O","CH97BVB01",FALSE,"Ocean2kHR_011","Ocn-Mahe.Charles.1997","version",,
+"dedup_auto","CH97BVB01_d18O","CH97BVB01",FALSE,"Ocean2kHR_011_iso2k","CO97CHSY","version",,
+"dedup_auto","CO00KUNI01Aa","CO00KUNI",FALSE,"Ocean2kHR_008","Ocn-Ningaloo.Kuhnert.2000","subset",,
+"dedup_auto","CO00KUNI01Ab","CO00KUNI",FALSE,"KU00NIN01_d18O","KU00NIN01","version",,
+"dedup_auto","CO00KUNI01Ab","CO00KUNI",FALSE,"Ocean2kHR_008","Ocn-Ningaloo.Kuhnert.2000","version",,
+"dedup_auto","CO00MAL01_d18O","CO00MAL01",FALSE,"Ocean2kHR_001_iso2k","CO00COKY","identical",,
+"dedup_auto","CO03COPM04C","CO03COPM",FALSE,"Ocean2kHR_139","Ocn-Palmyra.Cobb.2013","subset",,
+"dedup_auto","CO03COPM04C","CO03COPM",FALSE,"RAIDWSl4pAnyLRDg5","Palmyra.Dee.2020","subset",,
+"dedup_auto","CO03PAL03_d18O","CO03PAL03",FALSE,"Ocean2kHR_139","Ocn-Palmyra.Cobb.2013","subset",,
+"dedup_auto","CO03PAL03_d18O","CO03PAL03",FALSE,"Ocean2kHR_139_iso2k","CO03COPM","subset",,
+"dedup_auto","CO03PAL03_d18O","CO03PAL03",FALSE,"RAIDWSl4pAnyLRDg5","Palmyra.Dee.2020","subset",,
+"dedup_auto","CO04LIRA01A","CO04LIRA",FALSE,"LI00RAR01_d18O","LI00RAR01","subset",,
+"dedup_auto","CO04LIRA01A","CO04LIRA",FALSE,"Ocean2kHR_147","Ocn-Rarotonga_d18O2R.Linsley.2006","subset",,
+"dedup_auto","CO04LIRA02A","CO04LIRA",FALSE,"LI06RAR02_d18O","LI06RAR02","subset",,
+"dedup_auto","CO04LIRA02A","CO04LIRA",FALSE,"Ocean2kHR_150","Ocn-Rarotonga_d18O3R.Linsley.2006","subset",,
+"dedup_auto","CO04LIRA03A","CO04LIRA",FALSE,"LI06RAR01_d18O","LI06RAR01","subset",,
+"dedup_auto","CO04LIRA03A","CO04LIRA",FALSE,"Ocean2kHR_152","Ocn-Rarotonga_d18O99.Linsley.2006","subset",,
+"dedup_auto","CO04MGNG01A","CO04MGNG",FALSE,"MC04PNG01_d18O","MC04PNG01","version",,
+"dedup_auto","CO08KIPR01A","CO08KIPR",FALSE,"Ocean2kHR_099","Ocn-TurrumoteReefPuertoRico.Kilbourne.2008","identical",,
+"dedup_auto","CO14WUCL01A","CO14WUCL",FALSE,"WU14CLI01_d18O","WU14CLI01","version",,
+"dedup_auto","CO94HEAQ01A","CO94HEAQ",FALSE,"Ocean2kHR_014","Ocn-AqabaJordanAQ18.Heiss.1999","identical",,
+"dedup_auto","CO94HEAQ02A","CO94HEAQ",FALSE,"Ocean2kHR_016","Ocn-AqabaJordanAQ19.Heiss.1999","identical",,
+"dedup_auto","CO99DRGB01A","CO99DRGB",FALSE,"Ocean2kHR_167","Ocn-AbrahamReef.Druffel.1999","subset",,
+"dedup_auto","CO99KUHO01Aa","CO99KUHO",FALSE,"KU99HOU01_d18O","KU99HOU01","subset",,
+"dedup_auto","CO99KUHO01Aa","CO99KUHO",FALSE,"Ocean2kHR_023","Ocn-HoutmanAbrolhos.Kuhnert.1999","subset",,
+"dedup_auto","CO99KUHO01Ab","CO99KUHO",FALSE,"KU99HOU01_d18O","KU99HOU01","version",,
+"dedup_auto","CO99KUHO01Ab","CO99KUHO",FALSE,"Ocean2kHR_023","Ocn-HoutmanAbrolhos.Kuhnert.1999","version",,
+"dedup_auto","DA06MAF01_d18O","DA06MAF01",FALSE,"Ocean2kHR_007_iso2k","CO06DATZ","subset",,
+"dedup_auto","DA06MAF02_d18O","DA06MAF02",FALSE,"Ocean2kHR_007_iso2k","CO06DATZ","subset",,
+"dedup_auto","DE13HAI01_d18O","DE13HAI01",FALSE,"WEB396032ca","CO13DESC01A","identical",,
+"dedup_auto","DR99ABR01_d18O","DR99ABR01",FALSE,"Ocean2kHR_167","Ocn-AbrahamReef.Druffel.1999","subset",,
+"dedup_auto","DU94URV01_d18O","DU94URV01",FALSE,"Ocean2kHR_173","Ocn-UrvinaBay.Dunbar.1994","identical",,
+"dedup_auto","DU94URV01_d18O","DU94URV01",FALSE,"Ocean2kHR_173_iso2k","CO94DUUR","identical",,
+"dedup_auto","EV98KIR01_d18O","EV98KIR01",FALSE,"Ocean2kHR_135","Ocn-Kiritimati.Evans.1998","version",,
+"dedup_auto","EV98KIR01_d18O","EV98KIR01",FALSE,"Ocean2kHR_135_iso2k","CO98EVXM","version",,
+"dedup_auto","FE09OGA01_d18O_annual","FE09OGA01",FALSE,"Ocean2kHR_163","Ocn-Miyanohama.Felis.2009","resolution",,
+"dedup_auto","FE09OGA01_d18O_annual","FE09OGA01",FALSE,"Ocean2kHR_163_iso2k","CO09FEOG","resolution",,
+"dedup_auto","GU99NAU02_d18O","GU99NAU02",FALSE,"Ocean2kHR_179","Ocn-Nauru.Guilderson.1999","subset",,
+"dedup_auto","HE08LRA01_d18O","HE08LRA01",FALSE,"Ocean2kHR_096_iso2k","CO08HEVE","subset",,
+"dedup_auto","KI04MCV01_d18O","KI04MCV01",FALSE,"Ocean2kHR_174","Ocn-MaloChannelEspirituSantoIsland.Kilbourne.2004","subset",,
+"dedup_auto","KI04MCV01_d18O","KI04MCV01",FALSE,"Ocean2kHR_174_iso2k","CO04KIVA","subset",,
+"dedup_auto","KU00NIN01_d18O","KU00NIN01",FALSE,"Ocean2kHR_008","Ocn-Ningaloo.Kuhnert.2000","subset",,
+"dedup_auto","KU99HOU01_d18O","KU99HOU01",FALSE,"Ocean2kHR_023","Ocn-HoutmanAbrolhos.Kuhnert.1999","subset",,
+"dedup_auto","LI06FIJ01_d18O","LI06FIJ01",FALSE,"Ocean2kHR_156","Ocn-SavusavuBayAB.Linsley.2006","subset",,
+"dedup_auto","LI06FIJ01_d18O","LI06FIJ01",FALSE,"Ocean2kHR_156_iso2k","CO06LIFI","subset",,
+"dedup_auto","LI06RAR02_d18O","LI06RAR02",FALSE,"Ocean2kHR_150","Ocn-Rarotonga_d18O3R.Linsley.2006","subset",,
+"dedup_auto","missRx1ktAVptRioWxvEF","Palmyra.Sanchez.2020",FALSE,"RAIDWSl4pAnyLRDg5","Palmyra.Dee.2020","subset",,
+"dedup_auto","MO06PED01_d18O","MO06PED01",FALSE,"Ocean2kHR_107","Ocn-PedradeLume-CapeVerdeIslands.Moses.2006","subset",,
+"dedup_auto","NA09MAL01_d18O","NA09MAL01",FALSE,"Ocean2kHR_012","Ocn-Malindi.Nakamura.2009","subset",,
+"dedup_auto","NA09MAL01_d18O","NA09MAL01",FALSE,"Ocean2kHR_012_iso2k","CO09NAKY","subset",,
+"dedup_auto","NU11PAL01_d18O","NU11PAL01",FALSE,"Ocean2kHR_160_iso2k","CO11NUPM","subset",,
+"dedup_auto","NU11PAL01_d18O","NU11PAL01",FALSE,"RAIDWSl4pAnyLRDg5","Palmyra.Dee.2020","subset",,
+"dedup_auto","Ocean2kHR_001","Ocn-Malindi.Cole.2000",FALSE,"Ocean2kHR_001_iso2k","CO00COKY","identical",,
+"dedup_auto","Ocean2kHR_007","Ocn-Mafia.Damassa.2006",FALSE,"Ocean2kHR_007_iso2k","CO06DATZ","subset",,
+"dedup_auto","Ocean2kHR_010","Ocn-MentawaiIslands.Abram.2008",FALSE,"Ocean2kHR_010_iso2k","CO08ABSU","subset",,
+"dedup_auto","Ocean2kHR_011","Ocn-Mahe.Charles.1997",FALSE,"Ocean2kHR_011_iso2k","CO97CHSY","version",,
+"dedup_auto","Ocean2kHR_012","Ocn-Malindi.Nakamura.2009",FALSE,"Ocean2kHR_012_iso2k","CO09NAKY","subset",,
+"dedup_auto","Ocean2kHR_013","Ocn-Reunion.Pfeiffer.2004",FALSE,"Ocean2kHR_013_iso2k","CO04PFRE","subset",,
+"dedup_auto","Ocean2kHR_019","Ocn-RedSea.Felis.2000",FALSE,"Ocean2kHR_019_iso2k","CO00FERA","subset",,
+"dedup_auto","Ocean2kHR_020","Ocn-Ifaty4.Zinke.2004",FALSE,"Ocean2kHR_020_iso2k","CO04ZIMG","subset",,
+"dedup_auto","Ocean2kHR_021","Ocn-Ifaty1.Zinke.2014",FALSE,"Ocean2kHR_021_iso2k","CO14ZIMG","version",,
+"dedup_auto","Ocean2kHR_021","Ocn-Ifaty1.Zinke.2014",FALSE,"ZI14IFR02_d18O","ZI14IFR02","version",,
+"dedup_auto","Ocean2kHR_021_iso2k","CO14ZIMG",FALSE,"ZI14IFR02_d18O","ZI14IFR02","version",,
+"dedup_auto","Ocean2kHR_022","Ocn-IfatyTul3.Zinke.2014",FALSE,"Ocean2kHR_022_iso2k","CO14ZIMG","subset",,
+"dedup_auto","Ocean2kHR_026","Ocn-HoutmanAbrolhosHAB10A.Zinke.2014",FALSE,"Ocean2kHR_026_iso2k","CO14ZIHO","identical",,
+"dedup_auto","Ocean2kHR_094","Ocn-BermudaSouthShore.Goodkin.2008",FALSE,"Ocean2kHR_094_iso2k","CO08GOBE","identical",,
+"dedup_auto","Ocean2kHR_096","Ocn-LosRoques.Hetzinger.2008",FALSE,"Ocean2kHR_096_iso2k","CO08HEVE","subset",,
+"dedup_auto","Ocean2kHR_102","Ocn-NorthEastBreakers_Bermuda.Kuhnert.2002",FALSE,"Ocean2kHR_102_iso2k","CO02KUBE","subset",,
+"dedup_auto","Ocean2kHR_105","Ocn-NorthEastBreakers_Bermuda.Kuhnert.2005",FALSE,"Ocean2kHR_105_iso2k","CO05KUBE","subset",,
+"dedup_auto","Ocean2kHR_107","Ocn-PedradeLume-CapeVerdeIslands.Moses.2006",FALSE,"Ocean2kHR_107_iso2k","CO06MOPE","subset",,
+"dedup_auto","Ocean2kHR_108","Ocn-BuccooReefTobagoMontastrea.Moses.2006",FALSE,"Ocean2kHR_108_iso2k","CO06MOTO","identical",,
+"dedup_auto","Ocean2kHR_110","Ocn-BuccooReefTobagoSidereastrea.Moses.2006",FALSE,"Ocean2kHR_110_iso2k","CO06MOTO","identical",,
+"dedup_auto","Ocean2kHR_132","Ocn-Moorea.Boiseau.1998",FALSE,"Ocean2kHR_132_iso2k","CO98BOFP","subset",,
+"dedup_auto","Ocean2kHR_133","Ocn-Vanuatu.Quinn.1996",FALSE,"Ocean2kHR_133_iso2k","CO96QUVA","identical",,
+"dedup_auto","Ocean2kHR_135","Ocn-Kiritimati.Evans.1998",FALSE,"Ocean2kHR_135_iso2k","CO98EVXM","subset",,
+"dedup_auto","Ocean2kHR_138","Ocn-SecasIslandPanama.Linsley.1994",FALSE,"Ocean2kHR_138_iso2k","CO94LISE","subset",,
+"dedup_auto","Ocean2kHR_140","Ocn-MadangLagoonPapuaNewGuinea.Kuhnert.2001",FALSE,"Ocean2kHR_140_iso2k","CO01TUNG","subset",,
+"dedup_auto","Ocean2kHR_142","Ocn-SavusavuBayFiji.Bagnato.2005",FALSE,"Ocean2kHR_142_iso2k","CO05BAFI","identical",,
+"dedup_auto","Ocean2kHR_156","Ocn-SavusavuBayAB.Linsley.2006",FALSE,"Ocean2kHR_156_iso2k","CO06LIFI","subset",,
+"dedup_auto","Ocean2kHR_157","Ocn-SavusavuBay1F.Linsley.2006",FALSE,"Ocean2kHR_157_iso2k","CO04LIFI","subset",,
+"dedup_auto","Ocean2kHR_160_iso2k","CO11NUPM",FALSE,"RAIDWSl4pAnyLRDg5","Palmyra.Dee.2020","subset",,
+"dedup_auto","Ocean2kHR_163","Ocn-Miyanohama.Felis.2009",FALSE,"Ocean2kHR_163_iso2k","CO09FEOG","subset",,
+"dedup_auto","Ocean2kHR_166","Ocn-DoubleReef.Asami.2005",FALSE,"Ocean2kHR_166_iso2k","CO05ASGU","subset",,
+"dedup_auto","Ocean2kHR_171","Ocn-BunakenIsland.Charles.2003",FALSE,"Ocean2kHR_171_iso2k","CO03CHBU","subset",,
+"dedup_auto","Ocean2kHR_172","Ocn-MadangLagoonPapuaNewGuinea.Tudhope.1995",FALSE,"Ocean2kHR_172_iso2k","CO95TUNG","subset",,
+"dedup_auto","Ocean2kHR_173","Ocn-UrvinaBay.Dunbar.1994",FALSE,"Ocean2kHR_173_iso2k","CO94DUUR","subset",,
+"dedup_auto","Ocean2kHR_174","Ocn-MaloChannelEspirituSantoIsland.Kilbourne.2004",FALSE,"Ocean2kHR_174_iso2k","CO04KIVA","subset",,
+"dedup_auto","Ocean2kHR_177","Ocn-Maiana.Urban.2000",FALSE,"Ocean2kHR_177_iso2k","CO00URMA","subset",,
+"dedup_auto","Ocean2kHR_188","Ocn-Clipperton1b.Wu.2014",FALSE,"WU14CLI01_d18O","WU14CLI01","version",,
+"dedup_auto","Ocean2kHR_193","Ocn-CoralSea.Calvo.2007",FALSE,"Ocean2kHR_193_iso2k","CO07CAFR","identical",,
+"dedup_auto","RA17PAL01_d18O","RA17PAL01",FALSE,"WEB0e874eb3","CO17RAPA","subset",,
+"dedup_auto","FE09OGA01_SrCa_annual","FE09OGA01",FALSE,"Ocean2kHR_164","Ocn-Miyanohama.Felis.2009","resolution",,
+"dedup_auto","FE09OGA01_SrCa_annual","FE09OGA01",FALSE,"Ocean2kHR_164_iso2k","CO09FEOG","resolution",,
+"dedup_auto","HE10GUA01_SrCa_annual","HE10GUA01",FALSE,"Ocean2kHR_098","Ocn-Guadeloupe.Steinhilber.2010","resolution",,
+"dedup_auto","HE10GUA01_SrCa_annual","HE10GUA01",FALSE,"Ocean2kHR_098_iso2k","CO10HEIG","resolution",,
+"dedup_auto","KI04MCV01_SrCa","KI04MCV01",FALSE,"Ocean2kHR_175","Ocn-MaloChannelEspirituSantoIsland.Kilbourne.2004","subset",,
+"dedup_auto","KI04MCV01_SrCa","KI04MCV01",FALSE,"Ocean2kHR_175_iso2k","CO04KIVA","subset",,
+"dedup_auto","KI08PAR01_SrCa","KI08PAR01",FALSE,"Ocean2kHR_100","Ocn-TurrumoteReefPuertoRico.Kilbourne.2008","identical",,
+"dedup_auto","NU11PAL01_SrCa","NU11PAL01",FALSE,"Ocean2kHR_161","Ocn-Palmyra.Nurhati.2011","subset",,
+"dedup_auto","NU11PAL01_SrCa","NU11PAL01",FALSE,"Ocean2kHR_161_iso2k","CO11NUPM","subset",,
+"dedup_auto","Ocean2kHR_027_iso2k","CO14ZIHO",FALSE,"ZI14HOU01_SrCa","ZI14HOU01","identical",,
+"dedup_auto","RE18CAY01_SrCa_annual","RE18CAY01",FALSE,"WEB1ae4dccd","CO18RELC01A","version",,
+"dedup_auto","Ant_006","Ant-SiteDML07.Graf.2002",FALSE,"IC02GR0701A","IC02GR07","identical",,
+"dedup_auto","Ant_008","Ant-SiteDML17.Graf.2002",FALSE,"IC02GR1701A","IC02GR17","identical",,
+"dedup_auto","Ant_010","Ant-DomeF2001.Uemura.2008",FALSE,"IC08HODF02A","IC08HODF","subset",,
+"dedup_auto","Ant_024","Ant-SipleStation.Mosley-Thompson.1990",FALSE,"IC96MOSS01A","IC96MOSS","identical",,
+"dedup_auto","Ant_025","Ant-TALDICE.Stenni.2010",FALSE,"Rzr1TEfhyeB","TALDICE.Mezgec.2017","subset",,
+"dedup_auto","Ant_037","Ant-US-ITASE-2000-1.Steig.2013",FALSE,"IC13ST0101A","IC13ST01","subset",,
+"dedup_auto","Ant_050","Ant-US-ITASE-2002-4.Steig.2013",FALSE,"IC13ST2401A","IC13ST24","subset",,
+"dedup_auto","Arc_005","Arc-CampCentury.Fisher.1969",FALSE,"IC09VICC01A","IC09VICC","identical",,
+"dedup_auto","Arc_011","Arc-GISP2.Grootes.1997",FALSE,"IC97GRGI01A","IC97GRGI","version",,
+"dedup_auto","Arc_026","Arc-NGTB16.Schwager.1998",FALSE,"IC00SC1601A","IC00SC16","identical",,
+"dedup_auto","Arc_031","Arc-NGRIP1.Vinther.2006",FALSE,"IC09KANG01A","IC09KANG","identical",,
+"dedup_auto","Arc_032","Arc-Agassiz.Vinther.2008",FALSE,"IC09KA7901A","IC09KA79","identical",,
+"dedup_auto","Arc_035","Arc-GRIP.Vinther.2010",FALSE,"IC10VIGR01A","IC10VIGR","identical",,
+"dedup_auto","Arc_056","Arc-Renland.Vinther.2008",FALSE,"IC09VIRE01A","IC09VIRE","identical",,
+"dedup_auto","Arc_089","Arc-AkademiiNaukIceCap.Opel.2013",FALSE,"IC13OPAN01A","IC13OPAN","identical",,
+"dedup_auto","Asia_236","Asi-Dasuopu.Thompson.2000",FALSE,"IC00THDS03A","IC00THDS","identical",,
+"dedup_auto","Asia_305","Asi-Puruogangri.Thompson.2006",FALSE,"IC06THPR01A","IC06THPR","identical",,
+"dedup_auto","GH26a3a772","NGRIP.NGRIP.2004",FALSE,"IC09KANG01A","IC09KANG","resolution",,
+"dedup_auto","IC06VING01A","IC06VING",FALSE,"IC09KANG01A","IC09KANG","resolution",,
+"dedup_auto","IC08VI7901A","IC08VI79",FALSE,"IC09KA7901A","IC09KA79","resolution",,
+"dedup_auto","IC08VIRE01A","IC08VIRE",FALSE,"IC09VIRE01A","IC09VIRE","resolution",,
+"dedup_auto","IC08VIRE01A","IC08VIRE",FALSE,"PYTUAENTJO2","Renland.Johnsen.1992","subset",,
+"dedup_auto","IC11STTA01A","IC11STTA",FALSE,"Rzr1TEfhyeB","TALDICE.Mezgec.2017","subset",,
+"dedup_auto","Ant_014","Ant-Ferrigno.Thomas.2013",FALSE,"IC13THFE01A","IC13THFE","identical",,
+"dedup_auto","Ant_026","Ant-TalosDome.Stenni.2002",FALSE,"IC02STTA02A","IC02STTA","subset",,
+"dedup_auto","Arc_073","Arc-HalletLake.McKay.2008",FALSE,"PYTQ80LZ9WG","Hallet.McKay.2009","subset",,
+"dedup_auto","GH6edd69de","GeoB33131.Lamy.2002",FALSE,"O2kLR_187","Ocn-ChileanMargin.Lamy.2002","version",,
+"dedup_auto","GH6edd69de","GeoB33131.Lamy.2002",FALSE,"O2kLR_189_iso2k","MS02FLPC","version",,
+"dedup_auto","LPD68872399","Ocn-EmeraldBasin.Keigwin.2007",FALSE,"T2L_OCE326_GGC30_uk37_SST_from_uk37","OCE326_GGC30.Sachs.2007","version",,
+"dedup_auto","O2kLR_105","Ocn-MD95-2011.Grimalt.2002",FALSE,"PYT44KBHOVP","MD95-2011.Calvo.2002","subset",,
+"dedup_auto","O2kLR_105","Ocn-MD95-2011.Grimalt.2002",FALSE,"RRd6osZyB8H","MD95_2011Assemblage.Risebrobakken.2003","subset",,
+"dedup_auto","O2kLR_187","Ocn-ChileanMargin.Lamy.2002",FALSE,"O2kLR_189_iso2k","MS02FLPC","subset",,
+"dedup_auto","O2kLR_195","Ocn-SouthernChileMargin.Mohtadi.2007",FALSE,"O2kLR_197_iso2k","MS07MMNP","subset",,
+"dedup_auto","MS09DTNA01a","MS09DTNA",FALSE,"T2L_RAPiD_12_1K_d18o_bulloides_SST_from_d18o_bulloides","RAPiD_12_1K.Thornalley.2010","version",,
+"dedup_auto","GH37fc751b","KY07_04_01.Kubota.2010",FALSE,"T2L_KY07_04_PC1_mgca_ruber_SST_from_mgca_ruber","KY07_04_PC1.Kubota.2010","subset",,
+"dedup_auto","GH6d77af79","MD982176",FALSE,"LPD248cb8ef24","MS07LSPG","subset",,
+"dedup_auto","LPD1a0245b7","Ocn-Philippines.Stott.2007",FALSE,"LPD1a0245b72","MS07LSSP","subset",,
+"dedup_auto","LPD1a0245b7","Ocn-Philippines.Stott.2007",FALSE,"LPDf5f8b9a6","MD982181","subset",,
+"dedup_auto","LPD1a0245b7","Ocn-Philippines.Stott.2007",FALSE,"T2L_MD98_2181_mgca_ruber_SST_from_mgca_ruber","MD98_2181.Stott.2007","subset",,
+"dedup_auto","LPD30c5b95c","Ocn-MD98-2177.Newton.2010",FALSE,"LPD30c5b95ct","MS11ANMN","subset",,
+"dedup_auto","LPD7e8e8eaa","Ocn-MD98-2160.Newton.2010",FALSE,"LPD7e8e8eaa_iso2k","MS11ANMS","subset",,
+"dedup_auto","LPDb17a5e9e-dup","Ocn-RAPiD-12-1K.Thornalley.2009",FALSE,"PYTCKIHL13P","RAPID-12.Thournally.2009","subset",,
+"dedup_auto","LPDb17a5e9e-dup","Ocn-RAPiD-12-1K.Thornalley.2009",FALSE,"T2L_RAPiD_12_1K_mgca_bulloides_SST_from_mgca_bulloides","RAPiD_12_1K.Thornalley.2010","subset",,
+"dedup_auto","LPDc9f784381","MS09DOIP",FALSE,"O2kLR_148","Ocn-MakassarStrait.Oppo.2009","version",,
+"dedup_auto","LPDf5f8b9a6","MD982181",FALSE,"T2L_MD98_2181_mgca_ruber_SST_from_mgca_ruber","MD98_2181.Stott.2007","subset",,
+"dedup_auto","O2kLR_118","Ocn-SWCoastOfIndia.Saraswat.2013",FALSE,"O2kLR_120_iso2k","MS13RSAS","subset",,
+"dedup_auto","O2kLR_135","Ocn-MakassarStrait.Linsley.2010",FALSE,"O2kLR_135_iso2k","MS10BLMS","version",,
+"dedup_auto","PYTCKIHL13P","RAPID-12.Thournally.2009",FALSE,"T2L_RAPiD_12_1K_mgca_bulloides_SST_from_mgca_bulloides","RAPiD_12_1K.Thornalley.2010","subset",,
+"dedup_auto","Ocean2kHR_112","Ocn-TongueoftheOceanExuma.Rosenheim.2005",FALSE,"Ocean2kHR_112_iso2k","SS05ROES","version",,
+"dedup_auto","Ocean2kHR_114","Ocn-TongueoftheOcean.Rosenheim.2005",FALSE,"SS05ROTN02A","SS05ROTN","version",,
+"dedup_auto","Ocean2kHR_126","Ocn-MontegoBayJamaica.Haase-Schramm.2003",FALSE,"Ocean2kHR_126_iso2k","SS03HAJA","subset",,
+"dedup_auto","SP10WINZ01A","SP10WINZ.Williams.2010",TRUE,"SP10WINZ01A_iso2k","SP10WINZ","subset",,
+"dedup_auto","Asia_068","Asi-ZHIDJP.Shao.2003",FALSE,"Asia_100","Asi-CHIN066.Shao.2013","subset",,
+"dedup_auto","Ocean2kHR_132","Ocn-Moorea.Boiseau.1998",FALSE,"BO99MOO01_d18O","BO99MOO01","version",,
+"dedup_auto","Ocean2kHR_132_iso2k","CO98BOFP",FALSE,"BO99MOO01_d18O","BO99MOO01","version",,
+"dedup_auto","KU00NIN01_d18O","KU00NIN01",FALSE,"CO00KUNI01Aa","CO00KUNI","subset",,
+"dedup_auto","CO03PAL03_d18O","CO03PAL03",FALSE,"CO03COPM04C","CO03COPM","subset",,
+"dedup_auto","SW98STP01_d18O","SW98STP01",FALSE,"CO98SWPR01A","CO98SWPR","identical",,
+"dedup_auto","DR99ABR01_d18O","DR99ABR01",FALSE,"CO99DRGB01A","CO99DRGB","identical",,
+"dedup_auto","Ocean2kHR_169","Ocn-ClippertonAtoll.Linsley.2000",FALSE,"CO99LICL03A","CO99LICL","subset",,
+"dedup_auto","Ocean2kHR_147","Ocn-Rarotonga_d18O2R.Linsley.2006",FALSE,"LI00RAR01_d18O","LI00RAR01","subset",,
+"dedup_auto","Ocean2kHR_157_iso2k","CO04LIFI",TRUE,"LI04FIJ01_d18O","LI04FIJ01","version",,
+"dedup_auto","Ocean2kHR_157","Ocn-SavusavuBay1F.Linsley.2006",FALSE,"LI06FIJ01_d18O","LI06FIJ01","version",,
+"dedup_auto","Ocean2kHR_152","Ocn-Rarotonga_d18O99.Linsley.2006",FALSE,"LI06RAR01_d18O","LI06RAR01","subset",,
+"dedup_auto","NU11PAL01_d18O","NU11PAL01",FALSE,"missRx1ktAVptRioWxvEF","Palmyra.Sanchez.2020","subset",,
+"dedup_auto","Ocean2kHR_160_iso2k","CO11NUPM",FALSE,"missRx1ktAVptRioWxvEF","Palmyra.Sanchez.2020","subset",,
+"dedup_auto","QU96ESV01_d18O","QU96ESV01",FALSE,"Ocean2kHR_133","Ocn-Vanuatu.Quinn.1996","identical",,
+"dedup_auto","QU96ESV01_d18O","QU96ESV01",FALSE,"Ocean2kHR_133_iso2k","CO96QUVA","identical",,
+"dedup_auto","Ocean2kHR_160_iso2k","CO11NUPM",FALSE,"Ocean2kHR_139","Ocn-Palmyra.Cobb.2013","subset",,
+"dedup_auto","Ocean2kHR_160_iso2k","CO11NUPM",FALSE,"Ocean2kHR_139_iso2k","CO03COPM","subset",,
+"dedup_auto","TU01DEP01_d18O","TU01DEP01",FALSE,"Ocean2kHR_140","Ocn-MadangLagoonPapuaNewGuinea.Kuhnert.2001","subset",,
+"dedup_auto","TU01DEP01_d18O","TU01DEP01",FALSE,"Ocean2kHR_140_iso2k","CO01TUNG","subset",,
+"dedup_auto","TU01LAI01_d18O","TU01LAI01",FALSE,"Ocean2kHR_141","Ocn-LaingIslandPapuaNewGuinea.Tudhope.2001","subset",,
+"dedup_auto","Ocean2kHR_157_iso2k","CO04LIFI",TRUE,"Ocean2kHR_156","Ocn-SavusavuBayAB.Linsley.2006","version",,
+"dedup_auto","Ocean2kHR_157","Ocn-SavusavuBay1F.Linsley.2006",FALSE,"Ocean2kHR_156_iso2k","CO06LIFI","version",,
+"dedup_auto","TU95MAD01_d18O","TU95MAD01",FALSE,"Ocean2kHR_172","Ocn-MadangLagoonPapuaNewGuinea.Tudhope.1995","subset",,
+"dedup_auto","TU95MAD01_d18O","TU95MAD01",FALSE,"Ocean2kHR_172_iso2k","CO95TUNG","subset",,
+"dedup_auto","UR00MAI01_d18O","UR00MAI01",FALSE,"Ocean2kHR_177","Ocn-Maiana.Urban.2000","subset",,
+"dedup_auto","UR00MAI01_d18O","UR00MAI01",FALSE,"Ocean2kHR_177_iso2k","CO00URMA","subset",,
+"dedup_auto","OS14UCP01_d18O","OS14UCP01",FALSE,"Ocean2kHR_183","Ocn-PalauUlongChannel.Osborne.2014","subset",,
+"dedup_auto","OS14UCP01_d18O","OS14UCP01",FALSE,"Ocean2kHR_183_iso2k","CO14OSPA","subset",,
+"dedup_auto","WE09ARR01_d18O","WE09ARR01",FALSE,"Ocean2kHR_190","Ocn-GBR.Wei.2009","identical",,
+"dedup_auto","WEB8500c738","CO18HECO01A",FALSE,"HE18COC01_SrCa","HE18COC01","version",,
+"dedup_auto","Ocean2kHR_149","Ocn-RarotongaSrCa2r.Linsley.2006",FALSE,"LI00RAR01_SrCa","LI00RAR01","subset",,
+"dedup_auto","Ocean2kHR_158_iso2k","CO04LIFI",FALSE,"LI04FIJ01_SrCa","LI04FIJ01","version",,
+"dedup_auto","ZI08MAY01_SrCa","ZI08MAY01",FALSE,"Ocean2kHR_003","Ocn-Mayotte.Zinke.2008","subset",,
+"dedup_auto","Ocean2kHR_027_iso2k","CO14ZIHO",FALSE,"Ocean2kHR_027","Ocn-HoutmanAbrolhosHAB10A.Zinke.2014","identical",,
+"dedup_auto","ZI14HOU01_SrCa","ZI14HOU01",FALSE,"Ocean2kHR_027","Ocn-HoutmanAbrolhosHAB10A.Zinke.2014","identical",,
+"dedup_auto","Ocean2kHR_095_iso2k","CO08GOBE",FALSE,"Ocean2kHR_095","Ocn-BermudaSouthShore.Goodkin.2008","identical",,
+"dedup_auto","Ocean2kHR_098_iso2k","CO10HEIG",FALSE,"Ocean2kHR_098","Ocn-Guadeloupe.Steinhilber.2010","subset",,
+"dedup_auto","Ocean2kHR_106_iso2k","CO05KUBE",FALSE,"Ocean2kHR_106","Ocn-NorthEastBreakers_Bermuda.Kuhnert.2005","subset",,
+"dedup_auto","Ocean2kHR_158_iso2k","CO04LIFI",FALSE,"Ocean2kHR_158","Ocn-SavusavuBay1F.Linsley.2006","subset",,
+"dedup_auto","Ocean2kHR_161_iso2k","CO11NUPM",FALSE,"Ocean2kHR_161","Ocn-Palmyra.Nurhati.2011","subset",,
+"dedup_auto","Ocean2kHR_164_iso2k","CO09FEOG",FALSE,"Ocean2kHR_164","Ocn-Miyanohama.Felis.2009","subset",,
+"dedup_auto","Ocean2kHR_175_iso2k","CO04KIVA",FALSE,"Ocean2kHR_175","Ocn-MaloChannelEspirituSantoIsland.Kilbourne.2004","subset",,
+"dedup_auto","WE09ARR01_SrCa","WE09ARR01",FALSE,"Ocean2kHR_191","Ocn-GBR.Wei.2009","identical",,
+"dedup_auto","Ocean2kHR_194_iso2k","CO07CAFR",FALSE,"Ocean2kHR_194","Ocn-CoralSea.Calvo.2007","identical",,
+"dedup_auto","IC02MUBI01A","IC02MUBI",FALSE,"Ant_005","Ant-BerknerIsland.Mulvaney.2002","identical",,
+"dedup_auto","IC07KADF01A","IC07KADF",FALSE,"Ant_009","Ant-DomeF1993.Uemura.2014","subset",,
+"dedup_auto","GHf6960784","TaylorDome_d18O",FALSE,"Ant_035","Ant-TaylorDome.Steig.2000","subset",,
+"dedup_auto","GH26a3a772","NGRIP.NGRIP.2004",FALSE,"Arc_031","Arc-NGRIP1.Vinther.2006","resolution",,
+"dedup_auto","IC06VING01A","IC06VING",FALSE,"Arc_031","Arc-NGRIP1.Vinther.2006","resolution",,
+"dedup_auto","IC08VI7901A","IC08VI79",FALSE,"Arc_032","Arc-Agassiz.Vinther.2008","resolution",,
+"dedup_auto","IC76FIDE01A","IC76FIDE",FALSE,"Arc_043","Arc-DevonIceCap.Fisher.1983","identical",,
+"dedup_auto","IC08VIRE01A","IC08VIRE",FALSE,"Arc_056","Arc-Renland.Vinther.2008","resolution",,
+"dedup_auto","PYTUAENTJO2","Renland.Johnsen.1992",FALSE,"Arc_056","Arc-Renland.Vinther.2008","resolution",,
+"dedup_auto","IC02HEWD01A","IC02HEWD",FALSE,"Arc_099d18O","Arc-WindyDome.Henderson.2011","version",,
+"dedup_auto","PYTAUVXNNEA","DYE3.Vinther.2006",FALSE,"IC06VID301A","IC06VID3","subset",,
+"dedup_auto","PYTUAENTJO2","Renland.Johnsen.1992",FALSE,"IC09VIRE01A","IC09VIRE","resolution",,
+"dedup_auto","SAm_035_iso2k","IC13THQU",FALSE,"SAm_035","SAm-QuelccayaIceCap.Thompson.2013","identical",,
+"dedup_auto","LPD10e9f8f7_iso2k","MS12AMMM",FALSE,"LPD10e9f8f7","Ocn-MinorcaContourite.Moreno.2012","subset",,
+"dedup_auto","RLcBkd6hOuO","D13902",FALSE,"LPDb7ba9166","Ocn-TagusMudPatch.Abrantes.2005","version",,
+"dedup_auto","T2L_GIK17940_2_uk37_SST_from_uk37","GIK17940_2.Pelejero.1999",FALSE,"LPDc9f78438dp","Core17940","subset",,
+"dedup_auto","O2kLR_074_iso2k","MS03LKNS",FALSE,"O2kLR_074","Ocn-EmeraldBasin.Keigwin.2003","subset",,
+"dedup_auto","O2kLR_114_iso2k","MS01HDAS",FALSE,"O2kLR_114","Ocn-ArabianSea.Doose-Rolinski.2001","subset",,
+"dedup_auto","RfOqYf6ktxg","SO90_56KA.Doose-Rolinski.2001",FALSE,"O2kLR_114","Ocn-ArabianSea.Doose-Rolinski.2001","subset",,
+"dedup_auto","RfOqYf6ktxg","SO90_56KA.Doose-Rolinski.2001",FALSE,"O2kLR_114_iso2k","MS01HDAS","subset",,
+"dedup_auto","RRd6osZyB8H","MD95_2011Assemblage.Risebrobakken.2003",FALSE,"PYT44KBHOVP","MD95-2011.Calvo.2002","subset",,
+"dedup_auto","O2kLR_082","Ocn-SubTropicalEasternNorthAtlantic.deMenocal.2000",FALSE,"LPD493f1394xxxx","ODP658C.deMenocal.1997","subset",,
+"dedup_auto","O2kLR_131","Ocn-WEqPacific.Stott.2007",FALSE,"GH6d77af79","MD982176","subset",,
+"dedup_auto","LPDf5f8b9a6","MD982181",FALSE,"LPD1a0245b72","MS07LSSP","subset",,
+"dedup_auto","T2L_MD98_2181_mgca_ruber_SST_from_mgca_ruber","MD98_2181.Stott.2007",FALSE,"LPD1a0245b72","MS07LSSP","subset",,
+"dedup_auto","O2kLR_131","Ocn-WEqPacific.Stott.2007",FALSE,"LPD248cb8ef24","MS07LSPG","subset",,
+"dedup_auto","LPD47182517_iso2k","MS09TRFD",FALSE,"LPD47182517","Ocn-FeniDrift.Richter.2009","subset",,
+"dedup_auto","LPD7c7e19c5_iso2k","MS06DLGN",FALSE,"LPD7c7e19c5","Ocn-GreatBahamaBank.Lund.2006","subset",,
+"dedup_auto","LPD9cc3baf6-dup","Ocn-GulfofGuinea.Weldeab.2007",FALSE,"LPD9cc3baf6_iso2k","MS07SWGG","subset",,
+"dedup_auto","LPDbe7e07025","MS07RCNA",FALSE,"LPDbd07f717","Ocn-ODP984.Came.2007","version",,
+"dedup_auto","LPDefb3d2b0_iso2k","MS06DLGS",FALSE,"LPDefb3d2b0","Ocn-GreatBahamaBank.Richter.2006","subset",,
+"dedup_auto","O2kLR_066_iso2k","MS06DLDS",FALSE,"O2kLR_066","Ocn-DryTortugasA.Lund.2006","subset",,
+"dedup_auto","O2kLR_101_iso2k","MS12CCCH",FALSE,"O2kLR_101","Ocn-CapeHatteras.Cleroux.2008","subset",,
+"dedup_auto","O2kLR_148_iso2k","MS09DOIP",FALSE,"O2kLR_148","Ocn-MakassarStrait.Oppo.2009","subset",,
+"dedup_auto","Ocean2kHR_113_iso2k","SS05ROES",FALSE,"Ocean2kHR_113","Ocn-TongueoftheOceanExuma.Rosenheim.2005","version",,
+"dedup_auto","Ocean2kHR_127_iso2k","SS03HAJA",FALSE,"Ocean2kHR_127","Ocn-MontegoBayJamaica.Haase-Schramm.2003","subset",,
+"dedup_auto","S2LRVHXdyY64M6","Leviathancave.Lachniet.2014",FALSE,"LPD94e74028cc","Leviathan.Lachniet.2014","subset",,
+"dedup_auto","S2LR3wNHrj1JAW","Oksholacave.Linge.2009",FALSE,"PYT0UICY9DO","FauskeCave.Linge.2009","version",,
+"dedup_auto","Asia_132","Asi-SHIESP.PAGES2k.2013",FALSE,"Asia_130","Asi-SHIYAT.PAGES2k.2013","subset",,

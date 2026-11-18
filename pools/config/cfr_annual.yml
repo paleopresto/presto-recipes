@@ -25,12 +25,11 @@ ledger_pool: pages2k2017
 window: {min_year: 1, max_year: 2100}
 
 exclude_variable_pattern: "^uncertainty|uncertainty$|error|^notes$|needsToBeChanged|^correction$|count$|^sampleCount$|^segmentLength$|^EPS$|^RBAR$|^core$|^correlationCoefficient$|^residualChronology$|^ARSTAN$"
-# Units that rule a record out of an annual DA: the placeholder
-# (Ammersee.Czymzik.2012 thickness), and rates per century or millennium,
-# which are smoothed on whatever grid they are posted (Wirth et al. 2013
-# flood frequencies, count/century on a 1-yr grid; SipleDomeA.Das.2008 melt
-# layers, count/kyr).
-exclude_units_pattern: "needsToBeChanged|/ ?century$|/ ?kyr$|/ ?ka$|per century"
+# Placeholder units (Ammersee.Czymzik.2012 thickness) are not data. Rates per
+# century or millennium are a method screen (Presto2k_*_lmr, *_localfdr10),
+# not a compilation rule: the compilation holds records far coarser than
+# annual (Nick, 2026-11-18, Presto2k 0.3.0).
+exclude_units_pattern: "needsToBeChanged"
 
 interpretation:
   # Iso2k records temperature as an isotope-scope interpretation.
@@ -65,11 +64,12 @@ uninterpreted_temperature_proxies:
     variable_pattern: "^Li/?Mg$"
     direction: negative
 
-# Annual in information, not only in time step: fail records whose successive
-# in-window values repeat exactly at least this often (step functions on an
-# annual grid: Wirth et al. 2013 flood counts per century, step-interpolated
-# North Greenland Traverse accumulation series, IC16WE*, IC00SC29).
-max_repeat_fraction: 0.5
+# Repeated values (step functions on an annual grid: Wirth et al. 2013 flood
+# counts per century, step-interpolated North Greenland Traverse accumulation,
+# IC16WE*, IC00SC29) are a method screen, max_repeat_fraction in
+# Presto2k_*_lmr and *_localfdr10: as a compilation rule it also failed coarse
+# sediment records whose values repeat between samples (Nick, 2026-11-18,
+# Presto2k 0.3.0).
 # Metric only (n_calib, for the method screens and the review site).
 calibration_period: [1850, 2015]
 
