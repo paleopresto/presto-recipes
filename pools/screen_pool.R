@@ -36,7 +36,8 @@ pool <- pool[pool$dedup_keep %in% TRUE, ]
 # toward the false-discovery-rate correction).
 if (identical(cfg$direction_from, "temperature_interpretation")) {
   td <- temperature_direction(con, pool$TSid)
-  pool$direction <- td$direction
+  comp_dir <- pool$direction
+  pool$direction <- implied_temperature_direction(td$direction, pool, comp_dir, cfg$implied_direction)
   cat(sprintf("%d records: %d interpreted (%d with a temperature direction), %d without an interpretation not tested\n",
               nrow(td), sum(td$interpreted), sum(td$interpreted & !is.na(td$direction)), sum(!td$interpreted)))
   pool <- pool[td$interpreted, ]

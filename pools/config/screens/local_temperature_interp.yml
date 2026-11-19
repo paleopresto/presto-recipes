@@ -7,8 +7,12 @@
 # - the expected sign is the record's temperature interpretation's
 #   direction, whatever that interpretation's rank (temperature_direction()
 #   in pools/R/screen.R), not the primary interpretation's;
-# - interpreted records with no temperature direction pass on a
-#   significant correlation of either sign (two-sided test).
+# - a record whose temperature interpretation has no direction takes the
+#   sign implied by its variable or proxy (implied_direction below); records
+#   still without a sign do not pass. Until 2026-11-19 they passed on a
+#   significant correlation of either sign, which could admit, e.g., a
+#   tree-ring record that correlates negatively with temperature (Nick,
+#   2026-11-19: no negatively responding tree-ring records in BayGMST).
 # Applied by pools/screen_pool.R.
 #
 # The variants differ in how strict the test is. The two-half validation in
@@ -16,7 +20,18 @@
 
 name: local_temperature_interp
 direction_from: temperature_interpretation
-two_sided_without_direction: true
+two_sided_without_direction: false
+# Signs for temperature-interpreted records whose interpretation records none,
+# tried in order (first match wins): a calibrated temperature series; ice-core
+# water isotopes; a direction string naming air temperature (e.g. "T_air
+# (positive), P_amount (negative)"); the compilation's implied proxy sign
+# (coral Sr/Ca and d18O).
+implied_direction:
+  - {variable_pattern: "^temperature$", direction: positive}
+  - {archives: [GlacierIce], variable_pattern: "^(d18O|dD|d2H)$", direction: positive}
+  - {direction_pattern: "(T_air|temperature) \\(positive\\)", direction: positive}
+  - {direction_pattern: "(T_air|temperature) \\(negative\\)", direction: negative}
+  - {from_column: direction_implied}
 reference: "PAGES 2k Consortium (2019) Nat. Geosci. 12:643; Neukom et al. (2019) Nat. Geosci. 12:643-649"
 instrumental:
   url: https://www.metoffice.gov.uk/hadobs/hadcrut5/data/HadCRUT.5.0.2.0/analysis/HadCRUT.5.0.2.0.analysis.anomalies.ensemble_mean.nc

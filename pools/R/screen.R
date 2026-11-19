@@ -46,6 +46,30 @@ temperature_direction <- function(con, tsids) {
              interpreted = tsids %in% i$TSid, stringsAsFactors = FALSE)
 }
 
+# Fill missing temperature directions from the screen's implied_direction
+# rules (config/screens/local_temperature_interp.yml), first match wins.
+# `dir`: directions from temperature_direction(); `pool`: the pool rows
+# (variableName, archiveType, direction_implied); `comp_dir`: the
+# compilation's direction strings.
+implied_temperature_direction <- function(dir, pool, comp_dir, rules) {
+  for (r in rules) {
+    todo <- is.na(dir)
+    if (!any(todo)) break
+    if (!is.null(r$from_column)) {
+      v <- tolower(as.character(pool[[r$from_column]]))
+      v <- ifelse(v %in% c("positive", "increase"), "positive", ifelse(v %in% c("negative", "decrease"), "negative", NA))
+      dir[todo] <- v[todo]
+      next
+    }
+    m <- todo
+    if (!is.null(r$archives)) m <- m & pool$archiveType %in% unlist(r$archives)
+    if (!is.null(r$variable_pattern)) m <- m & grepl(r$variable_pattern, pool$variableName, ignore.case = TRUE)
+    if (!is.null(r$direction_pattern)) m <- m & grepl(r$direction_pattern, comp_dir, ignore.case = TRUE)
+    dir[m] <- r$direction
+  }
+  dir
+}
+
 # Annual-mean HadCRUT5 grid: list(lon, lat, years, tas[lon, lat, year]).
 hadcrut_annual <- function(nc_file, years, min_months = 8) {
   n <- ncdf4::nc_open(nc_file); on.exit(ncdf4::nc_close(n))
